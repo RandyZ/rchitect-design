@@ -1,0 +1,15 @@
+{
+  "name": "@rchitect-design/constants",
+  "version": "0.0.0",
+  "main": "index.ts",
+  "module": "index.ts",
+  "description": "Gloable Constant Params",
+  "license": "MIT",
+  "author": {
+    "name": "Randy Zhang",
+    "email": "zhangshi3421@gmail.com"
+  },
+  "scripts": {
+    "clean": "pnpm rimraf pnpm rimraf dist && pnpm rimraf .turbo"
+  }
+}

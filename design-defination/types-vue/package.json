@@ -1,0 +1,25 @@
+{
+  "name": "@rchitect-design/types",
+  "version": "0.0.0",
+  "main": "index.ts",
+  "types": "types.d.ts",
+  "module": "index.ts",
+  "description": "Gloable Typescript Types for Rchitect Design",
+  "license": "MIT",
+  "author": {
+    "name": "Randy Zhang",
+    "email": "zhangshi3421@gmail.com"
+  },
+  "scripts": {
+    "clean": "pnpm rimraf node_modules && pnpm rimraf dist && pnpm rimraf .turbo"
+  },
+  "dependencies": {
+    "@rchitect-design/constants": "workspace:*",
+    "vue-types": "^5.0.2"
+  },
+  "peerDependencies": {
+    "pinia": "~2.0.34",
+    "vue": "~3.3.4",
+    "vue-router": "^4.1.6"
+  }
+}

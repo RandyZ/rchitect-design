@@ -3,3 +3,5 @@ packages:
   - "packages/*"
   - "design-app/*"
   - "design-rock/*"
+  - "design-defination/*"
+  - "design-cli/*"

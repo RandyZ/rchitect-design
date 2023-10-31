@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Default",
+  "lib": [
+    "es6",
+    "dom"
+  ],
+  "compilerOptions": {
+    "allowJs": true,
+    "composite": false,
+    "declaration": true,
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "forceConsistentCasingInFileNames": true,
+    "inlineSources": false,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "moduleResolution": "node",
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "preserveWatchOutput": true,
+    "resolveJsonModule": true,
+    "removeComments": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "strictNullChecks": true
+  },
+  "types": [
+    "reflect-metadata",
+    "vite/client",
+    "@types/lodash-es",
+    "vitest/globals"
+  ],
+  "exclude": [
+    "**/node_modules/**",
+    "**/dist/**"
+  ],
+  "references": [
+    {
+      "path": "../../DesignRock/rock-types"
+    },
+    {
+      "path": "../../DesignRock/rock-types/shims"
+    }
+  ]
+}
