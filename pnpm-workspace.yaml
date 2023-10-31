@@ -1,6 +1,4 @@
 packages:
-  - "apps/*"
-  - "packages/*"
   - "design-app/*"
   - "design-rock/*"
   - "design-defination/*"
