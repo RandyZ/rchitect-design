@@ -10,6 +10,6 @@
     "email": "zhangshi3421@gmail.com"
   },
   "scripts": {
-    "clean": "pnpm rimraf pnpm rimraf dist && pnpm rimraf .turbo"
+    "clean": "pnpm rimraf node_modules && pnpm rimraf dist && pnpm rimraf .turbo"
   }
 }
