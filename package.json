@@ -24,6 +24,7 @@
     "esno": "^0.17.0",
     "lodash-es": "^4.17.21",
     "prettier": "^3.0.3",
+    "reflect-metadata": "^0.1.13",
     "rimraf": "^5.0.5",
     "turbo": "latest",
     "unbuild": "^2.0.0"
