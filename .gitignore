@@ -16,11 +16,14 @@ build
 # misc
 .DS_Store
 *.pem
+dist
+*-dist
 
-# debug
+# Log files
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.pnpm-debug.log*
 
 # local env files
 .env
@@ -34,3 +37,23 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+#Vitest
+vitest-report/*
+*/.vite-inspect/*
+vitest.config.unit.ts.timestamp-*.mjs
+
+# local env files
+.env.local
+.env.*.local
+.eslintcache
+
+# Editor directories and files
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+!/pnpm-lock.yaml
+!/.gitignore

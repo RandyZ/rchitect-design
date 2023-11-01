@@ -2,12 +2,15 @@
   "name": "rchitect-design",
   "private": true,
   "scripts": {
-    "build": "turbo run build",
+    "preinstall": "npx only-allow pnpm",
+    "postinstall": "pnpm run stub",
+    "build": "pnpm --filter scripts build",
+    "turbo:build": "turbo run build --parallel",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "clean": "pnpm turbo run clean && rimraf node_modules",
-    "create-rock": "echo "
+    "stub": "pnpm --filter @rchitect-cli/** prepack",
+    "clean": "pnpm turbo run clean && rimraf node_modules"
   },
   "dependencies": {
     "vue": "~3.3.7",
@@ -16,10 +19,14 @@
   "devDependencies": {
     "@changesets/cli": "^2.26.2",
     "@rchitect-cli/tsconfig": "workspace:*",
+    "@types/lodash-es": "^4.17.10",
     "eslint": "^8.48.0",
+    "esno": "^0.17.0",
+    "lodash-es": "^4.17.21",
     "prettier": "^3.0.3",
     "rimraf": "^5.0.5",
-    "turbo": "latest"
+    "turbo": "latest",
+    "unbuild": "^2.0.0"
   },
   "packageManager": "pnpm@8.6.10"
 }

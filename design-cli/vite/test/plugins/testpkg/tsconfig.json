@@ -1,0 +1,6 @@
+{
+  "extends": "@rchitect-cli/tsconfig/base.json",
+  "include": ["src"],
+  "exclude": ["dist", "node_modules"],
+  
+}

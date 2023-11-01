@@ -4,6 +4,7 @@
   "private": true,
   "main": "dist/index.cjs",
   "types": "dist/index.d.ts",
+  "description": "Vite plugins for Rchitect project. Inspired by Vben3!",
   "scripts": {
     "clean": "pnpm rimraf node_modules && pnpm rimraf dist && pnpm rimraf .turbo",
     "prepack": "pnpm unbuild --stub"

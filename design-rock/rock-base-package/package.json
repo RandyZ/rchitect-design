@@ -5,6 +5,7 @@
   "module": "./index.ts",
   "type": "module",
   "license": "MIT",
+  "description": "Package base configuration for module to benifit AutoConfiguration",
   "scripts": {
     "clean": "pnpm rimraf node_modules && pnpm rimraf dist && pnpm rimraf .turbo"
   },

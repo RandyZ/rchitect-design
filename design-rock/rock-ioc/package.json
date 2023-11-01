@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "main": "./index.ts",
   "license": "MIT",
+  "description": "A simple IoC container for Rchitect Project",
   "scripts": {
     "clean": "pnpm rimraf node_modules && pnpm rimraf dist && pnpm rimraf .turbo"
   },
