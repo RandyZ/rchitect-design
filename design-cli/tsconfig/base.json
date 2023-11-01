@@ -6,6 +6,11 @@
     "dom"
   ],
   "compilerOptions": {
+    "lib": [
+      "ES2020",
+      "DOM",
+      "DOM.Iterable"
+    ],
     "target": "esnext",
     "module": "esnext",
     "allowJs": true,
@@ -42,10 +47,13 @@
   ],
   "references": [
     {
-      "path": "../../DesignRock/rock-types"
+      "path": "./tsconfig.node.json"
     },
     {
-      "path": "../../DesignRock/rock-types/shims"
+      "path": "../../design-defination/types-vue"
+    },
+    {
+      "path": "./../design-defination/types-vue/shims"
     }
   ]
 }

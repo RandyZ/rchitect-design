@@ -10,6 +10,8 @@
     "prepack": "pnpm unbuild --stub"
   },
   "dependencies": {
+    "@rchitect-cli/tsconfig": "workspace:*",
+    "@rchitect-design/constants": "workspace:^",
     "@vitejs/plugin-legacy": "^4.0.2",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vitejs/plugin-vue-jsx": "^3.0.1",
@@ -22,7 +24,6 @@
     "pkg-types": "^1.0.1",
     "rollup-plugin-visualizer": "^5.8.3",
     "terser": "^5.16.2",
-    "@rchitect-cli/tsconfig": "workspace:*",
     "vite": "4.3.9",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-html": "^3.2.0",
@@ -33,6 +34,7 @@
     "vite-plugin-svg-icons": "^2.0.1"
   },
   "devDependencies": {
+    "@rchitect-design/types": "workspace:*",
     "mockjs": "^1.1.0",
     "rollup": "^3.19.1",
     "typescript": "^5.0.2",
@@ -43,7 +45,8 @@
     "unplugin-vue-components": "^0.25.1",
     "vite-plugin-http2-proxy": "^0.4.1",
     "vite-plugin-inspect": "^0.7.28",
-    "vite-plugin-mkcert": "1.13.3"
+    "vite-plugin-mkcert": "1.13.3",
+    "vite-plugin-turbo-console": "^0.1.0"
   },
   "peerDependencies": {
     "vue": "~3.3.4"
