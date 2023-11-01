@@ -1,3 +1,3 @@
-import { createUnocssConfig } from '@config/vite'
+import { createUnocssConfig } from '@rchitect-cli/vite'
 
 export default createUnocssConfig()

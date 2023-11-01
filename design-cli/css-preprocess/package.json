@@ -14,5 +14,8 @@
   "dependencies": {
     "postcss": "^8.4.31",
     "postcss-preset-env": "^9.2.0"
+  },
+  "devDependencies": {
+    "@rchitect-cli/vite": "workspace:^"
   }
 }
