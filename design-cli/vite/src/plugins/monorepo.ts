@@ -2,7 +2,7 @@ import type { Alias, ConfigEnv, Plugin, UserConfig } from 'vite';
 import fs from 'fs'
 import path from 'path'
 import glob from 'fast-glob'
-import { TreeNode } from '@weiming-rock/types';
+import { TreeNode } from '@rchitect-design/types';
 import { find, split, join, isEmpty } from 'lodash-es';
 import { bold, cyan, gray, green } from 'picocolors';
 
@@ -50,7 +50,7 @@ export function findNearestPackageData(
 
     const pkgPath = path.join(basedir, 'package.json')
     try {
-      if (fs.statSync(pkgPath, { throwIfNoEntry: false })?.isFile()) {
+      if (fs.statSync(pkgPath)?.isFile()) {
         const pkgData = loadPackageData(pkgPath)
 
         if (packageCache) {

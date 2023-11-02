@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "Default",
+  "display": "Base",
   "lib": [
     "esnext",
     "dom"
@@ -46,14 +46,8 @@
     "**/dist/**"
   ],
   "references": [
-    {
-      "path": "./tsconfig.node.json"
-    },
-    {
-      "path": "../../design-defination/types-vue"
-    },
-    {
-      "path": "./../design-defination/types-vue/shims"
-    }
+    { "path": "./tsconfig.node.json" },
+    { "path": "../../design-defination/types" },
+    { "path": "./../design-defination/types" }
   ]
 }

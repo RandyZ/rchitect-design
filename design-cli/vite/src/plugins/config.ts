@@ -5,7 +5,7 @@ import type { PluginOption } from 'vite'
  */
 import { writeFileSync, mkdirp, readFileSync } from 'fs-extra'
 import { GLOB_CONFIG_FILE_NAME, OUTPUT_DIR, APP_NAME } from '../constants'
-import { getAppConfigFileName } from '@vben/utils'
+import { getAppConfigFileName } from '@rchitect-rock/tools'
 import { cyan, red, gray, green } from 'picocolors'
 import { resolve } from 'path'
 import dotenv from 'dotenv'

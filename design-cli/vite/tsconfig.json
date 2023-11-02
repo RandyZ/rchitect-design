@@ -1,5 +1,12 @@
 {
   "extends": "@rchitect-cli/tsconfig/base.json",
+  "compilerOptions": {
+    "types": [
+      "reflect-metadata",
+      "vite/client",
+      "@types/lodash-es"
+    ],
+  },
   "include": ["src"],
   "exclude": ["dist", "node_modules"],
 }

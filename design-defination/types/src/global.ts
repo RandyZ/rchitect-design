@@ -16,6 +16,10 @@ declare global {
     value: any
     [key: string]: string | number | boolean
   }[]
+  type AnyFunction<T> = (...args: any[]) => T
+  type PartialReturnType<T extends (...args: unknown[]) => unknown> = Partial<
+    ReturnType<T>
+  >
 
   // Type Utils
   type DeepPartial<T> = {
