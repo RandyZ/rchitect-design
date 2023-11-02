@@ -1,5 +1,8 @@
 import { CacheTypeEnum, MenuTypeEnum, PermissionModeEnum, SessionTimeoutProcessingEnum, SettingButtonPositionEnum, ThemeEnum, TriggerEnum } from "@rchitect-design/constants"
 import { MenuConfigOptions } from "./MenuConfurations"
+import { HeaderConfigOptions } from "./HeaderConfigOptions"
+import { TabTbrConfigOptions } from "./TabBarConfigOptions"
+import { ContentConfigOptions, FooterConfigOptions, LogoConfigOptions, TransitionConfigOptions } from "./ToolkitConfigOptions"
 
 export interface SidebarConfigOptions {
   theme: ThemeEnum

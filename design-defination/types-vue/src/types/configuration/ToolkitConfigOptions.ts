@@ -6,6 +6,12 @@ export interface ContentConfigOptions {
   mode: ContentLayoutEnum
 }
 
+export interface LogoConfigOptions {
+  show: boolean
+  visible: boolean
+  showTitle: boolean
+}
+
 export interface FooterConfigOptions {
   show: boolean
   visible: boolean
