@@ -1,5 +1,5 @@
 import { AuthorizationModeEnum } from '@rchitect-design/constants';
-import type { GlobEnvConfig, GlobConfig } from '@rchitect-design/types'
+import type { GlobEnvConfig, GlobConfig } from '../../../design-defination/types'
 import { toBool } from './toDataType'
 import { version } from '../package.json'
 
@@ -59,7 +59,7 @@ export function getAppConfig(env: Record<string, any>) {
   const ENV = (env.DEV
     ? // Get the global configuration (the configuration will be extracted independently when packaging)
     env
-    : window[ENV_NAME]
+    : window[ENV_NAME as any]
   ) as GlobEnvConfig
   const { VITE_GLOB_APP_SHORT_NAME } = ENV
   if (!/^[a-zA-Z\_]*$/.test(VITE_GLOB_APP_SHORT_NAME)) {

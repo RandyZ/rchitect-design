@@ -10,16 +10,19 @@
     "clean": "pnpm rimraf node_modules && pnpm rimraf dist && pnpm rimraf .turbo"
   },
   "dependencies": {
-    "@rchitect-design/types": "workspace:*",
     "@rchitect-design/constants": "workspace:*",
+    "@rchitect-design/types": "workspace:*",
     "@rchitect-rock/ioc": "workspace:*",
     "@vueuse/core": "^10.4.1",
     "@vueuse/shared": "^10.4.1",
     "dayjs": "^1.11.7",
     "resize-observer-polyfill": "^1.5.1",
-    "sortablejs": "^1.15.0"
+    "sortablejs": "~1.15.0"
   },
   "peerDependencies": {
     "vue": "~3.3.4"
-  } 
+  },
+  "devDependencies": {
+    "@types/sortablejs": "^1.15.4"
+  }
 }

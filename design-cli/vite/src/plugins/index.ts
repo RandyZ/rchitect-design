@@ -14,14 +14,14 @@ import { createConfigPlugin } from './config'
 import { configHttpPlugin } from './https'
 import configMonoRepoResolverPlugin from './monorepo'
 import monacoEditorPlugin from 'vite-plugin-monaco-editor'
-import { createUnplugin } from 'unplugin'
-import autoimport from 'unplugin-auto-import/vite'
-import Components from 'unplugin-vue-components/vite'
+// import { createUnplugin } from 'unplugin'
+// import autoimport from 'unplugin-auto-import/vite'
+// import Components from 'unplugin-vue-components/vite'
 import Inspect from 'vite-plugin-inspect'
 // 此处引用的是打包后的插件
 // import WmqAutoImport from '@weiming-plugins/unplugin-auto-import/vite'
 // 需要调试插件类型的可以用下面的引用
-import WmqAutoImport from '@weiming-plugins/unplugin-auto-import/src/vite'
+// import WmqAutoImport from '@weiming-plugins/unplugin-auto-import/src/vite'
 
 export const MonoRepoResolverPlugin = configMonoRepoResolverPlugin
 
@@ -90,7 +90,7 @@ export async function configVitePlugins(
     )
   }
   vitePlugins.push(Inspect())
-  vitePlugins.push(WmqAutoImport())
+  // vitePlugins.push(WmqAutoImport())
   // vitePlugins.push(Components({
   //   resolvers: [
   //     // example of importing Vant

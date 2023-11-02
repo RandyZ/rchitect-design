@@ -12,6 +12,7 @@
   "dependencies": {
     "@rchitect-cli/tsconfig": "workspace:*",
     "@rchitect-design/constants": "workspace:^",
+    "@rchitect-rock/tools": "workspace:^",
     "@vitejs/plugin-legacy": "^4.0.2",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vitejs/plugin-vue-jsx": "^3.0.1",

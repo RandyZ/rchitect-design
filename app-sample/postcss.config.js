@@ -1,1 +1,1 @@
-module.exports = require('@config/css-preprocess/postcss')
+module.exports = require('@rchitect-cli/css-preprocess/postcss')
