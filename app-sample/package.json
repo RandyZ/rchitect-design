@@ -23,6 +23,7 @@
     "type:check": "vue-tsc --noEmit --skipLibCheck"
   },
   "dependencies": {
+    "@rchitect-design/styles": "workspace:^",
     "pinia": "~2.0.34",
     "vue": "~3.3.4",
     "vue-demi": "~0.14.6",
