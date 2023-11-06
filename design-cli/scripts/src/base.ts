@@ -14,12 +14,23 @@ import { DEFAULT_SELECT_TYPE } from './constant'
 // })
 const prompts = require('prompts')
 
-async function runScript(argv: string[], script: string) {
+/**
+ * 执行Npm脚本
+ * @param argv 
+ * @param script 
+ */
+export async function runTurboScript(argv: string[], script: string) {
+  await execNpmCmd([`-w run turbo:${script}`, ...argv])
+}
+
+/**
+ * 执行Npm环境中的命令
+ * @param argv 
+ * @param script 
+ */
+export async function execNpmCmd(argv: string[]) {
   // spinner.stop()
-  execa('pnpm', ['-w', 'run', `turbo:${script}`].concat(argv), {
-    stdio: 'inherit',
-    preferLocal: true,
-  })
+  execa('pnpm', argv, { stdio: 'inherit', preferLocal: true, })
 }
 
 async function baseScript(command: string, isFilterWorkspace: boolean, isAll = false) {
@@ -40,7 +51,7 @@ async function baseScript(command: string, isFilterWorkspace: boolean, isAll = f
       throw new Error('No items meet the requirements!')
     }
     if (workspacePackages.length === 1) {
-      await runScript(['--filter', workspacePackages[0].name], command)
+      await runTurboScript(['--filter', workspacePackages[0].name], command)
       return
     }
     const choices = workspacePackages.map((item) => ({
@@ -70,7 +81,7 @@ async function baseScript(command: string, isFilterWorkspace: boolean, isAll = f
           .flatMap((argvItem) => argvItem)
         : ['--filter', packages || '']
     }
-    await runScript(scriptArgv, command)
+    await runTurboScript(scriptArgv, command)
   } catch (e) {
     throw e
   }
