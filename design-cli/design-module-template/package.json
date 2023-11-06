@@ -1,5 +1,5 @@
 {
-  "name": "rchitect-design-module-template",
+  "name": "@rchitect-cli/template",
   "version": "0.0.0",
   "main": "index.ts",
   "module": "index.ts",
