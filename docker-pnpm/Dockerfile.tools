@@ -1,0 +1,14 @@
+FROM --platform=amd64 reg.nexus.wmqhealth.com/tools/node-18.16.0-alpine-pnpm:latest
+
+LABEL CONTAINER.AUTHOR="Randy"
+LABEL CONTAINER.AUTHOR.MAIL="zhangshi@tenez.com"
+
+RUN npm install -g pnpm
+RUN npm install -g gifsicle
+RUN npm install -g jpegtran-bin
+RUN npm install -g mozjpeg
+RUN npm install -g optipng-bin
+RUN npm install -g cwebp-bin
+RUN npm install -g sonarqube-scanner
+
+# docker build -t reg.nexus.wmqhealth.com/tools/node-18.16.0-alpine-pnpm-tools .
