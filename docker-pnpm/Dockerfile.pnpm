@@ -1,0 +1,12 @@
+FROM reg.nexus.wmqhealth.com/tools/node:18.16.0-alpine:latest
+
+LABEL CONTAINER.AUTHOR="Randy"
+LABEL CONTAINER.AUTHOR.MAIL="zhangshi@tenez.com"
+
+RUN echo 'https://mirrors.aliyun.com/alpine/latest-stable/main' > /etc/apk/repositories && \
+  echo 'https://mirrors.aliyun.com/alpine/latest-stable/community' >> /etc/apk/repositories
+RUN apk update && apk add libtool automake autoconf nasm build-base pkgconfig jpeg-dev zlib-dev
+RUN npm config set registry=https://nexus.wmqhealth.com/repository/npm-proxy/
+RUN npm install -g pnpm
+
+# docker build -t reg.nexus.wmqhealth.com/tools/node-18.16.0-alpine-pnpm .

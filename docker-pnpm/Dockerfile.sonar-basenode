@@ -1,0 +1,8 @@
+FROM localhub.aihelp.net/aihelp-tools/node-16.20.2-tools
+
+LABEL CONTAINER.AUTHOR="Randy"
+LABEL CONTAINER.AUTHOR.MAIL="zhangshi@tenez.com"
+
+RUN npm install -g sonarqube-scanner && sonar-scanner --help
+
+# docker build -t reg.nexus.wmqhealth.com/tools/node18.16.0-sonar-pnpm .
