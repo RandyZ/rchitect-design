@@ -1,10 +1,9 @@
-# FROM reg.nexus.wmqhealth.com/tools/node-18.16.0-alpine-pnpm:latest
-# FROM --platform=linux/amd64 node:16.20.2
-FROM --platform=linux/amd64 node:18.18.2
+# FROM localhub.aihelp.net/aihelp-tools/node-16.20.2-tools
+FROM localhub.aihelp.net/aihelp-tools/node-16.20.2-slim-tools
 
 LABEL CONTAINER.AUTHOR="Randy"
-LABEL CONTAINER.AUTHOR.MAIL="zhangshi@tenez.com"
+LABEL CONTAINER.AUTHOR.MAIL="zhangshi3421@gmail.com"
 
-RUN npm install -g pnpm
+RUN npm install -g sonarqube-scanner && sonar-scanner --help
 
-# docker build -t localhub.aihelp.net/aihelp-tools/node-16.20.2-tools .
+# docker build -t localhub.aihelp.net/aihelp-tools/node-16.20.2-slim-tools-sonar .
