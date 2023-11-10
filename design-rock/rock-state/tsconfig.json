@@ -1,5 +1,5 @@
 {
-  "extends": "tsconfig/base.json",
+  "extends": "@rchitect-cli/tsconfig/base.json",
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
@@ -10,7 +10,7 @@
     },
     "types": [
       "vite/client",
-      "vitest/globals"
+      // "vitest/globals"
     ]
   },
   "include": ["src", "./"],
