@@ -223,3 +223,21 @@ function doMapTree(
     return { ...conversionData }
   }
 }
+
+export function getTreeItemAllChild<T> (treeItem: T): T {
+  const newTreeItem:T = { ...treeItem };
+  let { children = [], ...arg } = newTreeItem as any;
+  const copyChildrens = [...children];
+  const result: T[] = [];
+  while (copyChildrens.length){
+    const item = copyChildrens.shift();
+    if((item.children || []).length){
+      copyChildrens.push(...item.children)
+    }
+    item && result.push(item);
+  }
+  return {
+    ...newTreeItem,
+    children: result
+  };
+}

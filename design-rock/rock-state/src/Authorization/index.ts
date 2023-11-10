@@ -1,5 +1,5 @@
-import { Menu } from '@weiming-rock/types';
-import { Store } from '#/pinia';
+import type { Menu } from '@rchitect-design/types';
+import type { Store } from 'pinia';
 
 export namespace Auth {
   export interface AuthState {

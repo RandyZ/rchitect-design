@@ -1,7 +1,7 @@
 import type { RouteLocationNormalized, RouteRecordNormalized } from 'vue-router'
-import { isUrl, filterTree, computedAsync, getTreeItemAllChild } from '@vben/utils'
+import { isUrl, filterTree, computedAsync, getTreeItemAllChild } from '@rchitect-rock/tools'
 import { pathToRegexp } from 'path-to-regexp'
-import { Menu } from '@weiming-rock/types'
+import type { Menu } from '@rchitect-design/types'
 import { resolveByKeyOrThrow } from '@weiming-rock/ioc';
 import { Lib } from '#/../library';
 import { Auth, Lib as stateLib } from '@weiming-rock/state';

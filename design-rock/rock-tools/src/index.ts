@@ -1,6 +1,6 @@
 export * from './config'
 // export * from './date'
-// export * from './util'
+export * from './util'
 // export * from './event'
 // export * from './bem'
 // export * from './dom'
