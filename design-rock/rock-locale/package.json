@@ -1,0 +1,21 @@
+{
+  "name": "@rchitect-rock/locale",
+  "version": "0.0.0",
+  "main": "index.ts",
+  "module": "index.ts",
+  "license": "MIT",
+  "scripts": {
+    "clean": "pnpm rimraf node_modules && pnpm rimraf dist && pnpm rimraf .turbo"
+  },
+  "dependencies": {
+    "@rchitect-design/constants": "workspace:*",
+    "@rchitect-design/types": "workspace:*",
+    "@rchitect-rock/tools": "workspace:*",
+    "@rchitect-rock/base-package": "workspace:*",
+    "@rchitect-rock/ioc": "workspace:*",
+    "vue-i18n": "^9.2.2"
+  },
+  "peerDependencies": {
+    "vue": "~3.3.4"
+  }
+}

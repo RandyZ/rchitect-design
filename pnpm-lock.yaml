@@ -381,6 +381,101 @@ importers:
         specifier: workspace:*
         version: link:../../design-defination/types
 
+  design-rock/rock-locale:
+    dependencies:
+      '@rchitect-design/constants':
+        specifier: workspace:*
+        version: link:../../design-defination/constants
+      '@rchitect-design/types':
+        specifier: workspace:*
+        version: link:../../design-defination/types
+      '@rchitect-rock/base-package':
+        specifier: workspace:*
+        version: link:../rock-base-package
+      '@rchitect-rock/ioc':
+        specifier: workspace:*
+        version: link:../rock-ioc
+      '@rchitect-rock/tools':
+        specifier: workspace:*
+        version: link:../rock-tools
+      vue:
+        specifier: ~3.3.4
+        version: registry.npmmirror.com/vue@3.3.7(typescript@5.2.2)
+      vue-i18n:
+        specifier: ^9.2.2
+        version: registry.npmmirror.com/vue-i18n@9.6.5(vue@3.3.7)
+
+  design-rock/rock-router-middleware:
+    dependencies:
+      '@rchitect-design/constants':
+        specifier: workspace:*
+        version: link:../../design-defination/constants
+      '@rchitect-rock/base-package':
+        specifier: workspace:*
+        version: link:../rock-base-package
+      '@rchitect-rock/ioc':
+        specifier: workspace:*
+        version: link:../rock-ioc
+      '@rchitect-rock/locale':
+        specifier: workspace:*
+        version: link:../rock-locale
+      '@rchitect-rock/state':
+        specifier: workspace:*
+        version: link:../rock-state
+      '@rchitect-rock/tools':
+        specifier: workspace:*
+        version: link:../rock-tools
+      nprogress:
+        specifier: ^0.2.0
+        version: registry.npmmirror.com/nprogress@0.2.0
+      path-to-regexp:
+        specifier: ^6.2.1
+        version: registry.npmmirror.com/path-to-regexp@6.2.1
+      vue:
+        specifier: ~3.3.4
+        version: registry.npmmirror.com/vue@3.3.7(typescript@5.2.2)
+      vue-router:
+        specifier: ^4.1.6
+        version: registry.npmmirror.com/vue-router@4.2.5(vue@3.3.7)
+    devDependencies:
+      '@rchitect-design/types':
+        specifier: workspace:*
+        version: link:../../design-defination/types
+
+  design-rock/rock-state:
+    dependencies:
+      '@rchitect-design/constants':
+        specifier: workspace:*
+        version: link:../../design-defination/constants
+      '@rchitect-rock/base-package':
+        specifier: workspace:*
+        version: link:../rock-base-package
+      '@rchitect-rock/ioc':
+        specifier: workspace:*
+        version: link:../rock-ioc
+      '@rchitect-rock/locale':
+        specifier: workspace:*
+        version: link:../rock-locale
+      '@rchitect-rock/tools':
+        specifier: workspace:*
+        version: link:../rock-tools
+      mitt:
+        specifier: ^3.0.0
+        version: registry.npmmirror.com/mitt@3.0.1
+      pinia:
+        specifier: ~2.0.34
+        version: registry.npmmirror.com/pinia@2.0.36(typescript@5.2.2)(vue@3.3.7)
+      pinia-plugin-persistedstate:
+        specifier: ^3.1.0
+        version: registry.npmmirror.com/pinia-plugin-persistedstate@3.2.0(pinia@2.0.36)
+      vue:
+        specifier: ~3.3.4
+        version: registry.npmmirror.com/vue@3.3.7(typescript@5.2.2)
+    devDependencies:
+      '@rchitect-design/types':
+        specifier: workspace:*
+        version: link:../../design-defination/types
+
   design-rock/rock-tools:
     dependencies:
       '@rchitect-design/constants':
@@ -3960,6 +4055,33 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  registry.npmmirror.com/@intlify/core-base@9.6.5:
+    resolution: {integrity: sha512-LzbGXiZkMWPIHnHI0g6q554S87Cmh2mmCmjytK/3pDQfjI84l+dgGoeQuKj02q7EbULRuUUgYVZVqAwEUawXGg==, tarball: https://registry.npmmirror.com/@intlify/core-base/-/core-base-9.6.5.tgz}
+    name: '@intlify/core-base'
+    version: 9.6.5
+    engines: {node: '>= 16'}
+    dependencies:
+      '@intlify/message-compiler': registry.npmmirror.com/@intlify/message-compiler@9.6.5
+      '@intlify/shared': registry.npmmirror.com/@intlify/shared@9.6.5
+    dev: false
+
+  registry.npmmirror.com/@intlify/message-compiler@9.6.5:
+    resolution: {integrity: sha512-WeJ499thIj0p7JaIO1V3JaJbqdqfBykS5R8fElFs5hNeotHtPAMBs4IiA+8/KGFkAbjJusgFefCq6ajP7F7+4Q==, tarball: https://registry.npmmirror.com/@intlify/message-compiler/-/message-compiler-9.6.5.tgz}
+    name: '@intlify/message-compiler'
+    version: 9.6.5
+    engines: {node: '>= 16'}
+    dependencies:
+      '@intlify/shared': registry.npmmirror.com/@intlify/shared@9.6.5
+      source-map-js: registry.npmmirror.com/source-map-js@1.0.2
+    dev: false
+
+  registry.npmmirror.com/@intlify/shared@9.6.5:
+    resolution: {integrity: sha512-gD7Ey47Xi4h/t6P+S04ymMSoA3wVRxGqjxuIMglwRO8POki9h164Epu2N8wk/GHXM/hR6ZGcsx2HArCCENjqSQ==, tarball: https://registry.npmmirror.com/@intlify/shared/-/shared-9.6.5.tgz}
+    name: '@intlify/shared'
+    version: 9.6.5
+    engines: {node: '>= 16'}
+    dev: false
 
   registry.npmmirror.com/@isaacs/cliui@8.0.2:
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@isaacs/cliui/-/cliui-8.0.2.tgz}
@@ -11614,6 +11736,12 @@ packages:
     engines: {node: '>=16 || 14 >=14.17'}
     dev: true
 
+  registry.npmmirror.com/mitt@3.0.1:
+    resolution: {integrity: sha512-vKivATfr97l2/QBCYAkXYDbrIWPM2IIKEl7YPhjCvKlG3kE2gm+uBo6nEXK3M5/Ffh/FLpKExzOQ3JJoJGFKBw==, tarball: https://registry.npmmirror.com/mitt/-/mitt-3.0.1.tgz}
+    name: mitt
+    version: 3.0.1
+    dev: false
+
   registry.npmmirror.com/mixin-deep@1.3.2:
     resolution: {integrity: sha512-WRoDn//mXBiJ1H40rqa3vH0toePwSsGb45iInWlTySa+Uu4k3tYUSxa2v1KqAiLtvlrSzaExqS1gtk96A9zvEA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/mixin-deep/-/mixin-deep-1.3.2.tgz}
     name: mixin-deep
@@ -11949,6 +12077,12 @@ packages:
     dependencies:
       path-key: registry.npmmirror.com/path-key@4.0.0
     dev: true
+
+  registry.npmmirror.com/nprogress@0.2.0:
+    resolution: {integrity: sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==, tarball: https://registry.npmmirror.com/nprogress/-/nprogress-0.2.0.tgz}
+    name: nprogress
+    version: 0.2.0
+    dev: false
 
   registry.npmmirror.com/nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/nth-check/-/nth-check-2.1.1.tgz}
@@ -12510,7 +12644,7 @@ packages:
     dev: true
 
   registry.npmmirror.com/path-to-regexp@6.2.1:
-    resolution: {integrity: sha512-JLyh7xT1kizaEvcaXOQwOc2/Yhw6KZOvPf1S8401UyLk86CU79LN3vl7ztXGm/pZ+YjoyAJ4rxmHwbkBXJX+yw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/path-to-regexp/-/path-to-regexp-6.2.1.tgz}
+    resolution: {integrity: sha512-JLyh7xT1kizaEvcaXOQwOc2/Yhw6KZOvPf1S8401UyLk86CU79LN3vl7ztXGm/pZ+YjoyAJ4rxmHwbkBXJX+yw==, tarball: https://registry.npmmirror.com/path-to-regexp/-/path-to-regexp-6.2.1.tgz}
     name: path-to-regexp
     version: 6.2.1
     dev: false
@@ -12585,6 +12719,17 @@ packages:
     name: pify
     version: 4.0.1
     engines: {node: '>=6'}
+
+  registry.npmmirror.com/pinia-plugin-persistedstate@3.2.0(pinia@2.0.36):
+    resolution: {integrity: sha512-tZbNGf2vjAQcIm7alK40sE51Qu/m9oWr+rEgNm/2AWr1huFxj72CjvpQcIQzMknDBJEkQznCLAGtJTIcLKrKdw==, tarball: https://registry.npmmirror.com/pinia-plugin-persistedstate/-/pinia-plugin-persistedstate-3.2.0.tgz}
+    id: registry.npmmirror.com/pinia-plugin-persistedstate/3.2.0
+    name: pinia-plugin-persistedstate
+    version: 3.2.0
+    peerDependencies:
+      pinia: ^2.0.0
+    dependencies:
+      pinia: registry.npmmirror.com/pinia@2.0.36(typescript@5.2.2)(vue@3.3.7)
+    dev: false
 
   registry.npmmirror.com/pinia@2.0.36(typescript@5.2.2)(vue@3.3.7):
     resolution: {integrity: sha512-4UKApwjlmJH+VuHKgA+zQMddcCb3ezYnyewQ9NVrsDqZ/j9dMv5+rh+1r48whKNdpFkZAWVxhBp5ewYaYX9JcQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/pinia/-/pinia-2.0.36.tgz}
@@ -15816,8 +15961,23 @@ packages:
       vue: registry.npmmirror.com/vue@3.3.7(typescript@5.2.2)
     dev: false
 
+  registry.npmmirror.com/vue-i18n@9.6.5(vue@3.3.7):
+    resolution: {integrity: sha512-dpUEjKHg7pEsaS7ZPPxp1CflaR7bGmsvZJEhnszHPKl9OTNyno5j/DvMtMSo41kpddq4felLA7GK2prjpnXVlw==, tarball: https://registry.npmmirror.com/vue-i18n/-/vue-i18n-9.6.5.tgz}
+    id: registry.npmmirror.com/vue-i18n/9.6.5
+    name: vue-i18n
+    version: 9.6.5
+    engines: {node: '>= 16'}
+    peerDependencies:
+      vue: ^3.0.0
+    dependencies:
+      '@intlify/core-base': registry.npmmirror.com/@intlify/core-base@9.6.5
+      '@intlify/shared': registry.npmmirror.com/@intlify/shared@9.6.5
+      '@vue/devtools-api': registry.npmmirror.com/@vue/devtools-api@6.5.1
+      vue: registry.npmmirror.com/vue@3.3.7(typescript@5.2.2)
+    dev: false
+
   registry.npmmirror.com/vue-router@4.2.5(vue@3.3.7):
-    resolution: {integrity: sha512-DIUpKcyg4+PTQKfFPX88UWhlagBEBEfJ5A8XDXRJLUnZOvcpMF8o/dnL90vpVkGaPbjvXazV/rC1qBKrZlFugw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vue-router/-/vue-router-4.2.5.tgz}
+    resolution: {integrity: sha512-DIUpKcyg4+PTQKfFPX88UWhlagBEBEfJ5A8XDXRJLUnZOvcpMF8o/dnL90vpVkGaPbjvXazV/rC1qBKrZlFugw==, tarball: https://registry.npmmirror.com/vue-router/-/vue-router-4.2.5.tgz}
     id: registry.npmmirror.com/vue-router/4.2.5
     name: vue-router
     version: 4.2.5
