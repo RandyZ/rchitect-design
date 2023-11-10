@@ -19,7 +19,7 @@ const authStore = (): Auth.AuthStore => resolveByKeyOrThrow(stateLib.types.AuthS
 const menuState = () => resolveByKeyOrThrow(Lib.types.MenuState);
 const router = () => resolveByKeyOrThrow(Lib.types.RouteTable).router;
 
-export const preorderTraversal = (menus: Menu[], currentRoute: RouteLocationNormalized | null, maxLevel:number = 0) => {
+export const preorderTraversal = (menus: Menu[], currentRoute: RouteLocationNormalized | null, maxLevel: number = 0) => {
   //  最终结果
   const result: Menu[] = [];
   //  暂存栈，重新整理 menus 每一个 以及 当前层级默认为第0级
@@ -38,7 +38,7 @@ export const preorderTraversal = (menus: Menu[], currentRoute: RouteLocationNorm
       if (level === maxLevel - 1) {
         menu.children && result.push(...menu.children);
       } else {
-      //  如果不是最大长度的上一级，需要把数据处理成栈所需要的格式，再次进入循环查找
+        //  如果不是最大长度的上一级，需要把数据处理成栈所需要的格式，再次进入循环查找
         menu.children && stack.push(...menu.children.map(child => ({ menu: child, level: level + 1 })));
       }
     }
@@ -48,7 +48,6 @@ export const preorderTraversal = (menus: Menu[], currentRoute: RouteLocationNorm
 
 /**
  * 按层级获取菜单
- * TODO 用先序遍历优化查找效率
  * @param menus
  * @param currentRoute
  * @param maxLevel
@@ -57,15 +56,13 @@ export const preorderTraversal = (menus: Menu[], currentRoute: RouteLocationNorm
 export const fetchMenusAtLevel = (menus: Menu[], currentRoute: RouteLocationNormalized | null, maxLevel: number = 0): Menu[] => {
   if (maxLevel <= 0) {
     return menus.filter(menu => !currentRoute || startsWith(currentRoute.path, menu.path))
-  }
-  else{
-    return preorderTraversal(menus, currentRoute, maxLevel) as Menu[];
+  } else {
+    return preorderTraversal(menus, currentRoute, maxLevel);
   }
 }
 
 /**
  * 菜单的钩子函数
- * TODO 尝试增加全局的响应式变量，用于控制菜单的显示， 优化性能
  * @param level
  * @param atRoot
  * @returns
@@ -100,7 +97,6 @@ async function getAsyncMenus(): Promise<Menu[]> {
 
 /**
  * @description: 获取菜单
- * TODO 这里需要做一些调整，首先，菜单要分场景获取。根据MenuTypeEnum来获取
  */
 export const getMenus = async (): Promise<Menu[]> => {
   const menus = await getAsyncMenus()
