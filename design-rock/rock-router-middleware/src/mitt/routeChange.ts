@@ -3,9 +3,9 @@
  */
 
 import type { RouteLocationNormalized } from 'vue-router';
-import { getRawRoute } from '@vben/utils';
-import { Lib as stateLib } from '@weiming-rock/state';
+import { Lib as stateLib } from '@rchitect-rock/state';
 import { diKT } from '@weiming-rock/ioc';
+import { getRawRoute } from '#/utils/router';
 
 const key = Symbol.for('RouterChange');
 

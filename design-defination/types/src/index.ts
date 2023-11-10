@@ -1,9 +1,9 @@
 // export * from './store';
 // export * from './service';
-export * from './router';
+export * from './types/router';
 export * from './global';
 // export * from './setting';
-// export * from './menu';
+export * from './types/menu';
 // export * from './button';
 // export * from './http';
 // export * from './token';

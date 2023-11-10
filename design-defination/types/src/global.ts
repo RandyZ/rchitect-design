@@ -1,5 +1,5 @@
 import type { VNodeChild, PropType as VuePropType } from 'vue-demi'
-import type { RouteRecordItem as IRouteRecordItem } from './router'
+import type { RouteRecordItem as IRouteRecordItem } from './types/router'
 import type { ViteEnv as IViteEnv } from '#/types/configuration/ViteEnv'
 
 // define global
