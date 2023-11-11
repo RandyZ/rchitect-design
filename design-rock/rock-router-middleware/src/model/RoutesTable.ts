@@ -10,6 +10,7 @@ export class RouteTableRecord {
     this.paths.length = 0;
   }
   record(route: RouteRecordItem) {
+    console.info('record route', route);
     this.routes.push(route);
     this.names.push(route.name);
     this.paths.push(route.path);
@@ -42,13 +43,14 @@ export class RoutesTable {
     this.whiteRouteTable = new RouteTableRecord();
     this.basicRouteTable = new RouteTableRecord();
     this.appRouteTable = new RouteTableRecord();
+    this.setup([...basicRoutes, ...appRoutes]);
+    console.info('RoutesTable', this);
     this.router = createRouter({
       history: createWebHistory(path),
-      routes: basicRoutes,
+      routes: this.basicRouteTable.routes,
       strict: true,
       scrollBehavior: () => ({ left: 0, top: 0 }),
     });
-    this.setup([...basicRoutes, ...appRoutes]);
   }
 
   /**
@@ -67,6 +69,7 @@ export class RoutesTable {
    * @param reset 是否重置路由表
    */
   setup(routeRecords: RouteRecordItem[], reset = false): void {
+    console.info('setup routeRecords', routeRecords);
     this._setup(routeRecords, reset);
   }
 

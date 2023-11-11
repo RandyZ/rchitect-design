@@ -9,15 +9,17 @@ const rootRoute: RouteRecordItem = {
   path: '/template',
   name: 'Template',
   redirect: '/template/hello',
+  component: Routes.HelloPage,
   meta: {
     orderNo: 2,
     icon: 'line-md:clipboard-list-twotone',
     title: 'Weiming Design模版',
     root: true,
+    isBasic: true,
   },
   children: [
     {
-      path: 'hello',
+      path: '/hello',
       name: 'HelloPage',
       component: Routes.HelloPage,
       meta: {

@@ -8,7 +8,7 @@
     "types": [
       "vite/client",
       "reflect-metadata",
-      "element-plus/global"
+      // "element-plus/global"
     ]
   },
   "include": [
