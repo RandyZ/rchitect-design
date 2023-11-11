@@ -24,6 +24,9 @@
   },
   "dependencies": {
     "@rchitect-design/styles": "workspace:^",
+    "@rchitect-rock/base-package": "workspace:^",
+    "@rchitect-rock/ioc": "workspace:^",
+    "@rchitect-rock/router": "workspace:^",
     "element-plus": "^2.4.2",
     "pinia": "~2.0.34",
     "vue": "~3.3.4",
