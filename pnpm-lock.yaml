@@ -57,6 +57,9 @@ importers:
 
   app-sample:
     dependencies:
+      '@rchitect-app/account':
+        specifier: workspace:^
+        version: link:../design-app/app-account
       '@rchitect-design/styles':
         specifier: workspace:^
         version: link:../design-defination/styles
@@ -130,6 +133,28 @@ importers:
       vue-tsc:
         specifier: ^1.0.24
         version: registry.npmmirror.com/vue-tsc@1.8.22(typescript@5.2.2)
+
+  design-app/app-account:
+    dependencies:
+      '@rchitect-rock/base-package':
+        specifier: workspace:*
+        version: link:../../design-rock/rock-base-package
+      '@rchitect-rock/ioc':
+        specifier: workspace:*
+        version: link:../../design-rock/rock-ioc
+      lodash-es:
+        specifier: ^4.0.0
+        version: registry.npmmirror.com/lodash-es@4.17.21
+      vue:
+        specifier: ~3.3.4
+        version: registry.npmmirror.com/vue@3.3.7(typescript@5.2.2)
+      vue-demi:
+        specifier: ~0.14.6
+        version: registry.npmmirror.com/vue-demi@0.14.6(vue@3.3.7)
+    devDependencies:
+      '@rchitect-design/types':
+        specifier: workspace:*
+        version: link:../../design-defination/types
 
   design-cli/css-preprocess:
     dependencies:
@@ -2684,17 +2709,6 @@ packages:
       globals: registry.npmmirror.com/globals@11.12.0
     transitivePeerDependencies:
       - supports-color
-
-  registry.npmmirror.com/@babel/types@7.22.11:
-    resolution: {integrity: sha512-siazHiGuZRz9aB9NpHy9GOs9xiQPKnMzgdr493iI1M67vRXpnEq8ZOOKzezC5q7zwuQ6sDhdSp4SD9ixKSqKZg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@babel/types/-/types-7.22.11.tgz}
-    name: '@babel/types'
-    version: 7.22.11
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/helper-string-parser': registry.npmmirror.com/@babel/helper-string-parser@7.22.5
-      '@babel/helper-validator-identifier': registry.npmmirror.com/@babel/helper-validator-identifier@7.22.20
-      to-fast-properties: registry.npmmirror.com/to-fast-properties@2.0.0
-    dev: false
 
   registry.npmmirror.com/@babel/types@7.23.0:
     resolution: {integrity: sha512-0oIyUfKoI3mSqMvsxBdclDwxXKXAUA8v/apZbc+iSyARYou1o8ZGDxbUYyLFoW2arqS2jDGqJuZvv1d/io1axg==, tarball: https://registry.npmmirror.com/@babel/types/-/types-7.23.0.tgz}
@@ -5462,7 +5476,7 @@ packages:
       '@babel/plugin-syntax-jsx': registry.npmmirror.com/@babel/plugin-syntax-jsx@7.22.5(@babel/core@7.22.11)
       '@babel/template': registry.npmmirror.com/@babel/template@7.22.5
       '@babel/traverse': registry.npmmirror.com/@babel/traverse@7.22.11
-      '@babel/types': registry.npmmirror.com/@babel/types@7.22.11
+      '@babel/types': registry.npmmirror.com/@babel/types@7.23.0
       '@vue/babel-helper-vue-transform-on': registry.npmmirror.com/@vue/babel-helper-vue-transform-on@1.1.5
       camelcase: registry.npmmirror.com/camelcase@6.3.0
       html-tags: registry.npmmirror.com/html-tags@3.3.1
@@ -14293,7 +14307,7 @@ packages:
     dev: false
 
   registry.npmmirror.com/source-map-js@1.0.2:
-    resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/source-map-js/-/source-map-js-1.0.2.tgz}
+    resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==, tarball: https://registry.npmmirror.com/source-map-js/-/source-map-js-1.0.2.tgz}
     name: source-map-js
     version: 1.0.2
     engines: {node: '>=0.10.0'}

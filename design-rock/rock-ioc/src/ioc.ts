@@ -1,4 +1,4 @@
-import { ThrownHandler } from '@rchitect-rock/types';
+import { ThrownHandler } from '@rchitect-design/types';
 import {
   interfaces,
   Container,

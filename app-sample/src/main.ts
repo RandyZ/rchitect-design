@@ -12,15 +12,15 @@ import {
 } from '@rchitect-rock/ioc';
 import { Lib as routeLib } from '@rchitect-rock/router';
 
-// createApp(App).mount('#app')
 (async () => {
   const app = createApp(App);
-  const appContext = new AppContext();
-  // IOC插件配置
-  const iocOptions = {
+  const appContext = new AppContext({
     defaultScope: 'Singleton',
     autoBindInjectable: true,
     skipBaseClassChecks: true,
-  } as IocContainerOptions;
-  
+  });
+  app
+  // 安装IOC插件
+  .use(IocPlugin, appContext)
+  .mount('#app');
 })()

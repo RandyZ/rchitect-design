@@ -40,7 +40,8 @@ export const keyOf = <T>(key: any): ServiceIdentifier<T> => {
 
 /**
  * 从Vue的上下文中获取IOC容器
- * @returns
+ * @param currentContainer 指定的容器，如果没有则从Vue的上下文中获取
+ * @returns 
  */
 export const contextContianer = (
   currentContainer?: IocContainer
