@@ -14,7 +14,8 @@
     "clean": "pnpm turbo run clean && rimraf node_modules",
     "gen": "pnpm --filter @rchitect-cli/scripts gen-module $npm_config_name $APP_LEVEL",
     "gen:app": "cross-env APP_LEVEL=\"app\" pnpm gen",
-    "gen:rock": "cross-env APP_LEVEL=\"rock\" pnpm gen"
+    "gen:rock": "cross-env APP_LEVEL=\"rock\" pnpm gen",
+    "dep:sample": "pnpm --filter @rchitect/app-sample add"
   },
   "dependencies": {
     "vue": "~3.3.7",

@@ -60,6 +60,15 @@ importers:
       '@rchitect-design/styles':
         specifier: workspace:^
         version: link:../design-defination/styles
+      '@rchitect-rock/base-package':
+        specifier: workspace:^
+        version: link:../design-rock/rock-base-package
+      '@rchitect-rock/ioc':
+        specifier: workspace:^
+        version: link:../design-rock/rock-ioc
+      '@rchitect-rock/router':
+        specifier: workspace:^
+        version: link:../design-rock/rock-router-middleware
       element-plus:
         specifier: ^2.4.2
         version: registry.npmmirror.com/element-plus@2.4.2(vue@3.3.7)
