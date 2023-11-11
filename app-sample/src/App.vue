@@ -57,6 +57,7 @@ const asyncCallback = async (...args: any[]) => {
   <div v-throttle-on:custom>
     <HelloWorld @custom="asyncCallback" msg="Vite + Vue directive" />
   </div>
+  <router-view />
 </template>
 
 <style scoped>

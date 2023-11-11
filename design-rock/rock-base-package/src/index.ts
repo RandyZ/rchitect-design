@@ -5,8 +5,7 @@ import type { App } from 'vue-demi';
 import type { Library, ModuleLibContext } from './Library';
 import type { AppContext } from './AppContext';
 import { isEmpty } from 'lodash-es'
-import { ServiceIdentifier } from '@rchitect-rock/ioc';
-export const APP_CONTEXT: ServiceIdentifier<AppContext> = Symbol.for('WmqAppContext') as ServiceIdentifier<AppContext>;
+
 /**
  * 实现Vue插件协议
  * @param this 

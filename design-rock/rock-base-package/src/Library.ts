@@ -1,4 +1,4 @@
-import { AsyncIocModule, ServiceIdentifier } from '@weiming-rock/ioc';
+import type { AsyncIocModule, ServiceIdentifier } from '@rchitect-rock/ioc';
 import type { App } from 'vue-demi';
 import { AppContext } from './AppContext';
 

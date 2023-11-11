@@ -1,8 +1,7 @@
 import * as pack from './package.json';
-import { AsyncIocModule } from '@weiming-rock/ioc';
-import { APP_CONTEXT, CommonModuleLibContext } from '@weiming-rock/base-package';
+import { AsyncIocModule, diKT } from '@weiming-rock/ioc';
+import { APP_CONTEXT, CommonModuleLibContext, install } from '@weiming-rock/base-package';
 import type { AppContext } from '@weiming-rock/base-package';
-import { install } from '@weiming-rock/base-package';
 import { InitRouter, RouteOperator, RoutesTable } from '#/.';
 import { MenuState } from '#/model/MenuState';
 import { Beans } from './beankeys';
@@ -19,14 +18,14 @@ export const Lib: CommonModuleLibContext<BeanKeys> = {
     bind<RoutesTable>(Beans.RouteTable).toDynamicValue((context) => {
       const appContext = context.container.get<AppContext>(APP_CONTEXT);
       console.debug('All Routes List', appContext.basicRoutes, appContext.appRoutes);
-      return InitRouter(import.meta.env.VITE_PUBLIC_PATH, appContext.basicRoutes, appContext.appRoutes);
+      let ret = InitRouter(import.meta.env.VITE_PUBLIC_PATH, appContext.basicRoutes, appContext.appRoutes);
+      console.groupEnd();
+      return ret;
     });
   }),
   async onSetup(app) {
-    // TODO 路由中间件挂载路由会导致路由守卫失效，暂时不使用，待调查原因
-    // const routeTable = await di(types.RouteTable);
-    // app.use(routeTable.router);
-    // await routeTable.router.isReady();
-    // console.log('Router Setup');
+    const routeTable = await diKT(Beans.RouteTable);
+    app.use(routeTable.router);
+    await routeTable.router.isReady();
   },
 };
