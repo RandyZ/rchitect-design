@@ -1,6 +1,16 @@
 {
   "name": "rchitect-design",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RandyZ/rchitect-design.git",
+    "directory": "sample"
+  },
+  "author": {
+    "name": "Randy",
+    "email": "zhangshi321@gmail.com",
+    "url": "https://github.com/RandyZ"
+  },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "postinstall": "pnpm run stub",

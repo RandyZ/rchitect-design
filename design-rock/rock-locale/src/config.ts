@@ -1,4 +1,4 @@
-import type { LocaleConfig, LocaleType } from '@weiming-rock/types'
+import type { LocaleConfig, LocaleType } from '@rchitect-design/types'
 
 export const LOCALE: { [key: string]: LocaleType } = {
   zh: 'zh_CN',

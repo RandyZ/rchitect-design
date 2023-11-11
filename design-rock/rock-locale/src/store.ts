@@ -1,6 +1,6 @@
-import type { LocaleType } from '@weiming-rock/types'
+import type { LocaleType } from '@rchitect-design/types'
 import { computed } from 'vue'
-import { LOCALE_KEY } from '@weiming-rock/constants'
+import { LOCALE_KEY } from '@rchitect-design/constants'
 import { useLocalStorage } from '@vben/utils'
 import { localeSetting } from './config'
 

@@ -1,7 +1,8 @@
-import { isUrl, cloneDeep, findParentPath, mapTree } from '@vben/utils';
+import { isUrl, findParentPath, mapTree } from '@rchitect-rock/tools';
+import { cloneDeep } from 'lodash-es';
 import { RouteParams } from 'vue-router';
 import { toRaw } from 'vue';
-import { Menu, MenuModule } from '@weiming-rock/types';
+import type { Menu, MenuModule } from '@rchitect-design/types';
 
 export function getAllParentPath<T = Recordable<any>>(
   treeData: T[],

@@ -1,5 +1,5 @@
-import { PageEnum, REDIRECT_NAME } from '@weiming-rock/constants';
-import { FailData } from '@weiming-rock/types';
+import { PageEnum, REDIRECT_NAME } from '@rchitect-design/constants';
+import { FailData } from '@rchitect-design/types';
 import {
   Autowired,
   Bean,

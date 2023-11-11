@@ -1,6 +1,6 @@
 import nProgress from 'nprogress'
 import { toRaw } from 'vue'
-import type { Menu } from '@weiming-rock/types'
+import type { Menu } from '@rchitect-design/types'
 import { resolveByKeyOrThrow } from '@weiming-rock/ioc'
 import { Beans } from '../beankeys';
 import { RouteParams } from 'vue-router'

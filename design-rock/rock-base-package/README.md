@@ -53,7 +53,7 @@ Weiming Design中每个模块都是一个可以直接被加载进Vue3项目中�
     "@weiming-rock/ioc": "workspace:*"
   },
   "devDependencies": {
-    "@weiming-rock/types": "workspace:*"
+    "@rchitect-design/types": "workspace:*"
   },
   "peerDependencies": {
     "vue": "~3.3.4",

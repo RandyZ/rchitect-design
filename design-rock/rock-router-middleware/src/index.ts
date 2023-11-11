@@ -1,4 +1,4 @@
-import { DefineAppConfigOptions } from '@weiming-rock/types';
+import { DefineAppConfigOptions } from '@rchitect-design/types';
 import { RoutesTable } from './model/RoutesTable';
 export * from './guard';
 export * from './mitt/routeChange';

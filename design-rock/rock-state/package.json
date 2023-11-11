@@ -4,6 +4,7 @@
   "main": "index.ts",
   "module": "index.ts",
   "license": "MIT",
+  "description": "App State Management module for rchitect rock",
   "scripts": {
     "clean": "pnpm rimraf node_modules && pnpm rimraf dist && pnpm rimraf .turbo"
   },
