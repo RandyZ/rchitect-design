@@ -9,6 +9,6 @@ export * from './types/menu';
 // export * from './token';
 // export * from './props';
 export * from './datastructure';
-// export * from './throws/ThrownHandler';
+export * from './types/throws';
 // export * from './function';
 export * from './types/configuration';

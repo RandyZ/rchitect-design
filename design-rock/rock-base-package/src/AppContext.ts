@@ -1,6 +1,7 @@
 import { App } from "vue-demi";
 import { forEach, isEmpty, groupBy, keys } from 'lodash-es';
-import { AsyncIocModule, ServiceIdentifier, contextContianer } from "@rchitect-design/ioc";
+import { AsyncIocModule, IocContainerOptions, contextContianer } from "@rchitect-rock/ioc";
+import type { RouteRecordItem } from "@rchitect-design/types";
 
 type PriorityObserver = { pri: number, obs: (app: App) => Promise<void> };
 
@@ -9,12 +10,19 @@ type IocLoadedObserver = {
   loadedObservers: PriorityObserver[];
 };
 
+/**
+ * 按序执行观察者
+ * 
+ * @param app 
+ * @param observers 
+ */
 const runObsOrdered = async (app: App, observers: PriorityObserver[]) => {
-  const preObservers: { [key: number]: PriorityObserver[] } = groupBy(
+  const preObservers = groupBy(
     observers,
     (o: PriorityObserver) => o.pri
   );
-  const sortedKeys: number[] = keys(preObservers).sort((a: number, b: number) => a - b);
+  const sortedKeys: number[] = (keys(preObservers) as unknown as number[])
+    .sort((a: number, b: number) => a - b);
   for (const key of sortedKeys) {
     await Promise.all(preObservers[key].map((o: PriorityObserver) => o.obs(app)))
   }
@@ -28,17 +36,21 @@ const runObsOrdered = async (app: App, observers: PriorityObserver[]) => {
  */
 export type AppContextPropertyGeneric<T> = Symbol;
 
+/**
+ * App Context, used to store app configuration data.
+ */
 export class AppContext {
+  iocOptions: IocContainerOptions;
   iocModules: AsyncIocModule[];
   basicRoutes: RouteRecordItem[];
-  appRoutes: RouteRecordItem[];
   appRoutes: RouteRecordItem[];
   loadedObservers: IocLoadedObserver = {
     preObservers: [],
     loadedObservers: []
   };
   [key: string]: any;
-  constructor() {
+  constructor(iocOptions: IocContainerOptions) {
+    this.iocOptions = iocOptions;
     this.basicRoutes = [];
     this.appRoutes = [];
     this.iocModules = [];

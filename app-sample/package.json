@@ -23,6 +23,7 @@
     "type:check": "vue-tsc --noEmit --skipLibCheck"
   },
   "dependencies": {
+    "@rchitect-app/account": "workspace:^",
     "@rchitect-design/styles": "workspace:^",
     "@rchitect-rock/base-package": "workspace:^",
     "@rchitect-rock/ioc": "workspace:^",
