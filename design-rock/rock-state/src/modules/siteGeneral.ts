@@ -1,11 +1,11 @@
-import { defineStore } from '#/pinia'
+import { defineStore } from 'pinia'
 import { FooterLinkOptions, DefineSiteOptions } from '@rchitect-design/types'
-import { $t } from '@weiming-rock/locale'
+import { $t } from '@rchitect-rock/locale'
 // @ts-ignore
 // import defaultLogo from '@/assets/images/logo.png'
 // @ts-ignore
 // import defaultAvatar from '@/assets/images/header.jpg'
-import { getAppConfig, getGlobalConfig } from '@vben/utils'
+import { getAppConfig, getGlobalConfig } from '@rchitect-rock/tools'
 
 // const { t } = useI18n()
 

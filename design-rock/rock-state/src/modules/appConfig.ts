@@ -1,4 +1,4 @@
-import { defineStore } from '#/pinia'
+import { defineStore } from 'pinia'
 import {
   ContentConfigOptions,
   DefineAppConfigOptions,
@@ -10,11 +10,10 @@ import {
   TabTbrConfigOptions,
   TransitionConfigOptions,
 } from '@rchitect-design/types'
-import { _assign } from '@vben/utils'
+import { assign } from 'lodash-es'
 import {
   CacheTypeEnum,
   ContentLayoutEnum,
-  HEADER_PRESET_BG_COLOR_LIST,
   MenuModeEnum,
   MixSidebarTriggerEnum,
   MenuTypeEnum,
@@ -22,9 +21,9 @@ import {
   RouterTransitionEnum,
   SessionTimeoutProcessingEnum,
   SettingButtonPositionEnum,
-  SIDE_BAR_BG_COLOR_LIST,
   ThemeEnum,
   TriggerEnum,
+  ColorPreset
 } from '@rchitect-design/constants'
 
 export type AppConfigStore = ReturnType<typeof useAppConfig>
@@ -56,7 +55,7 @@ export const useAppConfig = defineStore({
       theme: ThemeEnum.LIGHT,
       show: true,
       visible: true,
-      bgColor: SIDE_BAR_BG_COLOR_LIST[0],
+      bgColor: ColorPreset.SIDE_BAR_BG_COLOR_LIST[0],
       fixed: false,
       width: 210,
       mixSidebarWidth: 80,
@@ -80,7 +79,7 @@ export const useAppConfig = defineStore({
       theme: ThemeEnum.DARK,
       show: true,
       visible: true,
-      bgColor: HEADER_PRESET_BG_COLOR_LIST[0],
+      bgColor: ColorPreset.HEADER_PRESET_BG_COLOR_LIST[0],
       fixed: false,
       height: 48,
       showDoc: true,
@@ -194,28 +193,28 @@ export const useAppConfig = defineStore({
         Omit<SidebarConfigOptions, 'mixSidebarWidth' | 'collapsedWidth'>
       >,
     ) {
-      _assign(this.sidebar, value)
+      assign(this.sidebar, value)
     },
     setMenu(value: Partial<MenuConfigOptions>) {
-      _assign(this.menu, value)
+      assign(this.menu, value)
     },
     setHeader(value: Partial<Omit<HeaderConfigOptions, 'height'>>) {
-      _assign(this.header, value)
+      assign(this.header, value)
     },
     setLogo(value: Partial<LogoConfigOptions>) {
-      _assign(this.logo, value)
+      assign(this.logo, value)
     },
     setTabTar(value: Partial<TabTbrConfigOptions>) {
-      _assign(this.tabTar, value)
+      assign(this.tabTar, value)
     },
     setContent(value: Partial<ContentConfigOptions>) {
-      _assign(this.content, value)
+      assign(this.content, value)
     },
     setFooter(value: Partial<Omit<FooterConfigOptions, 'height'>>) {
-      _assign(this.footer, value)
+      assign(this.footer, value)
     },
     setTransition(value: Partial<TransitionConfigOptions>) {
-      _assign(this.transition, value)
+      assign(this.transition, value)
     },
   },
   persist: {

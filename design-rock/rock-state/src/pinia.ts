@@ -1,8 +1,8 @@
-import type { App } from 'vue'
-import { createPinia } from '#/pinia'
+import type { App } from 'vue-demi'
+import { createPinia } from 'pinia'
 import { createPersistedState } from 'pinia-plugin-persistedstate'
 import { persistGlobalConfig } from './persist'
-import { createStorageName } from '@vben/utils'
+import { createStorageName } from '@rchitect-rock/tools'
 
 const pinia = createPinia()
 

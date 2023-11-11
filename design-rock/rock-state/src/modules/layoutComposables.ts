@@ -1,6 +1,6 @@
-import { defineStore } from '#/pinia'
-import { useElementSize } from '@vben/utils'
-import { ref } from 'vue'
+import { defineStore } from 'pinia'
+import { useElementSize } from '@rchitect-rock/tools'
+import { ref } from 'vue-demi'
 
 export const useLayoutHeader = defineStore('LAYOUT_HEADER', () => {
   const headerRef = ref<HTMLElement>()

@@ -1,7 +1,7 @@
 import type { LocaleType } from '@rchitect-design/types'
 import { computed } from 'vue'
 import { LOCALE_KEY } from '@rchitect-design/constants'
-import { useLocalStorage } from '@vben/utils'
+import { useLocalStorage } from '@vueuse/core'
 import { localeSetting } from './config'
 
 const store = useLocalStorage(LOCALE_KEY, localeSetting)

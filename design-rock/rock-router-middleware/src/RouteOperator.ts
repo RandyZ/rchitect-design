@@ -1,4 +1,4 @@
-import { PageEnum, REDIRECT_NAME } from '@rchitect-design/constants';
+import { PageEnum, Route } from '@rchitect-design/constants';
 import { FailData } from '@rchitect-design/types';
 import {
   Autowired,
@@ -43,7 +43,7 @@ export class RouteOperator {
         name,
         fullPath,
       } = unref(this.router.currentRoute.value);
-      if (name === REDIRECT_NAME) {
+      if (name === Route.REDIRECT_NAME) {
         resolve(false);
         return;
       }
@@ -55,7 +55,7 @@ export class RouteOperator {
         params['path'] = fullPath;
       }
       this.router
-        .push({ name: REDIRECT_NAME, params, query })
+        .push({ name: Route.REDIRECT_NAME, params, query })
         .then(() => resolve(true));
     });
   }
