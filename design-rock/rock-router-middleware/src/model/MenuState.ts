@@ -1,7 +1,7 @@
-import { PermissionModeEnum } from '@weiming-rock/constants';
-import type { DefineAppConfigOptions } from '@weiming-rock/types';
+import { PermissionModeEnum } from '@rchitect-design/constants';
+import type { DefineAppConfigOptions } from '@rchitect-design/types';
 import { Autowired, Bean } from '@weiming-rock/ioc';
-import { Lib } from '@weiming-rock/state';
+import { Lib } from '@rchitect-rock/state';
 
 @Bean()
 export class MenuState {

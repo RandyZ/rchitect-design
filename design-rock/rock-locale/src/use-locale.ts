@@ -1,7 +1,7 @@
 /**
  * Multi-language related operations
  */
-import type { LocaleType } from '@weiming-rock/types';
+import type { LocaleType } from '@rchitect-design/types';
 import { Ref, unref } from 'vue';
 import { loadLocalePool, setHtmlPageLang } from './helper';
 import { getLocale, setLocale } from './store';

@@ -9,7 +9,7 @@ import {
   SidebarConfigOptions,
   TabTbrConfigOptions,
   TransitionConfigOptions,
-} from '@weiming-rock/types'
+} from '@rchitect-design/types'
 import { _assign } from '@vben/utils'
 import {
   CacheTypeEnum,
@@ -25,7 +25,7 @@ import {
   SIDE_BAR_BG_COLOR_LIST,
   ThemeEnum,
   TriggerEnum,
-} from '@weiming-rock/constants'
+} from '@rchitect-design/constants'
 
 export type AppConfigStore = ReturnType<typeof useAppConfig>
 

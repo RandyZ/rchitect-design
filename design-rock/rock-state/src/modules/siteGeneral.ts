@@ -1,5 +1,5 @@
 import { defineStore } from '#/pinia'
-import { FooterLinkOptions, DefineSiteOptions } from '@weiming-rock/types'
+import { FooterLinkOptions, DefineSiteOptions } from '@rchitect-design/types'
 import { $t } from '@weiming-rock/locale'
 // @ts-ignore
 // import defaultLogo from '@/assets/images/logo.png'

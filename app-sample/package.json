@@ -1,16 +1,6 @@
 {
   "name": "@rchitect/app-sample",
   "version": "0.0.0",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/RandyZ/rchitect-design",
-    "directory": "sample"
-  },
-  "author": {
-    "name": "Randy",
-    "email": "zhangshi321@gmail.com",
-    "url": "https://github.com/RandyZ"
-  },
   "scripts": {
     "build": "pnpm rimraf dist && pnpm cross-env NODE_ENV=production vite build",
     "clean": "pnpm rimraf node_modules && pnpm rimraf dist && pnpm rimraf .turbo",

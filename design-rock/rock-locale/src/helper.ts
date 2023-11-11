@@ -1,5 +1,5 @@
-import type { LocaleType } from '@weiming-rock/types';
-import { set } from '@vben/utils';
+import type { LocaleType } from '@rchitect-design/types';
+import { set } from 'lodash-es';
 
 export const loadLocalePool: LocaleType[] = [];
 
