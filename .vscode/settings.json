@@ -77,7 +77,7 @@
       "source.fixAll.eslint": false
     }
   },
-  "i18n-ally.localesPaths": ["DesignRock/rock-locale/src/lang"],
+  "i18n-ally.localesPaths": ["design-rock/rock-locale/src/lang"],
   "i18n-ally.keystyle": "nested",
   "i18n-ally.sortKeys": true,
   "i18n-ally.namespace": true,
@@ -88,6 +88,8 @@
   "i18n-ally.enabledFrameworks": ["vue", "react"],
   "cSpell.words": [
     "rchitect",
+    "aihelp",
+    "ilocalize",
     "vben",
     "vite",
     "browserslist",
