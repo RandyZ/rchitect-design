@@ -1,0 +1,27 @@
+{
+  "name": "@rchitect-app/account",
+  "version": "0.0.0",
+  "main": "index.ts",
+  "module": "index.ts",
+  "description": "Authorization app for Rchitect Project",
+  "license": "MIT",
+  "author": {
+    "name": "Randy Zhang",
+    "email": "zhangshi3421@gmail.com"
+  },
+  "scripts": {
+    "clean": "pnpm rimraf node_modules && pnpm rimraf dist && pnpm rimraf .turbo"
+  },
+  "dependencies": {
+    "@rchitect-rock/base-package": "workspace:*",
+    "@rchitect-rock/ioc": "workspace:*"
+  },
+  "devDependencies": {
+    "@rchitect-design/types": "workspace:*"
+  },
+  "peerDependencies": {
+    "lodash-es": "^4.0.0",
+    "vue": "~3.3.4",
+    "vue-demi": "~0.14.6"
+  }
+}

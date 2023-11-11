@@ -51,6 +51,8 @@ export const configUnocss = (
   }
 }
 
+export type UserUnocssConfig = UserConfig
+
 /**
  * 创建Unocss配置
  * @param command 
@@ -61,6 +63,6 @@ export const configUnocss = (
  */
 export const createUnocssConfig = (
   presets?: Preset[]
-): UserConfig => {
+): UserUnocssConfig => {
   return defineConfig(configUnocss(presets))
 }

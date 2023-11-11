@@ -1,13 +1,8 @@
 import { defineProject } from 'vitest/config'
 import Vue from '@vitejs/plugin-vue'
-import VueJsx from '@vitejs/plugin-vue-jsx'
-import { MonoRepoResolverPlugin } from '@rchitect-cli/vite'
-
 export default defineProject({
   plugins: [
     Vue(),
-    VueJsx(),
-    MonoRepoResolverPlugin()
   ],
   test: {
     globals: true,

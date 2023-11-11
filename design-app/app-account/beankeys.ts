@@ -1,6 +1,6 @@
 import * as pack from './package.json';
 import { ServiceIdentifier } from '@rchitect-rock/ioc';
-import type {SomeBeanRequired, SomeBeanProvide} from './index'
+import type { SomeBeanRequired, SomeBeanProvide } from './index'
 
 export const Beans = {
   BeanRequired: Symbol.for(`${pack.name}/SomeBeanRequired`) as ServiceIdentifier<SomeBeanRequired>,

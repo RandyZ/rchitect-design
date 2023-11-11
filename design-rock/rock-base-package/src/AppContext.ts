@@ -1,7 +1,9 @@
 import { App } from "vue-demi";
 import { forEach, isEmpty, groupBy, keys } from 'lodash-es';
-import { AsyncIocModule, IocContainerOptions, contextContianer } from "@rchitect-rock/ioc";
+import { AsyncIocModule, IocContainerOptions, type ServiceIdentifier, contextContianer } from "@rchitect-rock/ioc";
 import type { RouteRecordItem } from "@rchitect-design/types";
+
+export const APP_CONTEXT: ServiceIdentifier<AppContext> = Symbol.for('WmqAppContext') as ServiceIdentifier<AppContext>;
 
 type PriorityObserver = { pri: number, obs: (app: App) => Promise<void> };
 
@@ -53,7 +55,9 @@ export class AppContext {
     this.iocOptions = iocOptions;
     this.basicRoutes = [];
     this.appRoutes = [];
-    this.iocModules = [];
+    this.iocModules = [new AsyncIocModule(async (bind) => {
+      bind(APP_CONTEXT).toConstantValue(this)
+    })];
   }
 
   getParam<T, K extends AppContextPropertyGeneric<T>>(key: K): T {
@@ -111,19 +115,22 @@ export class AppContext {
   }
 
 
-
+  async prepareIocModules(app: App) {
+    if (!isEmpty(this.loadedObservers.preObservers)) {
+      await runObsOrdered(app, this.loadedObservers.preObservers)
+    }
+    await contextContianer().loadAsync(...this.iocModules)
+}
   /**
    * 加载VueApp
    * @param app 
+   * @returns 
    */
-  async load(app: App, onLoadFinished?: () => Promise<void>) {
-    if (!isEmpty(this.loadedObservers.preObservers)) {
-      runObsOrdered(app, this.loadedObservers.preObservers)
-    }
-    await contextContianer().loadAsync(...this.iocModules)
+  async load(app: App): Promise<App> {
+    await this.prepareIocModules(app)
     if (!isEmpty(this.loadedObservers.loadedObservers)) {
-      runObsOrdered(app, this.loadedObservers.loadedObservers)
+      await runObsOrdered(app, this.loadedObservers.loadedObservers)
     }
-    await onLoadFinished?.();
+    return app
   }
 }
