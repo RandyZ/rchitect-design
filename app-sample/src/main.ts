@@ -20,3 +20,4 @@ import { Lib as routeLib } from '@rchitect-rock/router';
   .use(routeLib, appContext)
   .mount('#app');
 })()
+
