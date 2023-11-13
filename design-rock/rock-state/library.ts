@@ -1,8 +1,8 @@
 import * as pack from './package.json';
 import types from './beankeys';
-import type { CommonModuleLibContext } from '@weiming-rock/base-package';
-import { install } from '@weiming-rock/base-package';
-import { AsyncIocModule, di } from '@weiming-rock/ioc';
+import type { CommonModuleLibContext } from '@rchitect-rock/base-package';
+import { install } from '@rchitect-rock/base-package';
+import { AsyncIocModule, di } from '@rchitect-rock/ioc';
 import { useAppConfig, AppConfigStore, DataEventBus, setupPinia } from "#/.";
 
 export const Lib: CommonModuleLibContext<typeof types> = {

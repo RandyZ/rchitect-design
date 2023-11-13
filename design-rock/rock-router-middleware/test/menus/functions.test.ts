@@ -5,8 +5,8 @@ import {
   useMenusAtLevel
 } from "#/menus/functions";
 
-vi.mock("@weiming-rock/ioc", async () => {
-  const rockIoc = await vi.importActual("@weiming-rock/ioc") as object;
+vi.mock("@rchitect-rock/ioc", async () => {
+  const rockIoc = await vi.importActual("@rchitect-rock/ioc") as object;
   return {
     ...rockIoc
   }

@@ -1,7 +1,7 @@
 import * as pack from './package.json';
-import type { CommonModuleLibContext } from '@weiming-rock/base-package';
-import { install } from '@weiming-rock/base-package';
-import { ServiceIdentifier, AsyncIocModule, di } from '@weiming-rock/ioc';
+import type { CommonModuleLibContext } from '@rchitect-rock/base-package';
+import { install } from '@rchitect-rock/base-package';
+import { ServiceIdentifier, AsyncIocModule, di } from '@rchitect-rock/ioc';
 import { I18nOptions, createI18n } from 'vue-i18n';
 import { createI18nOptions } from './src/options'
 import { setupI18n } from '#/setup-i18n';

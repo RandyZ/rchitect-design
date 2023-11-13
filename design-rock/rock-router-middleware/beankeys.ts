@@ -1,5 +1,5 @@
 import * as pack from './package.json';
-import { ServiceIdentifier } from '@weiming-rock/ioc';
+import { ServiceIdentifier } from '@rchitect-rock/ioc';
 import { RouteOperator, RoutesTable } from '#/.';
 import { MenuState } from '#/model/MenuState';
 

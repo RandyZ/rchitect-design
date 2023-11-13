@@ -1,5 +1,5 @@
 import * as pack from "./package.json"
-import { ServiceIdentifier } from '@weiming-rock/ioc';
+import { ServiceIdentifier } from '@rchitect-rock/ioc';
 import { App, AppConfigStore, DataEventBus } from "./src";
 import { Auth } from "./index";
 

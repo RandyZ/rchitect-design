@@ -2,9 +2,9 @@ import type { RouteLocationNormalized, RouteRecordNormalized } from 'vue-router'
 import { isUrl, filterTree, computedAsync, getTreeItemAllChild } from '@rchitect-rock/tools'
 import { pathToRegexp } from 'path-to-regexp'
 import type { Menu } from '@rchitect-design/types'
-import { resolveByKeyOrThrow } from '@weiming-rock/ioc';
+import { resolveByKeyOrThrow } from '@rchitect-rock/ioc';
 import { Lib } from '#/../library';
-import { Auth, Lib as stateLib } from '@weiming-rock/state';
+import { Auth, Lib as stateLib } from '@rchitect-rock/state';
 import { getAllParentPath } from './menu';
 import { Ref, computed, ref, unref } from 'vue-demi';
 import isEmpty from 'lodash-es/isEmpty';

@@ -11,7 +11,7 @@
 Weiming Design中每个模块都是一个可以直接被加载进Vue3项目中的模块，生命周期尽量自封闭。同时也支持跳过AutoConfig，通过CondingConfig的模式启动模块。
 
 1. AutoConfig模式：每个module都遵循Vue的插件协议，可以通过App.use来安装。生命周期跟随Vue插件的生命周期自动装载。这种模式比较适合使用WeimingDesingCli创建的工程
-2. CodingConfig模式：模块基于`@weiming-rock/base-package`来开发，每个模块都规定了需要规范化模块的接口，可以查阅相关文档，在App启动的相应时机调用相应的周期函数。这种模式比较适合一个现有的Vue3项目直接加载模块
+2. CodingConfig模式：模块基于`@rchitect-rock/base-package`来开发，每个模块都规定了需要规范化模块的接口，可以查阅相关文档，在App启动的相应时机调用相应的周期函数。这种模式比较适合一个现有的Vue3项目直接加载模块
 
 ## 三、Module的结构
 
@@ -33,7 +33,7 @@ Weiming Design中每个模块都是一个可以直接被加载进Vue3项目中�
 一个Module首先需要是一个Npm的pkg，`package.json`必不可少，几个必选项目：
 
 1. `script.clean`：clean命令用于将现有的模块清理重新安装，放入weiming-design的环境中会有turbo整体驱动执行，便于打包
-2. `@weiming-rock/base-package`和`@weiming-rock/ioc`两个主要的依赖用于支持类型引用和模块定义
+2. `@rchitect-rock/base-package`和`@rchitect-rock/ioc`两个主要的依赖用于支持类型引用和模块定义
 3. 工程额外需要依赖引用`"vue": "~3.3.4"`和`"lodash-es": "^4.0.0"`
 
 一个完整的包一般结构如下：
@@ -55,8 +55,8 @@ Weiming Design中每个模块都是一个可以直接被加载进Vue3项目中�
     "clean": "pnpm rimraf node_modules && pnpm rimraf dist && pnpm rimraf .turbo"
   },
   "dependencies": {
-    "@weiming-rock/base-package": "workspace:*",
-    "@weiming-rock/ioc": "workspace:*"
+    "@rchitect-rock/base-package": "workspace:*",
+    "@rchitect-rock/ioc": "workspace:*"
   },
   "devDependencies": {
     "@rchitect-design/types": "workspace:*"
@@ -70,15 +70,15 @@ Weiming Design中每个模块都是一个可以直接被加载进Vue3项目中�
 
 ### 2. Module的入口
 
-模块的入口首先是遵循Npm的pkg机制，不熟悉的可以查阅nodejs的文档。其次在pkg的入口文件中**必须**要`export`对象`Lib:Library`，`interface Library`来自`@weiming-rock/base-package`。
+模块的入口首先是遵循Npm的pkg机制，不熟悉的可以查阅nodejs的文档。其次在pkg的入口文件中**必须**要`export`对象`Lib:Library`，`interface Library`来自`@rchitect-rock/base-package`。
 
 `Lib`这个对象中主要防止了一些用于加载模块的信息
 
 1. `name`、`version`来自于`package.json`，用于展示包的主要信息，也是识别一个载入的库的唯一标识。`describtion`也来自于`package.json`，对于包的一些说明信息，属性可选。
-2. `module`：来自`@weiming-rock/ioc`的IOC注册接口，内部处理模块的Bean注册
+2. `module`：来自`@rchitect-rock/ioc`的IOC注册接口，内部处理模块的Bean注册
 3. `onSetup?`：生命周期钩子函数，在应用所有基础配置完成之后
 4. `beforeSetup?`：生命周期钩子函数，只创建了Vue的App，但是未执行任何配置
-5. `install`：Vue的插件协议函数从`@weiming-rock/base-package`中直接导入install函数即可
+5. `install`：Vue的插件协议函数从`@rchitect-rock/base-package`中直接导入install函数即可
 
 ### 2. IOC里Bean的声明
 

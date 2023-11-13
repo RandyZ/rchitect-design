@@ -1,10 +1,10 @@
 import nProgress from 'nprogress'
 import { toRaw } from 'vue'
 import type { Menu } from '@rchitect-design/types'
-import { resolveByKeyOrThrow } from '@weiming-rock/ioc'
+import { resolveByKeyOrThrow } from '@rchitect-rock/ioc'
 import { Beans } from '../beankeys';
 import { RouteParams } from 'vue-router'
-import { Lib as stateLib } from '@weiming-rock/state'
+import { Lib as stateLib } from '@rchitect-rock/state'
 
 const TYPES = Beans
 const LOADED_PAGE_POOL = new Map<string, boolean>()

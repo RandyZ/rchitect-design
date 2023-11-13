@@ -1,7 +1,7 @@
 import * as pack from './package.json';
-import { AsyncIocModule, diKT } from '@weiming-rock/ioc';
-import { APP_CONTEXT, CommonModuleLibContext, install } from '@weiming-rock/base-package';
-import type { AppContext } from '@weiming-rock/base-package';
+import { AsyncIocModule, diKT } from '@rchitect-rock/ioc';
+import { APP_CONTEXT, CommonModuleLibContext, install } from '@rchitect-rock/base-package';
+import type { AppContext } from '@rchitect-rock/base-package';
 import { InitRouter, RouteOperator, RoutesTable } from '#/.';
 import { MenuState } from '#/model/MenuState';
 import { Beans } from './beankeys';
