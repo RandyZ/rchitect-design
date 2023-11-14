@@ -1,5 +1,5 @@
 // @ts-ignore
-let _global: any = this || {};
+const _global: any = this || {};
 
 function getTimeFactory(_window: any, _process: any, _date: any) {
     return () => {
@@ -11,8 +11,8 @@ function getTimeFactory(_window: any, _process: any, _date: any) {
         } else if (_process !== undefined && _process !== null) {
 
             // node
-            let nanoseconds = _process.hrtime()[1];
-            let milliseconds = nanoseconds / 1000000;
+            const nanoseconds = _process.hrtime()[1];
+            const milliseconds = nanoseconds / 1000000;
             return milliseconds;
 
         } else {
@@ -24,7 +24,7 @@ function getTimeFactory(_window: any, _process: any, _date: any) {
     };
 }
 
-let getTime = getTimeFactory(_global.window, _global.process , Date);
+const getTime = getTimeFactory(_global.window, _global.process , Date);
 
 function guid() {
   function s4() {
@@ -37,8 +37,8 @@ function guid() {
 }
 
 function getTimeDiference( start: number, end: number) {
-    let diff = end - start;
-    let formatted = diff.toFixed(2);
+    const diff = end - start;
+    const formatted = diff.toFixed(2);
     return formatted;
 }
 

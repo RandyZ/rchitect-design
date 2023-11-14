@@ -19,7 +19,7 @@ export interface Stores {
 /**
  * @deprecated 使用依赖注入
  */
-export let stores: Stores = {};
+export const stores: Stores = {};
 
 /**
  * 初始化路由

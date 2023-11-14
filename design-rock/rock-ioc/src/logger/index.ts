@@ -10,7 +10,7 @@ function makeLoggerMiddleware(
     settings?: interfaces.LoggerSettings,
     renderer?: (out: interfaces.LogEntry) => void
 ): inversify.interfaces.Middleware {
-    let logger = function (next: inversify.interfaces.Next): inversify.interfaces.Next {
+    const logger = function (next: inversify.interfaces.Next): inversify.interfaces.Next {
         const _setting = settings || deatultOptions;
         const _renderer = renderer || ((out) => {
             if (out.error) {
@@ -20,7 +20,7 @@ function makeLoggerMiddleware(
         return (args: inversify.interfaces.NextArgs) => {
             let results: any = null;
 
-            let logEntry: interfaces.LogEntry = {
+            const logEntry: interfaces.LogEntry = {
                 error: false,
                 exception: null,
                 guid: guid(),
@@ -30,15 +30,15 @@ function makeLoggerMiddleware(
                 serviceIdentifier: args.serviceIdentifier,
                 time: null
             };
-            let nextContextInterceptor = args.contextInterceptor;
+            const nextContextInterceptor = args.contextInterceptor;
             args.contextInterceptor = (context: inversify.interfaces.Context) => {
                 logEntry.rootRequest = requestReducer(context.plan.rootRequest, _setting.request || {});
                 return nextContextInterceptor(context);
             };
             try {
-                let start =  getTime();
+                const start =  getTime();
                 results = next(args);
-                let end = getTime();
+                const end = getTime();
                 logEntry.results = results;
                 logEntry.time = (_setting.time) ? getTimeDiference(start, end) : null;
             } catch (e) {

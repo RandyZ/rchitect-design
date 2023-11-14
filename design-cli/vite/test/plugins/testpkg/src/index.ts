@@ -1,1 +1,3 @@
-import VueAndTs from '#/vue-ts'
+import { aa } from './vue-ts'
+
+export const aliasFor = aa

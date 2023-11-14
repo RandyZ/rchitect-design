@@ -1,0 +1,3 @@
+vitest.config.unit.ts
+vite.config.ts
+**/*.test.*

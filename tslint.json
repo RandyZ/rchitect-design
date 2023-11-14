@@ -1,0 +1,9 @@
+{
+  "extends": "tslint:recommended",
+  "exclude": [
+    "dist/**",
+    "node_modules/**",
+    "*.test.ts",
+    "*.spec.ts"
+  ]
+}

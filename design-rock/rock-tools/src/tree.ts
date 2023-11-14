@@ -226,7 +226,7 @@ function doMapTree(
 
 export function getTreeItemAllChild<T> (treeItem: T): T {
   const newTreeItem:T = { ...treeItem };
-  let { children = [], ...arg } = newTreeItem as any;
+  const { children = [] } = newTreeItem as any;
   const copyChildrens = [...children];
   const result: T[] = [];
   while (copyChildrens.length){

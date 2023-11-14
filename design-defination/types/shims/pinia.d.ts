@@ -1,7 +1,7 @@
 // @ts-ignore
 // eslint-disable-next-line
 import type { PiniaPluginContext } from 'pinia';
-import type { PersistStrategy, PersistOptions } from '#/store';
+import type { PersistOptions } from '#/store';
 declare module 'pinia' {
   export interface DefineStoreOptions<
     // eslint-disable-next-line

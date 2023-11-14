@@ -6,15 +6,15 @@ function bindingReducer(
     options: interfaces.BindingLoggerSettings
 ) {
 
-    let props = [
+    const props = [
         "type", "serviceIdentifier", "implementationType",
         "activated", "cache", "constraint", "dynamicValue",
         "factory", "onActivation", "provider", "scope"
     ];
 
-    let reducedBinding: any = {};
-    let bindingOptions: any = options;
-    let oldBinding: any = binding;
+    const reducedBinding: any = {};
+    const bindingOptions: any = options;
+    const oldBinding: any = binding;
 
     props.forEach((prop) => {
         if (bindingOptions[prop]) {

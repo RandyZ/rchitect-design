@@ -18,11 +18,11 @@ export const Lib: Library<BeanKeys> = toPackage({
     console.log('IOC容器注册完成，开始创建Bean');
     bind(Beans.BeanProvided).to(SomeBeanProvideImpl);
   }),
-  onSetup: async (app, appContext) => {
+  onSetup: async (_app, _appContext) => {
     // IOC机制加载完成
     console.log('IOC机制加载完成');
   },
-  beforeSetup: async (app, appContext) => {
+  beforeSetup: async (_app, _appContext) => {
     console.log('IOC容器尚未创建，处理pinia初始化等必须操作');
   }
 });

@@ -1,6 +1,6 @@
 import interfaces from "../interfaces/interfaces";
 
-let deatultOptions: interfaces.LoggerSettings = {
+const deatultOptions: interfaces.LoggerSettings = {
     request: {
         bindings: {
             activated: false,

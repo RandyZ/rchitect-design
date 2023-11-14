@@ -1,5 +1,4 @@
 import { execNpmCmd } from "./base";
-const prompts = require('prompts')
 
 const args = process.argv.slice(2);
 

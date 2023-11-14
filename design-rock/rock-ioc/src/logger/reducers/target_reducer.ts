@@ -7,9 +7,9 @@ function targetReducer(
 ) {
 
 
-    let reducedTarget: any = {};
-    let targetOptions: any = options;
-    let oldTarget: any = target;
+    const reducedTarget: any = {};
+    const targetOptions: any = options;
+    const oldTarget: any = target;
 
     if (targetOptions.name) {
         reducedTarget.name = oldTarget.name;
@@ -20,7 +20,7 @@ function targetReducer(
     }
 
     if (targetOptions.metadata && Array.isArray(target.metadata)) {
-        let reducedMetadata = target.metadata.map((m: inversify.interfaces.Metadata, i: number) => {
+        const reducedMetadata = target.metadata.map((m: inversify.interfaces.Metadata, i: number) => {
             return {
                 key: m.key,
                 value: m.value

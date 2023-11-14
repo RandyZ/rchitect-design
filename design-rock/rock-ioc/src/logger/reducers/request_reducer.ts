@@ -8,8 +8,8 @@ function requestReducer(
     options: interfaces.RequestLoggerSettings
 ) {
 
-    let reducedRequest: any = {};
-    let requestOptions: any = options;
+    const reducedRequest: any = {};
+    const requestOptions: any = options;
 
     if (requestOptions.serviceIdentifier === true) {
         reducedRequest.serviceIdentifier = request.serviceIdentifier;
@@ -17,7 +17,7 @@ function requestReducer(
 
     // bindings
     if (requestOptions.bindings !== undefined) {
-        let reducedBindings = request.bindings.map((binding: inversify.interfaces.Binding<any>) => {
+        const reducedBindings = request.bindings.map((binding: inversify.interfaces.Binding<any>) => {
             return bindingReducer(binding, options.bindings);
         });
         reducedRequest.bindings = reducedBindings;
@@ -29,7 +29,7 @@ function requestReducer(
     }
 
     // child requests
-    let reducedChieldRequest = request.childRequests.map((childRequest) => {
+    const reducedChieldRequest = request.childRequests.map((childRequest) => {
         return requestReducer(childRequest, options);
     });
     reducedRequest.childRequests = reducedChieldRequest;

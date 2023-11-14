@@ -18,7 +18,7 @@ export const Lib: CommonModuleLibContext<BeanKeys> = {
     bind<RoutesTable>(Beans.RouteTable).toDynamicValue((context) => {
       const appContext = context.container.get<AppContext>(APP_CONTEXT);
       console.debug('All Routes List', appContext.basicRoutes, appContext.appRoutes);
-      let ret = InitRouter(import.meta.env.VITE_PUBLIC_PATH, appContext.basicRoutes, appContext.appRoutes);
+      const ret = InitRouter(import.meta.env.VITE_PUBLIC_PATH, appContext.basicRoutes, appContext.appRoutes);
       console.groupEnd();
       return ret;
     });
