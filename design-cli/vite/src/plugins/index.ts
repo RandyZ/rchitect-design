@@ -19,9 +19,9 @@ import monacoEditorPlugin from 'vite-plugin-monaco-editor'
 // import Components from 'unplugin-vue-components/vite'
 import Inspect from 'vite-plugin-inspect'
 // 此处引用的是打包后的插件
-// import WmqAutoImport from '@weiming-plugins/unplugin-auto-import/vite'
+// import WmqAutoImport from '@rchitect-plugins/unplugin-auto-import/vite'
 // 需要调试插件类型的可以用下面的引用
-// import WmqAutoImport from '@weiming-plugins/unplugin-auto-import/src/vite'
+// import WmqAutoImport from '@rchitect-plugins/unplugin-auto-import/src/vite'
 
 export const MonoRepoResolverPlugin = configMonoRepoResolverPlugin
 

@@ -1,5 +1,5 @@
 import { unref, computed, type Ref } from "vue"
-import { diK } from "@weiming-rock/ioc"
+import { diK } from "@rchitect-rock/ioc"
 import { Lib } from "#/../library"
 
 export interface I18nGlobalTranslation {

@@ -1,6 +1,6 @@
 import { PermissionModeEnum } from '@rchitect-design/constants';
 import type { DefineAppConfigOptions } from '@rchitect-design/types';
-import { Autowired, Bean } from '@weiming-rock/ioc';
+import { Autowired, Bean } from '@rchitect-rock/ioc';
 import { Lib } from '@rchitect-rock/state';
 
 @Bean()

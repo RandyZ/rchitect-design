@@ -1,6 +1,6 @@
 import type { App } from 'vue';
 import { createI18n } from 'vue-i18n';
-import { di } from '@weiming-rock/ioc';
+import { di } from '@rchitect-rock/ioc';
 import {Lib} from '#/../library';
 
 export let i18n: ReturnType<typeof createI18n>;

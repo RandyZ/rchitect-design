@@ -6,7 +6,7 @@ import { Ref, unref } from 'vue';
 import { loadLocalePool, setHtmlPageLang } from './helper';
 import { getLocale, setLocale } from './store';
 import { Lib } from '#/../library';
-import { diKT } from '@weiming-rock/ioc';
+import { diKT } from '@rchitect-rock/ioc';
 
 interface LangModule {
   message: Recordable<any>;

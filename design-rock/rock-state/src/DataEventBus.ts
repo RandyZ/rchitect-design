@@ -1,4 +1,4 @@
-import { Bean } from '@weiming-rock/ioc';
+import { Bean } from '@rchitect-rock/ioc';
 import mitt from 'mitt'
 import type { EventType, Emitter, Handler } from 'mitt'
 import { onMounted, onUnmounted } from 'vue'

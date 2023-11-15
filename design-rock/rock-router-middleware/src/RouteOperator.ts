@@ -5,7 +5,7 @@ import {
   Bean,
   THROWN_HANDLER,
   resolveByKey,
-} from '@weiming-rock/ioc';
+} from '@rchitect-rock/ioc';
 import { Beans } from '#/../beankeys'
 import { Router, type RoutesTable, type RouteLocationRaw } from '#/../.';
 import { unref } from 'vue';
