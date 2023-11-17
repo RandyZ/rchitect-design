@@ -13,10 +13,10 @@ import { getAppConfig, getGlobalConfig } from '@rchitect-rock/tools'
 const { title } = getGlobalConfig(import.meta.env)
 
 // github repo url
-export const GITHUB_URL = 'https://git.wmqhealth.com/weiming-framework/weiming-design'
+export const GITHUB_URL = 'https://git.wmqhealth.com/rchitect-framework/rchitect-design'
 
 // vue-vben-admin-next-doc
-export const DOC_URL = 'https://git.wmqhealth.com/weiming-framework/weiming-design'
+export const DOC_URL = 'https://git.wmqhealth.com/rchitect-framework/rchitect-design'
 
 // site url
 export const SITE_URL = 'https://www.tenez.cn/'

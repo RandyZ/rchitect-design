@@ -1,0 +1,24 @@
+{
+  "name": "@rchitect-rock/hooks",
+  "version": "0.0.0",
+  "main": "./index.ts",
+  "license": "MIT",
+  "description": "Hooks for Rchitect rock modules. ",
+  "scripts": {
+    "clean": "pnpm rimraf node_modules && pnpm rimraf dist && pnpm rimraf .turbo"
+  },
+  "author": {
+    "name": "Randy Zhang",
+    "email": "zhangshi@tenez.cn",
+    "url": "https://git.wmqhealth.com/zhangshi"
+  },
+  "dependencies": {
+    "inversify": "^6.0.1"
+  },
+  "devDependencies": {
+    "@rchitect-design/types": "workspace:*"
+  },
+  "peerDependencies": {
+    "vue": "~3.3.4"
+  }
+}

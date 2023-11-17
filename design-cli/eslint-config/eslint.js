@@ -44,7 +44,21 @@ module.exports = {
         varsIgnorePattern: '^_',
       },
     ],
-
+    '@typescript-eslint/no-namespace': [
+      'warn',
+      {
+        allowDeclarations: true,
+        allowDefinitionFiles: true,
+      },
+    ],
+    '@typescript-eslint/triple-slash-reference': [
+      'warn',
+      {
+        path: 'always',
+        lib: 'never',
+        types: 'never',
+      }
+    ],
     'vue/script-setup-uses-vars': 'error',
     'vue/attributes-order': 'off',
     'vue/custom-event-name-casing': 'off',

@@ -2,9 +2,9 @@
 
 ## 一、Module的概念
 
-Weiming Design中每个模块都是一个可以直接被加载进Vue3项目中的模块，生命周期尽量自封闭。同时也支持跳过AutoConfig，通过CondingConfig的模式启动模块。
+rchitect Design中每个模块都是一个可以直接被加载进Vue3项目中的模块，生命周期尽量自封闭。同时也支持跳过AutoConfig，通过CondingConfig的模式启动模块。
 
-1. AutoConfig模式：每个module都遵循Vue的插件协议，可以通过App.use来安装。生命周期跟随Vue插件的生命周期自动装载。这种模式比较适合使用WeimingDesingCli创建的工程
+1. AutoConfig模式：每个module都遵循Vue的插件协议，可以通过App.use来安装。生命周期跟随Vue插件的生命周期自动装载。这种模式比较适合使用rchitectDesingCli创建的工程
 2. CodingConfig模式：模块基于`@rchitect-rock/base-package`来开发，每个模块都规定了需要规范化模块的接口，可以查阅相关文档，在App启动的相应时机调用相应的周期函数。这种模式比较适合一个现有的Vue3项目直接加载模块
 
 ## 二、Module的结构
@@ -26,7 +26,7 @@ Weiming Design中每个模块都是一个可以直接被加载进Vue3项目中�
 
 一个Module首先需要是一个Npm的pkg，`package.json`必不可少，几个必选项目：
 
-1. `script.clean`：clean命令用于将现有的模块清理重新安装，放入weiming-design的环境中会有turbo整体驱动执行，便于打包
+1. `script.clean`：clean命令用于将现有的模块清理重新安装，放入rchitect-design的环境中会有turbo整体驱动执行，便于打包
 2. `@rchitect-rock/base-package`和`@rchitect-rock/ioc`两个主要的依赖用于支持类型引用和模块定义
 3. 工程额外需要依赖引用`"vue": "~3.3.4"`和`"lodash-es": "^4.0.0"`
 
@@ -34,11 +34,11 @@ Weiming Design中每个模块都是一个可以直接被加载进Vue3项目中�
 
 ```json
 {
-  "name": "weiming-design-module-template",
+  "name": "rchitect-design-module-template",
   "version": "0.0.0",
   "main": "index.ts",
   "module": "index.ts",
-  "description": "Weiming Design Module Template",
+  "description": "rchitect Design Module Template",
   "license": "MIT",
   "author": {
     "name": "Randy Zhang",

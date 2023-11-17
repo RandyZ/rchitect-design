@@ -33,6 +33,13 @@
     "gen:rock": "cross-env APP_LEVEL=\"rock\" pnpm gen",
     "dep:sample": "pnpm --filter @rchitect/app-sample add"
   },
+  "workspaces": [
+    "design-app/*",
+    "design-rock/*",
+    "design-defination/*",
+    "design-cli/*",
+    "app-sample"
+  ],
   "dependencies": {
     "@vueuse/core": "~10.6.0",
     "lodash-es": "~4.17.21",

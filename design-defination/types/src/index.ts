@@ -2,7 +2,7 @@
 // export * from './service';
 export * from './types/router';
 export * from './global';
-// export * from './setting';
+export * from './types/settings';
 export * from './types/menu';
 // export * from './button';
 // export * from './http';

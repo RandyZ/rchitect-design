@@ -13,7 +13,7 @@ const rootRoute: RouteRecordItem = {
   meta: {
     orderNo: 2,
     icon: 'line-md:clipboard-list-twotone',
-    title: 'Weiming Design模版',
+    title: 'rchitect Design模版',
     root: true,
     isBasic: true,
   },

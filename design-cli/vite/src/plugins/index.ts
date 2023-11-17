@@ -98,7 +98,7 @@ export async function configVitePlugins(
   //       // where `componentName` is always CapitalCase
   //       if (componentName.startsWith('Wmq'))
   //         // return { name: componentName.slice(3), from: 'vant' }
-  //         console.log('importing weiming component:', componentName);
+  //         console.log('importing rchitect component:', componentName);
   //     },
   //   ],
   // }))

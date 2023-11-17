@@ -4,7 +4,7 @@
   "main": "index.ts",
   "module": "index.ts",
   "license": "MIT",
-  "description": "App State Management module for rchitect rock",
+  "description": "App State Management module for rchitect rock. State defination and some implements",
   "scripts": {
     "clean": "pnpm rimraf node_modules && pnpm rimraf dist && pnpm rimraf .turbo"
   },
@@ -14,6 +14,7 @@
     "@rchitect-rock/tools": "workspace:*",
     "@rchitect-rock/base-package": "workspace:*",
     "@rchitect-rock/ioc": "workspace:*",
+    "@rchitect-rock/settings": "workspace:*",
     "mitt": "^3.0.0",
     "pinia-plugin-persistedstate": "^3.1.0"
   },

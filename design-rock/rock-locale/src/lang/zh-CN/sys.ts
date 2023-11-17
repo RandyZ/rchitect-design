@@ -50,7 +50,7 @@ export default {
     signInFormTitle: '登录',
     mobileSignInFormTitle: '手机登录',
     qrSignInFormTitle: '二维码登录',
-    weimingOAuthTitle: '未名企鹅统一登录',
+    rchitectOAuthTitle: '未名企鹅统一登录',
     signUpFormTitle: '注册',
     forgetFormTitle: '重置密码',
 
@@ -64,8 +64,8 @@ export default {
     rememberMe: '记住我',
     forgetPassword: '忘记密码?',
     otherSignIn: '其他登录方式',
-    weimingOAuthRedicting: `统一登录跳转中...`,
-    weimingOAuthCodeHandling: `服务登录中...`,
+    rchitectOAuthRedicting: `统一登录跳转中...`,
+    rchitectOAuthCodeHandling: `服务登录中...`,
 
     // notify
     loginSuccessTitle: '登录成功',

@@ -1,0 +1,20 @@
+<script lang="ts" setup>
+import { useDriverComponent, RockComponent } from '#/index'
+import { DriverRefKey } from '#/utils/refSupport'
+import { ref } from 'vue-demi';
+const DriverRef = ref()
+defineExpose({ [DriverRefKey]: DriverRef })
+defineOptions({
+  name: RockComponent.InputNumber,
+})
+const InputNumber = useDriverComponent(RockComponent.InputNumber)
+</script>
+<template>
+  <InputNumber v-bind="$attrs" :ref="DriverRefKey">
+    <template #[item]="data" v-for="item in Object.keys($slots)" :key="item">
+      <slot :name="item" v-bind="data || {}"></slot>
+    </template>
+  </InputNumber>
+</template>
+
+<style scoped></style>

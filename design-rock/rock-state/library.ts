@@ -15,7 +15,7 @@ export const Lib: CommonModuleLibContext<typeof types> = {
     bind<AppConfigStore>(types.DefineAppConfigOptions).toConstantValue(useAppConfig());
     bind<DataEventBus>(types.DataEventBus).to(DataEventBus);
   }),
-  async onSetup(app) {
+  async onSetup() {
     const needAuthstore = await di(types.AuthStore);
     if (!needAuthstore) {
       throw new Error(`【${pack.name}】need AuthStore, but not found, please check your ioc config`);

@@ -14,7 +14,7 @@ function makeLoggerMiddleware(
         const _setting = settings || deatultOptions;
         const _renderer = renderer || ((out) => {
             if (out.error) {
-                console.debug('Weiming IOC', out, out.exception);
+                console.debug('rchitect IOC', out, out.exception);
             }
         });
         return (args: inversify.interfaces.NextArgs) => {

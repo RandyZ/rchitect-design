@@ -1,0 +1,1 @@
+export { default as RockDialogProvider } from './src/DialogProvider.vue';

@@ -179,5 +179,3 @@ export interface ProjectSetting extends SporadicSetting {
   // Animation configuration
   transitionSetting: TransitionSetting
 }
-
-export * from './store'

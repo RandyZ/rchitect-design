@@ -9,6 +9,9 @@ import {
 } from './index';
 import { Store } from 'pinia';
 
+/**
+ * @deprecated 废弃
+ */
 export namespace Setting {
   export interface SettingState {
     darkMode?: ThemeEnum;

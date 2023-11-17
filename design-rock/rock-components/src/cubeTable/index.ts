@@ -1,0 +1,1 @@
+export { default as RockCubeTable } from './src/CubeTable.vue';

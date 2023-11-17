@@ -26,11 +26,11 @@ export default {
     errMsg505: 'The http version does not support the request!',
   },
   app: {
-    name: 'WeiMing',
+    name: 'rchitect',
     logoutTip: 'Reminder',
     logoutMessage: 'Confirm to exit the system?',
     menuLoading: 'Menu loading...',
-    copyright: '2023 Weiming Technology'
+    copyright: '2023 rchitect Technology'
   },
   exception: {
     backLogin: 'Back Login',
@@ -54,17 +54,17 @@ export default {
     backSignIn: 'Back sign in',
     mobileSignInFormTitle: 'Mobile sign in',
     qrSignInFormTitle: 'Qr code sign in',
-    weimingOAuthTitle: 'Weiming Authorization',
+    rchitectOAuthTitle: 'rchitect Authorization',
     signInFormTitle: 'Sign in',
     signUpFormTitle: 'Sign up',
     forgetFormTitle: 'Reset password',
 
-    signInTitle: 'Weiming Backstage management system',
+    signInTitle: 'rchitect Backstage management system',
     signInDesc: 'Management system template, build with monorepo!',
     policy: 'I agree to the xxx Privacy Policy',
     scanSign: `scanning the code to complete the login`,
-    weimingOAuthRedicting: `Authorization server redicting...`,
-    weimingOAuthCodeHandling: `Authorizing...`,
+    rchitectOAuthRedicting: `Authorization server redicting...`,
+    rchitectOAuthCodeHandling: `Authorizing...`,
 
     loginButton: 'Sign in',
     registerButton: 'Sign up',

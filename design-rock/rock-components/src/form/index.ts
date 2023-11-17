@@ -1,0 +1,6 @@
+export * from './src/type'
+export { useForm } from './src/hooks/useForm'
+export * from './src/transfer'
+export { default as RockForm } from './src/Form.vue'
+export { default as RockFormItem } from './src/FormItem.vue'
+export { default as RockFormItemGi } from './src/FormItemGi.vue'

@@ -16,6 +16,7 @@
     "@rchitect-app/account": "workspace:^",
     "@rchitect-design/styles": "workspace:^",
     "@rchitect-rock/base-package": "workspace:^",
+    "@rchitect-rock/components": "workspace:^",
     "@rchitect-rock/ioc": "workspace:^",
     "@rchitect-rock/router": "workspace:^",
     "pinia": "~2.0.34",
