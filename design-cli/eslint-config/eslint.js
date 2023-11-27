@@ -44,11 +44,12 @@ module.exports = {
         varsIgnorePattern: '^_',
       },
     ],
-    '@typescript-eslint/no-namespace': [
-      'warn',
+    '@typescript-eslint/no-namespace': 'off',
+    '@typescript-eslint/no-this-alias': [
+      'error',
       {
-        allowDeclarations: true,
-        allowDefinitionFiles: true,
+        allowDestructuring: true,
+        allowedNames: ['self'],
       },
     ],
     '@typescript-eslint/triple-slash-reference': [
@@ -57,7 +58,7 @@ module.exports = {
         path: 'always',
         lib: 'never',
         types: 'never',
-      }
+      },
     ],
     'vue/script-setup-uses-vars': 'error',
     'vue/attributes-order': 'off',
@@ -85,4 +86,4 @@ module.exports = {
     ],
     'vue/multi-word-component-names': 'off',
   },
-}
+};

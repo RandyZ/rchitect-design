@@ -4,13 +4,13 @@ import type { Menu } from '@rchitect-design/types'
 import { resolveByKeyOrThrow } from '@rchitect-rock/ioc'
 import { Beans } from '../beankeys';
 import { RouteParams } from 'vue-router'
-import { Lib as stateLib } from '@rchitect-rock/state'
+import { Lib } from '@rchitect-rock/settings'
 
 const TYPES = Beans
 const LOADED_PAGE_POOL = new Map<string, boolean>()
 const routeTable = () => resolveByKeyOrThrow(TYPES.RouteTable)
 const menuState = () => resolveByKeyOrThrow(TYPES.MenuState)
-const authStore = () => resolveByKeyOrThrow(stateLib.types.AuthStore)
+const authStore = () => resolveByKeyOrThrow(Lib.types.AuthStore)
 /**
  * 创建基础路由守卫
  */

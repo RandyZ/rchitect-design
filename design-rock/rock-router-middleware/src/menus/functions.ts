@@ -2,9 +2,9 @@ import type { RouteLocationNormalized, RouteRecordNormalized } from 'vue-router'
 import { isUrl, filterTree, computedAsync, getTreeItemAllChild } from '@rchitect-rock/tools'
 import { pathToRegexp } from 'path-to-regexp'
 import type { Menu } from '@rchitect-design/types'
-import { resolveByKeyOrThrow } from '@rchitect-rock/ioc';
-import { Lib } from '#/../library';
-import { Auth, Lib as stateLib } from '@rchitect-rock/state';
+import { diKT } from '@rchitect-rock/ioc';
+import { Beans } from '#/../beankeys';
+import { Beans as settingBeans } from '@rchitect-rock/settings';
 import { getAllParentPath } from './menu';
 import { Ref, computed, ref, unref } from 'vue-demi';
 import isEmpty from 'lodash-es/isEmpty';
@@ -14,10 +14,8 @@ import startsWith from 'lodash-es/startsWith';
 // ==========Helper===========
 // ===========================
 
-// 解决这个工具类的依赖问题
-const authStore = (): Auth.AuthStore => resolveByKeyOrThrow(stateLib.types.AuthStore);
-const menuState = () => resolveByKeyOrThrow(Lib.types.MenuState);
-const router = () => resolveByKeyOrThrow(Lib.types.RouteTable).router;
+const useMenuState = () => diKT(Beans.MenuState);
+const useRouter = () => diKT(Beans.RouteTable).router;
 
 export const preorderTraversal = (menus: Menu[], currentRoute: RouteLocationNormalized | null, maxLevel: number = 0) => {
   //  最终结果
@@ -69,7 +67,7 @@ export const fetchMenusAtLevel = (menus: Menu[], currentRoute: RouteLocationNorm
  */
 export const useMenusAtLevel = (level: number | Ref<number> | undefined = undefined, atRoot = true) => {
   const _level = level || ref(0)
-  const _router = router()
+  const _router = useRouter()
   const currentRoute = _router.currentRoute
   const allMenus = computedAsync(async () => await getMenus(), [])
   return {
@@ -85,14 +83,15 @@ export const useMenusAtLevel = (level: number | Ref<number> | undefined = undefi
 }
 
 async function getAsyncMenus(): Promise<Menu[]> {
-  if (menuState().isBackMode()) {
-    return authStore().getBackMenuList.filter(
+  const authState = diKT(settingBeans.AuthState)
+  if (useMenuState().isBackMode()) {
+    return unref(authState.backMenuList).filter(
       (item) => !item.meta?.hideMenu && !item.hideMenu,
-    ) as Menu[]
+    )
   }
-  return authStore().getFrontMenuList.filter(
+  return unref(authState.frontMenuList).filter(
     (item) => !item.hideMenu && !item.meta?.hideMenu,
-  ) as Menu[]
+  )
 }
 
 /**
@@ -100,8 +99,8 @@ async function getAsyncMenus(): Promise<Menu[]> {
  */
 export const getMenus = async (): Promise<Menu[]> => {
   const menus = await getAsyncMenus()
-  if (menuState().isRoleMode()) {
-    const routes = router().getRoutes()
+  if (useMenuState().isRoleMode()) {
+    const routes = useRouter().getRoutes()
     return filterTree(menus, basicFilter(routes))
   }
   return menus
@@ -120,8 +119,8 @@ export async function getShallowMenus(): Promise<Menu[]> {
     ...item,
     children: undefined,
   }))
-  if (menuState().isRoleMode()) {
-    const routes = router().getRoutes()
+  if (useMenuState().isRoleMode()) {
+    const routes = useRouter().getRoutes()
     return shallowMenuList.filter(basicFilter(routes))
   }
   return shallowMenuList
@@ -134,8 +133,8 @@ export async function getChildrenMenus(parentPath: string) {
   if (!parent || !parent.children || !!parent?.meta?.hideChildrenInMenu) {
     return [] as Menu[]
   }
-  if (menuState().isRoleMode()) {
-    const routes = router().getRoutes()
+  if (useMenuState().isRoleMode()) {
+    const routes = useRouter().getRoutes()
     return filterTree(parent.children, basicFilter(routes))
   }
   return parent.children

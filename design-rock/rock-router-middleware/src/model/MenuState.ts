@@ -1,22 +1,14 @@
 import { PermissionModeEnum } from '@rchitect-design/constants';
-import type { DefineAppConfigOptions } from '@rchitect-design/types';
 import { Autowired, Bean } from '@rchitect-rock/ioc';
-import { Lib } from '@rchitect-rock/state';
+import { Auth, Beans } from '@rchitect-rock/settings';
+import { unref } from 'vue-demi';
 
+type AuthState = Auth.State;
 @Bean()
 export class MenuState {
-  appConfig: DefineAppConfigOptions;
-  constructor(@Autowired(Lib.types.DefineAppConfigOptions) appConfig: DefineAppConfigOptions) {
-    this.appConfig = appConfig;
-  }
-
-  /**
-   *
-   *
-   * @returns
-   */
-  theConfig(): DefineAppConfigOptions {
-    return this.appConfig;
+  authState: Auth.State;
+  constructor(@Autowired(Beans.AuthState) authState: AuthState) {
+    this.authState = authState;
   }
 
   /**
@@ -25,7 +17,7 @@ export class MenuState {
    * @returns
    */
   getPermissionMode(): PermissionModeEnum {
-    return this.theConfig().permissionMode;
+    return unref(this.authState.permissionMode);
   }
 
   /**

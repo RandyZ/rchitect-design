@@ -36,6 +36,7 @@ const runObsOrdered = async (app: App, observers: PriorityObserver[]) => {
  * 
  * @template T The type of the property.
  */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export type AppContextPropertyGeneric<T> = Symbol;
 
 /**

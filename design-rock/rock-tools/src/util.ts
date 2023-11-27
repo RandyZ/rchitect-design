@@ -1,4 +1,4 @@
-import { isObject } from 'lodash-es'
+import { isObject, keys } from 'lodash-es'
 
 // @ts-ignore
 function NOOP() { }
@@ -42,8 +42,8 @@ function appendUrlParams(baseUrl: string, obj: any): string {
 }
 
 function deepMerge<T = any>(src: any = {}, target: any = {}): T {
-  let key: string
-  for (key in target) {
+  const srcKeys = keys(target)
+  for (const key in srcKeys) {
     src[key] =
       isObject(src[key]) && src[key] !== null
         ? deepMerge(src[key], target[key])

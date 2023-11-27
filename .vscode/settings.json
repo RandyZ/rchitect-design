@@ -124,7 +124,7 @@
   "commentTranslate.multiLineMerge": true,
   "typescript.suggest.autoImports": false,
   "[typescript]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
+    "editor.defaultFormatter": "Vue.volar"
   },
   "sonarlint.connectedMode.project": {
     "connectionId": "https-sonar-wmqhealth-com-",

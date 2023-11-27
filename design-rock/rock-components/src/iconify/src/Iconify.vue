@@ -3,7 +3,8 @@ import { RockComponent } from '#/RockComponent'
 import { IconifyPropTypes, type IconifyProps } from './props'
 import type { CSSProperties } from 'vue-demi'
 import { unref, computed, useAttrs, ref, nextTick, watch, onMounted } from 'vue-demi'
-import { createNamespace, isString } from '@vben/utils'
+import { createNamespace } from '@rchitect-rock/tools'
+import isString from 'lodash-es/isString'
 import Iconify from '@purge-icons/generated'
 
 defineOptions({

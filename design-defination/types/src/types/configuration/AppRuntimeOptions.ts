@@ -17,8 +17,10 @@ export interface SidebarConfigOptions {
   readonly collapsedWidth: number
 }
 
-
-export interface AppRuntimeConfigOptions {
+/**
+ * @deprecated 分解这个依赖
+ */
+interface AppRuntimeConfigOptions {
   // Navigation bar mode
   navBarMode: MenuTypeEnum
   // Theme
@@ -66,5 +68,7 @@ export interface AppRuntimeConfigOptions {
   footer: FooterConfigOptions
   transition: TransitionConfigOptions
 }
-
+/**
+ * @deprecated
+ */
 export type DefineAppConfigOptions = AppRuntimeConfigOptions

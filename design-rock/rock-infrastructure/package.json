@@ -1,29 +1,28 @@
 {
-  "name": "@rchitect-rock/settings",
+  "name": "@rchitect-rock/infrastructure",
   "version": "0.0.0",
-  "main": "./index.ts",
+  "main": "index.ts",
+  "module": "index.ts",
   "license": "MIT",
-  "description": "Module settings for app runtime data. Base on persisted data or memory data or remote data.",
+  "description": "Infrastructure to support repository, provide ablity to access persisted data or remote data",
   "scripts": {
     "clean": "pnpm rimraf node_modules && pnpm rimraf dist && pnpm rimraf .turbo"
   },
-  "author": {
-    "name": "Randy Zhang",
-    "email": "zhangshi@tenez.cn",
-    "url": "https://git.wmqhealth.com/zhangshi"
-  },
   "dependencies": {
     "@rchitect-design/constants": "workspace:*",
-    "@rchitect-rock/base-package": "workspace:*",
-    "@rchitect-rock/ioc": "workspace:*",
     "@rchitect-rock/locale": "workspace:*",
     "@rchitect-rock/tools": "workspace:*",
-    "mitt": "^3.0.0"
+    "@rchitect-rock/base-package": "workspace:*",
+    "@rchitect-rock/ioc": "workspace:*",
+    "@rchitect-rock/settings": "workspace:*",
+    "mitt": "^3.0.0",
+    "pinia-plugin-persistedstate": "^3.1.0"
   },
   "devDependencies": {
     "@rchitect-design/types": "workspace:*"
   },
   "peerDependencies": {
+    "pinia": "~2.0.34",
     "vue": "~3.3.4"
   }
 }

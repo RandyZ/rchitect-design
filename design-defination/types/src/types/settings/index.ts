@@ -164,12 +164,15 @@ export interface SporadicSetting {
   readonly footerHeight?: number
 }
 
+/**
+ * Alias for project settings
+ */
 export type ProjectConfig = ProjectSetting
 
 /**
  * @description:  Setting interface parameters
  */
-export interface ProjectSetting extends SporadicSetting {
+export interface ProjectSetting {
   // menuType: MenuTypeEnum;
   headerSetting: HeaderSetting
   // menuSetting
@@ -178,4 +181,6 @@ export interface ProjectSetting extends SporadicSetting {
   multiTabsSetting: MultiTabsSetting
   // Animation configuration
   transitionSetting: TransitionSetting
+  // Sporadic settings to classify
+  sporadicSetting: SporadicSetting
 }

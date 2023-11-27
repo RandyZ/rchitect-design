@@ -1,18 +1,9 @@
-import type { CommonModuleLibContext } from '@weiming-rock/base-package';
-import { install } from '@weiming-rock/base-package';
+import type { CommonModuleLibContext } from '@rchitect-rock/base-package';
+import { install } from '@rchitect-rock/base-package';
 import * as pack from './package.json';
-import { AsyncIocModule, di, diK } from '@weiming-rock/ioc';
-import { useSettingStore } from '#/SettingStore';
+import { AsyncIocModule } from '@rchitect-rock/ioc';
 import types from './beankeys';
-import {
-  MultipleTabSetting,
-  MenuSettingData,
-  RootSetting,
-  HeaderSetting,
-  TransitionSetting,
-} from '#/.';
-import { getGlobalConfig } from '@vben/utils';
-import { AppStatusContext } from '#/AppStatus';
+import { DataEventBus } from './src/DataEventBus';
 
 export const Lib: CommonModuleLibContext<typeof types> = {
   install,
@@ -21,26 +12,20 @@ export const Lib: CommonModuleLibContext<typeof types> = {
   types,
   module: new AsyncIocModule(async (bind) => {
     console.debug(`${pack.name} IocModule start load`);
-    bind(types.SettingStore).toConstantValue(useSettingStore());
-    bind(types.MultipleTabSetting).to(MultipleTabSetting);
-    bind(types.RootSetting).to(RootSetting);
-    bind(types.MenuSettingData).to(MenuSettingData);
-    bind(types.HeaderSetting).to(HeaderSetting);
-    bind(types.TransitionSetting).to(TransitionSetting);
-    bind(types.GlobConfig).toConstantValue(getGlobalConfig(import.meta.env));
-    bind(types.AppStatus).to(AppStatusContext);
+    // TODO 考虑下根据条件选择注入
+    bind<DataEventBus>(types.DataEventBus).to(DataEventBus);
   }),
   onSetup: async (app, appContext) => {
-    console.debug(`【${pack.name}】 onSetup start`);
-    const settingStore = await di(types.SettingStore);
-    // TODO: 从后端获取配置或者SettingStore中增加默认配置
-    if (settingStore.projectConfig) {
-      console.debug(`【${pack.name}】 onSetup projectConfig exists, skip load`);
-    } else {
-      await settingStore.setProjectConfig(
-        diK(types.ProjectSetting)
-          || (await import('#/defaultConfig/ProjectSetting')).default
-      );
-    }
+    // console.debug(`【${pack.name}】 onSetup start`);
+    // const settingStore = await di(types.SettingStore);
+    // // TODO: 从后端获取配置或者SettingStore中增加默认配置
+    // if (settingStore.projectConfig) {
+    //   console.debug(`【${pack.name}】 onSetup projectConfig exists, skip load`);
+    // } else {
+    //   await settingStore.setProjectConfig(
+    //     diK(types.ProjectSetting)
+    //       || (await import('#/defaultConfig/ProjectSetting')).default
+    //   );
+    // }
   }
 };

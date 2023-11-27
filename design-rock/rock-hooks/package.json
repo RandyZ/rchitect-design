@@ -1,24 +1,31 @@
 {
   "name": "@rchitect-rock/hooks",
   "version": "0.0.0",
-  "main": "./index.ts",
+  "main": "index.ts",
+  "module": "index.ts",
+  "description": "Hook functions for rocks in rchitect",
   "license": "MIT",
-  "description": "Hooks for Rchitect rock modules. ",
+  "author": {
+    "name": "Randy Zhang",
+    "email": "zhangshi3421@gmail.com"
+  },
   "scripts": {
     "clean": "pnpm rimraf node_modules && pnpm rimraf dist && pnpm rimraf .turbo"
   },
-  "author": {
-    "name": "Randy Zhang",
-    "email": "zhangshi@tenez.cn",
-    "url": "https://git.wmqhealth.com/zhangshi"
-  },
   "dependencies": {
-    "inversify": "^6.0.1"
+    "@rchitect-design/constants": "workspace:*",
+    "@rchitect-rock/base-package": "workspace:*",
+    "@rchitect-rock/ioc": "workspace:*",
+    "@rchitect-rock/settings": "workspace:*",
+    "@vueuse/core": "^10.6.1",
+    "lodash-es": "^4.0.0"
   },
   "devDependencies": {
-    "@rchitect-design/types": "workspace:*"
+    "@rchitect-design/types": "workspace:*",
+    "@types/lodash-es": "^4.17.6"
   },
   "peerDependencies": {
-    "vue": "~3.3.4"
+    "vue": "~3.3.4",
+    "vue-demi": "~0.14.6"
   }
 }

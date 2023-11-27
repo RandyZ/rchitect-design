@@ -13,7 +13,7 @@
     "@rchitect-rock/tools": "workspace:*",
     "@rchitect-rock/base-package": "workspace:*",
     "@rchitect-rock/ioc": "workspace:*",
-    "@rchitect-rock/state": "workspace:*",
+    "@rchitect-rock/settings": "workspace:*",
     "nprogress": "^0.2.0",
     "path-to-regexp": "^6.2.1"
   },

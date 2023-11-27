@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { fetchProps, fetch } from '#/dataprovider'
 import { watch, ref, watchEffect } from 'vue-demi'
-import { omit } from '@vben/utils'
+import { omit } from 'lodash-es'
 import { useDriverComponent, RockComponent } from '#/index'
 import { DriverRefKey } from '#/utils/refSupport'
 const DriverRef = ref()

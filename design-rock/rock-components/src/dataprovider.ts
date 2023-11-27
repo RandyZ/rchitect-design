@@ -1,4 +1,4 @@
-import { isFunction } from 'lodash-es'
+import { get, isFunction } from 'lodash-es'
 import { error } from './index'
 export interface FetchProps {
   api?: Function
@@ -42,7 +42,7 @@ export const fetchProps = {
   },
 }
 // 请求获取数据
-export async function fetch(props, o) {
+export async function fetch(props: FetchProps, o: any) {
   const { api, params, options, afterFetch, resultField } = props
   // 有options 不请求 直接使用options
   if (options) {
@@ -61,7 +61,7 @@ export async function fetch(props, o) {
     res = afterFetch(res)
   }
   if (resultField) {
-    res = res[resultField]
+    res = get(res, resultField as string)
   }
   o.value = res
 }

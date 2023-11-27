@@ -12,3 +12,11 @@
 yarn run gen:app <module-name>
 yarn run gen:rock <module-name>
 ```
+
+## IDE的一些注意事项
+
+### VSCode
+
+#### 1. 开启Takever模式
+
+[Volar 开启takeover](https://cn.vuejs.org/guide/typescript/overview.html#volar-takeover-mode)

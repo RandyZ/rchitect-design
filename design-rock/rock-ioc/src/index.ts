@@ -9,6 +9,7 @@ import {
 } from './ioc';
 import { makeLoggerMiddleware } from './logger';
 
+export * from './annotation';
 export * from './ioc';
 
 let container: IocContainer | undefined;
@@ -129,11 +130,7 @@ export const diKT = <T>(
   key: ServiceIdentifier<T>,
   container?: IocContainer
 ): T => {
-  try {
-    return contextContianer(container).get(key);
-  } catch (error) {
-    throw error;
-  }
+  return contextContianer(container).get(key);
 };
 /**
  * @see diKT
