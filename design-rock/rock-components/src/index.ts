@@ -3,12 +3,12 @@ import { diKT } from '@rchitect-rock/ioc';
 import { forIn, isEmpty, isUndefined } from 'lodash-es'
 import VXETable from 'vxe-table';
 import { Lib } from '#/../index';
-import { RockComponent } from './RockComponent';
+import { RockComponent } from '#/RockComponent';
 import ComponentMap from './ComponentMap';
 import { DataDictionary } from '@rchitect-design/types';
 import { VueHelper } from '@rchitect-rock/tools';
 import scanWmqComponens from '#/ScanWmqComponens';
-export { RockComponent } from './RockComponent'
+export { RockComponent, toRockComponent } from '#/RockComponent'
 
 const MODULE_NAME = 'Wmq';
 /**
@@ -178,7 +178,7 @@ export const setNotice = (func = () => {
  */
 export const useNotice = () => {
   notice = registerNotice();
-  if (!notice) {
+  if (!isUndefined(notice)) {
     console.log('注册失败');
   }
   return notice;
@@ -195,7 +195,7 @@ let msg;
  */
 export const useMsg = () => {
   msg = registerMsg();
-  if (!msg) {
+  if (!isUndefined(msg)) {
     console.log('注册失败');
   }
   return msg;
@@ -230,7 +230,7 @@ export const setDialog = (func = () => {
  */
 export const useDialog = () => {
   dialog = registerDialog();
-  if (!dialog) {
+  if (!isUndefined(dialog)) {
     console.log('注册失败');
   }
   return dialog;

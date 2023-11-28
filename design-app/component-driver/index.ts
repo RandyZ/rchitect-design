@@ -8,4 +8,4 @@ export { createDriverHook } from '#/ComponentDriverComposeable';
 /**
  * @description alias for @rchitect-rock/components/RockComponent
  */
-export { RockComponent } from '@rchitect-rock/components' 
+export { RockComponent, toRockComponent } from '@rchitect-rock/components' 

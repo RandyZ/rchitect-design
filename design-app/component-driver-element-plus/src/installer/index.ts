@@ -1,7 +1,7 @@
 import type { App } from 'vue';
 import {
   withInstall,
-} from '@rchitect-cornerstone/component-driver';
+} from '@rchitect-app/component-driver';
 import { RockComponent } from '@rchitect-rock/components';
 import LocalRegisteredComponents from './components'
 

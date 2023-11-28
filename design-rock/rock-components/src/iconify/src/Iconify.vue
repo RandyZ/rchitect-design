@@ -2,10 +2,10 @@
 import { RockComponent } from '#/RockComponent'
 import { IconifyPropTypes, type IconifyProps } from './props'
 import type { CSSProperties } from 'vue-demi'
-import { unref, computed, useAttrs, ref, nextTick, watch, onMounted } from 'vue-demi'
+import { unref, computed, useAttrs, ref } from 'vue-demi'
 import { createNamespace } from '@rchitect-rock/tools'
 import isString from 'lodash-es/isString'
-import Iconify from '@purge-icons/generated'
+import { Icon as Iconify } from '@iconify/vue'
 
 defineOptions({
   name: RockComponent.Iconify,
@@ -47,42 +47,18 @@ const classes = computed(() => {
   }
   return cls
 })
-
-const update = async () => {
-  const el = unref(iconRefEl)
-  if (!el) return
-
-  await nextTick()
-  const icon = unref(getIconRef)
-  if (!icon) return
-
-  const svg = Iconify.renderSVG(icon, {})
-  if (svg) {
-    el.textContent = ''
-    el.appendChild(svg)
-  } else {
-    const span = document.createElement('span')
-    span.className = 'iconify'
-    span.dataset.icon = icon
-    el.textContent = ''
-    el.appendChild(span)
-  }
-}
-
-watch(() => props.icon, update, { flush: 'post' })
-
-onMounted(update)
 </script>
 
 <template>
-  <span :class="[classes,{'hover:cursor-pointer': hoverPointer}]" :style="styles" ref="iconRefEl"></span>
+  <Iconify :icon="getIconRef" :class="[classes, { 'hover:cursor-pointer': hoverPointer }]" :style="styles" ref="iconRefEl" />
 </template>
 
 <style lang="less" scoped>
 .iconify {
   display: inline-block;
   transition: color 0.2s, transform .2s;
-  &:hover{
+
+  &:hover {
     color: v-bind(hoverColor) !important;
   }
 }
@@ -90,5 +66,4 @@ onMounted(update)
 .iconify__infinite {
   animation: loading-circle 1s infinite linear;
 }
-
 </style>

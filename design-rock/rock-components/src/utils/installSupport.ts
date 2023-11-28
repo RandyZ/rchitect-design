@@ -1,3 +1,4 @@
+import { RockComponent } from "../RockComponent";
 import { App, Component } from "vue";
 
 // https://github.com/vant-ui/vant/issues/8302
@@ -14,7 +15,9 @@ export type WithInstall<T> = T & {
 } & EventShim;
 
 export type CustomComponent = Component & { displayName?: string };
-
+export type ComponentDict = {
+  [key in RockComponent]?: CustomComponent | null;
+};
 export const withInstall = <T extends CustomComponent>(component: T, alias?: string) => {
   (component as Record<string, unknown>).install = (app: App) => {
     const compName = component.name || component.displayName;

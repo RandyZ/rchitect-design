@@ -115,3 +115,7 @@ export enum RockComponent {
 }
 
 export type RockComponentType = keyof typeof RockComponent;
+
+export const toRockComponent = (componentName: string): RockComponent => {
+  return RockComponent[componentName as RockComponentType];
+}

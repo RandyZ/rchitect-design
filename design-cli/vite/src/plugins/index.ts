@@ -2,7 +2,7 @@ import type { PluginOption } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import legacy from '@vitejs/plugin-legacy'
-import purgeIcons from 'vite-plugin-purge-icons'
+// import Icons from 'unplugin-icons/vite'
 import { configHtmlPlugin } from './html'
 import { configMockPlugin } from './mock'
 import { configCompressPlugin } from './compress'
@@ -17,7 +17,7 @@ import monacoEditorPlugin from 'vite-plugin-monaco-editor'
 // import { createUnplugin } from 'unplugin'
 // import autoimport from 'unplugin-auto-import/vite'
 // import Components from 'unplugin-vue-components/vite'
-import Inspect from 'vite-plugin-inspect'
+// import Inspect from 'vite-plugin-inspect'
 // 此处引用的是打包后的插件
 // import WmqAutoImport from '@rchitect-plugins/unplugin-auto-import/vite'
 // 需要调试插件类型的可以用下面的引用
@@ -64,7 +64,7 @@ export async function configVitePlugins(
   VITE_USE_MOCK && vitePlugins.push(configMockPlugin(isBuild))
 
   // vite-plugin-purge-icons
-  vitePlugins.push(purgeIcons())
+  // vitePlugins.push(Icons())
 
   // rollup-plugin-visualizer
   vitePlugins.push(configVisualizerConfig())
@@ -89,7 +89,7 @@ export async function configVitePlugins(
       ),
     )
   }
-  vitePlugins.push(Inspect())
+  // vitePlugins.push(Inspect())
   // vitePlugins.push(WmqAutoImport())
   // vitePlugins.push(Components({
   //   resolvers: [

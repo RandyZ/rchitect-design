@@ -1,5 +1,5 @@
 import type { App } from 'vue';
-import type { Installer } from '@rchitect-cornerstone/component-driver';
+import type { Installer } from '@rchitect-app/component-driver';
 import { RockComponent } from '@rchitect-rock/components';
 import { install } from '#/installer'
 

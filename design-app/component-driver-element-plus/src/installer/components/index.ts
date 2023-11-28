@@ -1,4 +1,4 @@
-import type { ComponentEntry } from "@rchitect-cornerstone/component-driver";
+import type { ComponentEntry } from "@rchitect-app/component-driver";
 import { RockComponent } from "@rchitect-rock/components";
 
 const components:Record<string, GlobModule> = import.meta.glob('./*.ts', { eager: true })

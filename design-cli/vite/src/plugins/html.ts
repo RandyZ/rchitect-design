@@ -2,7 +2,7 @@
  * Plugin to minimize and use ejs template syntax in index.html.
  * @see https://github.com/anncwb/vite-plugin-html
  */
-import type { ViteEnv } from '../utils'
+import type { ViteEnv } from '@rchitect-design/types'
 import { readPackageJSON } from 'pkg-types'
 import { GLOB_CONFIG_FILE_NAME } from '../constants'
 import { createHtmlPlugin } from 'vite-plugin-html'

@@ -18,7 +18,7 @@ const onClick = () => {
     <h1>{{ msg }}</h1>
 
     <div class="card">
-      <button type="button" @click="onClick">count is {{ count }}</button>
+      <WmqButton type="primary" @click="onClick">count is {{ count }}</WmqButton>
       <p>
         Edit
         <code>components/HelloWorld.vue</code> to test HMR

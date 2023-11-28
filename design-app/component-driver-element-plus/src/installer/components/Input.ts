@@ -1,4 +1,4 @@
-import type { ComponentEntry } from '@rchitect-cornerstone/component-driver';
+import type { ComponentEntry } from '@rchitect-app/component-driver';
 import { RockComponent } from '@rchitect-rock/components';
 import { ElInput as Input } from 'element-plus';
 

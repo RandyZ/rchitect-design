@@ -5,7 +5,7 @@
  */
 
 import Unocss from 'unocss/vite'
-import Inspect from 'vite-plugin-inspect'
+// import Inspect from 'vite-plugin-inspect'
 import { type Preset, type UserConfig, presetAttributify, presetIcons, presetMini, presetUno, defineConfig } from 'unocss'
 import { presetScrollbar } from 'unocss-preset-scrollbar'
 /**
@@ -14,10 +14,13 @@ import { presetScrollbar } from 'unocss-preset-scrollbar'
  * @returns 
  */
 export function configUnocssPlugin() {
-  return [Unocss(configUnocss()), Inspect({
-    build: true,
-    outputDir: '.vite-inspect'
-  })]
+  return [
+    Unocss(configUnocss()),
+    // Inspect({
+    //   build: true,
+    //   outputDir: '.vite-inspect'
+    // })
+  ]
 }
 
 /**
@@ -27,9 +30,9 @@ export function configUnocssPlugin() {
  */
 export const configUnocss = (
   presets: Preset[] = [
-    presetUno(), 
-    presetIcons(), 
-    presetMini({ dark: 'class' }), 
+    presetUno(),
+    presetIcons(),
+    presetMini({ dark: 'class' }),
     presetAttributify(),
     presetScrollbar()
   ]

@@ -8,6 +8,7 @@
     "clean": "pnpm rimraf node_modules && pnpm rimraf dist && pnpm rimraf .turbo"
   },
   "dependencies": {
+    "@rchitect-rock/components": "workspace:*",
     "@rchitect-app/component-driver": "workspace:*",
     "epic-spinners": "^2.0.0",
     "naive-ui": "^2.34.3"

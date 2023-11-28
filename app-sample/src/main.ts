@@ -5,8 +5,9 @@ import App from './App.vue'
 import { AppContext } from '@rchitect-rock/base-package';
 import { IocPlugin } from '@rchitect-rock/ioc';
 import { Lib as routeLib } from '@rchitect-rock/router';
-import { Lib as baseComponentLib } from '@rchitect-rock/components';
+import { Beans, Lib as baseComponentLib } from '@rchitect-rock/components';
 import { Lib as accountLib } from '@rchitect-app/account';
+import { NavieuiComponentDriver as ComponentDriver } from '@rchitect-app/component-driver-naive';
 
 (async () => {
   // 创建AppContext
@@ -15,6 +16,9 @@ import { Lib as accountLib } from '@rchitect-app/account';
     autoBindInjectable: true,
     skipBaseClassChecks: true,
   });
+  const birdge: ComponentDriver = ComponentDriver.builder().enableAll();
+  const dictionary = birdge.componentDictoray();
+  appContext.registerParam(Beans.ComponentDictionary, dictionary);
   // 创建&载入Vue App
   const app = await appContext.load(
     createApp(App)

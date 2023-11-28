@@ -52,6 +52,7 @@
     "@rchitect-cli/tsconfig": "workspace:*",
     "@rchitect-cli/vite": "workspace:*",
     "@rchitect-rock/tools": "workspace:*",
+    "@types/fs-extra": "^9.0.13",
     "@types/lodash-es": "~4.17.10",
     "@types/node": "~20.9.0",
     "@vitejs/plugin-vue": "^4.0.0",

@@ -1,4 +1,4 @@
-import { RockComponent } from '#/RockComponent';
+import { RockComponent } from './src/RockComponent';
 
 export * from './src/RockComponent';
 export {
@@ -10,13 +10,13 @@ export {
   useDialog,
 } from './src';
 export type { WmqFormSchema } from './src/form';
-export type { WmqTableProps, WmqColumns, WmqCellClick } from '#/table';
-export { default as ComponentMap } from '#/ComponentMap';
-export { useForm, transferFormilySchemas } from '#/form';
+export type { WmqTableProps, WmqColumns, WmqCellClick } from './src/table';
+export { default as ComponentMap } from './src/ComponentMap';
+export { useForm, transferFormilySchemas } from './src/form';
 export { useTable } from './src/table';
-export { withInstall, type WithInstall, type CustomComponent } from './src/utils/installSupport';
+export { withInstall, type WithInstall, type CustomComponent, type ComponentDict } from './src/utils/installSupport';
 export { useComponent } from './src';
-export { driverRef } from '#/utils/refSupport';
+export { driverRef } from './src/utils/refSupport';
 /**
  * 包装函数为自动导出函数
  * @param func 函数体
@@ -25,7 +25,7 @@ export { driverRef } from '#/utils/refSupport';
  * @returns {AutoExportFunction}
  */
 export const wrapFunctionToAutoExport = (
-  func: Function, name: string | RockComponent, 
+  func: Function, name: string | RockComponent,
   isPresetComponent: boolean = true
 ): AutoExportFunction => {
   return new Proxy(func, {
@@ -46,5 +46,5 @@ export const wrapFunctionToAutoExport = (
 }
 
 export { Lib } from './library';
-export { default as Beans, AppContextParamDef as ContextParamDef } from './beankeys';
+export { default as Beans } from './beankeys';
 export * from './types.d';

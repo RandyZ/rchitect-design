@@ -1,6 +1,12 @@
 import { App } from 'vue-demi';
-import { RockComponent } from "@rchitect-cornerstone/component-driver"
+import {
+  RockComponent,
+  ComponentEntry,
+  withInstall,
+  toRockComponent,
+} from "@rchitect-app/component-driver"
 import { isUndefined } from 'lodash-es'
+import { ComponentDict } from '@rchitect-rock/components';
 import {
   NTag,
   NCard,
@@ -97,12 +103,9 @@ import {
   NProgress,
   NPageHeader
 } from 'naive-ui';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { AtomSpinner } from 'epic-spinners'
-import {
-  ComponentEntry,
-  withInstall,
-} from '@rchitect-cornerstone/component-driver';
-const allComponents = {
+const allComponents: ComponentDict = {
   [RockComponent.MessageProvider]: NMessageProvider,
   [RockComponent.NotificationProvider]: NNotificationProvider,
   [RockComponent.DialogProvider]: NDialogProvider,
@@ -205,8 +208,9 @@ const allComponents = {
 export const install: (
   componentName: string,
   app?: App
-) => ComponentEntry | undefined = (componentName: string, app?: App) => {
-  const component = allComponents[componentName];
+) => ComponentEntry | undefined = (componentName: string | RockComponent, app?: App) => {
+  const comIndex = toRockComponent(componentName);
+  const component = allComponents[comIndex];
   if (!isUndefined(component)) {
     if (component !== null) {
       app?.use(withInstall(component));

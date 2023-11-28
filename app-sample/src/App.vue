@@ -41,6 +41,7 @@ const vThrottleOn: Directive = {
   }
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const asyncCallback = async (...args: any[]) => {
   await new Promise((resolve) => {
     setTimeout(() => {
@@ -53,6 +54,7 @@ const asyncCallback = async (...args: any[]) => {
 </script>
 
 <template>
+  <WmqIconify icon="ant-design:github-filled" />
   <!-- <HelloWorld v-throttle-on:custom="asyncCallback" msg="Vite + Vue" /> -->
   <div v-throttle-on:custom>
     <HelloWorld @custom="asyncCallback" msg="Vite + Vue directive" />

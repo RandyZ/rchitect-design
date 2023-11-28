@@ -51,7 +51,7 @@ export class AppContext {
     preObservers: [],
     loadedObservers: []
   };
-  [key: string]: any;
+  [key: symbol]: any;
   constructor(iocOptions: IocContainerOptions) {
     this.iocOptions = iocOptions;
     this.basicRoutes = [];
@@ -61,18 +61,26 @@ export class AppContext {
     })];
   }
 
-  getParam<T, K extends AppContextPropertyGeneric<T>>(key: K): T {
-    const keyStr = key.toString()
-    const data = this[keyStr]
+  getParamWith<T, K = AppContextPropertyGeneric<T>>(key: K, def?: T): T | undefined {
+    const data = this[key as symbol]
     if (data) {
       return data as T
     } else {
-      throw new Error(`AppContext中缺少参数<${keyStr}>`)
+      return def;
     }
   }
 
-  registerParam<T, K extends AppContextPropertyGeneric<T>>(key: K, data: T) {
-    this[key.toString()] = data
+  getParam<T, K = AppContextPropertyGeneric<T>>(key: K): T {
+    const data = this[key as symbol]
+    if (data) {
+      return data as T
+    } else {
+      throw new Error(`AppContext中缺少参数<${key}>`)
+    }
+  }
+
+  registerParam<T, K = AppContextPropertyGeneric<T>>(key: K, data: T) {
+    this[key as symbol] = data
   }
 
   /**
@@ -121,7 +129,7 @@ export class AppContext {
       await runObsOrdered(app, this.loadedObservers.preObservers)
     }
     await contextContianer().loadAsync(...this.iocModules)
-}
+  }
   /**
    * 加载VueApp
    * @param app 

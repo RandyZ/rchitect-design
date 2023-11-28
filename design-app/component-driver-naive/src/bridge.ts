@@ -3,9 +3,9 @@ import {
   CornerstoneComponentDriver,
   ComponentInstaller,
   toBuilder,
-} from '@rchitect-cornerstone/component-driver';
+} from '@rchitect-app/component-driver';
 
-import { App } from 'vue';
+import { App } from 'vue-demi';
 import { install } from './installer';
 
 export class NavieuiComponentDriver extends CornerstoneComponentDriver {

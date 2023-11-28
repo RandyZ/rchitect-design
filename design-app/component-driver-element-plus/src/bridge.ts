@@ -3,7 +3,8 @@ import {
   CornerstoneComponentDriver,
   ComponentInstaller,
   toBuilder,
-} from '@rchitect-cornerstone/component-driver';
+  RockComponent,
+} from '@rchitect-app/component-driver';
 
 import { App } from 'vue';
 import { install } from './installer';
@@ -15,7 +16,7 @@ export class EPComponentDriver extends CornerstoneComponentDriver {
   /**
    * @override
    */
-  installNew(component, app?: App) {
+  installNew(component: string | RockComponent, app?: App) {
     return install(component, app);
   }
 
