@@ -44,12 +44,11 @@ rchitect Design中每个模块都是一个可以直接被加载进Vue3项目中�
   "version": "0.0.0",
   "main": "index.ts",
   "module": "index.ts",
-  "description": "rchitect Design Module Template",
   "license": "MIT",
+  "description": "rchitect Design Module Template",
   "author": {
     "name": "Randy Zhang",
-    "email": "zhangshi@tenez.cn",
-    "url": "https://git.wmqhealth.com/zhangshi"
+    "email": "zhangshi3421@gmail.com"
   },
   "scripts": {
     "clean": "pnpm rimraf node_modules && pnpm rimraf dist && pnpm rimraf .turbo"

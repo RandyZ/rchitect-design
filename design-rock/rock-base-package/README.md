@@ -42,8 +42,7 @@ rchitect Design中每个模块都是一个可以直接被加载进Vue3项目中�
   "license": "MIT",
   "author": {
     "name": "Randy Zhang",
-    "email": "zhangshi@tenez.cn",
-    "url": "https://git.wmqhealth.com/zhangshi"
+    "email": "zhangshi3421@gmail.com"
   },
   "scripts": {
     "clean": "pnpm rimraf node_modules && pnpm rimraf dist && pnpm rimraf .turbo"

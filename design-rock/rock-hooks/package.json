@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "main": "index.ts",
   "module": "index.ts",
-  "description": "Hook functions for rocks in rchitect",
   "license": "MIT",
+  "description": "Hook functions for rocks in rchitect",
   "author": {
     "name": "Randy Zhang",
     "email": "zhangshi3421@gmail.com"
