@@ -4,6 +4,11 @@
   "main": "index.ts",
   "module": "index.ts",
   "license": "MIT",
+  "description": "A router for rchitect design to manage loaded module routes and navigation",
+  "author": {
+    "name": "Randy Zhang",
+    "email": "zhangshi3421@gmail.com"
+  },
   "scripts": {
     "clean": "pnpm rimraf node_modules && pnpm rimraf dist && pnpm rimraf .turbo"
   },
