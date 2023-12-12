@@ -70,11 +70,11 @@
   },
   "stylelint.enable": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
   "[vue]": {
     "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": false
+      "source.fixAll.eslint": "never"
     }
   },
   "i18n-ally.localesPaths": ["design-rock/rock-locale/src/lang"],

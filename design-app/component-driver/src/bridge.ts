@@ -59,6 +59,7 @@ export abstract class CornerstoneComponentDriver {
    * @param app 
    * @returns 
    */
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   installNew(component: RockComponent, app?: App): ComponentEntry | undefined {
     return undefined;
   }
@@ -73,10 +74,9 @@ export class ComponentInstaller {
     builder: ComponentDriverBuilder,
     app?: App
   ) {
-    for (const name in RockComponent) {
-      const componentEnum = RockComponent[name];
-      this[`enable${componentEnum}`] = () => {
-        const entry = installer(componentEnum, app);
+    for (const rockComponent in RockComponent) {
+      this[`enable${rockComponent}`] = () => {
+        const entry = installer((RockComponent as any)[rockComponent], app);
         if (entry) {
           builder.componentBridge().registerComponent(entry)
         }
@@ -106,7 +106,7 @@ export const toBuilder = (
   driverBuilder.componentBridge = () => driver;
   driverBuilder.enableAll = () => {
     for (const name in RockComponent) {
-      installer[`enable${RockComponent[name]}`]();
+      installer[`enable${(RockComponent as any)[name]}`]();
     }
     return driverBuilder.finish();
   };

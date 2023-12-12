@@ -3,7 +3,7 @@ import {
   InjectionKey, unref, ComputedRef, PropType
 } from "vue-demi";
 import { diKT } from "@rchitect-rock/ioc";
-import { RockComponent, Beans, ComponentMap } from "@rchitect-rock/components";
+import { RockComponent, Beans, ComponentMap, ComponentDict } from "@rchitect-rock/components";
 import { CornerstoneComponentDriver } from "#/bridge";
 import { createDriverHook } from "./ComponentDriverComposeable";
 // TODO 用vue-types
@@ -40,7 +40,7 @@ export type DriverHook = {
    * 获取当前驱动的所有组件
    * @returns 
    */
-  useComponents: () => ComputedRef<{ key: RockComponent | string, component: Component } | undefined>;
+  useComponents: () => ComputedRef<ComponentDict | undefined>;
   /**
    * 获取当前驱动的组件
    * @param key 

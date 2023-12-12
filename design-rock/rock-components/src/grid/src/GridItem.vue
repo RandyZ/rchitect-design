@@ -1,3 +1,9 @@
+<script lang="ts">
+// FIXME NaiveUI 需要一个标记，这个需要契约组件中全局策略支持
+export default {
+  __GRID_ITEM__: true
+}
+</script>
 <script lang="ts" setup>
 import { useDriverComponent, RockComponent } from '#/index'
 import { DriverRefKey } from '#/utils/refSupport'
