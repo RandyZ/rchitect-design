@@ -10,19 +10,20 @@
   },
   "dependencies": {
     "@rchitect-design/constants": "workspace:*",
-    "@rchitect-rock/locale": "workspace:*",
-    "@rchitect-rock/tools": "workspace:*",
     "@rchitect-rock/base-package": "workspace:*",
+    "@rchitect-rock/hooks": "workspace:*",
     "@rchitect-rock/ioc": "workspace:*",
+    "@rchitect-rock/locale": "workspace:*",
     "@rchitect-rock/settings": "workspace:*",
-    "mitt": "^3.0.0",
-    "pinia-plugin-persistedstate": "^3.2.0"
+    "@rchitect-rock/state": "workspace:^",
+    "@rchitect-rock/tools": "workspace:*"
   },
   "devDependencies": {
     "@rchitect-design/types": "workspace:*"
   },
   "peerDependencies": {
     "pinia": "~2.0.34",
+    "pinia-plugin-persistedstate": "^3.2.0",
     "vue": "~3.3.4"
   }
 }

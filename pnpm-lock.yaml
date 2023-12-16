@@ -669,6 +669,9 @@ importers:
       '@rchitect-rock/ioc':
         specifier: workspace:*
         version: link:../rock-ioc
+      '@rchitect-rock/router':
+        specifier: workspace:^
+        version: link:../rock-router-middleware
       '@rchitect-rock/settings':
         specifier: workspace:*
         version: link:../rock-settings
@@ -703,6 +706,9 @@ importers:
       '@rchitect-rock/base-package':
         specifier: workspace:*
         version: link:../rock-base-package
+      '@rchitect-rock/hooks':
+        specifier: workspace:*
+        version: link:../rock-hooks
       '@rchitect-rock/ioc':
         specifier: workspace:*
         version: link:../rock-ioc
@@ -712,12 +718,12 @@ importers:
       '@rchitect-rock/settings':
         specifier: workspace:*
         version: link:../rock-settings
+      '@rchitect-rock/state':
+        specifier: workspace:^
+        version: link:../rock-state
       '@rchitect-rock/tools':
         specifier: workspace:*
         version: link:../rock-tools
-      mitt:
-        specifier: ^3.0.0
-        version: registry.npmmirror.com/mitt@3.0.1
       pinia:
         specifier: ~2.0.34
         version: registry.npmmirror.com/pinia@2.0.36(typescript@5.3.3)(vue@3.3.7)

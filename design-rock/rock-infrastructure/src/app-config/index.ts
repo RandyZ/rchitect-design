@@ -5,9 +5,9 @@ import isUndefined from 'lodash-es/isUndefined';
 import type { AppConfig } from "@rchitect-rock/settings";
 import type { ServiceIdentifier } from "@rchitect-rock/ioc";
 
-export type AppConfigStore = ReturnType<typeof useSettingStore>;
+export type AppConfigStore = ReturnType<typeof useConfigStore>;
 
-export const useSettingStore = defineStore('AppConfigStore', () => {
+export const useConfigStore = defineStore('AppConfigStore', () => {
   const state: AppConfig.State = {
     /**
      * Header setting

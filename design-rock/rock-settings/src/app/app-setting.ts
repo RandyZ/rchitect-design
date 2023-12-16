@@ -2,6 +2,9 @@ import { ThemeEnum } from '@rchitect-design/constants';
 import type { ComputedRef, Ref } from 'vue-demi';
 import type { BeforeMiniState, Repository } from '@rchitect-design/types';
 
+/**
+ * 应用设置
+ */
 export declare namespace AppSetting {
   export interface State extends Repository.State {
     // 主题模式

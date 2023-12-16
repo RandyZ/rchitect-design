@@ -1,7 +1,7 @@
 import type { ServiceIdentifier } from '@rchitect-rock/ioc';
-import type { Auth } from './auth'
+import { AppState } from './state';
 
-export * from './auth'
+export * from './state'
 
 /**
  * 应用级别配置的beans
@@ -10,6 +10,7 @@ export * from './auth'
  * @returns 
  */
 export default (packName: string) => ({
-  AuthState: Symbol.for(`${packName}/Auth.State`) as ServiceIdentifier<Auth.State>,
-  AuthAction: Symbol.for(`${packName}/Auth.Action`) as ServiceIdentifier<Auth.Action>,
+  AppState: Symbol.for(`${packName}/Auth.State`) as ServiceIdentifier<AppState.State>,
+  AppStateActions: Symbol.for(`${packName}/AppState.Action`) as ServiceIdentifier<AppState.Action>,
+  AppStateGetters: Symbol.for(`${packName}/AppState.Getter`) as ServiceIdentifier<AppState.Getter>,
 })

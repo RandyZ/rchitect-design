@@ -8,6 +8,9 @@ import type {
 } from '@rchitect-design/types';
 import type { Ref, ComputedRef } from 'vue-demi';
 
+/**
+ * 应用设置
+ */
 export declare namespace AppConfig {
   export interface State {
     /**
