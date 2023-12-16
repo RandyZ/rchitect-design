@@ -41,6 +41,7 @@
     "app-sample"
   ],
   "dependencies": {
+    "@rchitect-dev/rock-components": "workspace:^",
     "@vueuse/core": "~10.6.0",
     "lodash-es": "~4.17.21",
     "vue": "~3.3.7",
@@ -69,6 +70,7 @@
     "resize-observer-polyfill": "^1.5.1",
     "rimraf": "^5.0.5",
     "turbo": "latest",
+    "typescript": "^5.3.3",
     "unbuild": "^2.0.0",
     "unplugin-vue-macros": "^2.6.2",
     "vite": "~4.5.0",

@@ -27,7 +27,7 @@ export declare namespace Tree {
   export type NodeData = TreeNodeData
 }
 
-declare global {
+export declare global {
   /**
    * A type that extends the Vue Component type and adds an optional boolean property `isAutoExport`.
    * `isAutoExport` is used to indicate whether the component should be automatically exported.
@@ -106,7 +106,7 @@ import type { RockCubeTable } from "./src/cubeTable";
 import type { RockProgress } from "./src/progress";
 import type { RockPageHeader } from "./src/pageHeader";
 
-declare module '@vue/runtime-core' {
+export declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     WmqAvatar: typeof RockAvatar;
     WmqBadge: typeof RockBadge;

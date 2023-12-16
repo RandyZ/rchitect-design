@@ -3,4 +3,5 @@ packages:
   - "design-rock/*"
   - "design-defination/*"
   - "design-cli/*"
+  - "dev-support/*"
   - "app-sample"

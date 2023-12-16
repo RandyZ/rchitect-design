@@ -16,7 +16,7 @@ export declare namespace Auth {
     backMenuList: Menu[];
     frontMenuList: Menu[];
   }
-
+  
   export interface Action extends Repository.Actions {
     setPermCodeList(codeList: string[]): void;
     setBackMenuList(list: Menu[]): void;

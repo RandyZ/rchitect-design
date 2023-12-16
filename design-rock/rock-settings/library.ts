@@ -1,9 +1,10 @@
 import type { CommonModuleLibContext } from '@rchitect-rock/base-package';
 import { install } from '@rchitect-rock/base-package';
 import * as pack from './package.json';
-import { AsyncIocModule } from '@rchitect-rock/ioc';
+import { AsyncIocModule, di, diK } from '@rchitect-rock/ioc';
 import types from './beankeys';
 import { DataEventBus } from './src/DataEventBus';
+import AppParams from './appparams';
 
 export const Lib: CommonModuleLibContext<typeof types> = {
   install,
@@ -15,17 +16,17 @@ export const Lib: CommonModuleLibContext<typeof types> = {
     // TODO 考虑下根据条件选择注入
     bind<DataEventBus>(types.DataEventBus).to(DataEventBus);
   }),
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onSetup: async (app, appContext) => {
-    // console.debug(`【${pack.name}】 onSetup start`);
-    // const settingStore = await di(types.SettingStore);
-    // // TODO: 从后端获取配置或者SettingStore中增加默认配置
-    // if (settingStore.projectConfig) {
-    //   console.debug(`【${pack.name}】 onSetup projectConfig exists, skip load`);
-    // } else {
-    //   await settingStore.setProjectConfig(
-    //     diK(types.ProjectSetting)
-    //       || (await import('#/defaultConfig/ProjectSetting')).default
-    //   );
-    // }
+    console.debug(`【${pack.name}】 onSetup start`);
+    const settingAction = await di(types.AppConfigAction);
+    const settingGetter = await di(types.AppConfigGetter);
+    // TODO: 从后端获取配置或者SettingStore中增加默认配置
+    if (settingGetter.isInited.value) {
+      console.debug(`【${pack.name}】 onSetup projectConfig exists, skip load`);
+    } else {
+      const projectSetting = appContext.getParamWith(AppParams.ProjectSettingParam, diK(types.DefaultProjectSetting)) || {};
+      await settingAction.setProjectConfig(projectSetting);
+    }
   }
 };

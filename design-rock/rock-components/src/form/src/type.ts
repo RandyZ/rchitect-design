@@ -1,5 +1,4 @@
 import type { CSSProperties, VNode } from 'vue-demi'
-import type { RockComponent } from '#/RockComponent'
 import { formMethod } from './hooks/useForm'
 export interface WmqFormProps {
   title?: string

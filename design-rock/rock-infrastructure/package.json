@@ -16,7 +16,7 @@
     "@rchitect-rock/ioc": "workspace:*",
     "@rchitect-rock/settings": "workspace:*",
     "mitt": "^3.0.0",
-    "pinia-plugin-persistedstate": "^3.1.0"
+    "pinia-plugin-persistedstate": "^3.2.0"
   },
   "devDependencies": {
     "@rchitect-design/types": "workspace:*"

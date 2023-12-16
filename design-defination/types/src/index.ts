@@ -1,5 +1,5 @@
 // export * from './store';
-// export * from './service';
+export * from './types/network';
 export * from './types/router';
 export * from './global';
 export * from './types/settings';

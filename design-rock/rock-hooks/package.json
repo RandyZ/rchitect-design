@@ -17,6 +17,7 @@
     "@rchitect-rock/base-package": "workspace:*",
     "@rchitect-rock/ioc": "workspace:*",
     "@rchitect-rock/settings": "workspace:*",
+    "@rchitect-rock/state": "workspace:*",
     "@vueuse/core": "^10.6.1",
     "lodash-es": "^4.0.0"
   },

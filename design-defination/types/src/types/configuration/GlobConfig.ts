@@ -1,6 +1,7 @@
 import { AuthorizationModeEnum } from '@rchitect-design/constants'
 /**
  * @description: 代码层配置的类型
+ * @deprecated 
  */
 export interface GlobConfig {
   // Site title

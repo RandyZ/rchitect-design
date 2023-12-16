@@ -160,27 +160,27 @@ export interface SporadicSetting {
   showLogo: boolean
   // Whether to show the global footer
   showFooter: boolean
-  hiddenFooter: boolean
-  readonly footerHeight?: number
 }
 
 /**
  * Alias for project settings
+ * @deprecated 直接使用五个Setting接口
  */
 export type ProjectConfig = ProjectSetting
 
 /**
  * @description:  Setting interface parameters
+ * @deprecated 直接使用五个Setting接口
  */
 export interface ProjectSetting {
   // menuType: MenuTypeEnum;
-  headerSetting: HeaderSetting
+  headerSetting?: HeaderSetting
   // menuSetting
-  menuSetting: MenuSetting
+  menuSetting?: MenuSetting
   // Multi-tab settings
-  multiTabsSetting: MultiTabsSetting
+  multiTabsSetting?: MultiTabsSetting
   // Animation configuration
   transitionSetting: TransitionSetting
   // Sporadic settings to classify
-  sporadicSetting: SporadicSetting
+  sporadicSetting?: SporadicSetting
 }

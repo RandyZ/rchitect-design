@@ -84,4 +84,6 @@ export const useSettingStore = defineStore('AppSettingStore', () => {
     ...getters,
     ...actions
   };
+},{
+  persist: true
 })

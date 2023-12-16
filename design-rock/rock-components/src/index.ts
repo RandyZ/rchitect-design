@@ -34,10 +34,10 @@ export const useComponentMap = (forceFromIoc: boolean = false): ComponentMap => 
 /**
  * 自动导出的Component
  */
-const autoExportComponent: DataDictionary<WmqComponent<any> > = {};
-const allWmqComponent: DataDictionary<WmqComponent<any> > = {};
+const autoExportComponent: DataDictionary<WmqComponent<any>> = {};
+const allWmqComponent: DataDictionary<WmqComponent<any>> = {};
 
-type ReturnType<T extends boolean> = T extends true ? WmqComponent<any>  : WmqComponent<any>  | undefined;
+type ReturnType<T extends boolean> = T extends true ? WmqComponent<any> : WmqComponent<any> | undefined;
 
 /**
  * 获取驱动组件
@@ -46,7 +46,7 @@ type ReturnType<T extends boolean> = T extends true ? WmqComponent<any>  : WmqCo
  * @param throwWhenUndefined
  * @returns
  */
-export const useDriverComponent = <T extends WmqComponent<any> >(
+export const useDriverComponent = <T extends WmqComponent<any>>(
   component: RockComponent | string
 ): T | undefined => {
   let realComponent = useComponentMap().get(component);
@@ -176,7 +176,7 @@ export const setNotice = (func = () => {
 /**
  * @deprecated 设计提示的设计
  */
-export const useNotice = () => {
+export const useNotice: () => any = () => {
   notice = registerNotice();
   if (!isUndefined(notice)) {
     console.log('注册失败');
@@ -193,7 +193,7 @@ let msg;
 /**
  * @deprecated 设计提示的设计
  */
-export const useMsg = () => {
+export const useMsg: () => any = () => {
   msg = registerMsg();
   if (!isUndefined(msg)) {
     console.log('注册失败');
@@ -228,7 +228,7 @@ export const setDialog = (func = () => {
 /**
  * @deprecated 设计提示的设计
  */
-export const useDialog = () => {
+export const useDialog: () => any = () => {
   dialog = registerDialog();
   if (!isUndefined(dialog)) {
     console.log('注册失败');

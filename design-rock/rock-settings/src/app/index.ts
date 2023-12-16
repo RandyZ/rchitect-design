@@ -11,7 +11,7 @@ export * from './app-config'
  * @param packName 
  * @returns 
  */
-export default (packName :string) => ({
+export default (packName: string) => ({
   AppSettingState: Symbol.for(`${packName}/AppSetting.State`) as ServiceIdentifier<AppSetting.State>,
   AppSettingGetter: Symbol.for(`${packName}/AppSetting.Getter`) as ServiceIdentifier<AppSetting.Getter>,
   AppSettingAction: Symbol.for(`${packName}/AppSetting.Action`) as ServiceIdentifier<AppSetting.Action>,

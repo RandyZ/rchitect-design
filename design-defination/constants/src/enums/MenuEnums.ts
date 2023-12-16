@@ -1,4 +1,6 @@
 /**
+ * 布局类型
+ * 
  * @description: menu type
  */
 export enum MenuTypeEnum {

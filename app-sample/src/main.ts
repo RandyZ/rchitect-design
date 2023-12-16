@@ -16,6 +16,7 @@ import { NavieuiComponentDriver as ComponentDriver } from '@rchitect-app/compone
     autoBindInjectable: true,
     skipBaseClassChecks: true,
   });
+  // TODO NaiveUI组件驱动的载入放到组件驱动模块中独立处理
   const birdge: ComponentDriver = ComponentDriver.builder().enableAll();
   const dictionary = birdge.componentDictoray();
   appContext.registerParam(Beans.ComponentDictionary, dictionary);

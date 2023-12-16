@@ -1,0 +1,18 @@
+{
+  "name": "@rchitect-app/components",
+  "version": "0.0.0",
+  "description": "Components Module for application layer, which is the top layer of the architecture.",
+  "main": "index.ts",
+  "scripts": {
+    "clean": "pnpm rimraf node_modules && pnpm rimraf dist && pnpm rimraf .turbo"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Randy Zhang",
+    "email": "zhangshi3421@gmail.com"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@rchitect-design/types": "workspace:^"
+  }
+}
