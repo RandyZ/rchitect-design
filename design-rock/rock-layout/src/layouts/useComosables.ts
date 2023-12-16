@@ -1,9 +1,9 @@
 import { computed, ref, unref } from 'vue-demi'
 import { useElementSize } from '@rchitect-rock/tools'
-import { useAppConfigState } from '@rchitect-rock/hooks'
+import { useAppConfig } from '@rchitect-rock/hooks'
 
 export const useComosables = () => {
-  const appConfigState = useAppConfigState();
+  const appConfigState = useAppConfig();
   const headerRef = ref<HTMLElement>()
   const tabRef = ref<HTMLElement>()
   const footerRef = ref<HTMLElement>()

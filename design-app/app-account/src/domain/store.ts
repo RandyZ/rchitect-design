@@ -5,9 +5,8 @@ import { LayoutRoutes, User } from '@rchitect-rock/layouts';
 import { Lib as routeLib } from '@rchitect-rock/router';
 import { diKT } from '@rchitect-rock/ioc';
 import { resetProjectSetting } from '@rchitect-rock/hooks';
-import { UserInfo, RoleInfo, AuthenticationToken, ErrorMessageMode } from '@rchitect-design/types';
+import { UserInfo, RoleInfo, AuthenticationToken } from '@rchitect-design/types';
 import { isArray } from 'lodash-es';
-import { CodeLoginParamters, LoginParams } from './dto/auth-dtos';
 import { Beans } from '#/../beankeys';
 import { fetchTokenFunction } from '.';
 import { ref, computed, unref } from 'vue-demi';
@@ -64,13 +63,7 @@ export const useAccountStore = defineStore('AppAccountStore', () => {
       state.roles.value = [];
       state.sessionTimeout.value = false;
     },
-    async login(
-      params: (CodeLoginParamters | LoginParams) & {
-        goHome?: boolean;
-        mode?: ErrorMessageMode;
-        uuid?: string
-      }
-    ): Promise<UserInfo | null> {
+    async login(params): Promise<UserInfo | null> {
       try {
         const { goHome = true, mode, ...loginParams } = params;
         const token: AuthenticationToken = await fetchTokenFunction(loginParams, mode);

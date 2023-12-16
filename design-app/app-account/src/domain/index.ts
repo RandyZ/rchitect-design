@@ -1,10 +1,12 @@
-import { ErrorMessageMode } from '@rchitect-design/types';
-import { User } from '@rchitect-rock/layouts';
+import type { ErrorMessageMode } from '@rchitect-design/types';
+import type { User } from '@rchitect-rock/layouts';
 import { AuthorizationModeEnum } from '@rchitect-design/constants';
-import { doFetchToken, doLoginApi } from './repository';
-import { useGlobConfig } from "@rchitect-rock/hooks";
+import { useAppSetting } from "@rchitect-rock/hooks";
+import { diKT } from '@rchitect-rock/ioc';
+import { Beans } from '#/../beankeys';
+import { unref } from 'vue-demi'
 
-export { useUserStore } from './store';
+export { useAccountStore } from './store';
 
 /**
  * 获取Token的函数
@@ -16,7 +18,8 @@ export function fetchTokenFunction(
   params: User.CodeLoginParamters | User.LoginParams,
   mode: ErrorMessageMode = 'modal'
 ) {
-  const { authMode } = useGlobConfig();
+  const authMode = unref(useAppSetting().authMode)
+  const { doFetchToken, doLoginApi } = diKT(Beans.Repository);
   if (authMode === AuthorizationModeEnum.SELF_LOGIN) {
     const _params = params as User.LoginParams;
     return doLoginApi(_params, mode);

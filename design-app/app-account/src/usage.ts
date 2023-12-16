@@ -5,7 +5,7 @@ import { useI18n } from "@rchitect-rock/locale";
 import { useGlobConfig } from "@rchitect-rock/hooks";
 
 export const useAuthMode = () => {
-  return useGlobConfig().authMode;
+  return unref(useGlobConfig().authMode);
 }
 const currentState = ref();
 export function useLoginState() {
