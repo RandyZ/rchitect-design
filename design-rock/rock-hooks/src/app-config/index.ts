@@ -10,6 +10,7 @@ export const useAppConfigGetter = () => diKT(settingBeans.AppConfigGetter)
 export const useAppConfigAction = () => diKT(settingBeans.AppConfigAction)
 
 export const useGlobConfig = () => diKT(settingBeans.GlobConfig)
+export const useMenuSetting = () => diKT(settingBeans.MenuSettingManager)
 
 /**
  * 重置工程所有设置

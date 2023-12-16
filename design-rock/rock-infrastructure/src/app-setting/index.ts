@@ -5,9 +5,9 @@ import { Ref, computed, ref, shallowReactive, unref } from 'vue-demi';
 import { BeforeMiniState } from '@rchitect-design/types';
 import { deepMerge } from '@rchitect-rock/tools';
 
-export type AppStateStore = ReturnType<typeof useStateStore>;
+export type AppSettingStore = ReturnType<typeof useSettingStore>;
 
-export const useStateStore = defineStore('AppStateStore', () => {
+export const useSettingStore = defineStore('AppSettingStore', () => {
   const state: AppSetting.State = {
     // 主题模式
     themeMode: ref(ThemeEnum.LIGHT),

@@ -1,6 +1,6 @@
-import { ServiceIdentifier } from '@rchitect-rock/ioc';
-import { AppSetting } from './app-setting'
-import { AppConfig } from './app-config'
+import type{ ServiceIdentifier } from '@rchitect-rock/ioc';
+import type{ AppSetting } from './app-setting'
+import type{ AppConfig } from './app-config'
 
 export * from './app-setting'
 export * from './app-config'

@@ -12,15 +12,15 @@ export const useSettingStore = defineStore('AppConfigStore', () => {
     /**
      * Header setting
      */
-    headerSetting: ref(),
+    headerSetting: ref({} as any),
     // menuSetting
-    menuSetting: ref(),
+    menuSetting: ref({} as any),
     // Multi-tab settings
-    multiTabsSetting: ref(),
+    multiTabsSetting: ref({} as any),
     // Animation configuration
-    transitionSetting: ref(),
+    transitionSetting: ref({} as any),
     // Sporadic settings to classify
-    sporadicSetting: ref(),
+    sporadicSetting: ref({} as any),
   }
 
   const getters: AppConfig.Getter = {
@@ -66,10 +66,6 @@ export const useSettingStore = defineStore('AppConfigStore', () => {
     ...actions
   }
 })
-
-
-
-
 
 /**
  * 应用级别配置的beans

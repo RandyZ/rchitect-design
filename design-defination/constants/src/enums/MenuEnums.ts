@@ -42,9 +42,21 @@ export type Mode = 'vertical' | 'vertical-right' | 'horizontal' | 'inline'
 
 // menu mode
 export enum MenuModeEnum {
+  /**
+   * 垂直菜单
+   */
   VERTICAL = 'vertical',
+  /**
+   * 水平菜单
+   */
   HORIZONTAL = 'horizontal',
+  /**
+   * 右起布局垂直菜单
+   */
   VERTICAL_RIGHT = 'vertical-right',
+  /**
+   * 内嵌菜单
+   */
   INLINE = 'inline',
 }
 

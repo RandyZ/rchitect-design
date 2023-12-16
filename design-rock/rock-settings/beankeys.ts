@@ -2,6 +2,7 @@ import type { ServiceIdentifier } from '@rchitect-rock/ioc';
 import * as pack from './package.json';
 import {
   appBeanGenerator,
+  menuBeanGenerator,
   type DataEventBus,
 } from './src/index';
 import type { GlobConfig, HeaderSetting, MenuSetting, MultiTabsSetting, ProjectSetting, SporadicSetting, TransitionSetting } from '@rchitect-design/types';
@@ -9,6 +10,7 @@ import type { GlobConfig, HeaderSetting, MenuSetting, MultiTabsSetting, ProjectS
 
 export default {
   ...appBeanGenerator(pack.name),
+  ...menuBeanGenerator(pack.name),
   DataEventBus: Symbol.for(`${pack.name}/DataEventBus`) as ServiceIdentifier<DataEventBus>,
   /**
    * @deprecated

@@ -3,7 +3,8 @@ import type { BasicModuleLibContext } from '@rchitect-rock/base-package';
 import { install } from '@rchitect-rock/base-package';
 import { AsyncIocModule } from '@rchitect-rock/ioc';
 import { setupPinia } from "#/.";
-import { useSettingStore } from '#/app-state';
+import { useSettingStore } from '#/app-setting';
+import { useStateStore } from '#/app-state';
 import { Beans as settingsBeans } from '@rchitect-rock/settings'
 import { getGlobalConfig, getAppConfig } from '@rchitect-rock/tools';
 import mergeSetting from '#/app-config/enviroment'
@@ -14,6 +15,7 @@ export const Lib: BasicModuleLibContext = {
   version: pack.version,
   module: new AsyncIocModule(async (bind) => {
     console.debug(`【${pack.name}】 IocModule start load`);
+    // TODO 考虑下根据条件选择注入
     const settingStore = useSettingStore()
     bind(settingsBeans.AppSettingAction).toConstantValue(settingStore)
     bind(settingsBeans.AppSettingGetter).toConstantValue(settingStore)

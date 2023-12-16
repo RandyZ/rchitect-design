@@ -4,6 +4,7 @@ import * as pack from './package.json';
 import { AsyncIocModule, di, diK } from '@rchitect-rock/ioc';
 import types from './beankeys';
 import { DataEventBus } from './src/DataEventBus';
+import { MenuSettingManager } from './src/menu';
 import AppParams from './appparams';
 
 export const Lib: CommonModuleLibContext<typeof types> = {
@@ -13,8 +14,8 @@ export const Lib: CommonModuleLibContext<typeof types> = {
   types,
   module: new AsyncIocModule(async (bind) => {
     console.debug(`${pack.name} IocModule start load`);
-    // TODO 考虑下根据条件选择注入
-    bind<DataEventBus>(types.DataEventBus).to(DataEventBus);
+    bind(types.DataEventBus).to(DataEventBus);
+    bind(types.MenuSettingManager).to(MenuSettingManager);
   }),
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onSetup: async (app, appContext) => {

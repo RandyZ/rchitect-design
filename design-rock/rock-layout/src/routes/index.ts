@@ -1,6 +1,6 @@
-import { RouteParams } from 'vue-router';
+import type { RouteParams } from '@rchitect-rock/router';
 import * as ModuleRoute from './modules/route';
-import { Menu, MenuModule } from '@weiming-rock/types';
+import type { Menu, MenuModule } from '@rchitect-design/types';
 export interface MenuModel {
   getAllParentPath<T = Recordable<any>>(treeData: T[], path: string): string[];
   transformMenuModule(menuModule: MenuModule): Menu;

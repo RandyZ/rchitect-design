@@ -759,13 +759,13 @@ importers:
       '@rchitect-rock/locale':
         specifier: workspace:^
         version: link:../rock-locale
-      '@rchitect-rock/router':
-        specifier: workspace:^
-        version: link:../rock-router-middleware
     devDependencies:
       '@rchitect-design/types':
         specifier: workspace:^
         version: link:../../design-defination/types
+      '@rchitect-rock/router':
+        specifier: workspace:^
+        version: link:../rock-router-middleware
 
   design-rock/rock-locale:
     dependencies:

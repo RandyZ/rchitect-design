@@ -13,13 +13,13 @@
   },
   "license": "ISC",
   "devDependencies": {
-    "@rchitect-design/types": "workspace:^"
+    "@rchitect-design/types": "workspace:^",
+    "@rchitect-rock/router": "workspace:^"
   },
   "dependencies": {
     "@rchitect-design/constants": "workspace:^",
     "@rchitect-rock/components": "workspace:^",
     "@rchitect-rock/hooks": "workspace:^",
-    "@rchitect-rock/locale": "workspace:^",
-    "@rchitect-rock/router": "workspace:^"
+    "@rchitect-rock/locale": "workspace:^"
   }
 }

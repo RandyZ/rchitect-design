@@ -8,8 +8,9 @@ import type {
 } from '@rchitect-design/types';
 import type { Ref, ComputedRef } from 'vue-demi';
 
-export declare namespace AppConfig {
+export declare namespace AppState {
   export interface State {
+    fullContent: Ref<boolean>;
     /**
      * Header setting
      */
@@ -25,8 +26,7 @@ export declare namespace AppConfig {
   }
 
   export type Getter = {
-    getProjectConfig: ComputedRef<ProjectSetting | null>;
-    isInited: ComputedRef<boolean>
+    getFullContent: ComputedRef<boolean>;
   };
 
   export interface Action {
