@@ -1,14 +1,17 @@
-import { ref, unref, Ref, nextTick, onMounted } from 'vue'
+import { ref, unref, Ref, nextTick, onMounted } from 'vue-demi'
+import { cloneDeep } from 'lodash-es'
 import {
-  cloneDeep,
   filterTree,
   forEachTree,
   useDebounceFn,
   onKeyStroke,
 } from '@rchitect-rock/tools'
 import { useI18n } from '@rchitect-rock/locale'
-import { useGo, useScrollTo } from '@rchitect-rock/hooks'
-import { resolveContextOptions } from '#/../bridge'
+// import { useGo, useScrollTo } from '@rchitect-rock/hooks'
+import { useRouteOperator } from "#/hooks";
+import { MenuFunctions } from "@rchitect-rock/router";
+import { useScrollTo } from "@rchitect-rock/tools";
+// import { resolveContextOptions } from '#/../bridge'
 
 export interface SearchResult {
   name: string
@@ -59,11 +62,11 @@ export function useMenuSearch(
   let menuList: Array<any> = []
 
   const { t } = useI18n()
-  const go = useGo()
+  const go = useRouteOperator().go
   const handleSearch = useDebounceFn(search, 200)
 
   onMounted(async () => {
-    const list = await resolveContextOptions().getMenus()
+    const list = await MenuFunctions.getMenus()
 
     menuList = cloneDeep(list)
     forEachTree(menuList, (item) => {

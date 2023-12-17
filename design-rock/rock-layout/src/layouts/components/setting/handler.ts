@@ -10,14 +10,15 @@ import { ProjectConfig } from '@rchitect-design/types';
 // import { useRootSetting } from '/@/hooks/setting/useRootSetting';
 import { updateColorWeak } from '#/logics/updateColorWeak';
 import { updateGrayMode } from '#/logics/updateGrayMode';
-import { useAppStateStore, useRootSetting } from '@rchitect-rock/hooks';
-import { nextTick } from 'vue-demi';
+// import { useAppStateStore, useRootSetting } from '@rchitect-rock/hooks';
+import { nextTick, unref } from 'vue-demi';
+import { useAppSettingAction, useAppSettingState, useSporadicSetting } from "#/hooks";
 
-export function baseHandler(event: HandlerSettingEnum, value: any) {
-  const rootSetting = useRootSetting();
+export function baseHandler(event:HandlerSettingEnum, value:any) {
+  const appSettingAction = useAppSettingAction();
   const config = handler(event, value);
   nextTick(() => {
-    rootSetting.setProjectConfig(config);  
+    appSettingAction.setProjectConfig(config);
   })
   // if (event === HandlerSettingEnum.CHANGE_THEME) {
   //   updateHeaderBgColor();
@@ -26,11 +27,12 @@ export function baseHandler(event: HandlerSettingEnum, value: any) {
 }
 
 export function handler(
-  event: HandlerSettingEnum,
-  value: any
-): DeepPartial<ProjectConfig> {
-  const appStore = useAppStateStore();
-  const { getThemeColor, getDarkMode } = useRootSetting();
+  event:HandlerSettingEnum,
+  value:any
+):DeepPartial<ProjectConfig> {
+  const appSettingState = useAppSettingState();
+  const sporadicSetting = useSporadicSetting();
+  // const { getThemeColor, getDarkMode } = useRootSetting();
   switch (event) {
     case HandlerSettingEnum.CHANGE_LAYOUT:
       const { mode, type, split } = value;
@@ -47,14 +49,14 @@ export function handler(
       };
 
     case HandlerSettingEnum.CHANGE_THEME_COLOR:
-      if (getThemeColor.value === value) {
+      if (unref(sporadicSetting).themeColor === value) {
         return {};
       }
       // changeTheme(value);
-      return { themeColor: value };
+      return {sporadicSetting: { themeColor: value }};
 
     case HandlerSettingEnum.CHANGE_THEME:
-      if (getDarkMode.value === value) {
+      if (unref(appSettingState.themeMode) === value) {
         return {};
       }
       // updateDarkTheme(value);
@@ -120,33 +122,33 @@ export function handler(
     // ============root==================
 
     case HandlerSettingEnum.LOCK_TIME:
-      return { lockTime: value };
+      return {sporadicSetting: { lockTime: value }};
 
     case HandlerSettingEnum.FULL_CONTENT:
-      return { fullContent: value };
+      return {sporadicSetting: { fullContent: value }};
 
     case HandlerSettingEnum.CONTENT_MODE:
-      return { contentMode: value };
+      return {sporadicSetting: { contentMode: value }};
 
     case HandlerSettingEnum.SHOW_BREADCRUMB:
-      return { showBreadCrumb: value };
+      return {sporadicSetting: { showBreadCrumb: value }};
 
     case HandlerSettingEnum.SHOW_BREADCRUMB_ICON:
-      return { showBreadCrumbIcon: value };
+      return {sporadicSetting: { showBreadCrumbIcon: value }};
 
     case HandlerSettingEnum.GRAY_MODE:
       updateGrayMode(value);
-      return { grayMode: value };
+      return {sporadicSetting: { grayMode: value }};
 
     case HandlerSettingEnum.SHOW_FOOTER:
-      return { showFooter: value };
+      return {containerSetting: { showFooter: value }};
 
     case HandlerSettingEnum.COLOR_WEAK:
       updateColorWeak(value);
-      return { colorWeak: value };
+      return {sporadicSetting: { colorWeak: value }};
 
     case HandlerSettingEnum.SHOW_LOGO:
-      return { showLogo: value };
+      return {containerSetting: { showLogo: value }};
 
     // ============tabs==================
     case HandlerSettingEnum.TABS_SHOW_QUICK:

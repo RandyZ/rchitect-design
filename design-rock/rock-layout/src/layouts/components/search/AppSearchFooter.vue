@@ -2,7 +2,7 @@
 import { onKeyStroke } from '@rchitect-rock/tools'
 import { useI18n } from '@rchitect-rock/locale'
 import AppSearchKeyItem from './AppSearchKeyItem.vue'
-import { resolveContextOptions } from "#/../bridge";
+// import { resolveContextOptions } from "#/../bridge";
 import { SearchBoxEvents } from '#/layouts/components/search/SearchContext'
 import { diKT } from '@rchitect-rock/ioc';
 import { Lib as stateLib} from '@rchitect-rock/state'

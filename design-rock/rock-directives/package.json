@@ -1,0 +1,19 @@
+{
+  "name": "@rchitect-rock/directives",
+  "version": "0.0.0",
+  "main": "index.ts",
+  "module": "index.ts",
+  "types": "index.d.js",
+  "unpkg": "index.js",
+  "jsdelivr": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "clean": "pnpm rimraf node_modules && pnpm rimraf dist && pnpm rimraf .turbo"
+  },
+  "dependencies": {
+    "@rchitect-rock/tools": "workspace:*"
+  },
+  "peerDependencies": {
+    "vue": "~3.3.4"
+  }
+}

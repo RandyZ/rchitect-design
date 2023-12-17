@@ -15,7 +15,7 @@ import {
   contentModeOptions
 } from '../constant'
 import { useI18n } from '@rchitect-rock/locale'
-import { useHeaderSetting, useRootSetting, useMenuSetting } from '@rchitect-rock/hooks'
+// import { useHeaderSetting, useRootSetting, useMenuSetting } from '@rchitect-rock/hooks'
 
 const { t } = useI18n();
 

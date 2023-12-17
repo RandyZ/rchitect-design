@@ -1,52 +1,56 @@
-import { ref, unref, Ref, nextTick } from 'vue';
+import { ref, unref, Ref, nextTick } from 'vue-demi';
+import { cloneDeep } from 'lodash-es';
 import {
-  cloneDeep,
   filterTree,
   forEachTree,
   useDebounceFn,
   PromisifyFn,
 } from '@rchitect-rock/tools';
 import { useI18n } from '@rchitect-rock/locale';
-import { Beans, RouteOperator } from '@rchitect-rock/router';
+import { Beans as routerBeans, RouteOperator, MenuFunctions } from '@rchitect-rock/router';
 import { I18nGlobalTranslation } from '@rchitect-rock/locale/src/use-i18n';
 import { Autowired, Bean } from '@rchitect-rock/ioc';
-import { useScrollTo } from '@rchitect-rock/hooks'
-import { DataEventBus, Lib as stateLib } from '@rchitect-rock/state';
+import { useScrollTo } from '@rchitect-rock/tools'
+import { Beans as settingBeans } from '@rchitect-rock/settings';
+import type { DataEventBus } from '@rchitect-rock/settings';
 import { Menu } from '@rchitect-design/types';
-import { resolveContextOptions } from '#/../bridge';
+
+// import { resolveContextOptions } from '#/../bridge';
 
 export interface SearchResult {
-  title: string;
-  name: string;
-  path: string;
-  icon?: string;
+  title:string;
+  name:string;
+  path:string;
+  icon?:string;
 }
 
 export const SearchBoxEvents = {
   BoxClose: Symbol.for('Search:Close')
 }
+
 export interface SearchWindow {
-  searchItemDoms: Ref<HTMLElement[]>
-  scrollWrap: Ref<ElRef>
+  searchItemDoms:Ref<HTMLElement[]>
+  scrollWrap:Ref<ElRef>
 }
 
 @Bean()
 export class SearchContext {
-  static REG_CODE: string[] = [ '$', '(', ')', '*', '+', '.', '[', ']', '?', '\\', '^', '{', '}', '|', ];
-  keyword: Ref<string>;
-  searchResult: Ref<SearchResult[]>;
-  handleSearch: PromisifyFn<(e: string) => void>;
-  activeIndex: Ref<number>;
-  private i18n: {
-    t: I18nGlobalTranslation;
+  static REG_CODE:string[] = [ '$', '(', ')', '*', '+', '.', '[', ']', '?', '\\', '^', '{', '}', '|', ];
+  keyword:Ref<string>;
+  searchResult:Ref<SearchResult[]>;
+  handleSearch:PromisifyFn<(e:string) => void>;
+  activeIndex:Ref<number>;
+  private i18n:{
+    t:I18nGlobalTranslation;
   };
-  private isMenuLoading: boolean;
-  private menuList: Array<Menu> = [];
-  private routeOperator: RouteOperator;
-  private dataEventBus: DataEventBus;
+  private isMenuLoading:boolean;
+  private menuList:Array<Menu> = [];
+  private routeOperator:RouteOperator;
+  private dataEventBus:DataEventBus;
+
   constructor(
-    @Autowired(Beans.RouteOperator) routeOperator: RouteOperator,
-    @Autowired(stateLib.types.DataEventBus) dataEventBus: DataEventBus,
+    @Autowired(routerBeans.RouteOperator) routeOperator:RouteOperator,
+    @Autowired(settingBeans.DataEventBus) dataEventBus:DataEventBus,
   ) {
     this.keyword = ref('');
     this.searchResult = ref<SearchResult[]>([]);
@@ -57,13 +61,14 @@ export class SearchContext {
     this.isMenuLoading = true;
     this.i18n = useI18n();
   }
+
   /**
    * 加载菜单，每次搜索都需要重新加载当前用户的可搜菜单，方法是异步方法，等待执行完成之后再执行搜索
    */
   async mountMenu() {
     const { t } = useI18n();
     this.isMenuLoading = true;
-    const list = await resolveContextOptions().getMenus();
+    const list = await MenuFunctions.getMenus();
     this.menuList = cloneDeep(list);
     forEachTree(this.menuList, (item) => {
       item.name = t(item.name);
@@ -78,7 +83,7 @@ export class SearchContext {
    * @param e
    * @returns
    */
-  private search(key?: string) {
+  private search(key?:string) {
     const keywordRef = this.keyword;
     if (this.isMenuLoading) {
       keywordRef.value = '';
@@ -105,8 +110,8 @@ export class SearchContext {
    * @param parent
    * @returns
    */
-  handlerSearchResult(filterMenu: Menu[], reg: RegExp, parent?: Menu) {
-    const ret: SearchResult[] = [];
+  handlerSearchResult(filterMenu:Menu[], reg:RegExp, parent?:Menu) {
+    const ret:SearchResult[] = [];
     filterMenu.forEach((item) => {
       // {
       //   path: 'workbench',
@@ -123,12 +128,13 @@ export class SearchContext {
       ) {
         let retName, retTitle;
         if (parent?.name) {
-          retName = `${parent.name} > ${name}`
-          retTitle = `${parent.title} > ${title}`
+          retName = `${ parent.name } > ${ name }`
+          retTitle = `${ parent.title } > ${ title }`
         } else {
           retName = name;
+          retTitle = '';
         }
-        ret.push({ name: retName, title:retTitle, path, icon });
+        ret.push({ name: retName, title: retTitle, path, icon });
       }
       if (
         // 路由元数据中没配置了隐藏子菜单，且有子菜单。开始过滤子菜单，递归调用后加入搜索结果
@@ -150,20 +156,20 @@ export class SearchContext {
 
   /**
    * Enter key stroke
-   * @param e 
+   * @param e
    */
-  handleMouseenter(e: any) {
+  handleMouseenter(e:any) {
     const index = e.target.dataset.index
     this.activeIndex.value = Number(index)
   }
 
   /**
    * Arrow key up
-   * @param domRefs 
-   * @param scrollWrap 
-   * @returns 
+   * @param domRefs
+   * @param scrollWrap
+   * @returns
    */
-  handleUp(searchWindow?: SearchWindow) {
+  handleUp(searchWindow?:SearchWindow) {
     if (!this.searchResult.value.length) return
     this.activeIndex.value--
     if (this.activeIndex.value < 0) {
@@ -176,11 +182,11 @@ export class SearchContext {
 
   /**
    * Arrow key down
-   * @param domRefs 
-   * @param scrollWrap 
-   * @returns 
+   * @param domRefs
+   * @param scrollWrap
+   * @returns
    */
-  handleDown(searchWindow?: SearchWindow) {
+  handleDown(searchWindow?:SearchWindow) {
     if (!this.searchResult.value.length) return
     this.activeIndex.value++
     if (this.activeIndex.value > this.searchResult.value.length - 1) {
@@ -193,11 +199,11 @@ export class SearchContext {
 
   /**
    * When the keyboard up and down keys move to an invisible place the scroll bar needs to scroll automatically
-   * @param domRefs 
-   * @param scrollWrap 
-   * @returns 
+   * @param domRefs
+   * @param scrollWrap
+   * @returns
    */
-   private handleScroll(searchWindow: SearchWindow) {
+  private handleScroll(searchWindow:SearchWindow) {
     const refList = unref(searchWindow.searchItemDoms)
     if (
       !refList ||
@@ -229,7 +235,7 @@ export class SearchContext {
 
   /**
    * enter keyboard event
-   * @returns 
+   * @returns
    */
   async handleEnter() {
     if (!this.searchResult.value.length) {
@@ -251,9 +257,9 @@ export class SearchContext {
    * @param key
    * @returns
    */
-  private createSearchReg(key: string) {
-    const keys = [...key].map((item) => this.transform(item));
-    const str = ['', ...keys, ''].join('.*');
+  private createSearchReg(key:string) {
+    const keys = [ ...key ].map((item) => this.transform(item));
+    const str = [ '', ...keys, '' ].join('.*');
     return new RegExp(str);
   }
 
@@ -262,7 +268,7 @@ export class SearchContext {
    * @param c
    * @returns
    */
-  private transform(c: string) {
-    return SearchContext.REG_CODE.includes(c) ? `\\${c}` : c;
+  private transform(c:string) {
+    return SearchContext.REG_CODE.includes(c) ? `\\${ c }` : c;
   }
 }

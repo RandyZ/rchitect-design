@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import TYPES from '#/../beankeys'
-import { resolveContextOptions } from '#/../bridge'
+// import { resolveContextOptions } from '#/../bridge'
 import { diKT } from '@rchitect-rock/ioc';
-const { usePromise } = resolveContextOptions();
+// const { usePromise } = resolveContextOptions();
 const multipleTabOperator = diKT(TYPES.MultipleTabOperator)
 
 function reload() {

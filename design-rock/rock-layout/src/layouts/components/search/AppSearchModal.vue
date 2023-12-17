@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { useI18n } from '@rchitect-rock/locale'
-import { useAppStatus, useDesign, useRefs } from '@rchitect-rock/hooks'
+// import { useAppStatus, useDesign, useRefs } from '@rchitect-rock/hooks'
 import { diKT } from '@rchitect-rock/ioc'
-import { clickOutside as vClickOutside } from '@vben/directives'
+import { clickOutside as vClickOutside } from '@rchitect-rock/directives'
 import { computed, unref, ref, onMounted } from 'vue'
 import AppSearchFooter from './AppSearchFooter.vue'
 import Keys from '#/../beankeys'

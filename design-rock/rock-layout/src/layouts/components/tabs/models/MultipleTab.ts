@@ -5,19 +5,19 @@ import type { Repository } from "@rchitect-design/types";
 import type { ComputedRef, Ref } from "vue-demi";
 
 export namespace MultipleTab {
-  export interface MultipleTabState extends Repository.State {
+  export interface State extends Repository.State {
     cacheTabList: Ref<Set<string>>
     tabList: RemovableRef<RouteLocationNormalized[]>
     lastDragEndIndex: Ref<number>
   }
 
-  export interface MultipleTabGetter extends Repository.Getters{
+  export interface Getters extends Repository.Getters{
     getTabList: ComputedRef<RouteLocationNormalized[]>;
     getCachedTabList:ComputedRef<string[]>;
     getLastDragEndIndex: ComputedRef<number>;
   };
 
-  export interface MultipleTabAction extends Repository.Actions {
+  export interface Actions extends Repository.Actions {
     /**
      * Update the cache according to the currently opened tabs
      */

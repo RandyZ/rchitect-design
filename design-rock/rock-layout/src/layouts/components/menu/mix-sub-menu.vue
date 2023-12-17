@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref, h, unref, nextTick, computed } from 'vue-demi'
 import { createNamespace, mapTree } from '@rchitect-rock/tools'
-import { resolveContextOptions } from '#/../bridge'
+// import { resolveContextOptions } from '#/../bridge'
 import {
   RouteLocationNormalizedLoaded,
   RouterLink,

@@ -1,16 +1,17 @@
-<script lang="ts">
-export default { name: 'LayoutFooter' }
-</script>
 <script lang="ts" setup>
 import type { CSSProperties } from 'vue'
 import { computed } from 'vue'
 import { createNamespace } from '@rchitect-rock/tools'
-import { useI18n } from '@rchitect-rock/locale'
-import { useDefininationConfig } from '@rchitect-rock/hooks'
+// import { useI18n } from '@rchitect-rock/locale'
+// import { useDefininationConfig } from '@rchitect-rock/hooks'
 
-const { t } = useI18n()
+defineOptions({
+  name: 'LayoutFooter',
+})
 
-const { copyright, links } = useDefininationConfig()
+// const { t } = useI18n()
+
+// const { copyright, links } = useDefininationConfig()
 
 const props = defineProps({
   height: {

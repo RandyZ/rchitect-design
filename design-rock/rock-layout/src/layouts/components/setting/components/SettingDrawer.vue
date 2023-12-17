@@ -9,15 +9,12 @@ import Transitions from './Transitions.vue'
 import FooterButtons from './FooterButtons.vue'
 import { baseHandler } from '../handler'
 import {
-  APP_PRESET_COLOR_LIST,
-  HEADER_PRESET_BG_COLOR_LIST,
-  HEADER_PRESET_COLOR_LIST,
-  SIDE_BAR_BG_COLOR_LIST,
-  HandlerSettingEnum,
+  ColorPreset,
+  HandlerSettingEnum
 } from '@rchitect-design/constants'
 import { navigationBarTypeList } from '../constant'
 import { useI18n } from '@rchitect-rock/locale'
-import { useMenuSetting, useRootSetting, themeSettingHooks } from '@rchitect-rock/hooks'
+// import { useMenuSetting, useRootSetting, themeSettingHooks } from '@rchitect-rock/hooks'
 
 const { t } = useI18n()
 const { getShowDarkModeToggle } = useRootSetting()
@@ -66,12 +63,12 @@ const onVisible = (show: boolean) => {
         t('layout.setting.sysTheme')
       }}</WmqDivider>
       <ThemeColorPicker :def="themeHooks.getMainColor"
-                        :color-list="APP_PRESET_COLOR_LIST"
+                        :color-list="ColorPreset.APP_PRESET_COLOR_LIST"
                         @handle="onThemeColorHandle($event, 'setMainColor')"/>
       <WmqDivider title-placement="left">{{
         t('layout.setting.headerTheme')
       }}</WmqDivider>
-      <ThemeColorsPicker :colors-list="[HEADER_PRESET_BG_COLOR_LIST, HEADER_PRESET_COLOR_LIST]"
+      <ThemeColorsPicker :colors-list="[ColorPreset.HEADER_PRESET_BG_COLOR_LIST, ColorPreset.HEADER_PRESET_COLOR_LIST]"
                           :color-names="['bgColor', 'color']"
                           :defs="[themeHooks.getHeaderBgColor, themeHooks.getHeaderColor]"
                           @handle="(value: string, index) => {
@@ -81,7 +78,7 @@ const onVisible = (show: boolean) => {
         t('layout.setting.sidebarTheme')
       }}</WmqDivider>
       <ThemeColorPicker :def="themeHooks.getMenuColor"
-                        :color-list="SIDE_BAR_BG_COLOR_LIST"
+                        :color-list="ColorPreset.SIDE_BAR_BG_COLOR_LIST"
                         @handle="onThemeColorHandle($event, 'setMenuColor')"/>
       <WmqDivider title-placement="left">{{ t('layout.setting.interfaceFunction') }}
       </WmqDivider>

@@ -1,19 +1,19 @@
 <script lang="ts" setup>
-import { resolveContextOptions } from "#/../bridge";
+// import { resolveContextOptions } from "#/../bridge";
 import { useI18n } from '@rchitect-rock/locale'
-import { writeTextToClipboard, useAppStateStore } from '@rchitect-rock/hooks'
+// import { writeTextToClipboard, useAppStateStore } from '@rchitect-rock/hooks'
 import { unref } from "vue";
-import { useUserStore } from "#/hooks";
+import { useAppSettingAction, useAppStateActions, useUserAction } from "#/hooks";
 import { diKT } from "@rchitect-rock/ioc";
 import Beans from "#/../beankeys";
 
 const { t } = useI18n();
-const {
-  useConfigStore,
-} = resolveContextOptions();
-const appStore = useAppStateStore()
-const tabStore = diKT(Beans.MultipleTabStore)
-const userStore = useUserStore()
+// const {
+//   useConfigStore,
+// } = resolveContextOptions();
+const appSettingAction = useAppSettingAction()
+const multipleTabActions = diKT(Beans.MultipleTabActions)
+const userAction = useUserAction()
 const configStore = useConfigStore()
 
 const handleCopy = () => {
@@ -43,10 +43,10 @@ const handleReset = () => {
 
 const handleClearAndRedo = () => {
   localStorage.clear()
-  appStore.resetAllState()
+  appSettingAction.resetAllState()
   // permissionStore.resetState()
-  tabStore.resetState()
-  userStore.resetState()
+  multipleTabActions.resetState()
+  userAction.resetState()
   location.reload()
 }
 </script>

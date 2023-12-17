@@ -1,6 +1,6 @@
 import * as pack from './package.json';
 import { ServiceIdentifier } from '@rchitect-rock/ioc';
-import { RouteOperator, RoutesTable } from '#/.';
+import { RouteOperator, RoutesTable } from './src/index';
 import { MenuState } from '#/model/MenuState';
 
 export const Beans = {

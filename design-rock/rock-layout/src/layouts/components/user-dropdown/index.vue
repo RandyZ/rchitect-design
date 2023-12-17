@@ -1,14 +1,13 @@
 <script lang="ts" setup>
-import {h, ref, unref} from 'vue'
-import { resolveContextOptions } from '#/../bridge'
+import {h, ref, unref} from 'vue-demi'
 import { useI18n } from '@rchitect-rock/locale'
 import { WmqIconify } from '@rchitect-rock/components'
 import LockModal from '../lock/LockModal.vue'
 import UserInfo from './user-info.vue'
+import { useUserAction } from "#/hooks";
 
 const { t } = useI18n()
-const { stores } = resolveContextOptions();
-const userStore = stores.useUserStore()
+const userAction = useUserAction()
 const renderIcon = (props, children?: any) => {
   return () => {
     return h(WmqIconify, props, children)
@@ -60,7 +59,7 @@ const handleSelect = (key) => {
 }
 
 const handleLoginOut = () => {
-  userStore.logout(true)
+  userAction.logout(true)
 }
 
 const openDoc = () => {

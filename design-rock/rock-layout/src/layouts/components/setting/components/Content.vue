@@ -2,7 +2,7 @@
 import SwitchItem from './SwitchItem.vue'
 import { HandlerSettingEnum } from '@rchitect-design/constants'
 import { useI18n } from '@rchitect-rock/locale'
-import { useHeaderSetting, useMenuSetting, useMultipleTabSetting, useRootSetting } from '@rchitect-rock/hooks';
+// import { useHeaderSetting, useMenuSetting, useMultipleTabSetting, useRootSetting } from '@rchitect-rock/hooks';
 
 defineOptions({
   name: 'SettingUiContent',

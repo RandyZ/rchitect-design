@@ -1,9 +1,12 @@
 <script lang="ts" setup>
 import { ref, watchEffect, unref, computed } from 'vue-demi'
-import { context } from '#/../bridge'
+// import { context } from '#/../bridge'
+import { useLocale, localeList } from '@rchitect-rock/locale'
 import Dropdown from '#/dropdown/src/Dropdown.vue'
 import Iconify from '#/iconify/src/Iconify.vue'
 import { RockComponent } from '#/RockComponent'
+import type { LocaleType } from "@rchitect-design/types";
+
 defineOptions({
   name: RockComponent.LocalePicker,
   customOptions: {
@@ -24,7 +27,6 @@ const props = defineProps({
 
 const selectedKeys = ref<string[]>([])
 
-const { useLocale, localeList } = context
 
 const { changeLocale, getLocale } = useLocale()
 
@@ -44,16 +46,16 @@ const getLocaleList = computed(() => {
 })
 
 watchEffect(() => {
-  selectedKeys.value = [unref(getLocale)]
+  selectedKeys.value = [ unref(getLocale) ]
 })
 
-async function toggleLocale(lang: string) {
+async function toggleLocale(lang:LocaleType) {
   await changeLocale(lang)
-  selectedKeys.value = [lang]
+  selectedKeys.value = [ lang ]
   props.reload && location.reload()
 }
 
-function handleMenuEvent(menu: string) {
+function handleMenuEvent(menu:string) {
   if (unref(getLocale) === menu) {
     return
   }
@@ -63,12 +65,12 @@ function handleMenuEvent(menu: string) {
 
 <template>
   <Dropdown
-    trigger="click"
-    :options="getLocaleList"
-    @select="handleMenuEvent"
+      trigger="click"
+      :options="getLocaleList"
+      @select="handleMenuEvent"
   >
     <span class="flex items-center cursor-pointer">
-      <Iconify icon="ion:language" hoverPointer />
+      <Iconify icon="ion:language" hoverPointer/>
       <span v-if="showText" class="ml-1">{{ getLocaleText }}</span>
     </span>
   </Dropdown>

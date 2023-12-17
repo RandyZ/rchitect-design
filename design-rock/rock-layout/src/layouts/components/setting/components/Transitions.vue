@@ -2,16 +2,16 @@
 import SwitchItem from './SwitchItem.vue'
 import SelectItem from './SelectItem.vue'
 import {HandlerSettingEnum} from '@rchitect-design/constants'
-import { resolveContextOptions } from '../../../../../bridge'
+// import { resolveContextOptions } from '../../../../../bridge'
 import {
   routerTransitionOptions
 } from '../constant'
 import {useI18n} from '@rchitect-rock/locale';
-import { animateSettingHooks } from "@rchitect-rock/hooks";
+// import { animateSettingHooks } from "@rchitect-rock/hooks";
 
 const { t } = useI18n();
 
-const hooks = animateSettingHooks();
+// const hooks = animateSettingHooks();
 const onChange = (value, event) => {
   hooks[event] && hooks[event](value);
 };

@@ -11,22 +11,26 @@ import type { RouteOperator } from '@rchitect-rock/router';
 import TYPES from '#/../beankeys';
 import { Beans as stateBeans } from '@rchitect-rock/state';
 import type { AppState } from '@rchitect-rock/state';
-import { unref } from 'vue';
+import { unref } from 'vue-demi';
+import find from 'lodash-es/find'
 
 @Bean()
 export class MultipleTabOperator {
-  tabStore:MultipleTab.MultipleTabStore;
+  tabActions:MultipleTab.Actions;
+  tabGetters:MultipleTab.Getters;
   appState:AppState.State;
   routesTable:RoutesTable;
   routeOperator:RouteOperator;
 
   constructor(
-    @Autowired(TYPES.MultipleTabStore) tabStore:MultipleTab.MultipleTabStore,
+    @Autowired(TYPES.MultipleTabGetters) tabGetters:MultipleTab.Getters,
+    @Autowired(TYPES.MultipleTabActions) tabActions:MultipleTab.Actions,
     @Autowired(Beans.RouteOperator) routeOperator:RouteOperator,
     @Autowired(stateBeans.AppState) appState:AppState.State,
     @Autowired(routeLib.types.RouteTable) routesTable:RoutesTable
   ) {
-    this.tabStore = tabStore;
+    this.tabActions = tabActions;
+    this.tabGetters = tabGetters;
     this.appState = appState;
     this.routesTable = routesTable;
     this.routeOperator = routeOperator;
@@ -53,9 +57,7 @@ export class MultipleTabOperator {
   private getCurrentTab() {
     const { currentRoute } = this.routesTable.router;
     const route = unref(currentRoute);
-    return this.tabStore.getTabList.find(
-      (item:any) => item.fullPath === route.fullPath
-    )!;
+    return find(unref(this.tabGetters.getTabList), (item) => item.fullPath === route.fullPath);
   }
 
   /**
@@ -70,7 +72,7 @@ export class MultipleTabOperator {
       return;
     }
     const targetTab = tab || this.getCurrentTab();
-    await this.tabStore.setTabTitle(title, targetTab);
+    targetTab && await this.tabActions.setTabTitle(title, targetTab);
   }
 
   private async updateTabPath(path:string, tab?:RouteLocationNormalized) {
@@ -79,7 +81,7 @@ export class MultipleTabOperator {
       return;
     }
     const targetTab = tab || this.getCurrentTab();
-    await this.tabStore.updateTabPath(path, targetTab);
+    targetTab && await this.tabActions.updateTabPath(path, targetTab);
   }
 
   private async handleTabAction(
@@ -87,35 +89,35 @@ export class MultipleTabOperator {
     tab?:RouteLocationNormalized
   ) {
     const canIUse = this.canIUseTabs();
-    if (!canIUse) {
+    const currentTab = this.getCurrentTab();
+    if (!canIUse || !currentTab) {
       return;
     }
-    const currentTab = this.getCurrentTab();
     switch (action) {
       case TabActionEnum.REFRESH_PAGE:
-        await this.tabStore.refreshPage(this.routesTable.router);
+        await this.tabActions.refreshPage(this.routesTable.router);
         await this.routeOperator.redo();
         break;
 
       case TabActionEnum.CLOSE_ALL:
-        await this.tabStore.closeAllTab(this.routesTable.router);
+        await this.tabActions.closeAllTab(this.routesTable.router);
         break;
 
       case TabActionEnum.CLOSE_LEFT:
-        await this.tabStore.closeLeftTabs(currentTab, this.routesTable.router);
+        await this.tabActions.closeLeftTabs(currentTab, this.routesTable.router);
         break;
 
       case TabActionEnum.CLOSE_RIGHT:
-        await this.tabStore.closeRightTabs(currentTab, this.routesTable.router);
+        await this.tabActions.closeRightTabs(currentTab, this.routesTable.router);
         break;
 
       case TabActionEnum.CLOSE_OTHER:
-        await this.tabStore.closeOtherTabs(currentTab, this.routesTable.router);
+        await this.tabActions.closeOtherTabs(currentTab, this.routesTable.router);
         break;
 
       case TabActionEnum.CLOSE_CURRENT:
       case TabActionEnum.CLOSE:
-        await this.tabStore.closeTab(
+        await this.tabActions.closeTab(
           tab || currentTab,
           this.routesTable.router
         );

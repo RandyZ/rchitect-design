@@ -15,7 +15,7 @@ import { resolveContextOptions } from '#/../bridge'
 const WmqH5 = useComponent(RockComponent.H5)
 const WmqIconify = useComponent(RockComponent.Iconify)
 
-const { getShallowMenus, getChildrenMenus, getCurrentParentPath, listenerRouteChange } = resolveContextOptions();
+// const { getShallowMenus, getChildrenMenus, getCurrentParentPath, listenerRouteChange } = resolveContextOptions();
 const {
   getCollapsed,
   getMixSideTrigger,
