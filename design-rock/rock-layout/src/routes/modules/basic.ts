@@ -1,8 +1,4 @@
-import {
-  REDIRECT_NAME,
-  PAGE_NOT_FOUND_NAME,
-  BASIC_HOME_PATH,
-} from '@weiming-rock/constants';
+import { Route } from '@rchitect-design/constants';
 import { Exception, Redirect } from '../../pages';
 
 const LAYOUT = () => import('../../layouts').then((m) => m.AppLayout);
@@ -10,7 +6,7 @@ const PARENT_LAYOUT = () => () => new Promise((resolve) => resolve({ name: 'Pare
 
 const PAGE_NOT_FOUND_ROUTE: RouteRecordItem = {
   path: '/:path(.*)*',
-  name: PAGE_NOT_FOUND_NAME,
+  name: Route.PAGE_NOT_FOUND_NAME,
   component: LAYOUT,
   meta: {
     title: 'ErrorPage',
@@ -20,7 +16,7 @@ const PAGE_NOT_FOUND_ROUTE: RouteRecordItem = {
   children: [
     {
       path: '/:path(.*)*',
-      name: PAGE_NOT_FOUND_NAME,
+      name: Route.PAGE_NOT_FOUND_NAME,
       component: () => Exception,
       meta: {
         title: 'ErrorPage',
@@ -37,7 +33,7 @@ const REDIRECT_ROUTE: RouteRecordItem = {
   component: LAYOUT,
   name: 'RedirectTo',
   meta: {
-    title: REDIRECT_NAME,
+    title: Route.REDIRECT_NAME,
     hideBreadcrumb: true,
     hideMenu: true,
     isBasic: true,
@@ -45,10 +41,10 @@ const REDIRECT_ROUTE: RouteRecordItem = {
   children: [
     {
       path: '/redirect/:path(.*)',
-      name: REDIRECT_NAME,
+      name: Route.REDIRECT_NAME,
       component: Redirect,
       meta: {
-        title: REDIRECT_NAME,
+        title: Route.REDIRECT_NAME,
         hideBreadcrumb: true,
         isBasic: true,
       },
@@ -59,7 +55,7 @@ const REDIRECT_ROUTE: RouteRecordItem = {
 const ROOT_ROUTE: RouteRecordItem = {
   path: '/',
   name: 'Root',
-  redirect: BASIC_HOME_PATH,
+  redirect: Route.BASIC_HOME_PATH,
   meta: {
     title: 'Root',
     isBasic: true,

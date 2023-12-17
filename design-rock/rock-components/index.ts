@@ -9,13 +9,9 @@ export {
   useMsg,
   useDialog,
 } from './src';
-export type { WmqFormSchema } from './src/form';
-export type { WmqTableProps, WmqColumns, WmqCellClick } from './src/table';
-export { default as ComponentMap } from './src/ComponentMap';
-export { useForm, transferFormilySchemas } from './src/form';
-export { useTable } from './src/table';
 export { withInstall, type WithInstall, type CustomComponent, type ComponentDict } from './src/utils/installSupport';
 export { useComponent } from './src';
+export * from './src/component-exporter'
 export { driverRef } from './src/utils/refSupport';
 /**
  * 包装函数为自动导出函数

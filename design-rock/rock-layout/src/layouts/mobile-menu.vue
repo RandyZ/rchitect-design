@@ -3,21 +3,24 @@ import LayoutMenu from '#/layouts/components/menu'
 import LayoutHeader from './components/header/index.vue'
 import LayoutMain from './components/main.vue'
 import LayoutFooter from './components/footer.vue'
-import { resolveContextOptions } from '#/../bridge'
-import {onMounted, ref, unref} from "vue";
-import { useComosables} from './useComosables'
-const { useMenuSetting, Logo, useRootSetting } = resolveContextOptions();
+import { onMounted, ref, unref } from "vue-demi";
+import { diKT } from "@rchitect-rock/ioc";
+import { useComosables } from './useComosables'
+import { Beans as settingBeans } from '@rchitect-rock/settings'
+import Logo from '#/layouts/components/logo/index.vue'
 
-const { getMenuWidth } = useMenuSetting()
-const { getShowFooter } = useRootSetting();
+// const { Logo } = resolveContextOptions();
 
-const {headerRef, footerRef, contentStyle, mainStyle} = useComosables()
+const { getMenuWidth } = diKT(settingBeans.MenuSettingManager);
+const containerSetting = diKT(settingBeans.AppConfigState).containerSetting
+
+const { headerRef, footerRef, contentStyle, mainStyle } = useComosables()
 
 const active = ref(false);
-onMounted(()=>{
+onMounted(() => {
   active.value = true
 })
-const activeTrigger = ()=>{
+const activeTrigger = () => {
   active.value = !unref(active)
 }
 </script>
@@ -25,7 +28,7 @@ const activeTrigger = ()=>{
   <WmqLayout class="h-full min-w-375px">
     <WmqDrawer v-model:show="active" placement="left" :width="getMenuWidth">
       <WmqDrawerContent :body-content-style="{padding:0}">
-        <LayoutMenu />
+        <LayoutMenu/>
       </WmqDrawerContent>
     </WmqDrawer>
     <WmqLayoutHeader ref="headerRef">
@@ -34,7 +37,8 @@ const activeTrigger = ()=>{
           <template #logo>
             <WmqSpace align="center" :wrap-item="false">
               <Logo :show-title="false"/>
-              <WmqIconify @click="activeTrigger" :icon="active?'menu-fold-outlined':'ant-design:menu-unfold-outlined'" size="24" hoverPointer/>
+              <WmqIconify @click="activeTrigger" :icon="active?'menu-fold-outlined':'ant-design:menu-unfold-outlined'"
+                          size="24" hoverPointer/>
             </WmqSpace>
           </template>
         </LayoutHeader>
@@ -46,7 +50,7 @@ const activeTrigger = ()=>{
           <slot name="main"></slot>
         </LayoutMain>
       </WmqLayoutContent>
-      <WmqLayoutFooter v-if="getShowFooter" ref="footerRef">
+      <WmqLayoutFooter v-if="containerSetting.showFooter" ref="footerRef">
         <slot name="footer">
           <LayoutFooter/>
         </slot>

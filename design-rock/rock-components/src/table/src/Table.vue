@@ -2,11 +2,12 @@
 import 'xe-utils'
 import 'vxe-table/styles/index.scss'
 import type { WmqTableProps } from './type'
-import { computed, PropType, ref, unref, useAttrs, watch } from 'vue'
+import type { PropType } from 'vue-demi'
+import { computed, ref, unref, useAttrs, watch } from 'vue-demi'
 import { isBoolean, isFunction } from 'lodash-es'
 import { VxeGrid, type VxeGridInstance } from 'vxe-table'
 import { ThemeEnum } from '@rchitect-design/constants'
-import { context } from '#/../bridge'
+import Bridge from '#/../bridge'
 import { useInterceptor } from './hooks'
 import { RockComponent } from '#/index'
 defineOptions({
@@ -15,15 +16,14 @@ defineOptions({
     isPresetComponent: true,
   }
 })
-const { useConfigStore } = context
-const appStore = useConfigStore()
+const appStore = Bridge.useAppSetting()
 
 useInterceptor()
 
 watch(
   () => appStore.getDarkMode,
   () => {
-    if (appStore.getDarkMode == ThemeEnum.DARK) {
+    if (unref(appStore.themeMode) == ThemeEnum.DARK) {
       import('./scss/dark.scss')
     }
     //刷新页面重置SCSS

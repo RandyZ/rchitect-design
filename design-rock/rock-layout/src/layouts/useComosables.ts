@@ -1,9 +1,10 @@
 import { computed, ref, unref } from 'vue-demi'
 import { useElementSize } from '@rchitect-rock/tools'
-import { useAppConfig } from '@rchitect-rock/hooks'
+import { Beans } from '@rchitect-rock/settings'
+import { diKT } from '@rchitect-rock/ioc'
 
 export const useComosables = () => {
-  const appConfigState = useAppConfig();
+  const appConfigState = diKT(Beans.AppConfigState);
   const headerRef = ref<HTMLElement>()
   const tabRef = ref<HTMLElement>()
   const footerRef = ref<HTMLElement>()

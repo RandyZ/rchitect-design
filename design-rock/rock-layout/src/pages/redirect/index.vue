@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { unref } from 'vue'
-import { useRouter } from '@weiming-rock/middleware-router'
+import { unref } from 'vue-demi'
+import { useRouter } from '@rchitect-rock/router'
 
 const { currentRoute, replace } = useRouter()
 const { params, query } = unref(currentRoute)

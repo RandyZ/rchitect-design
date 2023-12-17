@@ -1,1 +1,1 @@
-export type { User, Lock } from './state';
+export type { User } from './state';

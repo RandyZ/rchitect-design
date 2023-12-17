@@ -8,11 +8,11 @@ import type { ServiceIdentifier } from "@rchitect-rock/ioc";
 export type AppConfigStore = ReturnType<typeof useConfigStore>;
 
 export const useConfigStore = defineStore('AppConfigStore', () => {
-  const state: AppConfig.State = {
-    /**
-     * Header setting
-     */
+  const state:AppConfig.State = {
+    // Header setting
     headerSetting: ref({} as any),
+    // Content Container setting
+    containerSetting: ref({} as any),
     // menuSetting
     menuSetting: ref({} as any),
     // Multi-tab settings
@@ -23,7 +23,7 @@ export const useConfigStore = defineStore('AppConfigStore', () => {
     sporadicSetting: ref({} as any),
   }
 
-  const getters: AppConfig.Getter = {
+  const getters:AppConfig.Getter = {
     getProjectConfig: computed(() => {
       return {
         headerSetting: unref(state.headerSetting),
@@ -48,7 +48,7 @@ export const useConfigStore = defineStore('AppConfigStore', () => {
       );
     })
   }
-  const actions: AppConfig.Action = {
+  const actions:AppConfig.Action = {
     setProjectConfig: async (config) => {
       state.headerSetting.value = deepMerge(unref(state.headerSetting) || {}, config.headerSetting)
       state.menuSetting.value = deepMerge(unref(state.headerSetting) || {}, config.menuSetting)
@@ -69,10 +69,10 @@ export const useConfigStore = defineStore('AppConfigStore', () => {
 
 /**
  * 应用级别配置的beans
- * 
- * @param packName 
- * @returns 
+ *
+ * @param packName
+ * @returns
  */
-export default (packName: string) => ({
-  AppConfigStore: Symbol.for(`${packName}/AppConfigStore`) as ServiceIdentifier<AppConfigStore>,
+export default (packName:string) => ({
+  AppConfigStore: Symbol.for(`${ packName }/AppConfigStore`) as ServiceIdentifier<AppConfigStore>,
 })

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { reactive, ref, computed, unref } from 'vue'
-import { CountDownInput } from '@weiming-rock/app-components'
-import { useI18n } from '@weiming-rock/locale'
+import { CountDownInput } from '@rchitect-rock/app-components'
+import { useI18n } from '@rchitect-rock/locale'
 import LoginFormTitle from './login-form-title.vue'
 import { useFormRules, useFormValid, useLoginState } from '../usage';
 import { LoginStateEnum } from '../index';

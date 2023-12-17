@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import { ref, onBeforeUnmount } from "vue-demi"
 import { useComosables } from './useComosables'
-import LayoutMenu from './components/menu.vue'
+import LayoutMenu from './components/menu'
 import LayoutHeader from './components/header/index.vue'
 import LayoutMain from './components/main.vue'
 import LayoutFooter from './components/footer.vue'
-import { useMenuSetting, useRootSetting } from '@rchitect-rock/hooks'
+import { useContainerSetting, useMenuSettingManager } from "#/hooks";
 
 
 defineOptions({
@@ -14,11 +14,14 @@ defineOptions({
 })
 
 const { headerRef, contentStyle, mainStyle, footerRef } = useComosables()
-const { toggleCollapsed, getCollapsed, getMenuWidth, getShowSidebar, destory } = useMenuSetting()
-const rootSetting = useRootSetting();
-const menuLayout = ref();
+const { 
+  toggleCollapsed, getCollapsed, getMenuWidth, getShowSidebar, destory 
+} = useMenuSettingManager()
+const containerSetting = useContainerSetting();
+const menuLayout = ref<InstanceType<typeof LayoutMenu>>();
 
-const onSelectMenu = (event) => {
+const onSelectMenu = (event:any) => {
+  // FIXME: 这个是横向功能推荐设置菜单布局的钩子，确认下方法expose的情况
   menuLayout.value.setMenuList(event);
 };
 
@@ -55,7 +58,7 @@ onBeforeUnmount(() => {
             <slot name="main"></slot>
           </LayoutMain>
         </WmqLayoutContent>
-        <WmqLayoutFooter v-if="rootSetting.getShowFooter" ref="footerRef">
+        <WmqLayoutFooter v-if="containerSetting.showFooter" ref="footerRef">
           <slot name="footer">
             <LayoutFooter/>
           </slot>

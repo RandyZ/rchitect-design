@@ -18,6 +18,7 @@ export interface SidebarConfigOptions {
 }
 
 /**
+ * DefineAppConfigOptions
  * @deprecated 分解这个依赖
  */
 interface AppRuntimeConfigOptions {

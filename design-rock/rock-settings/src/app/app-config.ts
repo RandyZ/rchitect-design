@@ -7,6 +7,7 @@ import type {
   SporadicSetting
 } from '@rchitect-design/types';
 import type { Ref, ComputedRef } from 'vue-demi';
+import { ContainerSetting } from "@rchitect-design/types";
 
 /**
  * 应用设置
@@ -17,6 +18,10 @@ export declare namespace AppConfig {
      * Header setting
      */
     headerSetting: Ref<HeaderSetting>
+    /**
+     * Content Container setting
+     */
+    containerSetting: Ref<ContainerSetting>
     // menuSetting
     menuSetting: Ref<MenuSetting>
     // Multi-tab settings

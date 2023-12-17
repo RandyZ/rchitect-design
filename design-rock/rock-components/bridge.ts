@@ -1,6 +1,5 @@
-import { ComputedRef } from 'vue'
-import { Lib as settingLib } from '@rchitect-rock/settings'
-import { Setting } from '@rchitect-rock/settings'
+import { ComputedRef } from 'vue-demi'
+import { AppSetting, Beans as settingBeans } from '@rchitect-rock/settings'
 import { diKT } from '@rchitect-rock/ioc'
 
 export type LocaleReturn = {
@@ -11,13 +10,11 @@ export type LocaleReturn = {
 export interface ContextOptions {
   useLocale: () => LocaleReturn
   localeList: Array<any>
-  useAppStore: () => unknown
-  useConfigStore: () => Setting.SettingStore
+  useAppSetting: () => AppSetting.State
 }
 
-export const context: ContextOptions = {
+export default {
   useLocale: () => ({} as LocaleReturn),
-  useAppStore: () => undefined,
-  useConfigStore: () => diKT(settingLib.types.SettingStore),
+  useAppSetting: () => diKT(settingBeans.AppSettingState),
   localeList: [],
-}
+} as ContextOptions

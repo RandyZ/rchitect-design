@@ -82,6 +82,23 @@ export interface HeaderSetting {
   readonly height?: number
 }
 
+export interface ContainerSetting {
+  // 内容区域宽度
+  contentWidth: number,
+  // 左侧菜单
+  showMenu: boolean,
+  // 顶栏
+  showHeader: boolean,
+  // Whether to display the logo
+  showLogo: boolean,
+  // Whether to show the global footer
+  showFooter: boolean,
+  // 自动锁屏
+  autoLockScreen: boolean,
+  // 固定header
+  fixedHeader: boolean,
+}
+
 /**
  * @description: 本地化设置
  */
@@ -156,10 +173,6 @@ export interface SporadicSetting {
   fullContent: boolean
   // content width
   contentMode: ContentLayoutEnum
-  // Whether to display the logo
-  showLogo: boolean
-  // Whether to show the global footer
-  showFooter: boolean
 }
 
 /**
@@ -175,6 +188,8 @@ export type ProjectConfig = ProjectSetting
 export interface ProjectSetting {
   // menuType: MenuTypeEnum;
   headerSetting?: HeaderSetting
+  // container setting
+  containerSetting?: ContainerSetting
   // menuSetting
   menuSetting?: MenuSetting
   // Multi-tab settings

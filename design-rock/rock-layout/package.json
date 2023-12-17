@@ -19,7 +19,10 @@
   "dependencies": {
     "@rchitect-design/constants": "workspace:^",
     "@rchitect-rock/components": "workspace:^",
-    "@rchitect-rock/hooks": "workspace:^",
-    "@rchitect-rock/locale": "workspace:^"
+    "@rchitect-rock/ioc": "workspace:^",
+    "@rchitect-rock/locale": "workspace:^",
+    "@rchitect-rock/settings": "workspace:^",
+    "@rchitect-rock/state": "workspace:^",
+    "vue-types": "^5.0.2"
   }
 }

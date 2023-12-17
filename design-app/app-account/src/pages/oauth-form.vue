@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 import { computed, unref, onMounted } from 'vue'
-import { useI18n } from '@weiming-rock/locale'
+import { useI18n } from '@rchitect-rock/locale'
 import LoginFormTitle from './login-form-title.vue'
-import { AuthorizationModeEnum } from '@weiming-rock/constants';
-import { useDialog } from '@weiming-rock/components';
+import { AuthorizationModeEnum } from '@rchitect-design/constants';
+import { useDialog } from '@rchitect-rock/components';
 import { LoginStateEnum } from '../index';
 import { useLoginState } from '../usage';
-import { useGlobConfig } from '@weiming-rock/hooks';
+import { useGlobConfig } from '@rchitect-rock/hooks';
 const { handleBackLogin, getLoginState, mode, isAutoLogin } = useLoginState()
 const { t } = useI18n()
 const showBackBtn = computed(() => mode !== AuthorizationModeEnum.OAUTH2_CODE && unref(getLoginState) === LoginStateEnum.OAUTH_CODE)

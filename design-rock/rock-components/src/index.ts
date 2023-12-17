@@ -7,7 +7,7 @@ import { RockComponent } from '#/RockComponent';
 import ComponentMap from './ComponentMap';
 import { DataDictionary } from '@rchitect-design/types';
 import { VueHelper } from '@rchitect-rock/tools';
-import scanWmqComponens from '#/ScanWmqComponens';
+import scanWmqComponents from '#/ScanWmqComponents';
 export { RockComponent, toRockComponent } from '#/RockComponent'
 
 const MODULE_NAME = 'Wmq';
@@ -79,7 +79,7 @@ export const useComponent = <T extends boolean>(
   }
   // 2. 确保Wmq Component已经加载
   if (isEmpty(autoExportComponent) || isEmpty(allWmqComponent)) {
-    scanWmqComponens(autoExportComponent, allWmqComponent);
+    scanWmqComponents(autoExportComponent, allWmqComponent);
   }
   // 3. 确保自动导出的组件已经加载
   const wmqComponent = allWmqComponent[component]
@@ -106,7 +106,7 @@ export const useComponent = <T extends boolean>(
 export const registerWmqComponent = (Vue: App, componentDict: WmqComponentDictionary) => {
   console.debug('RockComponent install components into ComponentMap in IOC...');
   const componentMap = useComponentMap(true);
-  scanWmqComponens(autoExportComponent, allWmqComponent);
+  scanWmqComponents(autoExportComponent, allWmqComponent);
   forIn(RockComponent, (rockComponent: RockComponent) => {
     let finalRegisterComponent: WmqComponent<any> | undefined;
     // 获取驱动中的组件

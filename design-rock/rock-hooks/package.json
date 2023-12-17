@@ -16,6 +16,7 @@
     "@rchitect-design/constants": "workspace:*",
     "@rchitect-rock/base-package": "workspace:*",
     "@rchitect-rock/ioc": "workspace:*",
+    "@rchitect-rock/layouts": "workspace:^",
     "@rchitect-rock/router": "workspace:^",
     "@rchitect-rock/settings": "workspace:*",
     "@rchitect-rock/state": "workspace:*",

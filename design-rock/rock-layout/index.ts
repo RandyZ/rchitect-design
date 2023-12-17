@@ -1,5 +1,5 @@
-import * as routesObject from '#/routes'
-export type { RoutesModel } from '#/routes'
+import * as routesObject from './src/routes'
+export type { RoutesModel } from './src/routes'
 export const LayoutRoutes = {
   // 基础布局
   LAYOUT: routesObject.LAYOUT,
@@ -14,4 +14,5 @@ export const LayoutRoutes = {
   // 路由操作对象
   RoutesModel: routesObject.RoutesModel,
 }
+export { default as Beans } from './beankeys';
 export * from './src';

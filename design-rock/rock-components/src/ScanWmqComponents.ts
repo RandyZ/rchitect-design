@@ -9,7 +9,7 @@ import get from "lodash-es/get";
  * @param wmqComponent 所有组件
  * @returns DataDictionary<WmqComponent>[] 0: presetComponents, 1: wmqComponent
  */
-const scanWmqComponens = (
+const scanWmqComponents = (
   presetComponents: DataDictionary<WmqComponent<any> > = {},
   wmqComponent: DataDictionary<WmqComponent<any> > = {}
 ): DataDictionary<WmqComponent<any> >[] => {
@@ -27,4 +27,19 @@ const scanWmqComponens = (
   return [presetComponents, wmqComponent]
 }
 
-export default scanWmqComponens
+export const allPredefinedComponents = () => {
+  const autoExportComponent: DataDictionary<WmqComponent<any> > = {};
+  const pkgs: Record<string, GlobModule> = import.meta.glob('./**/index.ts', { eager: true });
+  forIn(pkgs, (pkg) => {
+    if (!isEmpty(pkg)) {
+      forIn(pkg, (component) => {
+        if (get(component, 'isPresetComponent', false)) {
+          autoExportComponent[component.name] = component;
+        }
+      })
+    }
+  })
+  return autoExportComponent;
+}
+
+export default scanWmqComponents

@@ -1,7 +1,7 @@
 import type { ServiceIdentifier } from '@rchitect-rock/ioc';
-// import type { Auth } from './auth'
+import type { ScreenLocker } from './locker'
 
-// export * from './auth'
+export * from './locker'
 
 /**
  * 应用级别配置的beans
@@ -10,6 +10,7 @@ import type { ServiceIdentifier } from '@rchitect-rock/ioc';
  * @returns 
  */
 export default (packName: string) => ({
-  // AuthState: Symbol.for(`${packName}/Auth.State`) as ServiceIdentifier<Auth.State>,
-  // AuthAction: Symbol.for(`${packName}/Auth.Action`) as ServiceIdentifier<Auth.Action>,
+  ScreenLockerState: Symbol.for(`${packName}/ScreenLocker.State`) as ServiceIdentifier<ScreenLocker.State>,
+  ScreenLockerAction: Symbol.for(`${packName}/ScreenLocker.Actions`) as ServiceIdentifier<ScreenLocker.Actions>,
+  ScreenLockerGetter: Symbol.for(`${packName}/ScreenLocker.Getters`) as ServiceIdentifier<ScreenLocker.Getters>,
 })

@@ -1,4 +1,4 @@
-// export * from './store';
+export * from './types/app-lock';
 export * from './types/network';
 export * from './types/router';
 export * from './global';

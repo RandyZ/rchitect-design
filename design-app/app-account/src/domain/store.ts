@@ -2,16 +2,14 @@ import { defineStore } from '@rchitect-rock/infrastructure';
 import { Lib as stateLib } from '@rchitect-rock/state';
 import { Route, PageEnum } from '@rchitect-design/constants';
 import { LayoutRoutes, User } from '@rchitect-rock/layouts';
-import { Lib as routeLib } from '@rchitect-rock/router';
 import { diKT } from '@rchitect-rock/ioc';
-import { resetProjectSetting } from '@rchitect-rock/hooks';
+import { resetProjectSetting, useRouter } from '@rchitect-rock/hooks';
 import { UserInfo, RoleInfo, AuthenticationToken } from '@rchitect-design/types';
 import { isArray } from 'lodash-es';
 import { Beans } from '#/../beankeys';
 import { fetchTokenFunction } from '.';
 import { ref, computed, unref } from 'vue-demi';
 
-const useRouter = () => diKT(routeLib.types.RouteTable).router;
 const useAuthState = () => diKT(stateLib.types.AuthState);
 const useAuthAction = () => diKT(stateLib.types.AuthAction);
 

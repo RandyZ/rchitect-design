@@ -1,12 +1,12 @@
-import { PageEnum, BASIC_LOCK_PATH, BASIC_LOGIN_PATH, AuthorizationModeEnum, PermissionModeEnum } from '@weiming-rock/constants';
-import { Lib as routeLib } from '@rchitect-rock/middleware-router';
-import { Lib as layoutLib, LayoutRoutes } from '@rchitect-rock/layouts-component';
+import { PageEnum, Route, AuthorizationModeEnum, PermissionModeEnum } from '@rchitect-design/constants';
+import { Lib as routeLib } from '@rchitect-rock/router';
+import { Lib as layoutLib, LayoutRoutes } from '@rchitect-rock/layouts';
 import { Lib as stateLib } from '@rchitect-rock/settings';
 import { useOAuth2Config, useAuthMode } from '../usage';
 import { diKT } from '@rchitect-rock/ioc';
 
-const LOCK_PATH = BASIC_LOCK_PATH;
-const LOGIN_PATH = BASIC_LOGIN_PATH;
+const LOCK_PATH = Route.BASIC_LOCK_PATH;
+const LOGIN_PATH = Route.BASIC_LOGIN_PATH;
 const ROOT_PATH = LayoutRoutes.ROOT_ROUTE.path;
 
 const routeTable = () => diKT(routeLib.types.RouteTable);
@@ -102,6 +102,7 @@ const authGuardWithoutTokenHandler = async (to, _, next) => {
             state: authState,
             gohome: true,
           } as any);
+          console.debug('授权码登录成功', user);
           // loggin 会进行重定向，所以这里不需要next
           next(false);
           return false;
