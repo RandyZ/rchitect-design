@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { computed, unref } from 'vue'
-import { QrCode } from '@rchitect-rock/app-components'
+import { QrCode } from '@rchitect-app/components'
 import { useI18n } from '@rchitect-rock/locale'
 import LoginFormTitle from './login-form-title.vue'
 import { useLoginState } from '../usage';

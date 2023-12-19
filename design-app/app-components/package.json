@@ -1,0 +1,37 @@
+{
+  "name": "@rchitect-app/components",
+  "version": "0.0.0",
+  "main": "index.ts",
+  "module": "index.ts",
+  "license": "MIT",
+  "scripts": {
+    "clean": "pnpm rimraf node_modules && pnpm rimraf dist && pnpm rimraf .turbo"
+  },
+  "dependencies": {
+    "@formily/core": "^2.2.21",
+    "@formily/element-plus": "1.0.0-beta.8",
+    "@formily/vue": "^2.2.21",
+    "@rchitect-rock/directives": "workspace:*",
+    "@rchitect-rock/tools": "workspace:*",
+    "@rchitect-app/component-driver-element-plus": "workspace:*",
+    "@rchitect-rock/components": "workspace:*",
+    "@rchitect-design/constants": "workspace:*",
+    "@rchitect-rock/hooks": "workspace:*",
+    "@rchitect-rock/ioc": "workspace:*",
+    "@rchitect-rock/layouts": "workspace:*",
+    "@rchitect-rock/locale": "workspace:*",
+    "element-plus": "^2.3.10",
+    "qrcode": "^1.5.1",
+    "sortablejs": "^1.15.0",
+    "vue-types": "^5.0.2",
+    "@rchitect-app/component-driver": "workspace:*"
+  },
+  "devDependencies": {
+    "@iconify/json": "^2.2.15",
+    "@purge-icons/generated": "^0.9.0",
+    "@types/qrcode": "^1.5.0"
+  },
+  "peerDependencies": {
+    "vue": "~3.3.4"
+  }
+}

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { reactive, ref, unref, computed } from 'vue'
-import { CountDownInput } from '@rchitect-rock/app-components'
+import { CountDownInput } from '@rchitect-app/components'
 import { useI18n } from '@rchitect-rock/locale'
 import LoginFormTitle from './login-form-title.vue'
 import { useFormRules, useFormValid, useLoginState } from '../usage';

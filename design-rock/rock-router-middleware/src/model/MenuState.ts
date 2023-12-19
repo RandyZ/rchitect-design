@@ -1,6 +1,6 @@
 import { PermissionModeEnum } from '@rchitect-design/constants';
 import { Autowired, Bean } from '@rchitect-rock/ioc';
-import { Auth, Beans } from '@rchitect-rock/settings';
+import { Auth, Beans } from '@rchitect-rock/state';
 import { unref } from 'vue-demi';
 
 type AuthState = Auth.State;
