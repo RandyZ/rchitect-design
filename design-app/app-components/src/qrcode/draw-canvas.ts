@@ -1,6 +1,6 @@
 import type { QRCodeRenderersOptions } from 'qrcode'
 import type { RenderQrCodeParams, ContentType } from './typing'
-import { cloneDeep } from '@vben/utils'
+import { cloneDeep } from '@rchitect-rock/tools'
 import { toCanvas } from 'qrcode'
 
 export const renderQrCode = ({

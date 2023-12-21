@@ -1,22 +1,24 @@
 import nProgress from 'nprogress'
-import { toRaw } from 'vue'
+import { toRaw, unref } from 'vue-demi'
 import type { Menu } from '@rchitect-design/types'
-import { resolveByKeyOrThrow } from '@rchitect-rock/ioc'
+import { diKT } from '@rchitect-rock/ioc'
 import { Beans } from '../beankeys';
 import { RouteParams } from 'vue-router'
-import { Lib } from '@rchitect-rock/settings'
+import { Beans as stateBeans } from '@rchitect-rock/state'
+import { Beans as settingBeans } from '@rchitect-rock/settings'
 
-const TYPES = Beans
 const LOADED_PAGE_POOL = new Map<string, boolean>()
-const routeTable = () => resolveByKeyOrThrow(TYPES.RouteTable)
-const menuState = () => resolveByKeyOrThrow(TYPES.MenuState)
-const authStore = () => resolveByKeyOrThrow(Lib.types.AuthStore)
+const routeTable = () => diKT(Beans.RouteTable)
+const menuState = () => diKT(Beans.MenuState)
+const appConfigState = () => diKT(settingBeans.AppConfigState)
+const permissionState = () => diKT(stateBeans.PermissionState)
 /**
  * 创建基础路由守卫
  */
 export function createBasicGuard() {
-  const openNProgress = menuState().theConfig().transition?.openNProgress
+  const openNProgress = unref(appConfigState().transitionSetting).openNProgress
   routeTable().router.beforeEach((to, from) => {
+    debugger
     console.log('父应用to', to)
     console.log('父应用from', from)
     if (!window.history.state.current) window.history.state.current = to.fullPath;
@@ -90,15 +92,15 @@ export function createParamMenuGuard() {
     }
 
     // menu has been built.
-    if (!authStore().getIsDynamicAddedRoute) {
+    if (!permissionState().isDynamicAddedRoute.value) {
       next()
       return
     }
     let menus: Menu[] = []
     if (menuState().isBackMode()) {
-      menus = authStore().getBackMenuList
+      menus = permissionState().backMenuList.value
     } else if (menuState().isRouteMappingMode()) {
-      menus = authStore().getFrontMenuList
+      menus = permissionState().frontMenuList.value
     }
     menus.forEach((item) => configureDynamicParamsMenu(item, to.params))
     next()

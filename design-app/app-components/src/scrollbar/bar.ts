@@ -8,7 +8,7 @@ import {
   inject,
   Ref,
 } from 'vue'
-import { on, off } from '@vben/utils'
+import { on, off } from '@rchitect-rock/tools'
 import { renderThumbStyle, BAR_MAP } from './util'
 
 export default defineComponent({

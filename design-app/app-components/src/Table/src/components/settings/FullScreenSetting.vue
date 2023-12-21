@@ -9,9 +9,9 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { WmqIconify } from '@weiming-rock/components'
-  import { useFullscreen } from '@vben/utils';
-  import { useI18n } from  '@weiming-rock/locale';
+  import { WmqIconify } from '@rchitect-rock/components'
+  import { useFullscreen } from '@rchitect-rock/tools';
+  import { useI18n } from  '@rchitect-rock/locale';
   import { useTableContext } from '../../hooks/useTableContext';
 
   export default defineComponent({

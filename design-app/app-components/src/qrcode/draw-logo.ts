@@ -1,5 +1,5 @@
 import type { RenderQrCodeParams, LogoType } from './typing'
-import { isString } from '@vben/utils'
+import { isString } from '@rchitect-rock/tools'
 
 export const drawLogo = ({ canvas, logo }: RenderQrCodeParams) => {
   if (!logo) {

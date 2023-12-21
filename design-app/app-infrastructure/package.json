@@ -1,5 +1,5 @@
 {
-  "name": "@rchitect-rock/infrastructure",
+  "name": "@rchitect-app/infrastructure",
   "version": "0.0.0",
   "main": "index.ts",
   "module": "index.ts",
@@ -9,21 +9,27 @@
     "clean": "pnpm rimraf node_modules && pnpm rimraf dist && pnpm rimraf .turbo"
   },
   "dependencies": {
+    "@rchitect-app/account": "workspace:^",
     "@rchitect-design/constants": "workspace:*",
     "@rchitect-rock/base-package": "workspace:*",
     "@rchitect-rock/hooks": "workspace:*",
     "@rchitect-rock/ioc": "workspace:*",
+    "@rchitect-rock/layouts": "workspace:^",
     "@rchitect-rock/locale": "workspace:*",
+    "@rchitect-rock/router": "workspace:^",
     "@rchitect-rock/settings": "workspace:*",
     "@rchitect-rock/state": "workspace:^",
     "@rchitect-rock/tools": "workspace:*"
   },
   "devDependencies": {
-    "@rchitect-design/types": "workspace:*"
+    "@rchitect-design/types": "workspace:*",
+    "@types/qs": "^6.9.10"
   },
   "peerDependencies": {
-    "pinia": "~2.0.34",
+    "axios": "^1.6.2",
+    "pinia": "~2.1.7",
     "pinia-plugin-persistedstate": "^3.2.0",
+    "qs": "^6.11.2",
     "vue": "~3.3.4"
   }
 }

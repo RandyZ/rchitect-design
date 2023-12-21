@@ -18,7 +18,7 @@
   import { isFunction, cloneDeep } from 'lodash-es';
   import type { BasicColumn } from '../types/table';
   import { INDEX_COLUMN_FLAG } from '../const';
-  import { propTypes } from '@vben/utils';
+  import { propTypes } from '@rchitect-rock/tools';
   import { useTableContext } from '../hooks/useTableContext';
 
   const SUMMARY_ROW_KEY = '_row';

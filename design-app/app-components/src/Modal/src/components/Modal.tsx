@@ -4,7 +4,7 @@ import { basicProps } from '../props';
 import { useModalDragMove } from '../hooks/useModalDrag';
 // TODO: 验证
 import { useAttrs } from 'vue';
-import { extendSlots } from '@vben/utils';
+import { extendSlots } from '@rchitect-rock/tools';
 
 export default defineComponent({
   name: 'Modal',

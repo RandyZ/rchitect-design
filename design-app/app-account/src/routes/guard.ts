@@ -2,7 +2,7 @@ import { PageEnum, Route, AuthorizationModeEnum, PermissionModeEnum } from '@rch
 import { Lib as routeLib } from '@rchitect-rock/router';
 import { Lib as layoutLib, LayoutRoutes } from '@rchitect-rock/layouts';
 import { Lib as stateLib } from '@rchitect-rock/settings';
-import { useOAuth2Config, useAuthMode } from '../usage';
+import { useOAuth2Config, useAuthMode } from '#/usage';
 import { diKT } from '@rchitect-rock/ioc';
 
 const LOCK_PATH = Route.BASIC_LOCK_PATH;

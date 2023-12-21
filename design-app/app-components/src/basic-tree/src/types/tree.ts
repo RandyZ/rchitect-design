@@ -1,5 +1,5 @@
 import type { ExtractPropTypes } from 'vue';
-import type { Tree } from '@weiming-rock/components'
+import type { Tree } from '@rchitect-rock/components'
 
 
 import { buildProps } from '../utils/props';

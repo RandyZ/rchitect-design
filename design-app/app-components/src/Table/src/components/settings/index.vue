@@ -18,7 +18,7 @@
   import SizeSetting from './SizeSetting.vue';
   import RedoSetting from './RedoSetting.vue';
   import FullScreenSetting from './FullScreenSetting.vue';
-  import { useI18n } from  '@weiming-rock/locale';
+  import { useI18n } from  '@rchitect-rock/locale';
   import { useTableContext } from '../../hooks/useTableContext';
 
   export default defineComponent({

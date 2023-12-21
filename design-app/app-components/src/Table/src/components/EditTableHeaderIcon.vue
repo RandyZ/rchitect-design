@@ -7,7 +7,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { WmqIconify } from '@weiming-rock/components';
+  import { WmqIconify } from '@rchitect-rock/components';
 
   export default defineComponent({
     name: 'EditTableHeaderIcon',

@@ -1,11 +1,11 @@
 import type { BasicTableProps, TableRowSelection, BasicColumn } from '../types/table';
 import { Ref, ComputedRef, ref, computed, unref, nextTick, watch } from 'vue';
-import { getViewportOffset } from '@vben/utils';
+import { getViewportOffset } from '@rchitect-rock/tools';
 import { isBoolean } from 'lodash-es';
 // TODO: 还原
-// import { useWindowSizeFn, onMountedOrActivated } from '@weiming-rock/hooks';
+// import { useWindowSizeFn, onMountedOrActivated } from '@rchitect-rock/hooks';
 // import { useModalContext } from '/@/components/Modal';
-import { useDebounceFn } from '@vben/utils';
+import { useDebounceFn } from '@rchitect-rock/tools';
 
 export function useTableScroll(
   propsRef: ComputedRef<BasicTableProps>,

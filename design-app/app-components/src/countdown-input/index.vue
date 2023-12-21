@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import type { PropType } from 'vue'
-import type { ButtonSize } from '@weiming-rock/types'
+import type { ButtonSize } from '@rchitect-design/types'
 import { useAttrs, computed } from 'vue'
-import { createNamespace } from '@vben/utils'
+import { createNamespace } from '@rchitect-rock/tools'
 import CountButton from './countdown-button.vue'
 
 const { bem } = createNamespace('count-down-input')

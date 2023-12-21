@@ -4,7 +4,7 @@ import { removeResizeListener, debounceAwait, addResizeListener } from "@rchitec
 import type { ComputedRef, Ref } from "vue-demi"
 import { computed, toRefs, unref } from "vue-demi"
 import Beans from "../../beankeys";
-import type { AppConfig, AppSetting } from '../app';
+import type { AppConfig, AppSetting } from '#/app';
 import type { MenuSetting } from "@rchitect-design/types";
 
 export type TopMenuAlign = 'start' | 'center' | 'end';

@@ -3,9 +3,9 @@ import type { AdvanceState } from '../types/hooks';
 import { ComputedRef, getCurrentInstance, Ref, shallowReactive, computed, unref, watch } from 'vue';
 import type { FormProps, FormSchema } from '../types/form';
 import { isBoolean, isFunction, isNumber, isObject } from 'lodash-es';
-import { useBreakpoint } from '@weiming-rock/hooks';
+import { useBreakpoint } from '@rchitect-rock/hooks';
 
-import { useDebounceFn } from '@vben/utils';
+import { useDebounceFn } from '@rchitect-rock/tools';
 
 const BASIC_COL_LEN = 24;
 

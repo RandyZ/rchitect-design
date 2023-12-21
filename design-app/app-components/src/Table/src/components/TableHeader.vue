@@ -28,7 +28,7 @@
   import { defineComponent } from 'vue';
   import TableSettingComponent from './settings/index.vue';
   import TableTitle from './TableTitle.vue';
-  import { useDesign } from '@weiming-rock/hooks';
+  import { useDesign } from '@rchitect-rock/hooks';
 
   export default defineComponent({
     name: 'BasicTableHeader',

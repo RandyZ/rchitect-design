@@ -10,6 +10,6 @@ export * from './types/menu';
 export * from './types/props';
 export * from './datastructure';
 export * from './types/throws';
-// export * from './function';
+export * from './types/functions';
 export * from './types/configuration';
 export * from './types/repository';

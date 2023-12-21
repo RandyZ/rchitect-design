@@ -37,7 +37,7 @@
 <script lang="ts">
   import type { CSSProperties } from 'vue';
   import { defineComponent, computed } from 'vue';
-  import { useDesign } from '@weiming-rock/hooks';
+  import { useDesign } from '@rchitect-rock/hooks';
   import { ElImage as Image, ElBadge as Badge } from 'element-plus';
   import { propTypes } from '#/utils/propTypes';
 

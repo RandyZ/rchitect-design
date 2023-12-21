@@ -22,7 +22,7 @@ function isProdMode() {
   return false
 }
 import { isFunction, isEqual } from 'lodash-es';
-import { tryOnUnmounted } from '@vben/utils';
+import { tryOnUnmounted } from '@rchitect-rock/tools';
 // import { error } from '/@/utils/log';
 
 const dataTransfer = reactive<any>({});

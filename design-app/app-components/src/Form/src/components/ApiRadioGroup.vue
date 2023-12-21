@@ -13,7 +13,7 @@
   import { useAttrs } from 'vue';
   import { propTypes } from '#/utils/proptypes'
   import { isFunction, get, omit } from 'lodash-es';
-  import { useI18n } from  '@weiming-rock/locale';
+  import { useI18n } from  '@rchitect-rock/locale';
 
   type OptionsItem = { label: string; value: string | number | boolean; disabled?: boolean };
 

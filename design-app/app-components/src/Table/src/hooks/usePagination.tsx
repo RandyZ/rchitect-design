@@ -1,11 +1,11 @@
 import type { PaginationProps } from '../types/pagination';
 import type { BasicTableProps } from '../types/table';
 import { computed, unref, ref, ComputedRef, watch } from 'vue';
-import { WmqIconify } from '@weiming-rock/components';
+import { WmqIconify } from '@rchitect-rock/components';
 import { isBoolean } from 'lodash-es';
 import { PAGE_SIZE, PAGE_SIZE_OPTIONS } from '../const';
-import { useI18n } from  '@weiming-rock/locale';
-import { diKT } from '@weiming-rock/ioc';
+import { useI18n } from  '@rchitect-rock/locale';
+import { diKT } from '@rchitect-rock/ioc';
 
 interface ItemRender {
   page: number;

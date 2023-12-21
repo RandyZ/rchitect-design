@@ -47,10 +47,10 @@
   import FormAction from './components/FormAction.vue';
 
   import { dateItemType } from './helper';
-  import { dateUtil } from '@vben/utils';
+  import { dateUtil } from '@rchitect-rock/tools';
 
   // import { cloneDeep } from 'lodash-es';
-  import { deepMerge } from '@vben/utils';
+  import { deepMerge } from '@rchitect-rock/tools';
 
   import { useFormValues } from './hooks/useFormValues';
   import useAdvanced from './hooks/useAdvanced';
@@ -58,11 +58,11 @@
   import { createFormContext } from './hooks/useFormContext';
   import { useAutoFocus } from './hooks/useAutoFocus';
   // import { useModalContext } from '/@/components/Modal';
-  import { useDebounceFn } from '@vben/utils';
+  import { useDebounceFn } from '@rchitect-rock/tools';
 
   import { basicProps } from './props';
   import { cloneDeep } from 'lodash-es';
-  import { useDesign } from '@weiming-rock/hooks';
+  import { useDesign } from '@rchitect-rock/hooks';
 
   export default defineComponent({
     name: 'BasicForm',

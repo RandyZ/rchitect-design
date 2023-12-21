@@ -46,7 +46,7 @@
   import { Button, ButtonProps } from '#/Button';
   import BasicArrow from '#/basic-arrow';
   import { useFormContext } from '../hooks/useFormContext';
-  import { useI18n } from  '@weiming-rock/locale';
+  import { useI18n } from  '@rchitect-rock/locale';
   import { propTypes } from '#/utils/propTypes';
 
   type ButtonOptions = Partial<ButtonProps> & { text: string };

@@ -2,11 +2,11 @@
   import { ref, unref, defineComponent, type PropType, type ExtractPropTypes } from 'vue';
   import { isNil } from 'lodash-es';
   import { Skeleton } from 'ant-design-vue';
-  import { useTimeoutFn } from '@weiming-rock/hooks';
+  import { useTimeoutFn } from '@rchitect-rock/hooks';
   import { CollapseTransition } from '/@/components/Transition';
   import CollapseHeader from './CollapseHeader.vue';
   import { triggerWindowResize } from '/@/utils/event';
-  import { useDesign } from '@weiming-rock/hooks';
+  import { useDesign } from '@rchitect-rock/hooks';
 
   const collapseContainerProps = {
     title: { type: String, default: '' },

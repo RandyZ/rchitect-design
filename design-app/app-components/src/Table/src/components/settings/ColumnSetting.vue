@@ -112,14 +112,14 @@
   } from 'vue';
   import {  ElPopover as Popover, ElCheckbox as Checkbox,  ElCheckboxGroup as CheckboxGroup } from 'element-plus';
   // import type { CheckboxChangeEvent } from 'ant-design-vue/lib/checkbox/interface';
-  import { WmqIconify } from '@weiming-rock/components'
+  import { WmqIconify } from '@rchitect-rock/components'
   import { ScrollContainer } from '../../../../Container';
-  import { useI18n } from  '@weiming-rock/locale';
+  import { useI18n } from  '@rchitect-rock/locale';
   import { useTableContext } from '../../hooks/useTableContext';
-  import { useDesign } from '@weiming-rock/hooks';
+  import { useDesign } from '@rchitect-rock/hooks';
   // import { useSortable } from '/@/hooks/web/useSortable';
-  import { isNullAndUnDef } from '@vben/utils'
-  import { getPopupContainer as getParentContainer } from '@vben/utils';
+  import { isNullAndUnDef } from '@rchitect-rock/tools'
+  import { getPopupContainer as getParentContainer } from '@rchitect-rock/tools';
   import { cloneDeep, omit, isFunction } from 'lodash-es';
   import Sortablejs from 'sortablejs';
   import type Sortable from 'sortablejs';

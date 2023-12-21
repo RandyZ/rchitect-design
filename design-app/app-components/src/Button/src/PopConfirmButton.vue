@@ -2,11 +2,11 @@
   import { computed, defineComponent, h, unref } from 'vue';
   import BasicButton from './BasicButton.vue';
   import { ElPopconfirm } from 'element-plus';
-  import { extendSlots } from '@vben/utils';
+  import { extendSlots } from '@rchitect-rock/tools';
   import { omit } from 'lodash-es';
   // TODO: 验证
   import { useAttrs } from 'vue';
-  import { useI18n } from '@weiming-rock/locale';
+  import { useI18n } from '@rchitect-rock/locale';
 
   const props = {
     /**

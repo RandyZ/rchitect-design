@@ -26,6 +26,10 @@ export const Lib: CommonModuleLibContext<BeanKeys> = {
   async onSetup(app) {
     const routeTable = await diKT(Beans.RouteTable);
     app.use(routeTable.router);
+    routeTable.router.beforeEach((to, from, next) => {
+      console.log('路由守卫：进入路由，增加Tabs', to, from);
+      next()
+    })
     await routeTable.router.isReady();
   },
 };

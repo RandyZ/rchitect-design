@@ -12,8 +12,8 @@ import {
 
 import type { ComponentType } from './types/componentType';
 import { ApiSelect, ApiRadioGroup } from '../../Form';
-import {Lib as ComponentLib} from "@weiming-rock/components";
-import {resolveByKey} from "@weiming-rock/ioc";
+import {Lib as ComponentLib} from "@rchitect-rock/components";
+import {resolveByKey} from "@rchitect-rock/ioc";
 
 const componentMap = new Map<ComponentType, Component>();
 let isInit = false;

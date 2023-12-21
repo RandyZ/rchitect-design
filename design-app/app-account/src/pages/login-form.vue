@@ -6,11 +6,10 @@ import { LoginStateEnum } from '../constant'
 import {
   useLoginState,
   useFormRules,
-  // useFormValid
 } from '../usage';
 import LoginFormTitle from './login-form-title.vue';
-import { useAccountStore } from '../domain/store';
 import { diKT } from '@rchitect-rock/ioc'
+import { Beans as layoutBeans } from '@rchitect-rock/layouts'
 import { Beans } from '#/../beankeys'
 
 const formRef = ref();
@@ -18,7 +17,7 @@ const loading = ref(false);
 const rememberMe = ref(false);
 
 const { t } = useI18n();
-const userStore = useAccountStore();
+const userStore = diKT(layoutBeans.UserAction);
 const { setLoginState, getLoginState } = useLoginState();
 const { getFormRules } = useFormRules();
 

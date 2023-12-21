@@ -9,8 +9,8 @@
 </template>
 <script lang="ts" setup>
 import { computed } from 'vue-demi';
-import { RockComponent, useComponent } from '@weiming-rock/components'
-import { useDesign } from '@weiming-rock/hooks';
+import { RockComponent, useComponent } from '@rchitect-rock/components'
+import { useDesign } from '@rchitect-rock/hooks';
 const Iconify: IconifyInstance = useComponent(RockComponent.Iconify, true);
 const props = defineProps({
   /**

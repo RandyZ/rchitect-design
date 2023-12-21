@@ -1,11 +1,11 @@
 <script lang="tsx">
 import type { CSSProperties, PropType } from 'vue';
 import { defineComponent, computed, unref } from 'vue';
-import { isString, isArray, getSlot } from '@vben/utils';
+import { isString, isArray, getSlot } from '@rchitect-rock/tools';
 // TODO: 引用路径
-import { RockComponent, Lib as componentLib } from "@weiming-rock/components";
-import { diKT } from '@weiming-rock/ioc';
-import { useDesign } from '@weiming-rock/hooks';
+import { RockComponent, Lib as componentLib } from "@rchitect-rock/components";
+import { diKT } from '@rchitect-rock/ioc';
+import { useDesign } from '@rchitect-rock/hooks';
 const props = {
   /**
    * Help text max-width

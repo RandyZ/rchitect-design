@@ -26,10 +26,10 @@
   import type { SizeType } from '../../types/table';
   import { defineComponent, ref } from 'vue';
   import { ElDropdown as Dropdown, ElDropdownMenu as Menu, ElDropdownItem as MenuItem } from 'element-plus';
-  import { useI18n } from  '@weiming-rock/locale';
+  import { useI18n } from  '@rchitect-rock/locale';
   import { useTableContext } from '../../hooks/useTableContext';
-  import { getPopupContainer } from '@vben/utils';
-  import { WmqIconify } from '@weiming-rock/components'
+  import { getPopupContainer } from '@rchitect-rock/tools';
+  import { WmqIconify } from '@rchitect-rock/components'
 
   export default defineComponent({
     name: 'SizeSetting',

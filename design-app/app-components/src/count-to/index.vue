@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, watchEffect, unref, onMounted, watch } from 'vue'
-import { useTransition, TransitionPresets } from '@vben/utils'
+import { useTransition, TransitionPresets } from '@rchitect-rock/tools'
 import { isNumber } from 'lodash-es'
 
 const props = defineProps({

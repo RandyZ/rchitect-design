@@ -12,7 +12,7 @@
   // TODO: 路径
   import BasicHelp from '#/basic-help/index.vue';
   import EditTableHeaderCell from '#/Table/src/components/EditTableHeaderIcon.vue';
-  import { useDesign } from '@weiming-rock/hooks';
+  import { useDesign } from '@rchitect-rock/hooks';
 
   export default defineComponent({
     name: 'TableHeaderCell',

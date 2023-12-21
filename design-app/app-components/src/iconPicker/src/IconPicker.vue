@@ -73,13 +73,13 @@
   import { ref, watchEffect, watch, unref } from 'vue';
   import { ScrollContainer } from '#/Container';
   import { ElInput as Input, ElPopover as Popover, ElPagination as Pagination, ElEmpty as Empty } from 'element-plus';
-  import { WmqIconify } from '@weiming-rock/components';
+  import { WmqIconify } from '@rchitect-rock/components';
   import SvgIcon from '#/svg-icon';
   import iconsData from '../data/icons.data';
   import { propTypes } from '#/utils/proptypes';
-  import { useDebounceFn } from '@vben/utils';
-  import { useI18n } from '@weiming-rock/locale';
-  import { useCopyToClipboard, usePagination, useDesign } from '@weiming-rock/hooks';
+  import { useDebounceFn } from '@rchitect-rock/tools';
+  import { useI18n } from '@rchitect-rock/locale';
+  import { useCopyToClipboard, usePagination, useDesign } from '@rchitect-rock/hooks';
   import svgIcons from 'virtual:svg-icons-names';
 
   // 没有使用别名引入，是因为WebStorm当前版本还不能正确识别，会报unused警告

@@ -26,6 +26,7 @@
     "jsx": "preserve",
     "moduleResolution": "node",
     "noEmit": true,
+    "noImplicitAny": false,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "preserveWatchOutput": true,

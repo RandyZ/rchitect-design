@@ -2,7 +2,7 @@ import { PermissionModeEnum } from '@rchitect-design/constants';
 import type { Menu, Repository } from '@rchitect-design/types';
 import type { Ref } from 'vue-demi';
 
-export declare namespace Auth {
+export declare namespace Permission {
   export interface State extends Repository.State {
     // Permission code list
     permCodeList: Ref<string[] | number[]>;
@@ -13,10 +13,9 @@ export declare namespace Auth {
     // To trigger a menu update
     lastBuildMenuTime: Ref<number>;
     // Backstage menu list
-    backMenuList: Menu[];
-    frontMenuList: Menu[];
+    backMenuList: Ref<Menu[]>;
+    frontMenuList: Ref<Menu[]>;
   }
-  
   export interface Action extends Repository.Actions {
     setPermCodeList(codeList: string[]): void;
     setBackMenuList(list: Menu[]): void;

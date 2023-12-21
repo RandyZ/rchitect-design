@@ -16,9 +16,9 @@
 </template>
 <script lang="ts">
   import { defineComponent, computed } from 'vue';
-  import { WmqIconify } from '@weiming-rock/components'
-  import { useDesign } from '@weiming-rock/hooks';
-  import { useI18n } from '@weiming-rock/locale';
+  import { WmqIconify } from '@rchitect-rock/components'
+  import { useDesign } from '@rchitect-rock/hooks';
+  import { useI18n } from '@rchitect-rock/locale';
 
   export default defineComponent({
     name: 'ModalClose',

@@ -3,7 +3,7 @@ import type { BasicTableProps, InnerHandlers } from '../types/table';
 import { unref, computed, h } from 'vue';
 import TableHeader from '../components/TableHeader.vue';
 import { isString } from 'lodash-es';
-import { getSlot } from '@vben/utils';
+import { getSlot } from '@rchitect-rock/tools';
 
 export function useTableHeader(
   propsRef: ComputedRef<BasicTableProps>,

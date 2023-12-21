@@ -1,7 +1,7 @@
 import type { ValidationRule } from 'ant-design-vue/lib/form/Form';
 import type { ComponentType } from './types/index';
-import { useI18n } from '@weiming-rock/locale';
-import { dateUtil } from '@vben/utils';
+import { useI18n } from '@rchitect-rock/locale';
+import { dateUtil } from '@rchitect-rock/tools';
 import { isNumber, isObject } from 'lodash-es';
 
 const { t } = useI18n();

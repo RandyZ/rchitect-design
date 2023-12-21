@@ -6,7 +6,7 @@
 <script lang="ts">
   import { computed, defineComponent, PropType } from 'vue';
   import BasicTitle from '../../../basic-title/index.vue';
-  import { useDesign } from '@weiming-rock/hooks';
+  import { useDesign } from '@rchitect-rock/hooks';
   import { isFunction } from 'lodash-es';
 
   export default defineComponent({

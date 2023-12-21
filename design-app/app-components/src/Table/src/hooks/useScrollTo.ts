@@ -1,6 +1,6 @@
 import type { ComputedRef, Ref } from 'vue';
 import { nextTick, unref } from 'vue';
-import { diK, THROWN_HANDLER } from '@weiming-rock/ioc';
+import { diK, THROWN_HANDLER } from '@rchitect-rock/ioc';
 
 export function useTableScrollTo(
   tableElRef: Ref<ComponentRef>,

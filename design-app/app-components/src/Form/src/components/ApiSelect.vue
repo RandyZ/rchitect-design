@@ -26,8 +26,8 @@
   import { useRuleFormItem } from '../hooks/useFormItem';
   import { useAttrs } from 'vue';
   import { isFunction, get, omit } from 'lodash-es';
-  import { WmqIconify } from '@weiming-rock/components'
-  import { useI18n } from  '@weiming-rock/locale';
+  import { WmqIconify } from '@rchitect-rock/components'
+  import { useI18n } from  '@rchitect-rock/locale';
   import { propTypes } from '#/utils/proptypes'
 
   type OptionsItem = { label: string; value: string; disabled?: boolean };

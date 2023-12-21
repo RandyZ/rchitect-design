@@ -11,7 +11,7 @@ import {
   Ref,
   watchEffect,
 } from 'vue';
-import { useTimeoutFn, buildUUID } from '@vben/utils';
+import { useTimeoutFn, buildUUID } from '@rchitect-rock/tools';
 import { isFunction, isBoolean, isObject, get, cloneDeep, merge } from 'lodash-es';
 import { FETCH_SETTING, ROW_KEY, PAGE_SIZE } from '../const';
 

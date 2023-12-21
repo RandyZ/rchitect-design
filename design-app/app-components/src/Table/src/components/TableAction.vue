@@ -32,17 +32,17 @@
 </template>
 <script lang="ts">
   import { defineComponent, PropType, computed, toRaw, unref } from 'vue';
-  import { WmqIconify } from '@weiming-rock/components';
+  import { WmqIconify } from '@rchitect-rock/components';
   // TODO: 路径
   import { TableActionType } from '../types/table';
   import { ActionItem } from '../types/tableAction';
 
   import { PopConfirmButton } from '#/Button';
-  import { useDesign } from '@weiming-rock/hooks';
+  import { useDesign } from '@rchitect-rock/hooks';
   import { useTableContext } from '../hooks/useTableContext';
   // import { usePermission } from '/@/hooks/web/usePermission';
   import { isBoolean, isFunction, isString } from 'lodash-es';
-  import { propTypes } from '@vben/utils';
+  import { propTypes } from '@rchitect-rock/tools';
   import { ACTION_COLUMN_FLAG } from '../const';
 
   export default defineComponent({

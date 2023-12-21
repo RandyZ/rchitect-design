@@ -18,7 +18,6 @@
     "@rchitect-rock/base-package": "workspace:*",
     "@rchitect-rock/components": "workspace:^",
     "@rchitect-rock/hooks": "workspace:^",
-    "@rchitect-rock/infrastructure": "workspace:^",
     "@rchitect-rock/ioc": "workspace:*",
     "@rchitect-rock/layouts": "workspace:^",
     "@rchitect-rock/locale": "workspace:*",
@@ -32,6 +31,7 @@
   "peerDependencies": {
     "lodash-es": "^4.0.0",
     "vue": "~3.3.4",
+    "pinia": "~2.1.7",
     "vue-demi": "~0.14.6"
   }
 }

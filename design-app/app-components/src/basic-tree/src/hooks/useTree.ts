@@ -1,6 +1,6 @@
 import type { InsertNodeParams, KeyType, FieldNames, TreeItem } from '../types/tree';
 import type { Ref, ComputedRef } from 'vue';
-import type { Tree } from '@weiming-rock/components'
+import type { Tree } from '@rchitect-rock/components'
 
 import { cloneDeep } from 'lodash-es';
 import { unref } from 'vue';

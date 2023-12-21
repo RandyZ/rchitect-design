@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import { useI18n } from '@weiming-rock/locale'
+import { useI18n } from '@rchitect-rock/locale'
 import {
   formatToDateTime,
   formatToDate,
@@ -8,7 +8,7 @@ import {
   isObject,
   isString,
   useIntervalFn,
-} from '@vben/utils'
+} from '@rchitect-rock/tools'
 import { isNumber } from 'lodash-es'
 
 const ONE_SECONDS = 1000

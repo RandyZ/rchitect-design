@@ -1,14 +1,13 @@
 import { PermissionModeEnum } from '@rchitect-design/constants';
 import { Autowired, Bean } from '@rchitect-rock/ioc';
-import { Auth, Beans } from '@rchitect-rock/state';
+import { type Permission, Beans } from '@rchitect-rock/state';
 import { unref } from 'vue-demi';
 
-type AuthState = Auth.State;
 @Bean()
 export class MenuState {
-  authState: Auth.State;
-  constructor(@Autowired(Beans.AuthState) authState: AuthState) {
-    this.authState = authState;
+  permissionState: Permission.State;
+  constructor(@Autowired(Beans.PermissionState) permissionState: Permission.State) {
+    this.permissionState = permissionState;
   }
 
   /**
@@ -17,7 +16,7 @@ export class MenuState {
    * @returns
    */
   getPermissionMode(): PermissionModeEnum {
-    return unref(this.authState.permissionMode);
+    return unref(this.permissionState.permissionMode);
   }
 
   /**

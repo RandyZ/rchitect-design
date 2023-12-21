@@ -1,5 +1,5 @@
 import type { NamePath } from "./namePath";
-import type { Form } from '@weiming-rock/components'
+import type { Form } from '@rchitect-rock/components'
 import type { RowProps } from 'element-plus/lib/components/row/src/row'
 import type { VNode, CSSProperties } from 'vue';
 import type { ButtonProps as AntdButtonProps } from '../../../Button/index';

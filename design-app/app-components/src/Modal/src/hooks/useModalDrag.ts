@@ -1,5 +1,5 @@
 import { Ref, unref, watchEffect } from 'vue';
-import { useTimeoutFn } from '@vben/utils';
+import { useTimeoutFn } from '@rchitect-rock/tools';
 
 export interface UseModalDragMoveContext {
   draggable: Ref<boolean>;

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { CSSProperties } from 'vue'
 import { computed, useAttrs, unref } from 'vue'
-import { createNamespace } from '@vben/utils'
+import { createNamespace } from '@rchitect-rock/tools'
 
 const attrs = useAttrs()
 

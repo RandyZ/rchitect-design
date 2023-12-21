@@ -3,7 +3,7 @@ import {
   addResizeListener,
   removeResizeListener,
   createNamespace,
-} from '@vben/utils'
+} from '@rchitect-rock/tools'
 import { toObject } from './util'
 import {
   ref,

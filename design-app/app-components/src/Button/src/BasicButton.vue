@@ -11,10 +11,10 @@
 
 <script lang="ts" setup>
   import { computed, unref } from 'vue';
-  import { WmqIconify } from '@weiming-rock/components'
+  import { WmqIconify } from '@rchitect-rock/components'
 
   import { buttonProps } from './props';
-  // TODO: Randy import { useAttrs } from '@weiming-rock/hooks';
+  // TODO: Randy import { useAttrs } from '@rchitect-rock/hooks';
   import { useAttrs } from 'vue';
 
   // TODO:

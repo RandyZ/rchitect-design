@@ -1,5 +1,5 @@
 import { ComponentType } from '../../types/componentType';
-import { useI18n } from  '@weiming-rock/locale';
+import { useI18n } from  '@rchitect-rock/locale';
 
 const { t } = useI18n();
 

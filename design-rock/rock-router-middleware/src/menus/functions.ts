@@ -4,7 +4,7 @@ import { pathToRegexp } from 'path-to-regexp'
 import type { Menu } from '@rchitect-design/types'
 import { diKT } from '@rchitect-rock/ioc';
 import { Beans } from '#/../beankeys';
-import { Beans as settingBeans } from '@rchitect-rock/settings';
+import { Beans as stateBeans } from '@rchitect-rock/state';
 import { getAllParentPath } from './menu';
 import { Ref, computed, ref, unref } from 'vue-demi';
 import isEmpty from 'lodash-es/isEmpty';
@@ -83,13 +83,13 @@ export const useMenusAtLevel = (level: number | Ref<number> | undefined = undefi
 }
 
 async function getAsyncMenus(): Promise<Menu[]> {
-  const authState = diKT(settingBeans.AuthState)
+  const permissionState = diKT(stateBeans.PermissionState)
   if (useMenuState().isBackMode()) {
-    return unref(authState.backMenuList).filter(
+    return unref(permissionState.backMenuList).filter(
       (item) => !item.meta?.hideMenu && !item.hideMenu,
     )
   }
-  return unref(authState.frontMenuList).filter(
+  return unref(permissionState.frontMenuList).filter(
     (item) => !item.hideMenu && !item.meta?.hideMenu,
   )
 }

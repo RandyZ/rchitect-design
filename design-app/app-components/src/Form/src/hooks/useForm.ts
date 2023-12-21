@@ -1,9 +1,9 @@
 import type { FormProps, FormActionType, UseFormReturnType, FormSchema } from '../types/form';
 import type { NamePath } from "#/Form/src/types/namePath";
-import { diK, THROWN_HANDLER } from "@weiming-rock/ioc";
+import { diK, THROWN_HANDLER } from "@rchitect-rock/ioc";
 
 import { ref, onUnmounted, unref, nextTick, watch } from 'vue';
-import { getDynamicProps } from '@vben/utils';
+import { getDynamicProps } from '@rchitect-rock/tools';
 import type { ComputedRef, Ref } from 'vue';
 
 // TODO: 获取数据

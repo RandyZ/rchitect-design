@@ -18,11 +18,11 @@
     nextTick,
     onUnmounted,
   } from 'vue';
-  import { useWindowSizeFn } from '@weiming-rock/hooks';
-  import { type AnyFunction } from '@weiming-rock/types';
+  import { useWindowSizeFn } from '@rchitect-rock/hooks';
+  import { type AnyFunction } from '@rchitect-design/types';
   import { ScrollContainer } from '#/Container';
   import { createModalContext } from '../hooks/useModalContext';
-  import { useMutationObserver } from '@vben/utils';
+  import { useMutationObserver } from '@rchitect-rock/tools';
 
   const props = {
     loading: { type: Boolean },

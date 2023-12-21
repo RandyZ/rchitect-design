@@ -10,8 +10,8 @@ import {
   isEmpty,
 } from 'lodash-es';
 import { cloneDeep, set, uniqBy, get } from 'lodash-es';
-import { deepMerge, dateUtil, isNullOrUnDef, isCustomDef } from '@vben/utils';
-import { diK, THROWN_HANDLER } from "@weiming-rock/ioc";
+import { deepMerge, dateUtil, isNullOrUnDef, isCustomDef } from '@rchitect-rock/tools';
+import { diK, THROWN_HANDLER } from "@rchitect-rock/ioc";
 import { dateItemType, handleInputNumberValue, defaultValueComponents } from '../helper';
 
 interface UseFormActionContext {

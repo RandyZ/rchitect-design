@@ -3,20 +3,20 @@
   import { computed, defineComponent, nextTick, ref, toRaw, unref, watchEffect } from 'vue';
   import type { BasicColumn } from '../../types/table';
   import { CellComponent } from './CellComponent';
-  import { WmqIconify } from '@weiming-rock/components'
+  import { WmqIconify } from '@rchitect-rock/components'
 
   import { useTableContext } from '../../hooks/useTableContext';
 
-  import { clickOutside } from '@vben/directives'
+  import { clickOutside } from '@rchitect-rock/directives'
 
 
-  import { propTypes } from '@vben/utils';
+  import { propTypes } from '@rchitect-rock/tools';
   import { isArray, isBoolean, isFunction, isNumber, isString, pick, set } from 'lodash-es';
   import { createPlaceholderMessage } from './helper';
-  import { treeToList } from '@vben/utils';
+  import { treeToList } from '@rchitect-rock/tools';
   // TODO: loading
   // import { Spin } from 'ant-design-vue';
-  import { useDesign } from '@weiming-rock/hooks';
+  import { useDesign } from '@rchitect-rock/hooks';
 
   export default defineComponent({
     name: 'EditableCell',

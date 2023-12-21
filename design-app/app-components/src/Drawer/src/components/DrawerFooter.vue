@@ -27,7 +27,7 @@
 <script lang="ts">
   import type { CSSProperties } from 'vue';
   import { defineComponent, computed } from 'vue';
-  import { useDesign } from '@weiming-rock/hooks';
+  import { useDesign } from '@rchitect-rock/hooks';
   import { footerProps } from '../props';
 
   export default defineComponent({

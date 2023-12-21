@@ -14,6 +14,7 @@ export type IocModule = interfaces.ContainerModule;
 export const IocModule = ContainerModule;
 export type AsyncIocModule = interfaces.AsyncContainerModule;
 export const AsyncIocModule = AsyncContainerModule;
+export type AsyncIocModuleCallBack = interfaces.AsyncContainerModuleCallBack;
 export type IocContainer = Container;
 export const IocContainer = Container;
 export type IocContainerOptions = interfaces.ContainerOptions;

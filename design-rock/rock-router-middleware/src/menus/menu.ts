@@ -1,7 +1,5 @@
 import { isUrl, findParentPath, mapTree } from '@rchitect-rock/tools';
-import { cloneDeep } from 'lodash-es';
-import { RouteParams } from 'vue-router';
-import { toRaw } from 'vue';
+import cloneDeep from 'lodash-es/cloneDeep';
 import type { Menu, MenuModule } from '@rchitect-design/types';
 
 export function getAllParentPath<T = Recordable<any>>(
@@ -85,28 +83,4 @@ export function transformRouteToMenu(
   });
   joinParentPath(list);
   return cloneDeep(list);
-}
-
-/**
- * config menu with given params
- */
-const menuParamRegex = /(?::)([\s\S]+?)((?=\/)|$)/g;
-export function configureDynamicParamsMenu(menu: Menu, params: RouteParams) {
-  const { path, paramPath } = toRaw(menu);
-  let realPath = paramPath ? paramPath : path;
-  const matchArr = realPath.match(menuParamRegex);
-
-  matchArr?.forEach((it) => {
-    const realIt = it.substr(1);
-    if (params[realIt]) {
-      realPath = realPath.replace(`:${realIt}`, params[realIt] as string);
-    }
-  });
-  // save original param path.
-  if (!paramPath && matchArr && matchArr.length > 0) {
-    menu.paramPath = path;
-  }
-  menu.path = realPath;
-  // children
-  menu.children?.forEach((item) => configureDynamicParamsMenu(item, params));
 }

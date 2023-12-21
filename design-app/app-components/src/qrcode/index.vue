@@ -7,7 +7,7 @@ import type {
 import { watch, ref, unref, onMounted } from 'vue'
 import { toCanvas } from './to-canvas'
 import { toDataURL } from 'qrcode'
-import { downloadByUrl } from '@vben/utils'
+import { downloadByUrl } from '@rchitect-rock/tools'
 
 const props = defineProps({
   value: {

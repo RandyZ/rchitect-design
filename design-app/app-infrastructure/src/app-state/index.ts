@@ -1,6 +1,6 @@
 import type { AppState } from '@rchitect-rock/state'
 import { defineStore } from "pinia";
-import { Ref, computed, ref, shallowReactive, unref } from 'vue-demi';
+import { computed, unref } from 'vue-demi';
 import { useRouter, useAppSetting } from '@rchitect-rock/hooks';
 
 export type AppStateStore = ReturnType<typeof useStateStore>;

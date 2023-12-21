@@ -40,17 +40,17 @@ export interface Library<K extends TypeKey> {
   /**
    * 生命周期，应用启动后启动模块
    * @param app Vue app
-   * @param appContext 
-   * @returns 
+   * @param appContext
+   * @returns
    */
   onSetup?: (app: App, appContext: AppContext) => Promise<void>;
 
   /**
-     * 生命周期，应用启动后启动模块
-     * @param app Vue app
-     * @param appContext 
-     * @returns 
-     */
+   * 生命周期，应用启动后启动模块
+   * @param app Vue app
+   * @param appContext
+   * @returns
+   */
   beforeSetup?: (app: App<any>, appContext: AppContext) => Promise<void>;
 
   /**
@@ -65,7 +65,7 @@ export interface Library<K extends TypeKey> {
 /**
  * 内部类型
  */
-type MakeOptional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 
 export type ModuleLibContext<T extends keyof Library<K>, K extends TypeKey> = MakeOptional<
   Library<K>,

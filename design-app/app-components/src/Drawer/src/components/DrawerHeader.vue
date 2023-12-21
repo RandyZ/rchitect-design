@@ -20,9 +20,9 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import BasicTitle from '#/basic-title';
-  import { WmqIconify } from '@weiming-rock/components'
+  import { WmqIconify } from '@rchitect-rock/components'
   import { propTypes } from '#/utils/propTypes'
-  import { useDesign } from '@weiming-rock/hooks';
+  import { useDesign } from '@rchitect-rock/hooks';
 
   export default defineComponent({
     name: 'BasicDrawerHeader',

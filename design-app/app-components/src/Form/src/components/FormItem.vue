@@ -2,14 +2,14 @@
   import type { PropType, Ref } from 'vue';
   import {computed, defineComponent, ref, toRefs, unref, inject} from 'vue';
   import type { FormActionType, FormProps, FormSchema } from '../types/form';
-  import type { Form } from '@weiming-rock/components'
+  import type { Form } from '@rchitect-rock/components'
 
   // TODO: 类型
   // import type { TableActionType } from '/@/components/Table';
   import { componentMap } from '../componentMap';
   import BasicHelp from '#/basic-help';
   import { isBoolean, isFunction, isNull } from 'lodash-es';
-  import { getSlot } from '@vben/utils';
+  import { getSlot } from '@rchitect-rock/tools';
   import {
     createPlaceholderMessage,
     NO_AUTO_LINK_COMPONENTS,
@@ -17,8 +17,8 @@
   } from '../helper';
   import { cloneDeep, upperFirst } from 'lodash-es';
   import { useItemLabelWidth } from '../hooks/useLabelWidth';
-  import { useI18n } from '@weiming-rock/locale';
-  import { DriverHookKey } from '@weiming-cornerstone/component-driver';
+  import { useI18n } from '@rchitect-rock/locale';
+  import { DriverHookKey } from '@rchitect-app/component-driver';
 
   export default defineComponent({
     name: 'BasicFormItem',

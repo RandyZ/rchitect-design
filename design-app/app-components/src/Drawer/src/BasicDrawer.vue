@@ -43,14 +43,14 @@
     toRaw,
     getCurrentInstance,
   } from 'vue';
-  import { useI18n } from '@weiming-rock/locale';
+  import { useI18n } from '@rchitect-rock/locale';
   import { isFunction, isNumber } from 'lodash-es';
-  import { deepMerge } from '@vben/utils';
+  import { deepMerge } from '@rchitect-rock/tools';
   import DrawerFooter from './components/DrawerFooter.vue';
   import DrawerHeader from './components/DrawerHeader.vue';
   import { ScrollContainer } from '#/Container';
   import { basicProps } from './props';
-  import { useDesign } from '@weiming-rock/hooks';
+  import { useDesign } from '@rchitect-rock/hooks';
   // TODO: 验证逻辑
   import { useAttrs } from 'vue';
 

@@ -1,67 +1,82 @@
 import { App } from "vue-demi";
 import { forEach, isEmpty, groupBy, keys } from 'lodash-es';
-import { AsyncIocModule, IocContainerOptions, type ServiceIdentifier, contextContianer } from "@rchitect-rock/ioc";
+import {
+  AsyncIocModule,
+  IocContainerOptions,
+  type ServiceIdentifier,
+  contextContianer,
+  AsyncIocModuleCallBack
+} from "@rchitect-rock/ioc";
 import type { RouteRecordItem } from "@rchitect-design/types";
+import type { NavigationGuard, NavigationHookAfter } from "@rchitect-design/types";
 
-export const APP_CONTEXT: ServiceIdentifier<AppContext> = Symbol.for('WmqAppContext') as ServiceIdentifier<AppContext>;
+export const APP_CONTEXT:ServiceIdentifier<AppContext> = Symbol.for('WmqAppContext') as ServiceIdentifier<AppContext>;
 
-type PriorityObserver = { pri: number, obs: (app: App) => Promise<void> };
+type PriorityObserver = { pri:number, obs:(app:App) => Promise<void> };
 
 type IocLoadedObserver = {
-  preObservers: PriorityObserver[];
-  loadedObservers: PriorityObserver[];
+  preObservers:PriorityObserver[];
+  loadedObservers:PriorityObserver[];
 };
 
 /**
  * 按序执行观察者
- * 
- * @param app 
- * @param observers 
+ *
+ * @param app
+ * @param observers
  */
-const runObsOrdered = async (app: App, observers: PriorityObserver[]) => {
+const runObsOrdered = async (app:App, observers:PriorityObserver[]) => {
   const preObservers = groupBy(
     observers,
-    (o: PriorityObserver) => o.pri
+    (o:PriorityObserver) => o.pri
   );
-  const sortedKeys: number[] = (keys(preObservers) as unknown as number[])
-    .sort((a: number, b: number) => a - b);
+  const sortedKeys:number[] = (keys(preObservers) as unknown as number[])
+    .sort((a:number, b:number) => a - b);
   for (const key of sortedKeys) {
-    await Promise.all(preObservers[key].map((o: PriorityObserver) => o.obs(app)))
+    await Promise.all(preObservers[key].map((o:PriorityObserver) => o.obs(app)))
   }
 }
 
 
 /**
- * A generic type for defining properties in the AppContext class.
- * 
- * @template T The type of the property.
- */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export type AppContextPropertyGeneric<T> = Symbol;
-
-/**
  * App Context, used to store app configuration data.
  */
 export class AppContext {
-  iocOptions: IocContainerOptions;
-  iocModules: AsyncIocModule[];
-  basicRoutes: RouteRecordItem[];
-  appRoutes: RouteRecordItem[];
-  loadedObservers: IocLoadedObserver = {
+  iocOptions:IocContainerOptions;
+  iocModules:AsyncIocModule[];
+  basicRoutes:RouteRecordItem[];
+  routeHooks:{
+    beforeEach: NavigationGuard[],
+    beforeResolve: NavigationGuard[],
+    afterEach: NavigationHookAfter[],
+  }[];
+  appRoutes:RouteRecordItem[];
+  loadedObservers:IocLoadedObserver = {
     preObservers: [],
     loadedObservers: []
   };
-  [key: symbol]: any;
-  constructor(iocOptions: IocContainerOptions) {
+  [key:symbol]:any;
+
+  constructor(iocOptions:IocContainerOptions) {
     this.iocOptions = iocOptions;
     this.basicRoutes = [];
     this.appRoutes = [];
-    this.iocModules = [new AsyncIocModule(async (bind) => {
+    this.routeGuards = [];
+    this.iocModules = [ new AsyncIocModule(async (bind) => {
       bind(APP_CONTEXT).toConstantValue(this)
-    })];
+    }) ];
   }
 
-  getParamWith<T, K = AppContextPropertyGeneric<T>>(key: K, def?: T): T | undefined {
+  /**
+   * 添加IocModule
+   * @param moduleCallBack
+   */
+  addIocModule(moduleCallBack:AsyncIocModuleCallBack):AppContext {
+    this.iocModules.push(new AsyncIocModule(moduleCallBack))
+    return this;
+  }
+
+  getParamWith<T, K = ServiceIdentifier<T>>(key:K, def?:T):T | undefined {
     const data = this[key as symbol]
     if (data) {
       return data as T
@@ -70,25 +85,36 @@ export class AppContext {
     }
   }
 
-  getParam<T, K = AppContextPropertyGeneric<T>>(key: K): T {
+  getParam<T, K = ServiceIdentifier<T>>(key:K):T {
     const data = this[key as symbol]
     if (data) {
       return data as T
     } else {
-      throw new Error(`AppContext中缺少参数<${key}>`)
+      throw new Error(`AppContext中缺少参数<${ key }>`)
     }
   }
 
-  registerParam<T, K = AppContextPropertyGeneric<T>>(key: K, data: T) {
+  registerParam<T, K = ServiceIdentifier<T>>(key:K, data:T) {
     this[key as symbol] = data
   }
 
   /**
-   * 注册路由
-   * @param routes 
+   * 注册路由守卫
+   *
+   * @param guards
    */
-  registerRoutes(routes: RouteRecordItem[]) {
-    forEach(routes, (route: RouteRecordItem) => {
+  registerRouteGuards(...guards:NavigationGuard[]) {
+    forEach(guards, (guard) => {
+      this.routeGuards.push(guard)
+    })
+  }
+
+  /**
+   * 注册路由
+   * @param routes
+   */
+  registerRoutes(routes:RouteRecordItem[]) {
+    forEach(routes, (route:RouteRecordItem) => {
       if (route.meta?.isBasic) {
         this.basicRoutes.push(route)
       } else {
@@ -99,10 +125,10 @@ export class AppContext {
 
   /**
    * 监听IocModule加载前
-   * @param on 
+   * @param on
    * @param priority 不传递默认优先级为9999
    */
-  onBeforeIocLoaded(on: (app: App) => Promise<void>, priority?: number) {
+  onBeforeIocLoaded(on:(app:App) => Promise<void>, priority?:number) {
     if (priority) {
       this.loadedObservers.preObservers.push({ pri: priority, obs: on });
     } else {
@@ -112,10 +138,10 @@ export class AppContext {
 
   /**
    * 监听IocModule加载完成
-   * @param on 
+   * @param on
    * @param priority 不传递默认优先级为9999，传递负数则为预加载，传递正数则为加载完成后执行
    */
-  onIocLoaded(on: (app: App) => Promise<void>, priority?: number) {
+  onIocLoaded(on:(app:App) => Promise<void>, priority?:number) {
     if (priority) {
       this.loadedObservers.loadedObservers.push({ pri: priority, obs: on });
     } else {
@@ -124,18 +150,19 @@ export class AppContext {
   }
 
 
-  async prepareIocModules(app: App) {
+  async prepareIocModules(app:App) {
     if (!isEmpty(this.loadedObservers.preObservers)) {
       await runObsOrdered(app, this.loadedObservers.preObservers)
     }
     await contextContianer().loadAsync(...this.iocModules)
   }
+
   /**
    * 加载VueApp
-   * @param app 
-   * @returns 
+   * @param app
+   * @returns
    */
-  async load(app: App): Promise<App> {
+  async load(app:App):Promise<App> {
     await this.prepareIocModules(app)
     if (!isEmpty(this.loadedObservers.loadedObservers)) {
       await runObsOrdered(app, this.loadedObservers.loadedObservers)

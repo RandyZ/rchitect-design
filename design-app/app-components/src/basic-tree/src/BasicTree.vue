@@ -25,7 +25,7 @@
   import { TreeIcon } from './TreeIcon';
   import { ScrollContainer } from '../../Container';
   import { omit, get, difference, cloneDeep, isEmpty, isArray, isBoolean, isFunction } from 'lodash-es';
-  import { extendSlots, getSlot, createBEM } from '@vben/utils';
+  import { extendSlots, getSlot, createBEM } from '@rchitect-rock/tools';
   import { filter, treeToList, eachTree } from './helper/treeHelper';
   import { useTree } from './hooks/useTree';
   import { treeEmits, treeProps } from './types/tree';

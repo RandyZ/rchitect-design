@@ -2,7 +2,7 @@
 import { ref, watchEffect, computed, unref } from 'vue'
 import { useCountdown } from './use-countdown'
 import { isFunction } from 'lodash-es'
-import { useI18n } from '@weiming-rock/locale'
+import { useI18n } from '@rchitect-rock/locale'
 
 const props = defineProps({
   value: { type: [Object, Number, String, Array] },

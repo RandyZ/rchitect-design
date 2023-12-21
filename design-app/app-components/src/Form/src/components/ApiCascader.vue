@@ -26,8 +26,8 @@
   import { isFunction } from 'lodash-es';
   import { get, omit } from 'lodash-es';
   import { useRuleFormItem } from '../hooks/useFormItem';
-  import { useI18n } from  '@weiming-rock/locale';
-  import { WmqIconify } from '@weiming-rock/components'
+  import { useI18n } from  '@rchitect-rock/locale';
+  import { WmqIconify } from '@rchitect-rock/components'
 
   interface Option {
     value: string;

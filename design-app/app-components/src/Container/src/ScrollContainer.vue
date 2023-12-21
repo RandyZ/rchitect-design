@@ -7,7 +7,7 @@
 <script lang="ts">
   import { defineComponent, ref, unref, nextTick } from 'vue';
   import Scrollbar from '../../scrollbar/scrollbar.vue';
-  import { useScrollTo } from '@weiming-rock/hooks';
+  import { useScrollTo } from '@rchitect-rock/hooks';
 
   export default defineComponent({
     name: 'ScrollContainer',

@@ -1,4 +1,4 @@
-import { defineStore } from '@rchitect-rock/infrastructure';
+import { defineStore } from 'pinia';
 import { Lib as stateLib } from '@rchitect-rock/state';
 import { Route, PageEnum } from '@rchitect-design/constants';
 import { LayoutRoutes, User } from '@rchitect-rock/layouts';
@@ -10,10 +10,10 @@ import { Beans } from '#/../beankeys';
 import { fetchTokenFunction } from '.';
 import { ref, computed, unref } from 'vue-demi';
 
-const useAuthState = () => diKT(stateLib.types.AuthState);
-const useAuthAction = () => diKT(stateLib.types.AuthAction);
+const usePermissionState = () => diKT(stateLib.types.PermissionState);
+const usePermissionAction = () => diKT(stateLib.types.PermissionAction);
 
-export const useAccountStore = defineStore('AppAccountStore', () => {
+export const useUserStore = defineStore('AppUserStore', () => {
   const state: User.State = {
     userInfo: ref(null),
     accessToken: ref(),
@@ -36,7 +36,7 @@ export const useAccountStore = defineStore('AppAccountStore', () => {
         }
         : undefined;
     }),
-    getSessionTimeout: computed(() => !!unref(state.sessionTimeout)),
+    getSessionTimeout: computed(() => unref(state.sessionTimeout)),
   }
   const actions: User.Action = {
     setToken(token: AuthenticationToken | undefined) {
@@ -92,8 +92,8 @@ export const useAccountStore = defineStore('AppAccountStore', () => {
       if (sessionTimeout) {
         this.setSessionTimeout(false);
       } else {
-        const authState = useAuthState();
-        const authAction = useAuthAction();
+        const authState = usePermissionState();
+        const authAction = usePermissionAction();
         if (!authState.isDynamicAddedRoute) {
           const routes = await authAction.buildRoutesAction();
           routes.forEach((route) => {

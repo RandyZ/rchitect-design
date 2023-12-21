@@ -4,10 +4,10 @@ import type { ComputedRef } from 'vue';
 import { computed, Ref, ref, reactive, toRaw, unref, watch } from 'vue';
 import { renderEditCell } from '../components/editable';
 // import { usePermission } from '/@/hooks/web/usePermission';
-import { useI18n } from  '@weiming-rock/locale';
+import { useI18n } from  '@rchitect-rock/locale';
 import { isArray, isBoolean, isFunction, isMap, isString } from 'lodash-es';
 import { cloneDeep, isEqual } from 'lodash-es';
-import { formatToDate } from '@vben/utils';
+import { formatToDate } from '@rchitect-rock/tools';
 import { ACTION_COLUMN_FLAG, DEFAULT_ALIGN, INDEX_COLUMN_FLAG, PAGE_SIZE } from '../const';
 
 function handleItem(item: BasicColumn, ellipsis: boolean) {

@@ -68,10 +68,10 @@
   import ModalFooter from './components/ModalFooter.vue';
   import ModalHeader from './components/ModalHeader.vue';
   import { isFunction, omit } from 'lodash-es';
-  import { deepMerge } from '@vben/utils';
+  import { deepMerge } from '@rchitect-rock/tools';
   import { basicProps } from './props';
   import { useFullScreen } from './hooks/useModalFullScreen';
-  import { useDesign } from '@weiming-rock/hooks';
+  import { useDesign } from '@rchitect-rock/hooks';
 
 
   export default defineComponent({

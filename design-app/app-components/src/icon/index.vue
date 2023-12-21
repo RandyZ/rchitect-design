@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { PropType, CSSProperties } from 'vue'
 import { unref, computed, useAttrs, ref, nextTick, watch, onMounted } from 'vue'
-import { createNamespace, isString } from '@vben/utils'
+import { createNamespace, isString } from '@rchitect-rock/tools'
 import Iconify from '@purge-icons/generated'
 
 const props = defineProps({

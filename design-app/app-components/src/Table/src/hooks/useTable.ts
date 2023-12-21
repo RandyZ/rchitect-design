@@ -3,8 +3,8 @@ import type { PaginationProps } from '../types/pagination';
 import type { DynamicProps } from '/#/utils';
 import type { FormActionType } from '/@/components/Form';
 import type { WatchStopHandle } from 'vue';
-import { getDynamicProps } from '@vben/utils';
-import { diK, THROWN_HANDLER } from "@weiming-rock/ioc";
+import { getDynamicProps } from '@rchitect-rock/tools';
+import { diK, THROWN_HANDLER } from "@rchitect-rock/ioc";
 import { ref, onUnmounted, unref, watch, toRaw } from 'vue';
 // import { isProdMode } from '/@/utils/env';
 // TODO: 获取数据

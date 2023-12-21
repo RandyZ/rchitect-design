@@ -10,13 +10,13 @@
 </template>
 
 <script lang="ts">
-  import { type Recordable } from '@weiming-rock/types';
+  import { type Recordable } from '@rchitect-design/types';
   import { type PropType, computed, defineComponent, watch, ref, onMounted, unref } from 'vue';
   import { TreeSelect } from 'ant-design-vue';
   import { isArray, isFunction } from 'lodash-es';
   import { get } from 'lodash-es';
-  import { propTypes } from '@vben/utils';
-  import { WmqIconify } from '@weiming-rock/components'
+  import { propTypes } from '@rchitect-rock/tools';
+  import { WmqIconify } from '@rchitect-rock/components'
 
   export default defineComponent({
     name: 'ApiTreeSelect',

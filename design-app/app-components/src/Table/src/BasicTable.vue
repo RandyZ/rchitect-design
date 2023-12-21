@@ -65,8 +65,8 @@
   import { createTableContext } from './hooks/useTableContext';
   import { useTableFooter } from './hooks/useTableFooter';
   import { useTableForm } from './hooks/useTableForm';
-  import { useDesign } from '@weiming-rock/hooks';
-  import { diK, THROWN_HANDLER } from '@weiming-rock/ioc';
+  import { useDesign } from '@rchitect-rock/hooks';
+  import { diK, THROWN_HANDLER } from '@rchitect-rock/ioc';
 
   import { omit } from 'lodash-es';
   import { basicProps } from './props';

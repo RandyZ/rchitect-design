@@ -25,8 +25,8 @@
 <script lang="ts" setup>
   import { type PropType, computed, ref, watch, useSlots } from 'vue';
   import BasicTitle from '#/basic-title';
-  import { useI18n } from '@weiming-rock/locale'
-  import { createBEM, useDebounceFn } from '@vben/utils';
+  import { useI18n } from '@rchitect-rock/locale'
+  import { createBEM, useDebounceFn } from '@rchitect-rock/tools';
   import { ToolbarEnum } from '../types/tree';
 
   const searchValue = ref('');
