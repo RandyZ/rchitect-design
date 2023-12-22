@@ -5,7 +5,7 @@ import type { BeanKeys } from './beankeys';
 import { RouteList } from './src/routes';
 import { AsyncIocModule } from "@rchitect-rock/ioc";
 import { Beans as layoutBeans } from "@rchitect-rock/layouts";
-import { useUserStore } from "#/domain/store";
+import { useUserStore } from "./src/state";
 
 
 export const Lib:Library<BeanKeys> = toPackage({

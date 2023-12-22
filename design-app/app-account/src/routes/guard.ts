@@ -14,9 +14,6 @@ const ROOT_PATH = LayoutRoutes.ROOT_ROUTE.path;
 
 const routeTable = () => diKT(routeLib.types.RouteTable);
 const menuState = () => diKT(routeLib.types.MenuState);
-// const useUserStore = () => diKT(layoutLib.types.UserStore);
-// const useLockStore = () => diKT(layoutLib.types.LockStore);
-const use = () => diKT(stateBeans.PermissionState);
 const usePermissionActions = () => diKT(stateBeans.PermissionAction);
 const useLockState = () => diKT(layoutBeans.AppLockState);
 const useLockActions = () => diKT(layoutBeans.AppLockActions);
@@ -174,7 +171,6 @@ export function createAuthGuard(appContext:AppContext) {
     }
     const userStore = useUserStore();
     const permissionActions = usePermissionActions();
-    const permissionActions = usePermissionActions();
     // Jump to the 404 page after processing the login
     if (
       from.path === LOGIN_PATH &&
@@ -197,18 +193,18 @@ export function createAuthGuard(appContext:AppContext) {
         return;
       }
     }
-    if (useAuthStore().getIsDynamicAddedRoute) {
+    if (unref(userStore.isDynamicAddedRoute)) {
       next();
       return;
     }
-    const routes = await useAuthStore().buildRoutesAction();
+    const routes = await permissionActions.buildRoutesAction();
     routes.forEach((route) => {
       routeTable().router.addRoute(route);
     });
 
     routeTable().router.addRoute(LayoutRoutes.PAGE_NOT_FOUND_ROUTE);
 
-    useAuthStore().setDynamicAddedRoute(true);
+    permissionActions.setDynamicAddedRoute(true);
 
     if (to.name === LayoutRoutes.PAGE_NOT_FOUND_ROUTE.name) {
       // 动态添加路由后，此处应当重定向到fullPath，否则会加载404页面内容

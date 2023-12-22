@@ -18,9 +18,8 @@ const permissionState = () => diKT(stateBeans.PermissionState)
  * 创建基础路由守卫
  */
 export function createBasicGuard(appContext:AppContext) {
-  const openNProgress = unref(appConfigState().transitionSetting).openNProgress
   appContext.registerRouteGuards((to, from) => {
-    debugger
+    const openNProgress = unref(appConfigState().transitionSetting).openNProgress
     console.log('父应用to', to)
     console.log('父应用from', from)
     if (!window.history.state.current) window.history.state.current = to.fullPath;

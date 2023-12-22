@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { unref } from 'vue-demi';
+import { unref, ref } from 'vue-demi';
 import type { AppLock } from "@rchitect-rock/layouts";
 import { useUserStore } from "@rchitect-app/account";
 import type { UserInfo } from "@rchitect-design/types";

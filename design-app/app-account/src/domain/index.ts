@@ -6,7 +6,7 @@ import { diKT } from '@rchitect-rock/ioc';
 import { Beans } from '#/../beankeys';
 import { unref } from 'vue-demi'
 
-export { useUserStore } from './store';
+export { useUserStore } from '#/state';
 
 /**
  * 获取Token的函数
