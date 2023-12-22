@@ -1,5 +1,5 @@
 import type { RenderQrCodeParams, LogoType } from './typing'
-import { isString } from '@rchitect-rock/tools'
+import isString from 'lodash-es/isString'
 
 export const drawLogo = ({ canvas, logo }: RenderQrCodeParams) => {
   if (!logo) {

@@ -22,7 +22,7 @@
 </template>
 <script lang="ts">
   import { defineComponent, PropType, ref, unref, watch, watchEffect } from 'vue';
-  import { propTypes } from '#/utils/proptypes'
+  import { propTypes } from '@rchitect-design/types'
   import { isFunction } from 'lodash-es';
   import { get, omit } from 'lodash-es';
   import { useRuleFormItem } from '../hooks/useFormItem';

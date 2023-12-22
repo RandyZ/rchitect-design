@@ -39,7 +39,7 @@
   import { defineComponent, computed } from 'vue';
   import { useDesign } from '@rchitect-rock/hooks';
   import { ElImage as Image, ElBadge as Badge } from 'element-plus';
-  import { propTypes } from '#/utils/propTypes';
+  import { propTypes } from '@rchitect-design/types';
 
   export default defineComponent({
     name: 'TableImage',

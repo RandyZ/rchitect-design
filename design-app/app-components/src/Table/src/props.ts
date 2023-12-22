@@ -12,7 +12,7 @@ import type {
 import type { FormProps } from '/@/components/Form';
 
 import { DEFAULT_FILTER_FN, DEFAULT_SORT_FN, FETCH_SETTING, DEFAULT_SIZE } from './const';
-import { propTypes } from '#/utils/propTypes'
+import { propTypes } from '@rchitect-design/types'
 
 export const basicProps = {
   clickToRowSelect: { type: Boolean, default: true },

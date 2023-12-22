@@ -1,7 +1,8 @@
 <script lang="tsx">
 import type { CSSProperties, PropType } from 'vue';
 import { defineComponent, computed, unref } from 'vue';
-import { isString, isArray, getSlot } from '@rchitect-rock/tools';
+import { VueHelper } from '@rchitect-rock/tools';
+import { isString, isArray } from 'lodash-es'
 // TODO: 引用路径
 import { RockComponent, Lib as componentLib } from "@rchitect-rock/components";
 import { diKT } from '@rchitect-rock/ioc';
@@ -91,7 +92,7 @@ export default defineComponent({
               effect={props.effect as 'light'}
               placement={props.placement as 'right'}
           >
-            <span class={prefixCls}>{getSlot(slots) || <WmqIconify icon="material-symbols:error-circle-rounded-outline" />}</span>
+            <span class={prefixCls}>{VueHelper.getSlot(slots) || <WmqIconify icon="material-symbols:error-circle-rounded-outline" />}</span>
           </WmqTooltip>
       );
     };

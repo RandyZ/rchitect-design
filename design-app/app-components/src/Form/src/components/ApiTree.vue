@@ -13,7 +13,7 @@
   import { type Recordable, type AnyFunction } from '@rchitect-design/types';
   import { type PropType, computed, defineComponent, watch, ref, onMounted, unref } from 'vue';
   import { isArray, isFunction, get } from 'lodash-es';
-  import { propTypes } from '#/utils/proptypes';
+  import { propTypes } from '@rchitect-design/types';
   import { WmqIconify } from '@rchitect-rock/components'
 
   export default defineComponent({

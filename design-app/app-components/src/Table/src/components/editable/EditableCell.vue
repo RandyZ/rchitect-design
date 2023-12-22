@@ -10,7 +10,7 @@
   import { clickOutside } from '@rchitect-rock/directives'
 
 
-  import { propTypes } from '@rchitect-rock/tools';
+  import { propTypes } from '@rchitect-design/types';
   import { isArray, isBoolean, isFunction, isNumber, isString, pick, set } from 'lodash-es';
   import { createPlaceholderMessage } from './helper';
   import { treeToList } from '@rchitect-rock/tools';

@@ -76,7 +76,7 @@
   import { WmqIconify } from '@rchitect-rock/components';
   import SvgIcon from '#/svg-icon';
   import iconsData from '../data/icons.data';
-  import { propTypes } from '#/utils/proptypes';
+  import { propTypes } from '@rchitect-design/types';
   import { useDebounceFn } from '@rchitect-rock/tools';
   import { useI18n } from '@rchitect-rock/locale';
   import { useCopyToClipboard, usePagination, useDesign } from '@rchitect-rock/hooks';

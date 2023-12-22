@@ -33,6 +33,7 @@ export function createBasicGuard(appContext:AppContext) {
     }
     return true
   }).registerRouteResolveGuards((to) => {
+    const openNProgress = unref(appConfigState().transitionSetting).openNProgress
     // Indicates that the page has been loaded
     // When opening again, you can turn off some progress display interactions
     LOADED_PAGE_POOL.set(to.path, true)

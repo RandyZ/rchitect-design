@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { computed, defineComponent, h, unref } from 'vue';
+  import { computed, defineComponent, h, unref } from 'vue-demi';
   import BasicButton from './BasicButton.vue';
   import { ElPopconfirm } from 'element-plus';
-  import { extendSlots } from '@rchitect-rock/tools';
+  import { VueHelper } from '@rchitect-rock/tools';
   import { omit } from 'lodash-es';
   // TODO: 验证
   import { useAttrs } from 'vue';
@@ -42,7 +42,7 @@
         const bindValues = omit(unref(getBindValues), 'icon');
         const btnBind = omit(bindValues, 'title') as any;
         if (btnBind.disabled) btnBind.color = '';
-        const Button = h(BasicButton, btnBind, extendSlots(slots));
+        const Button = h(BasicButton, btnBind, VueHelper.extendSlots(slots));
         // If it is not enabled, it is a normal button
         if (!props.enable) {
           return Button;

@@ -42,7 +42,7 @@
   import { useTableContext } from '../hooks/useTableContext';
   // import { usePermission } from '/@/hooks/web/usePermission';
   import { isBoolean, isFunction, isString } from 'lodash-es';
-  import { propTypes } from '@rchitect-rock/tools';
+  import { propTypes } from '@rchitect-design/types';
   import { ACTION_COLUMN_FLAG } from '../const';
 
   export default defineComponent({

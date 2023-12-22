@@ -13,3 +13,4 @@ export * from './types/throws';
 export * from './types/functions';
 export * from './types/configuration';
 export * from './types/repository';
+export * from './types/props';

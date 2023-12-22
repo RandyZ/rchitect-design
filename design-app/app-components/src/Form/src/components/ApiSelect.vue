@@ -22,13 +22,13 @@
   </WmqSelect>
 </template>
 <script lang="ts">
-  import { defineComponent, PropType, ref, watchEffect, computed, unref, watch } from 'vue';
+  import { defineComponent, PropType, ref, watchEffect, computed, unref, watch } from 'vue-demi';
   import { useRuleFormItem } from '../hooks/useFormItem';
   import { useAttrs } from 'vue';
   import { isFunction, get, omit } from 'lodash-es';
   import { WmqIconify } from '@rchitect-rock/components'
   import { useI18n } from  '@rchitect-rock/locale';
-  import { propTypes } from '#/utils/proptypes'
+  import { propTypes } from '@rchitect-design/types';
 
   type OptionsItem = { label: string; value: string; disabled?: boolean };
 

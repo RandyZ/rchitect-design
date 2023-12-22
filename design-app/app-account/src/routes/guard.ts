@@ -32,8 +32,8 @@ const authGuardCustomHomepageHandler = async (to, from, next) => {
     from.path === ROOT_PATH &&
     to.path === PageEnum.BASE_HOME &&
     // If the user has set the home page, it will be used as the home page
-    userStore.userInfo.homePath &&
-    userStore.userInfo.homePath !== PageEnum.BASE_HOME
+    userStore.userInfo?.homePath &&
+    userStore.userInfo?.homePath !== PageEnum.BASE_HOME
   ) {
     next(userStore.userInfo.homePath);
     return false;

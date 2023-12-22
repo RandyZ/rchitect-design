@@ -11,7 +11,7 @@
   import { defineComponent, type PropType, ref, watchEffect, computed, unref, watch } from 'vue';
   import { useRuleFormItem } from '../hooks/useFormItem';
   import { useAttrs } from 'vue';
-  import { propTypes } from '#/utils/proptypes'
+  import { propTypes } from '@rchitect-design/types'
   import { isFunction, get, omit } from 'lodash-es';
   import { useI18n } from  '@rchitect-rock/locale';
 

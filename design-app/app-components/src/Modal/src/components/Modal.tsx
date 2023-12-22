@@ -4,7 +4,7 @@ import { basicProps } from '../props';
 import { useModalDragMove } from '../hooks/useModalDrag';
 // TODO: 验证
 import { useAttrs } from 'vue';
-import { extendSlots } from '@rchitect-rock/tools';
+import { VueHelper } from '@rchitect-rock/tools';
 
 export default defineComponent({
   name: 'Modal',
@@ -26,7 +26,7 @@ export default defineComponent({
 
     return () => {
       const propsData = { ...unref(attrs), ...props, onCancel,  } as Recordable;
-      return <Modal {...propsData}>{extendSlots(slots)}</Modal>;
+      return <Modal {...propsData}>{VueHelper.extendSlots(slots)}</Modal>;
     };
   },
 });

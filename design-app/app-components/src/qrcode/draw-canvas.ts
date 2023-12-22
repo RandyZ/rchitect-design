@@ -1,6 +1,6 @@
 import type { QRCodeRenderersOptions } from 'qrcode'
 import type { RenderQrCodeParams, ContentType } from './typing'
-import { cloneDeep } from '@rchitect-rock/tools'
+import cloneDeep from 'lodash-es/cloneDeep'
 import { toCanvas } from 'qrcode'
 
 export const renderQrCode = ({

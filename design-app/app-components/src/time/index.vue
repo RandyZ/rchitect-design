@@ -5,11 +5,9 @@ import {
   formatToDateTime,
   formatToDate,
   dateUtil,
-  isObject,
-  isString,
   useIntervalFn,
 } from '@rchitect-rock/tools'
-import { isNumber } from 'lodash-es'
+import { isNumber, isObject, isString } from 'lodash-es'
 
 const ONE_SECONDS = 1000
 const ONE_MINUTES = ONE_SECONDS * 60

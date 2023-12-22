@@ -21,7 +21,7 @@
   import { defineComponent } from 'vue';
   import BasicTitle from '#/basic-title';
   import { WmqIconify } from '@rchitect-rock/components'
-  import { propTypes } from '#/utils/propTypes'
+  import { propTypes } from '@rchitect-design/types'
   import { useDesign } from '@rchitect-rock/hooks';
 
   export default defineComponent({

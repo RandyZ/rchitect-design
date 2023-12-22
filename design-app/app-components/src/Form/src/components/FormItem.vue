@@ -9,7 +9,7 @@
   import { componentMap } from '../componentMap';
   import BasicHelp from '#/basic-help';
   import { isBoolean, isFunction, isNull } from 'lodash-es';
-  import { getSlot } from '@rchitect-rock/tools';
+  import { VueHelper } from '@rchitect-rock/tools';
   import {
     createPlaceholderMessage,
     NO_AUTO_LINK_COMPONENTS,
@@ -343,7 +343,7 @@
         } else {
           const getContent = () => {
             return slot
-              ? getSlot(slots, slot, unref(getValues))
+              ? VueHelper.getSlot(slots, slot, unref(getValues))
               : render
               ? render(unref(getValues))
               : renderComponent();
@@ -394,7 +394,7 @@
 
         const getContent = () => {
           return colSlot
-            ? getSlot(slots, colSlot, values)
+            ? VueHelper.getSlot(slots, colSlot, values)
             : renderColContent
             ? renderColContent(values)
             : renderItem();

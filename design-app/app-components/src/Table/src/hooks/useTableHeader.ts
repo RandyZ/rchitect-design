@@ -3,7 +3,7 @@ import type { BasicTableProps, InnerHandlers } from '../types/table';
 import { unref, computed, h } from 'vue';
 import TableHeader from '../components/TableHeader.vue';
 import { isString } from 'lodash-es';
-import { getSlot } from '@rchitect-rock/tools';
+import { VueHelper } from '@rchitect-rock/tools';
 
 export function useTableHeader(
   propsRef: ComputedRef<BasicTableProps>,
@@ -32,17 +32,17 @@ export function useTableHeader(
               {
                 ...(slots.toolbar
                   ? {
-                      toolbar: () => getSlot(slots, 'toolbar'),
+                      toolbar: () => VueHelper.getSlot(slots, 'toolbar'),
                     }
                   : {}),
                 ...(slots.tableTitle
                   ? {
-                      tableTitle: () => getSlot(slots, 'tableTitle'),
+                      tableTitle: () => VueHelper.getSlot(slots, 'tableTitle'),
                     }
                   : {}),
                 ...(slots.headerTop
                   ? {
-                      headerTop: () => getSlot(slots, 'headerTop'),
+                      headerTop: () => VueHelpergetSlot(slots, 'headerTop'),
                     }
                   : {}),
               },

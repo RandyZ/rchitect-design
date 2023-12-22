@@ -15,7 +15,7 @@
   import { TreeSelect } from 'ant-design-vue';
   import { isArray, isFunction } from 'lodash-es';
   import { get } from 'lodash-es';
-  import { propTypes } from '@rchitect-rock/tools';
+  import { propTypes } from '@rchitect-design/types';
   import { WmqIconify } from '@rchitect-rock/components'
 
   export default defineComponent({

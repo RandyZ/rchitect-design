@@ -25,7 +25,7 @@
   import { TreeIcon } from './TreeIcon';
   import { ScrollContainer } from '../../Container';
   import { omit, get, difference, cloneDeep, isEmpty, isArray, isBoolean, isFunction } from 'lodash-es';
-  import { extendSlots, getSlot, createBEM } from '@rchitect-rock/tools';
+  import { VueHelper, createBEM } from '@rchitect-rock/tools';
   import { filter, treeToList, eachTree } from './helper/treeHelper';
   import { useTree } from './hooks/useTree';
   import { treeEmits, treeProps } from './types/tree';
@@ -372,7 +372,7 @@
               onClick={handleClickNode.bind(null, item[idField], item[childrenField])}
             >
               {slots?.title ? (
-                getSlot(slots, 'title', item)
+                  VueHelper.getSlot(slots, 'title', item)
               ) : (
                 <>
                   {icon && <TreeIcon icon={icon} />}
@@ -408,7 +408,7 @@
                 onSearch={handleSearch}
                 searchText={searchState.searchText}
               >
-                {extendSlots(slots)}
+                {VueHelper.extendSlots(slots)}
               </TreeHeader>
             )}
             <div

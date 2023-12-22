@@ -15,7 +15,7 @@
   import { computed, defineComponent, watch, ref, unref, watchEffect, PropType } from 'vue';
   import { Transfer } from 'ant-design-vue';
   import { isFunction, get, omit } from 'lodash-es';
-  import { propTypes } from '@rchitect-rock/tools';
+  import { propTypes } from '@rchitect-design/types';
   import { useI18n } from  '@rchitect-rock/locale';
   import { TransferDirection, TransferItem } from 'ant-design-vue/lib/transfer';
 
