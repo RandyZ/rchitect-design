@@ -46,10 +46,12 @@ import type { FailData, HandleTypes } from "@rchitect-design/types";
       return {
         apiUrl,
         tokenProvider() {
-          return useUserGetter().getToken;
+          const userGetter = useUserGetter();
+          return userGetter.getToken;
         },
         onUnauthorized() {
-          useUserAction().logout(true);
+          const userAction = useUserAction();
+          userAction.logout(true);
           // TODO 提示登出
         },
         onAll(event:string | Symbol, payload?:any) {

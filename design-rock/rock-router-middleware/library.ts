@@ -6,8 +6,9 @@ import { InitRouter, RouteOperator, RoutesTable } from '#/.';
 import { MenuState } from '#/model/MenuState';
 import { Beans } from './beankeys';
 import type { BeanKeys } from './beankeys';
+import isEmpty from 'lodash-es/isEmpty';
 
-export const Lib: CommonModuleLibContext<BeanKeys> = {
+export const Lib:CommonModuleLibContext<BeanKeys> = {
   install,
   name: pack.name,
   version: pack.version,
@@ -23,13 +24,30 @@ export const Lib: CommonModuleLibContext<BeanKeys> = {
       return ret;
     });
   }),
-  async onSetup(app) {
-    const routeTable = await diKT(Beans.RouteTable);
-    app.use(routeTable.router);
-    routeTable.router.beforeEach((to, from, next) => {
+  async onSetup(app, appContext) {
+    const routeTable = diKT(Beans.RouteTable);
+    const router = routeTable.router;
+    app.use(router);
+    router.beforeEach((to, from, next) => {
       console.log('路由守卫：进入路由，增加Tabs', to, from);
       next()
     })
-    await routeTable.router.isReady();
+    const { beforeEach, beforeResolve, afterEach } = appContext.routeHooks
+    if(!isEmpty(beforeEach)) {
+      beforeEach.forEach((hook) => {
+        router.beforeEach(hook)
+      })
+    }
+    if(!isEmpty(beforeResolve)) {
+      beforeResolve.forEach((hook) => {
+        router.beforeResolve(hook)
+      })
+    }
+    if(!isEmpty(afterEach)) {
+      afterEach.forEach((hook) => {
+        router.afterEach(hook)
+      })
+    }
+    await router.isReady();
   },
 };

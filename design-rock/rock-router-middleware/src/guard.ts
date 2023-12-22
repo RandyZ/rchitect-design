@@ -6,18 +6,20 @@ import { Beans } from '../beankeys';
 import { RouteParams } from 'vue-router'
 import { Beans as stateBeans } from '@rchitect-rock/state'
 import { Beans as settingBeans } from '@rchitect-rock/settings'
+import { AppContext } from "@rchitect-rock/base-package";
 
 const LOADED_PAGE_POOL = new Map<string, boolean>()
 const routeTable = () => diKT(Beans.RouteTable)
 const menuState = () => diKT(Beans.MenuState)
 const appConfigState = () => diKT(settingBeans.AppConfigState)
 const permissionState = () => diKT(stateBeans.PermissionState)
+
 /**
  * 创建基础路由守卫
  */
-export function createBasicGuard() {
+export function createBasicGuard(appContext:AppContext) {
   const openNProgress = unref(appConfigState().transitionSetting).openNProgress
-  routeTable().router.beforeEach((to, from) => {
+  appContext.registerRouteGuards((to, from) => {
     debugger
     console.log('父应用to', to)
     console.log('父应用from', from)
@@ -31,8 +33,7 @@ export function createBasicGuard() {
       nProgress.start()
     }
     return true
-  })
-  routeTable().router.afterEach((to) => {
+  }).registerRouteResolveGuards((to) => {
     // Indicates that the page has been loaded
     // When opening again, you can turn off some progress display interactions
     LOADED_PAGE_POOL.set(to.path, true)
@@ -45,7 +46,7 @@ export function createBasicGuard() {
 }
 
 // 路由守卫：进入路由，增加Tabs
-export function createTabsGuard(func: Function) {
+export function createTabsGuard(func:Function) {
   routeTable().router.beforeEach(async (to, from) => {
     if (routeTable().whiteRouteTable.paths.includes(to.path)) return
     // Notify routing changes
@@ -55,12 +56,13 @@ export function createTabsGuard(func: Function) {
 
 
 const menuParamRegex = /(?::)([\s\S]+?)((?=\/)|$)/g
+
 /**
  * config menu with given params
  * @param menu
  * @param params
  */
-export function configureDynamicParamsMenu(menu: Menu, params: RouteParams) {
+export function configureDynamicParamsMenu(menu:Menu, params:RouteParams) {
   const { path, paramPath } = toRaw(menu)
   let realPath = paramPath ? paramPath : path
   const matchArr = realPath.match(menuParamRegex)
@@ -68,7 +70,7 @@ export function configureDynamicParamsMenu(menu: Menu, params: RouteParams) {
   matchArr?.forEach((it) => {
     const realIt = it.substr(1)
     if (params[realIt]) {
-      realPath = realPath.replace(`:${realIt}`, params[realIt] as string)
+      realPath = realPath.replace(`:${ realIt }`, params[realIt] as string)
     }
   })
   // save original param path.
@@ -83,8 +85,8 @@ export function configureDynamicParamsMenu(menu: Menu, params: RouteParams) {
 /**
  * 菜单参数守卫
  */
-export function createParamMenuGuard() {
-  routeTable().router.beforeEach(async (to, _, next) => {
+export function createParamMenuGuard(appContext:AppContext) {
+  appContext.registerRouteGuards(async (to, _, next) => {
     // filter no name route
     if (!to.name) {
       next()
@@ -96,7 +98,7 @@ export function createParamMenuGuard() {
       next()
       return
     }
-    let menus: Menu[] = []
+    let menus:Menu[] = []
     if (menuState().isBackMode()) {
       menus = permissionState().backMenuList.value
     } else if (menuState().isRouteMappingMode()) {

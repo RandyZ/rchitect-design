@@ -1,9 +1,12 @@
 import { PageEnum, Route, AuthorizationModeEnum, PermissionModeEnum } from '@rchitect-design/constants';
 import { Lib as routeLib } from '@rchitect-rock/router';
-import { Lib as layoutLib, LayoutRoutes } from '@rchitect-rock/layouts';
-import { Lib as stateLib } from '@rchitect-rock/settings';
+import { Beans as layoutBeans, LayoutRoutes, useUserGetter, useUserAction, useUserState } from '@rchitect-rock/layouts';
+import { Beans as stateBeans } from '@rchitect-rock/state';
 import { useOAuth2Config, useAuthMode } from '#/usage';
 import { diKT } from '@rchitect-rock/ioc';
+import { AppContext } from "@rchitect-rock/base-package";
+import { unref } from "vue";
+import { useUserStore } from "#/state";
 
 const LOCK_PATH = Route.BASIC_LOCK_PATH;
 const LOGIN_PATH = Route.BASIC_LOGIN_PATH;
@@ -11,9 +14,12 @@ const ROOT_PATH = LayoutRoutes.ROOT_ROUTE.path;
 
 const routeTable = () => diKT(routeLib.types.RouteTable);
 const menuState = () => diKT(routeLib.types.MenuState);
-const useUserStore = () => diKT(layoutLib.types.UserStore);
-const useLockStore = () => diKT(layoutLib.types.LockStore);
-const useAuthStore = () => diKT(stateLib.types.AuthStore);
+// const useUserStore = () => diKT(layoutLib.types.UserStore);
+// const useLockStore = () => diKT(layoutLib.types.LockStore);
+const use = () => diKT(stateBeans.PermissionState);
+const usePermissionActions = () => diKT(stateBeans.PermissionAction);
+const useLockState = () => diKT(layoutBeans.AppLockState);
+const useLockActions = () => diKT(layoutBeans.AppLockActions);
 
 /**
  * 身份路由守卫-自定义首页
@@ -23,15 +29,16 @@ const useAuthStore = () => diKT(stateLib.types.AuthStore);
  * @returns
  */
 const authGuardCustomHomepageHandler = async (to, from, next) => {
+  const userStore = useUserStore()
   if (
     // '/' => '/dashboard'
     from.path === ROOT_PATH &&
     to.path === PageEnum.BASE_HOME &&
     // If the user has set the home page, it will be used as the home page
-    useUserStore().getUserInfo?.homePath &&
-    useUserStore().getUserInfo?.homePath !== PageEnum.BASE_HOME
+    userStore.userInfo.homePath &&
+    userStore.userInfo.homePath !== PageEnum.BASE_HOME
   ) {
-    next(useUserStore().getUserInfo?.homePath);
+    next(userStore.userInfo.homePath);
     return false;
   } else {
     return true;
@@ -47,12 +54,15 @@ const authGuardCustomHomepageHandler = async (to, from, next) => {
  */
 const authGuardWhiteRoutesHandler = async (to, from, next) => {
   if (routeTable().whiteRouteTable.paths.includes(to.path as PageEnum)) {
-    const token = useUserStore().getAccessToken;
+    const userGetter = useUserGetter()
+    const userState = useUserState()
+    const userAction = useUserAction()
+    const token = userGetter.getToken;
     if (to.path === LOGIN_PATH && token) {
       // 登录页携带了redirect参数，直接跳转到redirect参数指定的页面
-      const isSessionTimeout = useUserStore().getSessionTimeout;
+      const isSessionTimeout = unref(userState.sessionTimeout);
       try {
-        await useUserStore().afterLoginAction();
+        await userAction.afterLoginAction();
         if (!isSessionTimeout) {
           next((to.query?.redirect as string) || '/');
           return false;
@@ -62,7 +72,7 @@ const authGuardWhiteRoutesHandler = async (to, from, next) => {
       }
     }
     // 如果是锁屏页，且没有锁屏，则跳转到上一个页面
-    if (to.path === LOCK_PATH && !useLockStore().getLockInfo?.isLock) {
+    if (to.path === LOCK_PATH && !unref(useLockState().lockInfo)?.isLock) {
       next({ path: from.path });
       return false;
     }
@@ -79,9 +89,10 @@ const authGuardWhiteRoutesHandler = async (to, from, next) => {
  * @param next
  * @returns
  */
-const authGuardWithoutTokenHandler = async (to, _, next) => {
-  const token = useUserStore().getAccessToken;
-  if (!token) {
+const authGuardWithoutTokenHandler = async (to, from, next) => {
+  const token = useUserGetter().getToken;
+  const userAction = useUserAction();
+  if (!unref(token)) {
     // You can access without permission. You need to set the routing meta.ignoreAuth to true
     if (to.meta.ignoreAuth) {
       next();
@@ -96,7 +107,7 @@ const authGuardWithoutTokenHandler = async (to, _, next) => {
         const authState = to.query?.state;
         // 如果是授权码回调地址，且携带了code和state参数，则进行登录
         if (authCode && authState && isCodeHandlePath) {
-          const user = await useUserStore().login({
+          const user = await userAction.login({
             clientId: 'wmqe-pc',
             code: authCode,
             state: authState,
@@ -132,8 +143,8 @@ const authGuardWithoutTokenHandler = async (to, _, next) => {
 /**
  * 创建登录身份验证守卫
  */
-export function createAuthGuard() {
-  routeTable().router.beforeEach(async (to, from, next) => {
+export function createAuthGuard(appContext:AppContext) {
+  appContext.registerRouteGuards(async (to, from, next) => {
     const ret =
       (await authGuardCustomHomepageHandler(to, from, next)) &&
       (await authGuardWhiteRoutesHandler(to, from, next)) &&
@@ -142,7 +153,7 @@ export function createAuthGuard() {
       return;
     }
     // TODO 继续抽取其他方法
-    if (useLockStore().getLockInfo?.isLock) {
+    if (unref(useLockState().lockInfo)?.isLock) {
       // redirect lock page
       const redirectData: {
         path: string;
@@ -161,24 +172,26 @@ export function createAuthGuard() {
       next(redirectData);
       return;
     }
-    
+    const userStore = useUserStore();
+    const permissionActions = usePermissionActions();
+    const permissionActions = usePermissionActions();
     // Jump to the 404 page after processing the login
     if (
       from.path === LOGIN_PATH &&
       to.name === LayoutRoutes.PAGE_NOT_FOUND_ROUTE.name &&
-      to.fullPath !== (useUserStore().getUserInfo?.homePath || PageEnum.BASE_HOME)
+      to.fullPath !== (unref(userStore.userInfo)?.homePath || PageEnum.BASE_HOME)
     ) {
-      next(useUserStore().getUserInfo?.homePath || PageEnum.BASE_HOME);
+      next(unref(userStore.userInfo)?.homePath || PageEnum.BASE_HOME);
       return;
     }
     const permissionMode = menuState().getPermissionMode();
     // TODO get userinfo while last fetch time is empty
     if (
-      useUserStore().getLastUpdateTime === 0 &&
+      unref(userStore.lastUpdateTime) === 0 &&
       permissionMode == PermissionModeEnum.BACK
     ) {
       try {
-        await useUserStore().getUserInfoAction();
+        await userStore.getUserInfoAction();
       } catch (err) {
         next();
         return;

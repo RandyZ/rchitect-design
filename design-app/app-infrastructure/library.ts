@@ -5,9 +5,10 @@ import { AsyncIocModule } from '@rchitect-rock/ioc';
 import { setupPinia } from "./src";
 import { useSettingStore } from '#/app-setting';
 import { useConfigStore } from '#/app-config';
-import { useStateStore } from '#/app-state';
+import { useStateStore, useAppLockState } from '#/app-state';
 import { Beans as settingsBeans } from '@rchitect-rock/settings'
 import { Beans as stateBeans } from '@rchitect-rock/state'
+import { Beans as layoutBeans } from '@rchitect-rock/layouts'
 import Beans from './beankeys';
 import { getGlobalConfig, getAppConfig, deepMerge } from '@rchitect-rock/tools';
 import mergeSetting from '#/app-config/enviroment'
@@ -42,6 +43,11 @@ export const Lib:ModuleLibContext<'routes', typeof Beans> = {
     bind(stateBeans.AppState).toConstantValue(stateStore)
     bind(stateBeans.AppStateActions).toConstantValue(stateStore)
     bind(stateBeans.AppStateGetters).toConstantValue(stateStore)
+
+    // 应用锁
+    const appLockState = useAppLockState()
+    bind(layoutBeans.AppLockState).toConstantValue(appLockState)
+    bind(layoutBeans.AppLockActions).toConstantValue(appLockState)
 
     const projectSetting = mergeSetting(getAppConfig(import.meta.env));
     bind(settingsBeans.GlobConfig).toConstantValue(getGlobalConfig(import.meta.env));

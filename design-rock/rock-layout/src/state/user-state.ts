@@ -8,6 +8,9 @@ import type {
 } from '@rchitect-design/types';
 import { ComputedRef, Ref } from 'vue-demi';
 
+/**
+ * User State
+ */
 export declare namespace User {
 
   export interface CodeLoginParamters {

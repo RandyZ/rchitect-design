@@ -10,11 +10,11 @@ import { AppContext } from "@rchitect-rock/base-package";
  * 启动路由守卫
  */
 async function setupRouteGuard(appContext:AppContext) {
-  createBasicGuard();
-  createAuthGuard();
-  GUARDS.createTabsGuard();
+  createBasicGuard(appContext);
+  createAuthGuard(appContext);
+  appContext.registerRouteGuards(GUARDS.createTabsGuard())
   // must after createPermissionGuard (menu has been built.)
-  createParamMenuGuard();
+  createParamMenuGuard(appContext);
 }
 
 export { setupRouteGuard };

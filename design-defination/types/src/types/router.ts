@@ -10,8 +10,7 @@ export type RchitectRouteComponent = RouteComponent | Lazy<RouteComponent>;
 /**
  * 路由守卫定义
  */
-export type NavigationGuard = NavigationGuardWithThis<undefined>
-export type NavigationHookAfter = NavigationHookAfter
+export type NavigationHook = NavigationGuardWithThis<undefined>
 
 /**
  * 路由的配置记录

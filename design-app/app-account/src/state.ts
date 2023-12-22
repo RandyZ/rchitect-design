@@ -13,6 +13,8 @@ import { ref, computed, unref } from 'vue-demi';
 const usePermissionState = () => diKT(stateLib.types.PermissionState);
 const usePermissionAction = () => diKT(stateLib.types.PermissionAction);
 
+export type UserStateStore = ReturnType<typeof useUserStore>;
+
 export const useUserStore = defineStore('AppUserStore', () => {
   const state: User.State = {
     userInfo: ref(null),

@@ -7,8 +7,7 @@ import {
   contextContianer,
   AsyncIocModuleCallBack
 } from "@rchitect-rock/ioc";
-import type { RouteRecordItem } from "@rchitect-design/types";
-import type { NavigationGuard, NavigationHookAfter } from "@rchitect-design/types";
+import type { RouteRecordItem, NavigationHook } from "@rchitect-design/types";
 
 export const APP_CONTEXT:ServiceIdentifier<AppContext> = Symbol.for('WmqAppContext') as ServiceIdentifier<AppContext>;
 
@@ -46,22 +45,27 @@ export class AppContext {
   iocModules:AsyncIocModule[];
   basicRoutes:RouteRecordItem[];
   routeHooks:{
-    beforeEach: NavigationGuard[],
-    beforeResolve: NavigationGuard[],
-    afterEach: NavigationHookAfter[],
-  }[];
+    beforeEach:NavigationHook[],
+    beforeResolve:NavigationHook[],
+    afterEach:NavigationHook[],
+  };
   appRoutes:RouteRecordItem[];
   loadedObservers:IocLoadedObserver = {
     preObservers: [],
     loadedObservers: []
   };
+
   [key:symbol]:any;
 
   constructor(iocOptions:IocContainerOptions) {
     this.iocOptions = iocOptions;
     this.basicRoutes = [];
     this.appRoutes = [];
-    this.routeGuards = [];
+    this.routeHooks = {
+      beforeEach: [],
+      beforeResolve: [],
+      afterEach: []
+    };
     this.iocModules = [ new AsyncIocModule(async (bind) => {
       bind(APP_CONTEXT).toConstantValue(this)
     }) ];
@@ -99,14 +103,33 @@ export class AppContext {
   }
 
   /**
-   * 注册路由守卫
+   * 路由的后置钩子
    *
    * @param guards
    */
-  registerRouteGuards(...guards:NavigationGuard[]) {
-    forEach(guards, (guard) => {
-      this.routeGuards.push(guard)
-    })
+  registerRouteGuards(...guards:NavigationHook[]) {
+    (!isEmpty(guards)) && this.routeHooks.beforeEach.push(...guards)
+    return this
+  }
+
+  /**
+   * 路由的后置钩子
+   *
+   * @param guards
+   */
+  registerRouteResolveGuards(...guards:NavigationHook[]) {
+    (!isEmpty(guards)) && this.routeHooks.beforeResolve.push(...guards)
+    return this
+  }
+
+  /**
+   * 路由的后置钩子
+   *
+   * @param hooks
+   */
+  registerRouteAfterHooks(...hooks:NavigationHook[]) {
+    (!isEmpty(hooks)) && this.routeHooks.afterEach.push(...hooks)
+    return this
   }
 
   /**
