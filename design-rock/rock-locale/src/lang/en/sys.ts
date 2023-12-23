@@ -59,8 +59,8 @@ export default {
     signUpFormTitle: 'Sign up',
     forgetFormTitle: 'Reset password',
 
-    signInTitle: 'rchitect Backstage management system',
-    signInDesc: 'Management system template, build with monorepo!',
+    signInTitle: 'Rchitect Design back stage management system',
+    signInDesc: 'Rchitect Design means Randy Architect Design. Management system template inspired by DDD, build with monorepo!',
     policy: 'I agree to the xxx Privacy Policy',
     scanSign: `scanning the code to complete the login`,
     rchitectOAuthRedicting: `Authorization server redicting...`,

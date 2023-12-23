@@ -31,7 +31,7 @@ export type I18nWithTMethod = {
 }
 
 /**
- * 直接将i8n转换为ref
+ * 直接将i18n转换为ref
  * 方法名不要变，因为vscode插件会识别，如果变了，编辑器中无法直接展示转换后的名
  * @param key 
  * @param namespace 

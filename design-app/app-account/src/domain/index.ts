@@ -7,6 +7,7 @@ import { Beans } from '#/../beankeys';
 import { unref } from 'vue-demi'
 
 export { useUserStore } from '#/state';
+export * from './repository';
 
 /**
  * 获取Token的函数
@@ -15,8 +16,8 @@ export { useUserStore } from '#/state';
  * @returns {Promise<LoginResultModel | AuthenticationToken>}
  */
 export function fetchTokenFunction(
-  params: User.CodeLoginParamters | User.LoginParams,
-  mode: ErrorMessageMode = 'modal'
+  params:User.CodeLoginParamters | User.LoginParams,
+  mode:ErrorMessageMode = 'modal'
 ) {
   const authMode = unref(useAppSetting().authMode)
   const { doFetchToken, doLoginApi } = diKT(Beans.Repository);

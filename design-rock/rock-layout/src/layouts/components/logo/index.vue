@@ -7,7 +7,7 @@ export default {
 import { Beans } from '@rchitect-rock/router'
 import { Route } from '@rchitect-design/constants'
 import { createNamespace, getGlobalConfig } from '@rchitect-rock/tools'
-import logo from '#/layouts/components/logo/assets/logo.png'
+import logo from '#/layouts/components/logo/assets/logo-rect.png'
 import { diKT } from '@rchitect-rock/ioc'
 import { computed } from 'vue-demi'
 

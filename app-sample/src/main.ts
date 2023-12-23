@@ -15,6 +15,7 @@ import { NavieuiComponentDriver as ComponentDriver } from '@rchitect-app/compone
 import { useGlobConfig } from "@rchitect-rock/hooks";
 import { WmqAxiosTransform } from "@/configuration/axios-transform";
 import type { FailData, HandleTypes } from "@rchitect-design/types";
+import { AppAccountRepository } from "./server/account";
 
 (async () => {
   // 创建AppContext
@@ -40,6 +41,7 @@ import type { FailData, HandleTypes } from "@rchitect-design/types";
       },
     });
     bind(infrastructureLib.types.AxiosTransform).to(WmqAxiosTransform);
+    bind(accountLib.types.Repository).to(AppAccountRepository);
     bind(infrastructureLib.types.InfrastructureOptions).toDynamicValue(() => {
       const { apiUrl } = useGlobConfig();
       // const { t } = useI18n();

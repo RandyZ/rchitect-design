@@ -26,7 +26,7 @@ export default {
     logoutTip: '温馨提醒',
     logoutMessage: '是否确认退出系统?',
     menuLoading: '菜单加载中...',
-    copyright: '2023 未名企鹅技术团队'
+    copyright: 'Randy Architect Design'
   },
   exception: {
     backLogin: '返回登录',
@@ -50,12 +50,12 @@ export default {
     signInFormTitle: '登录',
     mobileSignInFormTitle: '手机登录',
     qrSignInFormTitle: '二维码登录',
-    rchitectOAuthTitle: '未名企鹅统一登录',
+    rchitectOAuthTitle: 'Rchitect统一登录',
     signUpFormTitle: '注册',
     forgetFormTitle: '重置密码',
 
-    signInTitle: '终端通',
-    signInDesc: 'DIG智慧数字化解决方案矩阵',
+    signInTitle: 'Rchitect Design 后台管理系统',
+    signInDesc: 'Randy Architect Design是一个管理系统模版，使用DDD的思想划分和组织的多模块项目',
     policy: '我同意xxx隐私政策',
     scanSign: `扫码后点击"确认"，即可完成登录`,
 

@@ -4,7 +4,7 @@
   "scripts": {
     "build": "pnpm rimraf dist && pnpm cross-env NODE_ENV=production vite build",
     "clean": "pnpm rimraf node_modules && pnpm rimraf dist && pnpm rimraf .turbo",
-    "dev": "vite",
+    "dev": "vite -m development",
     "preview": "npm run build && vite preview",
     "preview:dist": "vite preview",
     "report": "pnpm cross-env REPORT=true npm run build",
