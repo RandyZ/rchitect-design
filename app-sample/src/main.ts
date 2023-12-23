@@ -88,9 +88,9 @@ import { AppAccountRepository } from "./server/account";
   app.mount('#app')
   // When Closing mock, Tree Shaking `mockjs` dep
   if (__VITE_USE_MOCK__) {
-    console.info('使用Mock数据～～～')
-    // import('../mock/_mock-server').then(({ setupProdMockServer }) =>
-    //   setupProdMockServer()
-    // );
+    console.debug('使用Mock数据～～～')
+    import('../mock/_mock-server').then(({ setupProdMockServer }) =>
+      setupProdMockServer()
+    );
   }
 })()

@@ -1,7 +1,7 @@
 import { MockMethod } from 'vite-plugin-mock'
 import {
     resultSuccess,
-} from '@rchitect-rock/rools/mock-util'
+} from '@rchitect-rock/tools/mock-util'
 
 export function createDeptList() {
     return [

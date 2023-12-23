@@ -3,7 +3,7 @@ import {
   resultError,
   getRequestToken,
   requestParams,
-} from '@rchitect-rock/rools/mock-util'
+} from '@rchitect-rock/tools/mock-util'
 import { MockMethod } from 'vite-plugin-mock'
 import { createFakeUserList } from './auth'
 

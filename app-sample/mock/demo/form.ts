@@ -1,5 +1,5 @@
 import { MockMethod } from 'vite-plugin-mock'
-import { resultError, resultSuccess } from '@rchitect-rock/rools/mock-util'
+import { resultError, resultSuccess } from '@rchitect-rock/tools/mock-util'
 
 export function createSelectData() {
   return {

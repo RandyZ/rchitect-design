@@ -8,6 +8,8 @@ import { unref } from 'vue-demi'
 
 export { useUserStore } from '#/state';
 export * from './repository';
+export * from './dto/auth-dtos';
+export * from './dto/user-dtos';
 
 /**
  * 获取Token的函数

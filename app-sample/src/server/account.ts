@@ -1,20 +1,43 @@
 import { Repository } from "@rchitect-app/account";
 import { User } from "@rchitect-rock/layouts";
 import { AuthenticationToken, ErrorMessageMode } from "@rchitect-design/types";
-import { UserInfoModel } from "@rchitect-app/account/src/domain/dto/auth-dtos";
-import { Bean } from "@rchitect-rock/ioc";
+import { LoginResultModel, UserInfoModel } from "@rchitect-app/account";
+import { Bean, Autowired } from "@rchitect-rock/ioc";
+import { Beans as infrastructureBeans } from "@rchitect-app/infrastructure";
+import type { InfrastructureAxios } from "@rchitect-app/infrastructure";
+
+const ServerApi = {
+  Login: '/v1/account/login/username',
+  CodeImg: '/v1/account/captcha-image',
+  CodeJsonImg: '/api/captchaImage',
+  Logout: '/logout',
+  GetUserInfo: '/v1/user/me/info',
+  GetPermCode: '/getPermCode',
+  GetCaptchaImage: '/v1/account/captchaImage',
+  GetTokenByCode: '/login/oauth2/code',
+}
 
 @Bean()
 export class AppAccountRepository implements Repository {
-  constructor() {
-    // console.debugg("AccountRepository");
+  infrastructureAxios:InfrastructureAxios;
+
+  constructor(
+    @Autowired(infrastructureBeans.InfrastructureAxios) infrastructureAxios:InfrastructureAxios
+  ) {
+    this.infrastructureAxios = infrastructureAxios;
+    this.doFetchToken = this.doFetchToken.bind(this);
+    this.doLoginApi = this.doLoginApi.bind(this);
+    this.doLogoutApi = this.doLogoutApi.bind(this);
+    this.getUserInfoApi = this.getUserInfoApi.bind(this);
+    this.getPermCode = this.getPermCode.bind(this);
+    this.getCaptchaImage= this.getCaptchaImage.bind(this);
   }
 
   doFetchToken(params:User.CodeLoginParamters, mode?:ErrorMessageMode):Promise<AuthenticationToken> {
     return Promise.resolve(undefined);
   }
 
-  doLoginApi(params:User.LoginParams, mode?:ErrorMessageMode):Promise<LoginResultModel> {
+  async doLoginApi(params:User.LoginParams, mode?:ErrorMessageMode):Promise<LoginResultModel> {
     return Promise.resolve(undefined);
   }
 
@@ -22,7 +45,9 @@ export class AppAccountRepository implements Repository {
   }
 
   getCaptchaImage():Promise<{ img:string; uuid:string } | null> {
-    return Promise.resolve(undefined);
+    return this.infrastructureAxios.get<{ img:string; uuid:string }>({
+      url: ServerApi.GetCaptchaImage
+    });
   }
 
   getPermCode():Promise<string[]> {

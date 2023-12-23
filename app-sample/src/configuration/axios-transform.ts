@@ -31,7 +31,3 @@ export class WmqAxiosTransform extends AxiosTransform {
     this.infrastructureOptions = contextOptions;
   }
 }
-
-export const useRequest = () => {
-  return resolveByKey(infrastructureLib.types.InfrastructureAxios);
-};
