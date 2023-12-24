@@ -2,6 +2,7 @@
   "name": "@rchitect-rock/components",
   "version": "0.0.0",
   "main": "./index.ts",
+  "types": "./types.d.ts",
   "license": "MIT",
   "scripts": {
     "clean": "pnpm rimraf node_modules && pnpm rimraf dist && pnpm rimraf .turbo"

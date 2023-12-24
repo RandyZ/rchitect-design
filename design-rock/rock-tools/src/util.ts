@@ -43,7 +43,7 @@ function appendUrlParams(baseUrl: string, obj: any): string {
 
 function deepMerge<T = any>(src: any = {}, target: any = {}): T {
   const srcKeys = keys(target)
-  for (const key in srcKeys) {
+  for (const key of srcKeys) {
     src[key] =
       isObject(src[key]) && src[key] !== null
         ? deepMerge(src[key], target[key])

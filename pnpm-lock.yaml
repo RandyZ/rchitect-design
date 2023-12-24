@@ -409,6 +409,9 @@ importers:
       '@rchitect-design/types':
         specifier: workspace:*
         version: link:../../design-defination/types
+      '@rchitect-rock/base-package':
+        specifier: workspace:^
+        version: link:../../design-rock/rock-base-package
       '@rchitect-rock/components':
         specifier: workspace:*
         version: link:../../design-rock/rock-components

@@ -9,9 +9,10 @@
   },
   "dependencies": {
     "@rchitect-design/constants": "workspace:*",
+    "@rchitect-design/types": "workspace:*",
+    "@rchitect-rock/base-package": "workspace:^",
     "@rchitect-rock/components": "workspace:*",
     "@rchitect-rock/ioc": "workspace:*",
-    "@rchitect-design/types": "workspace:*",
     "lodash-es": "^4.17.21",
     "vue-types": "^5.0.2"
   },

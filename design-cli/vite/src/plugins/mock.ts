@@ -4,7 +4,8 @@
  */
 import { viteMockServe } from 'vite-plugin-mock'
 
-export function configMockPlugin(isBuild: boolean) {
+export const configMockPlugin = (isBuild: boolean) => {
+  console.info('MockPlugin isBuild', isBuild)
   return viteMockServe({
     ignore: /^\_/,
     mockPath: 'mock',
@@ -15,4 +16,4 @@ export function configMockPlugin(isBuild: boolean) {
       setupProdMockServer();
     `
   })
-}
+};

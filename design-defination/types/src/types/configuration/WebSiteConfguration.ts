@@ -6,8 +6,10 @@ import { GlobEnvConfig } from "./GlobEnvConfig"
 /**
  * @description: 网站信息配置
  */
-export interface WebSiteConfguration {
-  // Logo url
+export interface WebSiteConfigurations {
+  /**
+   * Logo url
+   */
   logo: string
   // Avatar url
   avatar: string
@@ -28,4 +30,4 @@ export interface WebSiteConfguration {
 /**
  * @deprecated Please use WebSiteConfguration instead
  */
-export type DefineSiteOptions = WebSiteConfguration
+export type DefineSiteOptions = WebSiteConfigurations

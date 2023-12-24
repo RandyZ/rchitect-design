@@ -61,6 +61,7 @@ export async function configVitePlugins(
   vitePlugins.push(configSvgIconsPlugin(isBuild))
 
   // vite-plugin-mock
+  console.info('MockPlugin vite-plugin-mock isBuild', isBuild)
   VITE_USE_MOCK && vitePlugins.push(configMockPlugin(isBuild))
 
   // vite-plugin-purge-icons

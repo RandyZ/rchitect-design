@@ -2,9 +2,9 @@ import type { MockMethod } from "vite-plugin-mock";
 
 const Mocks:MockMethod[] = [
   {
-    url: '/v1/account/captcha-image',
+    url: '/basic-api/v1/account/captcha-image',
     method: 'get',
-    response: ({ body }) => {
+    response: () => {
       return {
         "code": 1,
         "reason": "成功",
@@ -17,58 +17,6 @@ const Mocks:MockMethod[] = [
       }
     }
   },
-  {
-    url: '/api/account/login',
-    method: 'post',
-    response: ({ body }) => {
-      const { username, password } = body
-      if (username === 'admin' && password === '123456') {
-        return {
-          code: 200,
-          data: {
-            token: 'admin-token'
-          }
-        }
-      } else {
-        return {
-          code: 400,
-          message: '用户名或密码错误'
-        }
-      }
-    }
-  },
-  {
-    url: '/api/account/info',
-    method: 'get',
-    response: ({ body }) => {
-      const { token } = body
-      if (token === 'admin-token') {
-        return {
-          code: 200,
-          data: {
-            roles: ['admin'],
-            name: 'admin',
-            avatar: 'https://q1.qlogo.cn/g?b=qq&nk=190848757&s=640'
-          }
-        }
-      } else {
-        return {
-          code: 400,
-          message: 'Token无效'
-        }
-      }
-    }
-  },
-  {
-    url: '/api/account/logout',
-    method: 'post',
-    response: () => {
-      return {
-        code: 200,
-        data: 'success'
-      }
-    }
-  }
 ]
 
 export default Mocks

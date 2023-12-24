@@ -3,12 +3,13 @@ import { Beans as settingBeans } from '@rchitect-rock/settings'
 import { Beans as stateBeans } from '@rchitect-rock/state'
 import { Beans as routerBeans } from '@rchitect-rock/router'
 import Beans from '#/../beankeys'
+import type { User } from "#/state";
 
 export const useRoute = () => diKT(routerBeans.RouteTable)
 export const useRouteOperator = () => diKT(routerBeans.RouteOperator)
 export const useUserState = () => diKT(Beans.UserState)
-export const useUserAction = () => diKT(Beans.UserAction)
-export const useUserGetter = () => diKT(Beans.UserGetter)
+export const useUserAction = ():User.Action => diKT(Beans.UserAction)
+export const useUserGetter = ():User.Getter => diKT(Beans.UserGetter)
 export const useAppState = () => diKT(stateBeans.AppState)
 export const useAppStateActions = () => diKT(stateBeans.AppStateActions)
 export const useAppSettingAction = () => diKT(settingBeans.AppSettingAction)

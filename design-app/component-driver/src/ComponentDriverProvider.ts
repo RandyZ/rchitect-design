@@ -26,7 +26,7 @@ export const props = {
  */
 function useComponentMap() {
   return diKT(Beans.ComponentMap);
-};
+}
 
 export type DriverHook = {
   /**

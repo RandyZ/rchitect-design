@@ -78,7 +78,8 @@ function getCode() {
     } else {
       Promise.reject(new Error('获取验证码失败'));
     }
-  }).catch(() => {
+  }).catch((err) => {
+    console.log(err);
     notice.warning({
       content: '验证码获取失败',
       meta: `验证码获取失败，请稍后重试`,

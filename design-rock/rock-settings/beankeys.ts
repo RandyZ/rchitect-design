@@ -1,6 +1,6 @@
 import type { ServiceIdentifier } from '@rchitect-rock/ioc';
 import * as pack from './package.json';
-import type { AppConfig, AppSetting } from './src/app';
+import type { AppConfig, AppSetting, AppSiteInfo } from './src/app';
 import type { MenuSettingManager } from './src/menu';
 import {
   type DataEventBus,
@@ -18,8 +18,9 @@ import type {
 
 export default {
   DataEventBus: Symbol.for(`${ pack.name }/DataEventBus`) as ServiceIdentifier<DataEventBus>,
+  // Types中定义的默认值数据
   /**
-   * @deprecated
+   * @deprecated 使用环境变量代替
    */
   GlobConfig: Symbol.for('@rchitect-design/types/GlobConfig') as ServiceIdentifier<GlobConfig>,
   DefaultProjectSetting: Symbol.for('@rchitect-design/types/DefaultProjectSetting') as ServiceIdentifier<ProjectSetting>,
@@ -36,6 +37,9 @@ export default {
   AppConfigState: Symbol.for(`${ pack.name }/AppConfig.State`) as ServiceIdentifier<AppConfig.State>,
   AppConfigGetter: Symbol.for(`${ pack.name }/AppConfig.Getter`) as ServiceIdentifier<AppConfig.Getter>,
   AppConfigAction: Symbol.for(`${ pack.name }/AppConfig.Action`) as ServiceIdentifier<AppConfig.Action>,
+
+  AppSiteInfoState: Symbol.for(`${ pack.name }/AppSiteInfo.State`) as ServiceIdentifier<AppSiteInfo.State>,
+  AppSiteInfoActions: Symbol.for(`${ pack.name }/AppSiteInfo.Actions`) as ServiceIdentifier<AppSiteInfo.Actions>,
 
   MenuSettingManager: Symbol.for(`${ pack.name }/MenuSettingManager`) as ServiceIdentifier<MenuSettingManager>,
 };

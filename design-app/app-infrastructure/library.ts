@@ -16,6 +16,7 @@ import clone from 'lodash-es/clone';
 import { InfrastructureAxios, InfrastructureOptions, defaultRequestOptions, defaultCreateAxiosOptions } from '#/app-net'
 import type { RequestOptions } from "@rchitect-design/types";
 import { usePermissionStore } from "#/user-state";
+import { useSiteInfo } from "#/app-config/site-info";
 
 export const Lib:ModuleLibContext<'routes', typeof Beans> = {
   install,
@@ -57,6 +58,9 @@ export const Lib:ModuleLibContext<'routes', typeof Beans> = {
     bind(settingsBeans.DefaultMenuSetting).toConstantValue(projectSetting.menuSetting);
     bind(settingsBeans.DefaultTransitionSetting).toConstantValue(projectSetting.transitionSetting);
     bind(settingsBeans.DefaultSporadicSetting).toConstantValue(projectSetting.sporadicSetting);
+    const siteInfo = useSiteInfo();
+    bind(settingsBeans.AppSiteInfoState).toConstantValue(siteInfo);
+    bind(settingsBeans.AppSiteInfoActions).toConstantValue(siteInfo);
 
     const permissionStore = usePermissionStore()
     bind(stateBeans.PermissionState).toConstantValue(permissionStore)

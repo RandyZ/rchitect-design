@@ -11,7 +11,7 @@ import { Lib as baseComponentLib } from '@rchitect-rock/components';
 import { Lib as layoutsLib, useUserGetter, useUserAction } from '@rchitect-rock/layouts';
 import { InfrastructureOptions, Lib as infrastructureLib } from '@rchitect-app/infrastructure';
 import { Lib as accountLib } from '@rchitect-app/account';
-import { NavieuiComponentDriver as ComponentDriver } from '@rchitect-app/component-driver-naive';
+import { Lib as driverLib } from '@rchitect-app/component-driver-naive';
 import { useGlobConfig } from "@rchitect-rock/hooks";
 import { WmqAxiosTransform } from "@/configuration/axios-transform";
 import type { FailData, HandleTypes } from "@rchitect-design/types";
@@ -48,12 +48,10 @@ import { AppAccountRepository } from "./server/account";
       return {
         apiUrl,
         tokenProvider() {
-          const userGetter = useUserGetter();
-          return userGetter.getToken;
+          return unref(useUserGetter().getToken);
         },
         onUnauthorized() {
-          const userAction = useUserAction();
-          userAction.logout(true);
+          useUserAction().logout(true);
           // TODO 提示登出
         },
         onAll(event:string | Symbol, payload?:any) {
@@ -62,17 +60,19 @@ import { AppAccountRepository } from "./server/account";
       } as InfrastructureOptions;
     });
   })
+  appContext.registerParam()
   // TODO NaiveUI组件驱动的载入放到组件驱动模块中独立处理
-  const bridge:ComponentDriver = ComponentDriver.builder().enableAll();
-  const dictionary = bridge.componentDictoray();
-  appContext.registerParam(baseComponentLib.types.ComponentDictionary, dictionary);
+  // const componentDriver:ComponentDriver = ComponentDriver.builder().enableAll();
+  // const dictionary = componentDriver.componentDictoray();
+  // appContext.registerParam(driverParams.BuilderHookParam, builder => {
+  //   builderenabl
+  // });
   // 创建&载入Vue App
   const app = await appContext.load(
     createApp(App)
       // 安装IOC插件
       .use(IocPlugin, appContext)
-      // 使用基础设施
-      .use(infrastructureLib, appContext)
+      .use(driverLib, appContext)
       // 使用路由
       .use(routeLib, appContext)
       // 布局组件
@@ -83,14 +83,17 @@ import { AppAccountRepository } from "./server/account";
       .use(baseComponentLib, appContext)
       // 账号模块
       .use(accountLib, appContext)
+      // 接入基础设施模块
+      .use(infrastructureLib, appContext)
   )
   // 挂载Vue App
   app.mount('#app')
   // When Closing mock, Tree Shaking `mockjs` dep
   if (__VITE_USE_MOCK__) {
     console.debug('使用Mock数据～～～')
-    import('../mock/_mock-server').then(({ setupProdMockServer }) =>
-      setupProdMockServer()
-    );
+    import('../mock/_mock-server').then(({ setupProdMockServer }) => {
+      console.debug('Setup Mock数据～～～')
+      return setupProdMockServer()
+    });
   }
 })()
