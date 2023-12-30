@@ -5,6 +5,7 @@ import type { AxiosRequestConfig, AxiosResponse } from 'axios';
 import type { RequestOptions, RequestResult } from '@rchitect-design/types';
 import { Bean } from '@rchitect-rock/ioc';
 import type { InfrastructureOptions } from './options';
+import type { Protocols } from "#/app-net/protocols";
 
 /**
  * 标准请求响应类型
@@ -58,7 +59,7 @@ export abstract class AxiosTransform {
   transformRequestHook?: (
     res: RchitectResponse,
     options: RequestOptions
-  ) => any;
+  ) => Protocols.ResponseData<any>;
 
   /**
    * @description: 请求失败处理

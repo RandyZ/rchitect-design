@@ -1,4 +1,4 @@
-import { AppContextPropertyGeneric, type CommonModuleLibContext, toPackage } from '@rchitect-rock/base-package';
+import { type CommonModuleLibContext, toPackage } from '@rchitect-rock/base-package';
 import * as pack from './package.json';
 import { AsyncIocModule } from '@rchitect-rock/ioc';
 import ComponentMap from './src/ComponentMap';

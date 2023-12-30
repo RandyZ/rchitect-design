@@ -11,7 +11,7 @@ import { AppContext } from "@rchitect-rock/base-package";
  */
 async function setupRouteGuard(appContext:AppContext) {
   createBasicGuard(appContext);
-  createAuthGuard(appContext);
+  // createAuthGuard(appContext);
   appContext.registerRouteGuards(GUARDS.createTabsGuard())
   // must after createPermissionGuard (menu has been built.)
   createParamMenuGuard(appContext);

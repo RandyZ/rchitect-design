@@ -33,6 +33,6 @@
     "@types/qrcode": "^1.5.0"
   },
   "peerDependencies": {
-    "vue": "~3.3.4"
+    "vue": "~3.3.4 || ~2.7.0"
   }
 }

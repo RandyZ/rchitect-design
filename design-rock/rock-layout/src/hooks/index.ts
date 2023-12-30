@@ -7,7 +7,7 @@ import type { User } from "#/state";
 
 export const useRoute = () => diKT(routerBeans.RouteTable)
 export const useRouteOperator = () => diKT(routerBeans.RouteOperator)
-export const useUserState = () => diKT(Beans.UserState)
+export const useUserState = ():User.State => diKT(Beans.UserState)
 export const useUserAction = ():User.Action => diKT(Beans.UserAction)
 export const useUserGetter = ():User.Getter => diKT(Beans.UserGetter)
 export const useAppState = () => diKT(stateBeans.AppState)

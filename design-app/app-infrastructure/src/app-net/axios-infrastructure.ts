@@ -92,7 +92,6 @@ export class InfrastructureAxios {
           ignoreCancelToken !== undefined
             ? ignoreCancelToken
             : this.options.requestOptions?.ignoreCancelToken
-
         !ignoreCancel && axiosCanceler.addPending(config)
         if (requestInterceptors && isFunction(requestInterceptors)) {
           config = requestInterceptors(config, this.options)

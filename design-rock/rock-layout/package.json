@@ -21,6 +21,7 @@
     "@rchitect-rock/base-package": "workspace:^",
     "@rchitect-rock/components": "workspace:^",
     "@rchitect-rock/directives": "workspace:^",
+    "@rchitect-rock/events": "workspace:^",
     "@rchitect-rock/ioc": "workspace:^",
     "@rchitect-rock/locale": "workspace:^",
     "@rchitect-rock/settings": "workspace:^",

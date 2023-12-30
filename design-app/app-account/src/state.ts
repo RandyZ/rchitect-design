@@ -66,12 +66,13 @@ export const useUserStore = defineStore('AppUserStore', () => {
     async login(params): Promise<UserInfo | null> {
       try {
         const { goHome = true, mode, ...loginParams } = params;
-        const token: AuthenticationToken = await fetchTokenFunction(loginParams, mode);
+        const token = await fetchTokenFunction(loginParams, mode);
 
         console.debug('Account Store get token', token);
+        debugger
         // save token
         this.setToken(token);
-        if (!this.getAccessToken) {
+        if (!unref(getters.getToken)) {
           return null;
         }
         const userInfo = await this.getUserInfoAction();
@@ -84,7 +85,8 @@ export const useUserStore = defineStore('AppUserStore', () => {
       }
     },
     async afterLoginAction(goHome?: boolean): Promise<UserInfo | null> {
-      if (!this.getAccessToken) {
+      debugger
+      if (!unref(getters.getToken)) {
         return null;
       }
       // get user info
@@ -101,6 +103,7 @@ export const useUserStore = defineStore('AppUserStore', () => {
           routes.forEach((route) => {
             useRouter().addRoute(route);
           });
+          debugger
           useRouter().addRoute(LayoutRoutes.PAGE_NOT_FOUND_ROUTE);
           authAction.setDynamicAddedRoute(true);
         }
@@ -110,13 +113,12 @@ export const useUserStore = defineStore('AppUserStore', () => {
       return userInfo;
     },
     async getUserInfoAction(): Promise<UserInfo | null> {
-      if (!this.getAccessToken) {
+      if (!unref(getters.getToken)) {
         return null;
       }
       const { getUserInfoApi } = diKT(Beans.Repository);
-      const userInfo = (await getUserInfoApi()) as unknown as UserInfo;
-      const { roles = [] } = userInfo;
-      if (isArray(roles)) {
+      const userInfo = await getUserInfoApi();
+      if (isArray(userInfo?.roles)) {
         const roleList = roles.map(
           (item) => item.value
         ) as unknown as RoleInfo[];

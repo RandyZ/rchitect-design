@@ -16,11 +16,12 @@
     "@vueuse/core": "^10.4.1",
     "@vueuse/shared": "^10.4.1",
     "dayjs": "^1.11.7",
+    "md5": "^2.3.0",
     "resize-observer-polyfill": "^1.5.1",
     "sortablejs": "~1.15.0"
   },
   "peerDependencies": {
-    "vue": "~3.3.4"
+    "vue": "~3.3.4 || ~2.7.0"
   },
   "devDependencies": {
     "@types/sortablejs": "^1.15.4"

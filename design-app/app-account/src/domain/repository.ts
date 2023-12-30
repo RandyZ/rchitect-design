@@ -13,14 +13,14 @@ export interface Repository {
    * @param mode
    * @returns {Promise<AuthenticationToken>}
    */
-  doFetchToken(params: User.CodeLoginParamters, mode?: ErrorMessageMode): Promise<AuthenticationToken>
+  doFetchToken(params: User.CodeLoginParamters, mode?: ErrorMessageMode): Promise<AuthenticationToken | undefined>
   /**
    * 自主登录，获取Token
    * @param params
    * @param mode
    * @returns {Promise<LoginResultModel>}
    */
-  doLoginApi(params: User.LoginParams, mode?: ErrorMessageMode): Promise<LoginResultModel>
+  doLoginApi(params: User.LoginParams, mode?: ErrorMessageMode): Promise<LoginResultModel | undefined>
   /**
    * 退出登录
    */
@@ -29,7 +29,7 @@ export interface Repository {
    * 获取用户信息
    * @returns {Promise<UserInfoModel>}
    */
-  getUserInfoApi(): Promise<UserInfoModel>
+  getUserInfoApi(): Promise<UserInfoModel | undefined>
   /**
    * 获取权限列表
    * @returns {Promise<string[]>}

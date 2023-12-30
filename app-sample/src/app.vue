@@ -11,7 +11,7 @@ import { unref, watch } from 'vue'
 
 // Listening to page changes and dynamically changing site titles
 const { title } = getGlobalConfig(import.meta.env)
-useWebTitle(title, (route) => route.name !== Route.REDIRECT_NAME)
+useWebTitle(title, (route) => route.name !== Route.PAGE_REDIRECT_NAME)
 
 // Watch for change web theme
 const { isDark } = useAppTheme()

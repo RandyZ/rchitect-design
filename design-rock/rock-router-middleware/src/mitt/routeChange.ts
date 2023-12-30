@@ -3,8 +3,7 @@
  */
 
 import type { RouteLocationNormalized } from 'vue-router';
-import { Lib } from '@rchitect-rock/settings';
-import { diKT } from '@rchitect-rock/ioc';
+import { useEventbus } from '@rchitect-rock/events';
 import { getRawRoute } from '#/utils/router';
 
 const key = Symbol.for('RouterChange');
@@ -13,7 +12,7 @@ let lastChangeTab: RouteLocationNormalized;
 
 export function setRouteChange(lastChangeRoute: RouteLocationNormalized) {
   const r = getRawRoute(lastChangeRoute);
-  diKT(Lib.types.DataEventBus).$emit(key, { data: r });
+  useEventbus().$emit(key, { data: r });
   lastChangeTab = r;
 }
 
@@ -21,12 +20,12 @@ export function listenerRouteChange(
   callback: (route: RouteLocationNormalized) => void,
   immediate = true
 ) {
-  diKT(Lib.types.DataEventBus).$on(key, (event) => {
+  useEventbus().$on(key, (event) => {
     callback(event.data);
   });
   immediate && lastChangeTab && callback(lastChangeTab);
 }
 
 export function removeTabChangeListener() {
-  diKT(Lib.types.DataEventBus).$clear();
+  useEventbus().$clear();
 }

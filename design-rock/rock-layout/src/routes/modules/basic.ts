@@ -1,15 +1,16 @@
 import { Route } from '@rchitect-design/constants';
 import { Exception, Redirect } from '../../pages';
+import { BASIC_REDIRECT_PATH } from "@rchitect-design/constants/src/router";
 
 const LAYOUT = () => import('../../layouts').then((m) => m.AppLayout);
 const PARENT_LAYOUT = () => () => new Promise((resolve) => resolve({ name: 'ParentLayout' }))
 
 const PAGE_NOT_FOUND_ROUTE: RouteRecordItem = {
-  path: '/:path(.*)*',
+  path: '/:pathMatch(.*)*',
   name: Route.PAGE_NOT_FOUND_NAME,
   component: LAYOUT,
   meta: {
-    title: 'ErrorPage',
+    title: 'ErrorPage1',
     key: 333,
     isBasic: true,
   },
@@ -29,11 +30,11 @@ const PAGE_NOT_FOUND_ROUTE: RouteRecordItem = {
 
 // 404 on a page
 const REDIRECT_ROUTE: RouteRecordItem = {
-  path: '/redirect',
+  path: Route.BASIC_REDIRECT_PATH,
   component: LAYOUT,
   name: 'RedirectTo',
   meta: {
-    title: Route.REDIRECT_NAME,
+    title: Route.PAGE_REDIRECT_NAME,
     hideBreadcrumb: true,
     hideMenu: true,
     isBasic: true,
@@ -41,10 +42,10 @@ const REDIRECT_ROUTE: RouteRecordItem = {
   children: [
     {
       path: '/redirect/:path(.*)',
-      name: Route.REDIRECT_NAME,
+      name: Route.PAGE_REDIRECT_NAME,
       component: Redirect,
       meta: {
-        title: Route.REDIRECT_NAME,
+        title: Route.PAGE_REDIRECT_NAME,
         hideBreadcrumb: true,
         isBasic: true,
       },

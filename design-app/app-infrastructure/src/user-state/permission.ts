@@ -20,7 +20,7 @@ const accountRepository = () => diKT(appAccountBeans.Repository);
 export const usePermissionStore = defineStore('PermissionStateStore', () => {
   const state:Permission.State = {
     permCodeList: ref([]),
-    permissionMode: ref(PermissionModeEnum.ROLE),
+    permissionMode: ref(PermissionModeEnum.ROUTE_MAPPING),
     isDynamicAddedRoute: ref(false),
     lastBuildMenuTime: ref(0),
     backMenuList: ref([]),
@@ -61,6 +61,7 @@ export const usePermissionStore = defineStore('PermissionStateStore', () => {
     async buildRoutesAction():Promise<RouteRecordItem[]> {
       // TODO: 从后端获取菜单
       // const { t } = useI18n()
+      debugger
       const userStore = useUserState();
 
       let routes:RouteRecordItem[] = [];
@@ -112,6 +113,7 @@ export const usePermissionStore = defineStore('PermissionStateStore', () => {
       };
       // 组合框架路由 与 本地路由
       const routeTable = useRoutesTable();
+      debugger
       switch (permissionMode) {
         case PermissionModeEnum.ROLE:
           routes = filterTree(routeTable.appRouteTable.routes, routeFilter);
@@ -145,7 +147,7 @@ export const usePermissionStore = defineStore('PermissionStateStore', () => {
           // this function may only need to be executed once, and the actual project can be put at the right time by itself
           let routeList:RouteRecordItem[] = [];
           try {
-            this.changePermissionCode();
+            await this.changePermissionCode();
             routeList = (await accountRepository().getMenuList()) as RouteRecordItem[];
           } catch (error) {
             console.error(error);

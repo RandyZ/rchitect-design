@@ -17,6 +17,6 @@
     "vue-types": "^5.0.2"
   },
   "peerDependencies": {
-    "vue": "~3.3.4"
+    "vue": "~3.3.4 || ~2.7.0"
   }
 }

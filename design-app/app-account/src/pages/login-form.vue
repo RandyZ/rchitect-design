@@ -25,8 +25,8 @@ const dialog = useDialog();
 const codeUrl = ref('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAAAnCAYAAAC2c+5GAAAAZ0lEQVRoge3QMRHAMBDAsCT8YT6PZutgAu0gIfB5z8yzeJ2vA/7GkDAkDAlDwpAwJAwJQ8KQMCQMCUPCkDAkDAlDwpAwJAwJQ8KQMCQMCUPCkDAkDAlDwpAwJAwJQ8KQMCQMCUPCkLgMcgP5gqyNnwAAAABJRU5ErkJggg==')
 
 const formData = reactive({
-  account: 'admin',
-  password: 'S1234588',
+  account: 'randy',
+  password: 'randy123',
   captchaCode: '',
   uuid: ''
 });

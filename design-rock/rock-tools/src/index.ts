@@ -1,4 +1,5 @@
 export * from './config'
+export * from './codec'
 export * from './date'
 export * from './util'
 export * from './event'

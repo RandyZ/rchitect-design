@@ -141,13 +141,15 @@ const authGuardWithoutTokenHandler = async (to, from, next) => {
  * 创建登录身份验证守卫
  */
 export function createAuthGuard(appContext:AppContext) {
+  debugger
   appContext.registerRouteGuards(async (to, from, next) => {
+    debugger
     const ret =
       (await authGuardCustomHomepageHandler(to, from, next)) &&
       (await authGuardWhiteRoutesHandler(to, from, next)) &&
       (await authGuardWithoutTokenHandler(to, from, next));
     if (!ret) {
-      return;
+      return false;
     }
     // TODO 继续抽取其他方法
     if (unref(useLockState().lockInfo)?.isLock) {
@@ -201,8 +203,6 @@ export function createAuthGuard(appContext:AppContext) {
     routes.forEach((route) => {
       routeTable().router.addRoute(route);
     });
-
-    routeTable().router.addRoute(LayoutRoutes.PAGE_NOT_FOUND_ROUTE);
 
     permissionActions.setDynamicAddedRoute(true);
 

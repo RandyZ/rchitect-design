@@ -14,7 +14,6 @@ export const Lib: CommonModuleLibContext<typeof types> = {
   types,
   module: new AsyncIocModule(async (bind) => {
     console.debug(`${pack.name} IocModule start load`);
-    bind(types.DataEventBus).to(DataEventBus);
     bind(types.MenuSettingManager).to(MenuSettingManager);
   }),
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

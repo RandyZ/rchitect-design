@@ -1,8 +1,9 @@
 import { AuthenticationToken } from "@rchitect-design/types"
+import { RoleInfo } from "@rchitect-design/types"
 
-export interface RoleInfo {
-  name: string
-  value: string
+export interface LoginParams {
+  username: string
+  password: string
 }
 
 export interface LoginResultModel extends AuthenticationToken {

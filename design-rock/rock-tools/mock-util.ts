@@ -1,5 +1,6 @@
 // Interface data format used to return a unified format
 import type { Recordable } from '@rchitect-design/types';
+import { HttpStatusCode } from "@rchitect-design/types";
 
 export interface requestParams {
   method: string;
@@ -12,7 +13,7 @@ export const resultSuccess = <T = Recordable<any>>(
   result: T,
   { message = 'ok' } = {}
 ) => ({
-  code: '1',
+  code: HttpStatusCode.OK,
   data: result,
   message,
   type: 'success',

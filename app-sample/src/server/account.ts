@@ -3,7 +3,7 @@ import { User } from "@rchitect-rock/layouts";
 import { AuthenticationToken, ErrorMessageMode } from "@rchitect-design/types";
 import { LoginResultModel, UserInfoModel } from "@rchitect-app/account";
 import { Bean, Autowired } from "@rchitect-rock/ioc";
-import { Beans as infrastructureBeans, useInfrastructureApi } from "@rchitect-app/infrastructure";
+import { Beans as infrastructureBeans, Protocols, useInfrastructureApi } from "@rchitect-app/infrastructure";
 import type { InfrastructureAxios } from "@rchitect-app/infrastructure";
 
 const ServerApi = {
@@ -11,7 +11,7 @@ const ServerApi = {
   CodeImg: '/v1/account/code-image',
   CodeJsonImg: '/api/captchaImage',
   Logout: '/logout',
-  GetUserInfo: '/v1/user/me/info',
+  GetUserInfo: '/v1/account/me/info',
   GetPermCode: '/getPermCode',
   GetCaptchaImage: '/v1/account/captcha-image',
   GetTokenByCode: '/login/oauth2/code',
@@ -30,18 +30,27 @@ export class AppAccountRepository implements Repository {
     this.doLogoutApi = this.doLogoutApi.bind(this);
     this.getUserInfoApi = this.getUserInfoApi.bind(this);
     this.getPermCode = this.getPermCode.bind(this);
-    this.getCaptchaImage= this.getCaptchaImage.bind(this);
+    this.getCaptchaImage = this.getCaptchaImage.bind(this);
   }
 
-  doFetchToken(params:User.CodeLoginParamters, mode?:ErrorMessageMode):Promise<AuthenticationToken> {
+  doFetchToken(params:User.CodeLoginParamters, mode?:ErrorMessageMode):Promise<AuthenticationToken | undefined> {
+    debugger
     return Promise.resolve(undefined);
   }
 
-  async doLoginApi(params:User.LoginParams, mode?:ErrorMessageMode):Promise<LoginResultModel> {
-    return Promise.resolve(undefined);
+  async doLoginApi(params:User.LoginParams, mode?:ErrorMessageMode):Promise<LoginResultModel | undefined> {
+    return this.infrastructureAxios.post<Protocols.ResponseData<LoginResultModel>>({
+      ...useInfrastructureApi(ServerApi.Login),
+      data: params
+    }, {
+      errorMessageMode: mode
+    }).then(response => {
+      return response.data;
+    })
   }
 
   doLogoutApi():void {
+    debugger
   }
 
   getCaptchaImage():Promise<{ img:string; uuid:string } | null> {
@@ -49,11 +58,15 @@ export class AppAccountRepository implements Repository {
   }
 
   getPermCode():Promise<string[]> {
+    debugger
     return Promise.resolve([]);
   }
 
-  getUserInfoApi():Promise<UserInfoModel> {
-    return Promise.resolve(undefined);
+  getUserInfoApi():Promise<UserInfoModel | undefined> {
+    return this.infrastructureAxios.get<Protocols.ResponseData<UserInfoModel>>(
+      useInfrastructureApi(ServerApi.GetUserInfo)
+    ).then(response => {
+      return response.data;
+    })
   }
-
 }

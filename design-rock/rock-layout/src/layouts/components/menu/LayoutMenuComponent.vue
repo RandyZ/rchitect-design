@@ -81,7 +81,7 @@ onMounted(async () => {
 })
 
 listenerRouteChange((route) => {
-  if (route.name === Route.REDIRECT_NAME) return
+  if (route.name === Route.PAGE_REDIRECT_NAME) return
 
   const currentActiveMenu = route.meta?.currentActiveMenu as string
   handleMenuChange(route)

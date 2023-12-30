@@ -1,4 +1,4 @@
-export type ErrorMessageMode = 'none' | 'modal' | 'message' | undefined
+export type ErrorMessageMode = 'none' | 'modal' | 'message' | 'thrown' |undefined
 
 /**
  * 请求发送参数
@@ -6,32 +6,39 @@ export type ErrorMessageMode = 'none' | 'modal' | 'message' | undefined
 export interface RequestOptions {
   // See https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#authentication_schemes
   // authentication schemes，e.g: Bearer
-  authenticationScheme?: string;
+  authenticationScheme?:string;
   // Splicing request parameters to url
-  joinParamsToUrl?: boolean
+  joinParamsToUrl?:boolean
   // Format request parameter time
-  formatDate?: boolean
+  formatDate?:boolean
   // Whether to process the request result
-  isTransformResponse?: boolean
+  isTransformResponse?:boolean
   // Whether to return native response headers
   // For example: use this attribute when you need to get the response headers
-  isReturnNativeResponse?: boolean
+  isReturnNativeResponse?:boolean
   // Interface address, use the default apiUrl if you leave it blank
-  apiUrl?: string | (() => string)
+  apiUrl?:string | (() => string)
   // Error message prompt type
-  errorMessageMode?: ErrorMessageMode
+  errorMessageMode?:ErrorMessageMode
   // Whether to add a timestamp
-  joinTime?: boolean
-  ignoreCancelToken?: boolean
+  joinTime?:boolean
+  ignoreCancelToken?:boolean
   // Whether to send token in header
-  withToken?: boolean
+  withToken?:boolean
 }
 
 export interface RequestResult<T = any> {
-  code: number
-  type: 'success' | 'error' | 'warning'
-  message: string
-  result: T
+  /** 业务返回码 */
+  code:string;
+  /** 返回提示信息 */
+  message:string | undefined;
+  /** 错误明细 */
+  details:string | undefined;
+  /** 验证错误明细 */
+  validationErrors:any[];
+  /** 返回数据对象 */
+  data?:T;
+  [key:string]:any
 }
 
 /**
@@ -53,7 +60,7 @@ export type AuthenticationSchemes =
  * Authentication token 数据结构
  */
 export interface AuthenticationToken {
-  accessToken: string;
-  refreshToken?: string;
-  tokenType?: AuthenticationSchemes;
+  accessToken:string;
+  refreshToken?:string;
+  tokenType?:AuthenticationSchemes;
 }

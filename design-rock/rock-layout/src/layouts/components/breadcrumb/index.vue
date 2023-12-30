@@ -25,7 +25,7 @@ const routeOperator = useRouteOperator().go
 const routes = ref<Menu[]>([])
 
 watchEffect(async () => {
-  if (currentRoute.value.name === Route.REDIRECT_NAME) return
+  if (currentRoute.value.name === Route.PAGE_REDIRECT_NAME) return
   const menus = await MenuFunctions.getMenus()
 
   const routeMatched = currentRoute.value.matched

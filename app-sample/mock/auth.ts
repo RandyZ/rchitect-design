@@ -9,7 +9,7 @@ import {
   requestParams,
 } from '@rchitect-rock/tools/mock-util'
 // import { IncomingMessage, ServerResponse } from 'http'
-// import { HttpStatusCode } from '@rchitect-design/types'
+import { HttpStatusCode } from '@rchitect-design/types'
 // import { useGlobConfig } from '@rchitect-rock/hooks'
 
 const OAUTH2_FAKE_CODE = 'fakeCode'
@@ -110,7 +110,7 @@ export default [
   {
     url: '/basic-api/getUserInfo',
     method: 'get',
-    response: (request: requestParams) => {
+    response: (request) => {
       const accessToken = getRequestToken(request)
       if (!accessToken) return resultError('Invalid accessToken.', { code: '401'})
       const checkUser = createFakeUserList().find(

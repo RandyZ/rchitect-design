@@ -7,7 +7,7 @@ import {
   contextContianer,
   AsyncIocModuleCallBack
 } from "@rchitect-rock/ioc";
-import type { RouteRecordItem, NavigationHook } from "@rchitect-design/types";
+import type { RouteRecordItem, NavigationHook, NavigationAfterHook } from "@rchitect-design/types";
 
 export const APP_CONTEXT:ServiceIdentifier<AppContext> = Symbol.for('WmqAppContext') as ServiceIdentifier<AppContext>;
 
@@ -47,7 +47,7 @@ export class AppContext {
   routeHooks:{
     beforeEach:NavigationHook[],
     beforeResolve:NavigationHook[],
-    afterEach:NavigationHook[],
+    afterEach:NavigationAfterHook[],
   };
   appRoutes:RouteRecordItem[];
   loadedObservers:IocLoadedObserver = {
@@ -127,7 +127,7 @@ export class AppContext {
    *
    * @param hooks
    */
-  registerRouteAfterHooks(...hooks:NavigationHook[]) {
+  registerRouteAfterHooks(...hooks:NavigationAfterHook[]) {
     (!isEmpty(hooks)) && this.routeHooks.afterEach.push(...hooks)
     return this
   }

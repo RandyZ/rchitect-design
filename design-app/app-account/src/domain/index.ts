@@ -5,23 +5,21 @@ import { useAppSetting } from "@rchitect-rock/hooks";
 import { diKT } from '@rchitect-rock/ioc';
 import { Beans } from '#/../beankeys';
 import { unref } from 'vue-demi'
+import { useAuthMode } from "#/usage";
 
 export { useUserStore } from '#/state';
 export * from './repository';
 export * from './dto/auth-dtos';
-export * from './dto/user-dtos';
-
 /**
  * 获取Token的函数
  * @param params
  * @param mode
- * @returns {Promise<LoginResultModel | AuthenticationToken>}
  */
 export function fetchTokenFunction(
   params:User.CodeLoginParamters | User.LoginParams,
   mode:ErrorMessageMode = 'modal'
 ) {
-  const authMode = unref(useAppSetting().authMode)
+  const authMode = useAuthMode()
   const { doFetchToken, doLoginApi } = diKT(Beans.Repository);
   if (authMode === AuthorizationModeEnum.SELF_LOGIN) {
     const _params = params as User.LoginParams;

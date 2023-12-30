@@ -1,12 +1,11 @@
 <script lang="ts" setup>
 import { useI18n } from '@rchitect-rock/locale'
-import { Lib as stateLib } from '@rchitect-rock/state'
 import { ref, watch } from 'vue'
 import { SearchBoxEvents } from '#/layouts/components/search/SearchContext'
 import AppSearchModal from './AppSearchModal.vue'
-import { diKT } from '@rchitect-rock/ioc'
 import { useMagicKeys } from '@rchitect-rock/tools'
-const dataEventBus = diKT(stateLib.types.DataEventBus)
+import { useEventbus } from '@rchitect-rock/events'
+const dataEventBus = useEventbus()
 const { t } = useI18n()
 const showModal = ref(false)
 const keyboardKeys = useMagicKeys()

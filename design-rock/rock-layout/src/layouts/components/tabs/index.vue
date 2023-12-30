@@ -43,7 +43,7 @@ const tabList = computed(() => {
 
 listenerRouteChange((route) => {
   const { name } = route
-  if (name === Route.REDIRECT_NAME || !route || !userStore.getAccessToken) {
+  if (name === Route.PAGE_REDIRECT_NAME || !route || !userStore.getAccessToken) {
     return
   }
 

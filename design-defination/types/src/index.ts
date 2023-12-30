@@ -5,7 +5,7 @@ export * from './global';
 export * from './types/settings';
 export * from './types/menu';
 // export * from './button';
-// export * from './http';
+export * from './types/http';
 // export * from './token';
 export * from './types/props';
 export * from './datastructure';

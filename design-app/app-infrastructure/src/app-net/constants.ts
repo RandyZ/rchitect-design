@@ -29,3 +29,18 @@ export enum ContentTypeEnum {
   // form-data  upload
   FORM_DATA = 'multipart/form-data;charset=UTF-8',
 }
+
+export enum SpecialHeaderEnum {
+  // TOKEN
+  TOKEN = 'X-Access-Token',
+  // TIMESTAMP
+  TIMESTAMP = 'X-TIMESTAMP',
+  // Sign
+  Sign = 'X-Sign',
+  // 租户id
+  TENANT_ID = 'tenant-id',
+  // 版本
+  VERSION = 'X-Version',
+  // 低代码应用ID
+  X_LOW_APP_ID = 'X-Low-App-ID',
+}

@@ -43,7 +43,7 @@ export class RouteOperator {
         name,
         fullPath,
       } = unref(this.router.currentRoute.value);
-      if (name === Route.REDIRECT_NAME) {
+      if (name === Route.PAGE_REDIRECT_NAME) {
         resolve(false);
         return;
       }
@@ -55,7 +55,7 @@ export class RouteOperator {
         params['path'] = fullPath;
       }
       this.router
-        .push({ name: Route.REDIRECT_NAME, params, query })
+        .push({ name: Route.PAGE_REDIRECT_NAME, params, query })
         .then(() => resolve(true));
     });
   }

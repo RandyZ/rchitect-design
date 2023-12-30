@@ -1,18 +1,11 @@
-import { ref, unref, Ref, nextTick } from 'vue-demi';
+import { nextTick, Ref, ref, unref } from 'vue-demi';
 import { cloneDeep } from 'lodash-es';
-import {
-  filterTree,
-  forEachTree,
-  useDebounceFn,
-  PromisifyFn,
-} from '@rchitect-rock/tools';
+import { filterTree, forEachTree, PromisifyFn, useDebounceFn, useScrollTo, } from '@rchitect-rock/tools';
 import { useI18n } from '@rchitect-rock/locale';
-import { Beans as routerBeans, RouteOperator, MenuFunctions } from '@rchitect-rock/router';
+import { Beans as routerBeans, MenuFunctions, RouteOperator } from '@rchitect-rock/router';
 import { I18nGlobalTranslation } from '@rchitect-rock/locale/src/use-i18n';
 import { Autowired, Bean } from '@rchitect-rock/ioc';
-import { useScrollTo } from '@rchitect-rock/tools'
-import { Beans as settingBeans } from '@rchitect-rock/settings';
-import type { DataEventBus } from '@rchitect-rock/settings';
+import { Beans as eventBeans, type DataEventBus } from '@rchitect-rock/events';
 import { Menu } from '@rchitect-design/types';
 
 // import { resolveContextOptions } from '#/../bridge';
@@ -50,7 +43,7 @@ export class SearchContext {
 
   constructor(
     @Autowired(routerBeans.RouteOperator) routeOperator:RouteOperator,
-    @Autowired(settingBeans.DataEventBus) dataEventBus:DataEventBus,
+    @Autowired(eventBeans.DataEventBus) dataEventBus:DataEventBus,
   ) {
     this.keyword = ref('');
     this.searchResult = ref<SearchResult[]>([]);

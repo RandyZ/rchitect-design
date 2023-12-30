@@ -6,6 +6,9 @@ export * from './axios-infrastructure'
 export * from './axios-cancel-token'
 export * from './axios-transform'
 export * from './options'
+export * from './constants'
+export * from './protocols'
+export * as InfrastructureHelper from './helper';
 
 /**
  * 获取API配置
