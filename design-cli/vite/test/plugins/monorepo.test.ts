@@ -4,7 +4,7 @@ import { createAlias, findNearestPackageData } from '../../src/plugins/monorepo'
 import { ResolverFunction } from 'vite';
 
 const buildTestPkgPath = (pkgRoot: string = process.cwd()) => {
-  const demoPkgPath = path.resolve(pkgRoot, './configs/vite/test/plugins/testpkg')
+  const demoPkgPath = path.resolve(pkgRoot, './design-cli/vite/test/plugins/testpkg')
   return [
     demoPkgPath,
     path.resolve(demoPkgPath, './index.ts')

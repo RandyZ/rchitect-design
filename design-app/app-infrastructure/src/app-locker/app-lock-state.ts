@@ -20,7 +20,7 @@ export const useAppLockState = defineStore('AppLockStateStore', () => {
       },
       async unLock(password?:string) {
         const userStore = useUserStore();
-        if (this.lockInfo?.pwd === password) {
+        if (unref(state.lockInfo)?.pwd === password) {
           this.resetLockInfo();
           return true;
         }
