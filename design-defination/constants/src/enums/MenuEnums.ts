@@ -23,7 +23,7 @@ export enum MenuTypeEnum {
   /**
    * SIDEBAR + 顶部推荐功能
    */
-  SIDER_WITH_TOP_RECOMMEND = 'sidebar-with-top-recommend',
+  SIDE_WITH_TOP_RECOMMEND = 'sidebar-with-top-recommend',
 }
 
 // 折叠触发器位置

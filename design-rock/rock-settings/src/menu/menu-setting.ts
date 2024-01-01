@@ -23,8 +23,29 @@ export class MenuSettingManager {
    * 是否展示侧边栏
    */
   getShowSidebar:ComputedRef<boolean>;
+  // MenuTypeEnum
+  isMenuTypeOfTop:ComputedRef<boolean>;
+  isMenuTypeOfSidebar:ComputedRef<boolean>;
+  isMenuTypeOfMixSidebar:ComputedRef<boolean>;
+  isMenuTypeOfMix:ComputedRef<boolean>;
+  isMenuTypeOfTopRecommend:ComputedRef<boolean>;
+  /**
+   * @deprecated 使用isMenuTypeOfMix
+   */
   isMenuMixType: ComputedRef<boolean>;
+  /**
+   * @deprecated 使用isMenuTypeOfMixSidebar
+   */
   isMenuMixSidebarType: ComputedRef<boolean>;
+  // MenuModeEnum
+  isMenuModeOfVertical:ComputedRef<boolean>;
+  isMenuModeOfVerticalRight:ComputedRef<boolean>;
+  isMenuModeOfHorizontal:ComputedRef<boolean>;
+  isMenuModeOfInline:ComputedRef<boolean>;
+
+
+
+
   /**
    * 菜单是否是侧边栏模式
    */
@@ -34,14 +55,6 @@ export class MenuSettingManager {
    */
   canShowHeaderTrigger: ComputedRef<boolean>;
 
-  /**
-   * 判断是否是某个菜单类型
-   */
-  isTypeOfMenu: (type:MenuTypeEnum) => ComputedRef<boolean>;
-  /**
-   * 判断是否是某个菜单模式
-   */
-  isModeOfMenu: (mode:MenuModeEnum) => ComputedRef<boolean>;
   /**
    * 修改MenuSetting
    * @param menuSetting
@@ -91,14 +104,26 @@ export class MenuSettingManager {
       }
       return unref(allMenuRefs.trigger) === TriggerEnum.HEADER;
     });
-    this.isMenuMixType = computed(() => unref(allMenuRefs.type) === MenuTypeEnum.MIX);
-    this.isMenuMixSidebarType = computed(() => unref(allMenuRefs.type) === MenuTypeEnum.MIX_SIDEBAR);
+    const isTypeOfMenu = (type: MenuTypeEnum) => computed(() => unref(allMenuRefs.type) === type)
+    // MenuType响应式Enum
+    this.isMenuTypeOfTop = isTypeOfMenu(MenuTypeEnum.TOP_MENU);
+    this.isMenuTypeOfSidebar = isTypeOfMenu(MenuTypeEnum.SIDEBAR);
+    this.isMenuTypeOfMix = isTypeOfMenu(MenuTypeEnum.MIX);
+    this.isMenuTypeOfMixSidebar = isTypeOfMenu(MenuTypeEnum.MIX_SIDEBAR);
+    this.isMenuTypeOfTopRecommend = isTypeOfMenu(MenuTypeEnum.SIDE_WITH_TOP_RECOMMEND);
+    this.isMenuMixType = this.isMenuTypeOfMix;
+    this.isMenuMixSidebarType = this.isMenuTypeOfMix;
+    // MenuMode响应式Enum
+    const isModeOfMenu = (mode: MenuModeEnum) => computed(() => unref(allMenuRefs.mode) === mode);
+    this.isMenuModeOfVertical = isModeOfMenu(MenuModeEnum.VERTICAL);
+    this.isMenuModeOfVerticalRight = isModeOfMenu(MenuModeEnum.VERTICAL_RIGHT);
+    this.isMenuModeOfHorizontal = isModeOfMenu(MenuModeEnum.HORIZONTAL);
+    this.isMenuModeOfInline = isModeOfMenu(MenuModeEnum.INLINE);
+
     this.isSidebarMenu = computed(() =>
       unref(allMenuRefs.type) === MenuTypeEnum.SIDEBAR || unref(allMenuRefs.type) === MenuTypeEnum.MIX_SIDEBAR
     );
 
-    this.isTypeOfMenu = (type: MenuTypeEnum) => computed(() => unref(allMenuRefs.type) === type);
-    this.isModeOfMenu = (mode: MenuModeEnum) => computed(() => unref(allMenuRefs.mode) === mode);
     this.setMenuSetting = (menuSetting: Partial<MenuSetting>) =>  {
       return appConfigAction.setProjectConfig({ menuSetting });
     }

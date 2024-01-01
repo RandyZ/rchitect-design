@@ -10,6 +10,8 @@ export const useRouteOperator = () => diKT(routerBeans.RouteOperator)
 export const useUserState = ():User.State => diKT(Beans.UserState)
 export const useUserAction = ():User.Action => diKT(Beans.UserAction)
 export const useUserGetter = ():User.Getter => diKT(Beans.UserGetter)
+export const useAppLockState = () => diKT(Beans.AppLockState)
+export const useAppLockActions = () => diKT(Beans.AppLockActions)
 /**
  * 获取运行时配置
  * @deprecated 已废弃，逐步分解到其他模块
@@ -28,5 +30,6 @@ export const useHeaderSettingAction = () => diKT(settingBeans.AppConfigAction)
 export const useSporadicSetting = () => diKT(settingBeans.AppConfigState).sporadicSetting
 export const useContainerSetting = () => diKT(settingBeans.AppConfigState).containerSetting
 export const useHeaderSettingManager = () => diKT(settingBeans.MenuSettingManager)
+
 
 

@@ -3,14 +3,14 @@ import type { ComputedRef } from 'vue-demi'
 import { useThrottleFn } from '@rchitect-rock/tools'
 import type { PromisifyFn } from '@rchitect-rock/tools'
 import { Beans as settingBeans } from '@rchitect-rock/settings'
-import { Beans as routeBeans } from '@rchitect-rock/router'
 import { default as Beans } from '#/../beankeys'
 import { Route } from '@rchitect-design/constants'
 import { diKT } from '@rchitect-rock/ioc'
+import { useRoute } from '#/hooks'
 
 const LOCK_PATH = Route.BASIC_LOCK_PATH
 
-const router = () => diKT(routeBeans.RouteTable).router;
+const router = () => useRoute().router;
 
 export function useLockScreen():ComputedRef<{
   onKeyup:PromisifyFn<() => void> | undefined
@@ -81,7 +81,7 @@ export function useLockScreen():ComputedRef<{
   })
 
   return computed(() => {
-    let keyupFn = undefined
+    let keyupFn:PromisifyFn<() => void> | undefined = undefined
     if (unref(appConfig.sporadicSetting).lockTime > 0) {
       keyupFn = useThrottleFn(resetCalcLockTimeout, 2000)
     } else {

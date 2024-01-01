@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import { computed, ref } from 'vue'
+import { computed, ref, unref } from 'vue-demi'
 import { useI18n } from '@rchitect-rock/locale'
 import { RockComponent, useComponent, useForm } from '@rchitect-rock/components'
-// import { resolveContextOptions } from '#/../bridge'
 // TODO 使用inject获取图片资源
 import headerImg from '@/assets/images/header.jpg'
+import { useAppLockActions, useUserState } from "#/hooks";
 
 const { t } = useI18n()
 
@@ -15,12 +15,10 @@ const props = defineProps({
 })
 
 const WmqH5 = useComponent(RockComponent.H5)
-
-// const { stores, useLockStore } = resolveContextOptions();
-const userStore = stores.useUserStore()
-const lockStore = useLockStore()
+const userStore = useUserState()
+const lockActions = useAppLockActions()
 const getUserInfo = computed(() => {
-  const { realName = 'WeiMing Admin', avatar, desc } = userStore.getUserInfo || {}
+  const { realName = 'WeiMing Admin', avatar, desc } = unref(userStore.userInfo) || {}
 
   return { realName, avatar: avatar || headerImg, desc }
 })
@@ -64,7 +62,7 @@ const handleLock = async () => {
   await validate((errors) => {
     if (!errors) {
       const { password } = getFieldValue()
-      lockStore.setLockInfo({
+      lockActions.setLockInfo({
         isLock: true,
         pwd: password,
       })

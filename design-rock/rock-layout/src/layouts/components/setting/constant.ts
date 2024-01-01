@@ -33,7 +33,7 @@ export const navigationBarTypeList = [
   {
     title: $t('layout.setting.menuTypeSidebarAndRecommend'),
     mode: MenuModeEnum.INLINE,
-    type: MenuTypeEnum.SIDER_WITH_TOP_RECOMMEND,
+    type: MenuTypeEnum.SIDE_WITH_TOP_RECOMMEND,
   },
 ];
 

@@ -33,7 +33,7 @@ const layout = computed<Component>(() => {
       //   return TopMenuLayout
       // case MenuTypeEnum.MIX_SIDEBAR:
       //   return MixSidebar
-      // case MenuTypeEnum.SIDER_WITH_TOP_RECOMMEND:
+      // case MenuTypeEnum.SIDE_WITH_TOP_RECOMMEND:
       //   return MenuSplitLevelLayout
     default:
       throw new Error('The layout type is not defined! Check whether the ProjectSetting is init to store?')
