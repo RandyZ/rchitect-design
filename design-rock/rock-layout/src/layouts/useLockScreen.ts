@@ -2,7 +2,6 @@ import { computed, onUnmounted, unref, watch, watchEffect } from 'vue-demi'
 import type { ComputedRef } from 'vue-demi'
 import { useThrottleFn } from '@rchitect-rock/tools'
 import type { PromisifyFn } from '@rchitect-rock/tools'
-import { Beans as stateBeans } from '@rchitect-rock/state'
 import { Beans as settingBeans } from '@rchitect-rock/settings'
 import { Beans as routeBeans } from '@rchitect-rock/router'
 import { default as Beans } from '#/../beankeys'
@@ -17,8 +16,8 @@ export function useLockScreen():ComputedRef<{
   onKeyup:PromisifyFn<() => void> | undefined
   onMousemove:PromisifyFn<() => void> | undefined
 }> {
-  const lockActions = diKT(stateBeans.ScreenLockerAction)
-  const lockGetters = diKT(stateBeans.ScreenLockerGetter)
+  const lockActions = diKT(Beans.AppLockActions)
+  const lockState = diKT(Beans.AppLockState)
   const userStore = diKT(Beans.UserState)
   const appConfig = diKT(settingBeans.AppConfigState);
 
@@ -65,7 +64,7 @@ export function useLockScreen():ComputedRef<{
   })
 
   watch(
-    () => unref(lockGetters.getLockInfo).isLock,
+    () => unref(lockState.lockInfo)?.isLock,
     (newValue) => {
       if (newValue) {
         router().replace({

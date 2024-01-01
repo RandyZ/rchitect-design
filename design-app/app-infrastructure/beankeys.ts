@@ -2,12 +2,17 @@ import * as pack from "./package.json"
 import type { AxiosTransform, CreateAxiosOptions, InfrastructureAxios, InfrastructureOptions } from './src/app-net';
 import type { ServiceIdentifier } from '@rchitect-rock/ioc';
 import type { RequestOptions } from '@rchitect-design/types';
+import { AppRuntimeOptions } from "#/app-state/app-runtime";
 
 export default {
   /**
    * 基础设施参数
    */
   InfrastructureOptions: Symbol.for(`${ pack.name }/InfrastructureOptions`) as ServiceIdentifier<InfrastructureOptions>,
+  /**
+   * 运行时参数
+   */
+  AppRuntimeOptions: Symbol.for(`${ pack.name }/AppRuntimeOptions`) as ServiceIdentifier<AppRuntimeOptions>,
   /**
    * 请求发送参数
    */

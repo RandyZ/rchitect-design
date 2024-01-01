@@ -13,6 +13,7 @@ import Mobile from './mobile-menu.vue'
 import { Beans as stateBeans } from '@rchitect-rock/state'
 import { diKT } from '@rchitect-rock/ioc'
 import { useLockScreen } from "#/layouts/useLockScreen";
+import { useMenuSettingManager } from "#/hooks";
 
 const appState = diKT(stateBeans.AppState)
 // const { useLockScreen } = resolveContextOptions();
@@ -20,10 +21,10 @@ const appState = diKT(stateBeans.AppState)
 // Create a lock screen monitor
 const lockEvents = useLockScreen();
 // 处理布局类型
-const { getMenuType } = useMenuSetting()
+const settingManager = useMenuSettingManager()
 const layout = computed<Component>(() => {
   if (unref(appState.isMobile)) return Mobile
-  switch (getMenuType.value) {
+  switch (settingManager.getMenuType.value) {
     case MenuTypeEnum.SIDEBAR:
       return LeftMenuLayout
       // case MenuTypeEnum.MIX:

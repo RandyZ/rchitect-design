@@ -69,7 +69,6 @@ export const useUserStore = defineStore('AppUserStore', () => {
         const token = await fetchTokenFunction(loginParams, mode);
 
         console.debug('Account Store get token', token);
-        debugger
         // save token
         this.setToken(token);
         if (!unref(getters.getToken)) {
@@ -85,7 +84,6 @@ export const useUserStore = defineStore('AppUserStore', () => {
       }
     },
     async afterLoginAction(goHome?: boolean): Promise<UserInfo | null> {
-      debugger
       if (!unref(getters.getToken)) {
         return null;
       }
@@ -103,7 +101,6 @@ export const useUserStore = defineStore('AppUserStore', () => {
           routes.forEach((route) => {
             useRouter().addRoute(route);
           });
-          debugger
           useRouter().addRoute(LayoutRoutes.PAGE_NOT_FOUND_ROUTE);
           authAction.setDynamicAddedRoute(true);
         }

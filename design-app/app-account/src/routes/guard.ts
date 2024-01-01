@@ -7,6 +7,7 @@ import { diKT } from '@rchitect-rock/ioc';
 import { AppContext } from "@rchitect-rock/base-package";
 import { unref } from "vue";
 import { useUserStore } from "#/state";
+import type { NavigationHook } from "@rchitect-design/types";
 
 const LOCK_PATH = Route.BASIC_LOCK_PATH;
 const LOGIN_PATH = Route.BASIC_LOGIN_PATH;
@@ -25,7 +26,7 @@ const useLockActions = () => diKT(layoutBeans.AppLockActions);
  * @param next
  * @returns
  */
-const authGuardCustomHomepageHandler = async (to, from, next) => {
+const authGuardCustomHomepageHandler:NavigationHook = async (to, from, next) => {
   const userStore = useUserStore()
   if (
     // '/' => '/dashboard'
@@ -49,7 +50,7 @@ const authGuardCustomHomepageHandler = async (to, from, next) => {
  * @param next
  * @returns
  */
-const authGuardWhiteRoutesHandler = async (to, from, next) => {
+const authGuardWhiteRoutesHandler:NavigationHook = async (to, from, next) => {
   if (routeTable().whiteRouteTable.paths.includes(to.path as PageEnum)) {
     const userGetter = useUserGetter()
     const userState = useUserState()
@@ -86,7 +87,7 @@ const authGuardWhiteRoutesHandler = async (to, from, next) => {
  * @param next
  * @returns
  */
-const authGuardWithoutTokenHandler = async (to, from, next) => {
+const authGuardWithoutTokenHandler:NavigationHook = async (to, from, next) => {
   const token = useUserGetter().getToken;
   const userAction = useUserAction();
   if (!unref(token)) {
@@ -139,11 +140,15 @@ const authGuardWithoutTokenHandler = async (to, from, next) => {
 };
 /**
  * 创建登录身份验证守卫
+ * 1. 验证前置Handler
+ * 2. 验证锁屏
+ * 3. 修正路由
+ *    1. 替换路由（后台权限）
+ *    2. 过滤路由（前端权限）
+ * 4. 路径验证
  */
 export function createAuthGuard(appContext:AppContext) {
-  debugger
   appContext.registerRouteGuards(async (to, from, next) => {
-    debugger
     const ret =
       (await authGuardCustomHomepageHandler(to, from, next)) &&
       (await authGuardWhiteRoutesHandler(to, from, next)) &&
@@ -152,6 +157,7 @@ export function createAuthGuard(appContext:AppContext) {
       return false;
     }
     // TODO 继续抽取其他方法
+    // 1. 是否锁屏
     if (unref(useLockState().lockInfo)?.isLock) {
       // redirect lock page
       const redirectData: {
@@ -171,6 +177,7 @@ export function createAuthGuard(appContext:AppContext) {
       next(redirectData);
       return;
     }
+    // 2. 用户
     const userStore = useUserStore();
     const permissionActions = usePermissionActions();
     // Jump to the 404 page after processing the login
@@ -214,7 +221,9 @@ export function createAuthGuard(appContext:AppContext) {
       const redirect = decodeURIComponent(redirectPath);
       const nextData =
         to.path === redirect ? { ...to, replace: true } : { path: redirect };
-      next(nextData);
+      // next(nextData);
+      // FIXME nextData 无法正确跳转
+      next()
     }
   });
 }

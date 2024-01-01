@@ -15,7 +15,8 @@
     "@rchitect-design/constants": "workspace:*",
     "@rchitect-rock/base-package": "workspace:*",
     "@rchitect-rock/ioc": "workspace:*",
-    "@rchitect-rock/locale": "workspace:*"
+    "@rchitect-rock/locale": "workspace:*",
+    "@rchitect-rock/settings": "workspace:^"
   },
   "devDependencies": {
     "@rchitect-design/types": "workspace:*"

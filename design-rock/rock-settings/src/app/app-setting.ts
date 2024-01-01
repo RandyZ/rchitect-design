@@ -4,6 +4,7 @@ import type { BeforeMiniState, Repository } from '@rchitect-design/types';
 
 /**
  * 应用设置
+ * @deprecated 上浮到State模块中，使用AppState模块代替
  */
 export declare namespace AppSetting {
   export interface State extends Repository.State {

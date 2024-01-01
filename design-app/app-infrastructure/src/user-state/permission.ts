@@ -61,7 +61,6 @@ export const usePermissionStore = defineStore('PermissionStateStore', () => {
     async buildRoutesAction():Promise<RouteRecordItem[]> {
       // TODO: 从后端获取菜单
       // const { t } = useI18n()
-      debugger
       const userStore = useUserState();
 
       let routes:RouteRecordItem[] = [];
@@ -113,7 +112,6 @@ export const usePermissionStore = defineStore('PermissionStateStore', () => {
       };
       // 组合框架路由 与 本地路由
       const routeTable = useRoutesTable();
-      debugger
       switch (permissionMode) {
         case PermissionModeEnum.ROLE:
           routes = filterTree(routeTable.appRouteTable.routes, routeFilter);

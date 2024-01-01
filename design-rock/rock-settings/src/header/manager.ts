@@ -1,10 +1,15 @@
 import { computed, Ref, unref } from "vue-demi";
 import { Autowired, Bean } from "@rchitect-rock/ioc";
-import type { AppConfig } from "./app";
 import Beans from "#/../beankeys";
+import { MenuModeEnum, MenuTypeEnum, ThemeEnum } from "@rchitect-design/constants";
+import type { Header } from "./store";
+import type { MenuSettingManager } from "#/menu";
+import type { AppConfig } from "#/app";
 
 @Bean()
-export class HeaderSetting {
+export class HeaderSettingManager {
+  // menuSettingManager: MenuSettingManager;
+
   getShowDoc: Ref<boolean>;
   getShowSearch: Ref<boolean>;
   getHeaderTheme: Ref<ThemeEnum>;
@@ -24,29 +29,29 @@ export class HeaderSetting {
   getHeaderColor: Ref<string>;
   getShowLocalePicker: Ref<boolean>;
   constructor(
-    @Autowired(Beans.AppConfigGetter) appConfigGetter: AppConfig.Getter
+    @Autowired(Beans.AppConfigState) appConfigState: AppConfig.State,
+    @Autowired(Beans.HeaderState) headerState: Header.State,
+    @Autowired(Beans.MenuSettingManager) menuSettingManager: MenuSettingManager,
   ) {
-    const headerSettingStore = appConfigGetter.getHeaderSetting;
-    const getShowDoc = computed(() => headerSettingStore.showDoc);
-    const getShowSearch = computed(() => headerSettingStore.showSearch)
-    const getHeaderTheme = computed(() => headerSettingStore.theme)
-    const getUseLockPage = computed(() => headerSettingStore.useLockPage)
-    const getShowFullScreen = computed(() => headerSettingStore.showFullScreen)
-    const getShowNotice = computed(() => headerSettingStore.showNotice)
+    const getShowDoc = computed(() => headerState.showDoc);
+    const getShowSearch = computed(() => headerState.showSearch)
+    const getHeaderTheme = computed(() => headerState.theme)
+    const getUseLockPage = computed(() => headerState.useLockPage)
+    const getShowFullScreen = computed(() => headerState.showFullScreen)
+    const getShowNotice = computed(() => headerState.showNotice)
     const getShowBread = computed(() => (
-      unref(menuSetting.getMenuMode) !== MenuModeEnum.HORIZONTAL
-      && unref(rootSetting.getShowBreadCrumb)
-      && !unref(menuSetting.getSplit)
+      unref(menuSettingManager.getMenuMode) !== MenuModeEnum.HORIZONTAL
+      && unref(appConfigState.sporadicSetting).showBreadCrumb
+      && !unref(menuSettingManager.getSplit)
     ))
-    const getShowContent = computed(() => unref(getShowBread) || unref(menuSetting.getShowHeaderTrigger))
+    const getShowContent = computed(() => unref(getShowBread) || unref(menuSettingManager.canShowHeaderTrigger))
     const getShowHeaderLogo = computed(() => (
-      unref(rootSetting.getShowLogo)
-      && !unref(menuSetting.isMenuSidebarType)
-      && !unref(menuSetting.isMenuMixSidebarType)
+      unref(appConfigState.containerSetting).showLogo
+      && !unref(menuSettingManager.isSidebarMenu)
     ))
-    const getShowHeader = computed(() => headerSettingStore.show)
-    const getFixed = computed(() => headerSettingStore.fixed)
-    const getShowMixHeaderRef = computed(() => !unref(menuSetting.isMenuSidebarType) && unref(getShowHeader))
+    const getShowHeader = computed(() => headerState.show)
+    const getFixed = computed(() => headerState.fixed)
+    const getShowMixHeaderRef = computed(() => !unref(menuSettingManager.isTypeOfMenu(MenuTypeEnum.SIDEBAR)) && unref(getShowHeader))
     const getShowFullHeaderRef = computed(() => {
       return (!unref(rootSetting.getFullContent) && unref(getShowHeader));
     })

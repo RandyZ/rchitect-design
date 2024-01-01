@@ -7,6 +7,8 @@ import { AppContext } from '@rchitect-rock/base-package';
 import { IocPlugin } from '@rchitect-rock/ioc';
 import { Lib as routeLib } from '@rchitect-rock/router';
 import { Lib as localeLib } from '@rchitect-rock/locale';
+import { Lib as stateLib } from '@rchitect-rock/state';
+import { Lib as settingsLib } from '@rchitect-rock/settings';
 import { Lib as baseComponentLib } from '@rchitect-rock/components';
 import { Lib as eventBusLib } from '@rchitect-rock/events';
 import { Lib as layoutsLib } from '@rchitect-rock/layouts';
@@ -35,6 +37,10 @@ import localIocModule from "./ioc";
       .use(eventBusLib, appContext)
       // 使用路由
       .use(routeLib, appContext)
+      // 使用状态管理
+      .use(stateLib, appContext)
+      // 使用配置管理
+      .use(settingsLib, appContext)
       // 布局组件
       .use(layoutsLib, appContext)
       // 本地化

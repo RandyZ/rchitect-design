@@ -1,6 +1,6 @@
 import type { ServiceIdentifier } from '@rchitect-rock/ioc';
 import * as pack from './package.json';
-import type { AppConfig, AppSetting, AppSiteInfo, MenuSettingManager } from './src/index';
+import type { AppConfig, AppSetting, AppSiteInfo, Header, MenuSettingManager } from './src/index';
 import type {
   GlobConfig,
   HeaderSetting,
@@ -10,7 +10,13 @@ import type {
   SporadicSetting,
   TransitionSetting
 } from '@rchitect-design/types';
+import { HeaderSettingManager } from "./src/index";
 
+// Header相关的Bean
+const headerBeans = {
+  HeaderState: Symbol.for(`${pack.name}/Header.State`) as ServiceIdentifier<Header.State>,
+  HeaderSettingManager: Symbol.for(`${pack.name}/HeaderSettingManager`) as ServiceIdentifier<HeaderSettingManager>,
+}
 
 export default {
   // Types中定义的默认值数据
@@ -45,4 +51,7 @@ export default {
   AppSiteInfoActions: Symbol.for(`${ pack.name }/AppSiteInfo.Actions`) as ServiceIdentifier<AppSiteInfo.Actions>,
 
   MenuSettingManager: Symbol.for(`${ pack.name }/MenuSettingManager`) as ServiceIdentifier<MenuSettingManager>,
+
+
+  ...headerBeans
 };

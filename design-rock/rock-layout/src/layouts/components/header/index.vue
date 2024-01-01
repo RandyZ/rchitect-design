@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed, unref, watch } from 'vue-demi'
+
 import { RockComponent, useComponent } from "@rchitect-rock/components";
-import { ThemeEnum } from "@rchitect-design/constants";
 import HeaderRecommendMenu from "./RecommendMenu/index.vue";
 import AppNotify from "#/layouts/components/notify/index.vue";
 import LayoutBreadcrumb from "#/layouts/components/breadcrumb/index.vue";
@@ -11,8 +11,9 @@ import Logo from "#/layouts/components/logo/index.vue";
 import AppSearch from "#/layouts/components/search/AppSearch.vue";
 import HeaderHistory from "../history/index.vue";
 import { SettingButton } from "#/layouts/components/setting/index";
-// import { useAppConfig, useHeaderSetting, useMenuSetting, themeSettingHooks } from "@rchitect-rock/hooks";
 import LayoutTabs from "#/layouts/components/tabs/index.vue";
+// import { useAppConfig, useHeaderSetting, useMenuSetting } from "@rchitect-rock/hooks";
+import { useAppRunTimeConfigOptions, useHeaderSettingManager, useMenuSettingManager } from "#/hooks";
 
 defineOptions({
   name: "LayoutHeaderComponent",
@@ -20,8 +21,16 @@ defineOptions({
 
 const WmqSpace = useComponent(RockComponent.Space, true)
 const WmqLocalePicker = useComponent(RockComponent.LocalePicker, true)
-const { getShowSidebar, getMenuType, getMenuWidth, isMenuTopType, isMenuMixType, isMenuMixSidebarType, getMenuHidden } = useMenuSetting()
-const { menu } = useAppConfig()
+const {
+  getShowSidebar,
+  getMenuType,
+  getMenuWidth,
+  isMenuTopType,
+  isMenuMixType,
+  isMenuMixSidebarType,
+  getMenuHidden
+} = useMenuSettingManager()
+const { menu } = useAppRunTimeConfigOptions()
 const {
   getShowBread,
   getShowFullScreen,
@@ -31,14 +40,9 @@ const {
   getShowNotice,
   getShowFullHeaderRef,
   getShowHeaderLogo,
-  // getHeaderBgColor,
-  // getHeaderColor
-} = useHeaderSetting()
-
-const themeHooks = themeSettingHooks();
-
-const getHeaderBgColor = computed(() => themeHooks.getHeaderBgColor);
-const getHeaderColor = computed(() => themeHooks.getHeaderColor);
+  getHeaderBgColor,
+  getHeaderColor
+} = useHeaderSettingManager()
 
 const emit = defineEmits(["selectMenu"]);
 
@@ -64,7 +68,7 @@ const getShowHeaderMultipleTab = computed(() => {
   // )
 })
 const getShowSetting = computed(() => {
-  return true
+  return false
   // if (!unref(getShowSettingButton)) {
   //   return false
   // }
@@ -76,7 +80,8 @@ const getShowSetting = computed(() => {
   // return settingButtonPosition === SettingButtonPositionEnum.HEADER
 })
 const isDark = computed(() => {
-  return unref(themeHooks.getDark)
+  return false;
+  // return unref(getDarkMode) === ThemeEnum.DARK
 })
 const isLayoutBottomShow = computed(() => false);
 
@@ -100,18 +105,18 @@ const firstLayerHeaderStyleVars = computed(() => {
 </script>
 <template>
   <WmqSpace
-    vertical
-    :size="1"
-    :style="firstLayerHeaderStyleVars"
-    class="bg-[var(--header-bg-color)] c-[var(--header-main-color)]"
+      vertical
+      :size="1"
+      :style="firstLayerHeaderStyleVars"
+      class="bg-[var(--header-bg-color)] c-[var(--header-main-color)]"
   >
     <!-- 第一层区域：应用Logo和用户信息区，中间空余区域插槽topCenter -->
     <WmqSpace
-      v-if="isLayoutTopShow"
-      :class="['h-[var(--header-height)]', { 'mb-8px': !getShowHeaderMultipleTab }]"
-      style="box-shadow: 0px 0px 0px 0.5px var(--header-main-color);"
-      justify="space-between"
-      :align="'center'"
+        v-if="isLayoutTopShow"
+        :class="['h-[var(--header-height)]', { 'mb-8px': !getShowHeaderMultipleTab }]"
+        style="box-shadow: 0px 0px 0px 0.5px var(--header-main-color);"
+        justify="space-between"
+        :align="'center'"
     >
       <!-- 应用Logo区 -->
       <slot name="logo">

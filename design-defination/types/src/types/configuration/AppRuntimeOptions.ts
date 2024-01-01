@@ -21,7 +21,7 @@ export interface SidebarConfigOptions {
  * DefineAppConfigOptions
  * @deprecated 分解这个依赖
  */
-interface AppRuntimeConfigOptions {
+export interface AppRuntimeConfigOptions {
   // Navigation bar mode
   navBarMode: MenuTypeEnum
   // Theme
@@ -61,6 +61,10 @@ interface AppRuntimeConfigOptions {
   // Whether to show the lock screen
   useLockPage: boolean
   sidebar: SidebarConfigOptions
+  /**
+   * 菜单配置
+   * @deprecated 挪到MenuSettingData中
+   */
   menu: MenuConfigOptions
   header: HeaderConfigOptions
   logo: LogoConfigOptions

@@ -51,7 +51,7 @@ export const useConfigStore = defineStore('AppConfigStore', () => {
   const actions:AppConfig.Action = {
     setProjectConfig: async (config) => {
       state.headerSetting.value = deepMerge(unref(state.headerSetting) || {}, config.headerSetting)
-      state.menuSetting.value = deepMerge(unref(state.headerSetting) || {}, config.menuSetting)
+      state.menuSetting.value = deepMerge(unref(state.menuSetting) || {}, config.menuSetting)
       state.multiTabsSetting.value = deepMerge(unref(state.multiTabsSetting) || {}, config.multiTabsSetting)
       state.transitionSetting.value = deepMerge(unref(state.transitionSetting) || {}, config.transitionSetting)
       state.sporadicSetting.value = deepMerge(unref(state.sporadicSetting) || {}, config.sporadicSetting)

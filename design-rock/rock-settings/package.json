@@ -16,8 +16,7 @@
     "@rchitect-rock/base-package": "workspace:*",
     "@rchitect-rock/ioc": "workspace:*",
     "@rchitect-rock/locale": "workspace:*",
-    "@rchitect-rock/tools": "workspace:*",
-    "mitt": "^3.0.0"
+    "@rchitect-rock/tools": "workspace:*"
   },
   "devDependencies": {
     "@rchitect-design/types": "workspace:*"

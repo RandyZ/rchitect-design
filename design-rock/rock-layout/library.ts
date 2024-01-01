@@ -16,14 +16,13 @@ import { Route } from "@rchitect-design/constants";
 import { Beans as routerBeans } from "@rchitect-rock/router";
 import { Redirect } from "#/pages";
 
-import TestPage from "./src/pages/test-page.vue";
 
-export const Lib: Library<typeof types> = toPackage({
+export const Lib:Library<typeof types> = toPackage({
   name: pack.name,
   version: pack.version,
   types,
   module: new AsyncIocModule(async (bind, unbind, isBound) => {
-    console.debug(`【${pack.name}】 IocModule start load...`);
+    console.debug(`【${ pack.name }】 IocModule start load...`);
     // bind(types.ContextOptions).toDynamicValue((context) => {
     //   const support = context.container.get(types.ContextOptionsSupport);
     //   return {
@@ -36,7 +35,6 @@ export const Lib: Library<typeof types> = toPackage({
     //     },
     //   } as ContextOptions;
     // });
-    // bind(types.LockStore).toConstantValue(useLockStore())
     bind(types.SearchContext).to(SearchContext)
     // bind(types.MultipleTabStore).toConstantValue(useMultipleTab())
     bind(types.MultipleTabOperator).to(MultipleTabOperator)
@@ -44,19 +42,33 @@ export const Lib: Library<typeof types> = toPackage({
   }),
   routes: BasicRoutes,
   onSetup: async (app, appContext) => {
-    console.debug(`【${pack.name}】 onSetup start load...`);
+    console.debug(`【${ pack.name }】 onSetup start load...`);
     const route = appContext.appRoutes.find(item => item.path === Route.BASIC_HOME_PATH);
     if (!route) {
-      console.warn(`【${pack.name}】找不到路由【${Route.BASIC_HOME_PATH}】，请检查是否未设置首页路由如果！将会启用未知页替代首页`);
+      console.warn(`【${ pack.name }】找不到路由【${ Route.BASIC_HOME_PATH }】，请检查是否未设置首页路由如果！将会启用未知页替代首页`);
       // TODO 去掉临时逻辑
       const routesTable = diKT(routerBeans.RouteTable)
       routesTable.appendRoutes({
           path: Route.BASIC_HOME_PATH,
-          component: TestPage,
+          name: 'HomeDashBoard',
+          component: LAYOUT,
           meta: {
-            title: 'routes.dashboard.dashboard',
-            icon: 'bx:bx-home',
-          }
+            title: 'ErrorPage1',
+            key: 333,
+            isBasic: true,
+          },
+          redirect: `${Route.BASIC_HOME_PATH}/index`,
+          children: [
+            {
+              path: `${Route.BASIC_HOME_PATH}/index`,
+              name: 'DashBoardIndex',
+              component: () => import('./src/pages/test-page.vue'),
+              meta: {
+                title: 'routes.dashboard.dashboard',
+                icon: 'bx:bx-home',
+              }
+            }
+          ]
         }
       )
     }

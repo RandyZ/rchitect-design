@@ -41,7 +41,6 @@ class RespData<T> implements Protocols.ResponseData<T> {
 }
 
 const preRequestHook = (config:RchitectRequestConfig, options:RequestOptions, apiMapping:ApiMapping) => {
-  debugger
   const { apiUrl, joinParamsToUrl, formatDate, joinTime = true } = options;
   // const conf = useWebSiteConfigurations();
   // if (config.baseURL === `/${conf.envValues.VITE_GLOB_SERVER_AUTH}`) {
@@ -62,7 +61,7 @@ const preRequestHook = (config:RchitectRequestConfig, options:RequestOptions, ap
         params || {},
         h.joinTimestamp(joinTime, false)
       );
-      const reqConverter = apiMapping[config.url as string]?.req
+      const reqConverter = apiMapping[config.url as string]?.converter
       if (reqConverter) {
         config.params = reqConverter(config.params)
       }
@@ -120,7 +119,6 @@ export class AIHelpAxiosTransform extends AxiosTransform {
       return preRequestHook(config, options, apiMapping)
     }
     this.requestInterceptors = (config, options) => {
-      debugger
       // 请求之前处理config
       const token = contextOptions.tokenProvider?.();
       const _config = config as Recordable<any>;
@@ -143,7 +141,6 @@ export class AIHelpAxiosTransform extends AxiosTransform {
       return config;
     }
     this.transformRequestHook = (rawRes:RchitectResponse, options:RequestOptions):Protocols.ResponseData<any> => {
-      debugger
       const status = rawRes.status as HttpStatusCode;
       const { data } = rawRes;
       if (status === HttpStatusCode.OK) {

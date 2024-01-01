@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, h, onMounted, unref, nextTick, computed } from 'vue-demi'
+import { ref, h, onMounted, unref, nextTick, computed, toRefs } from 'vue-demi'
 import LayoutLogoComponent from '../logo/index.vue'
 import { createNamespace, mapTree } from '@rchitect-rock/tools'
 import { useI18n } from '@rchitect-rock/locale'
@@ -15,12 +15,19 @@ import {
 import { Menu } from '@rchitect-design/types'
 import { driverRef } from "@rchitect-rock/components";
 import { string, number, bool } from 'vue-types'
+import {
+  useAppConfigState,
+  useAppMenuState,
+  useAppRunTimeConfigOptions,
+  useAppState,
+  useMenuSettingManager
+} from "#/hooks";
 
 defineOptions({
   name: 'LayoutMenuComponent',
 })
 
-const themeHooks = themeSettingHooks();
+// const themeHooks = themeSettingHooks();
 
 const props = defineProps({
   mode: string().def('vertical'),
@@ -35,9 +42,10 @@ const props = defineProps({
   menusShowLevel: number().def(0),
 })
 
-const { isMobile } = useAppStatus().toRefs()
-const { menu, isSidebar, isMixSidebar, getCollapsedShowTitle } = useAppConfig()
-const { isMenuMixType, isMenuMixSidebarType, getCollapsed } = useMenuSetting()
+const appMenuState = useAppMenuState();
+const { menu } = toRefs(useAppRunTimeConfigOptions());
+const isMobile = useAppState().mobile
+const menuSettingManager = useMenuSettingManager()
 const { t } = useI18n()
 const { bem } = createNamespace('layout-menu')
 const menuModeClass = computed(() => {
@@ -48,10 +56,9 @@ const menuModeClass = computed(() => {
   }
 })
 const menuRef = ref<WmqComponent<Menu>>();
-
 const { menus, currentRoute } = MenuFunctions.useMenusAtLevel(
   props.menusShowLevel,
-  !(unref(isMenuMixType) || unref(isMenuMixSidebarType))
+  !(unref(menuSettingManager.isMenuMixType) || unref(menuSettingManager.isMenuMixSidebarType))
 )
 
 const menuList = computed(() => {
@@ -62,8 +69,12 @@ const menuList = computed(() => {
 const activeKey = ref()
 
 const getMenuCollapsed = computed(() => {
-  if (unref(isMixSidebar)) return false
-  return unref(getCollapsed)
+  if (unref(menuSettingManager.isMenuMixSidebarType)) return false
+  return appMenuState.collapsed
+})
+
+const isMenuTopLogoShow = computed(() => {
+
 })
 
 // 定位菜单选择 与 当前路由匹配
@@ -125,14 +136,14 @@ const routerToMenu = (item:RouteRecordItem) => {
   }
 }
 
-const styleVar = computed(() => {
-  return themeHooks.getMenumStyles || {};
-})
+// const styleVar = computed(() => {
+//   return themeHooks.getMenumStyles || {};
+// })
 </script>
 
 <template>
   <div :class="[bem(), menuModeClass]" >
-    <slot name="logo" v-if="!isMenuMixType">
+    <slot name="logo" v-if="isMenuTopLogoShow">
       <!-- showSidebarLogo || isMobile -->
       <LayoutLogoComponent
           :class="bem('logo')"
@@ -152,7 +163,7 @@ const styleVar = computed(() => {
         :root-indent="18"
         :mode="props.mode"
         :accordion="menu.accordion"
-        :style="styleVar"/>
+      />
     </WmqScrollbar>
   </div>
 </template>

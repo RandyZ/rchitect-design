@@ -1,5 +1,5 @@
 import { Bean, Autowired } from "@rchitect-rock/ioc";
-import { MenuModeEnum, MenuTypeEnum } from "@rchitect-design/constants";
+import { MenuModeEnum, MenuTypeEnum, TriggerEnum } from "@rchitect-design/constants";
 import { removeResizeListener, debounceAwait, addResizeListener } from "@rchitect-rock/tools";
 import type { ComputedRef, Ref } from "vue-demi"
 import { computed, toRefs, unref } from "vue-demi"
@@ -18,8 +18,30 @@ export class MenuSettingManager {
   getMenuWidth:Ref<number>;
   getSplit:Ref<boolean>;
   getShowMenu:Ref<boolean>;
+  isMenuHidden:Ref<boolean>;
+  /**
+   * 是否展示侧边栏
+   */
   getShowSidebar:ComputedRef<boolean>;
+  isMenuMixType: ComputedRef<boolean>;
+  isMenuMixSidebarType: ComputedRef<boolean>;
+  /**
+   * 菜单是否是侧边栏模式
+   */
+  isSidebarMenu: ComputedRef<boolean>;
+  /**
+   * 菜单顶部是否可以隐藏
+   */
+  canShowHeaderTrigger: ComputedRef<boolean>;
 
+  /**
+   * 判断是否是某个菜单类型
+   */
+  isTypeOfMenu: (type:MenuTypeEnum) => ComputedRef<boolean>;
+  /**
+   * 判断是否是某个菜单模式
+   */
+  isModeOfMenu: (mode:MenuModeEnum) => ComputedRef<boolean>;
   /**
    * 修改MenuSetting
    * @param menuSetting
@@ -40,7 +62,7 @@ export class MenuSettingManager {
     @Autowired(Beans.AppConfigAction) appConfigAction:AppConfig.Action,
     @Autowired(Beans.AppSettingState) appSettingState:AppSetting.State
   ) {
-    const allMenuRefs = toRefs(appConfigState.menuSetting.value);
+    const allMenuRefs = toRefs(unref(appConfigState.menuSetting));
     const getShowSidebar = computed(() => {
       return (
         unref(allMenuRefs.split) || (
@@ -56,9 +78,27 @@ export class MenuSettingManager {
     this.getShowMenu = allMenuRefs.show;
     this.getMenuMode = allMenuRefs.mode;
     this.getMenuType = allMenuRefs.type;
+    this.isMenuHidden = allMenuRefs.hidden;
     this.getShowSidebar = getShowSidebar;
 
+    this.canShowHeaderTrigger = computed(() => {
+      if (
+        unref(this.getMenuType) === MenuTypeEnum.TOP_MENU ||
+        !unref(this.getShowMenu) ||
+        unref(this.isMenuHidden)
+      ) {
+        return false;
+      }
+      return unref(allMenuRefs.trigger) === TriggerEnum.HEADER;
+    });
+    this.isMenuMixType = computed(() => unref(allMenuRefs.type) === MenuTypeEnum.MIX);
+    this.isMenuMixSidebarType = computed(() => unref(allMenuRefs.type) === MenuTypeEnum.MIX_SIDEBAR);
+    this.isSidebarMenu = computed(() =>
+      unref(allMenuRefs.type) === MenuTypeEnum.SIDEBAR || unref(allMenuRefs.type) === MenuTypeEnum.MIX_SIDEBAR
+    );
 
+    this.isTypeOfMenu = (type: MenuTypeEnum) => computed(() => unref(allMenuRefs.type) === type);
+    this.isModeOfMenu = (mode: MenuModeEnum) => computed(() => unref(allMenuRefs.mode) === mode);
     this.setMenuSetting = (menuSetting: Partial<MenuSetting>) =>  {
       return appConfigAction.setProjectConfig({ menuSetting });
     }

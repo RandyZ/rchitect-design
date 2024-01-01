@@ -1,10 +1,10 @@
-import type { Ref, ComputedRef } from 'vue-demi';
+import type { ComputedRef } from 'vue-demi';
 
 export declare module Repository {
   /**
    * 数据值对象
    */
-  export type State = Record<string | number | symbol, Ref<any> | object>;
+  export type State = Record<string | number | symbol, any>;
   /**
    * 计算属性
    */

@@ -7,5 +7,6 @@ export enum PageEnum {
   ERROR_PAGE = '/exception',
   // error log page path
   ERROR_LOG_PAGE = '/error-log/list',
+  // 锁屏页
   BASE_LOCK = '/lock',
 }

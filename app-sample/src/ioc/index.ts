@@ -10,7 +10,7 @@ import { useUserAction, useUserGetter } from "@rchitect-rock/layouts";
 import Beans from "./beankes";
 import ApiMappings from "@/server/api-mapping-local";
 
-export default (async (bind) => {
+const iocModule:AsyncIocModuleCallBack = async (bind) => {
   bind(Beans.ServerApiMapping).toConstantValue(ApiMappings)
   bind(THROWN_HANDLER).toConstantValue({
     async debug(msg:string, handleType:HandleTypes, failData?:FailData, err?:Error) {
@@ -45,4 +45,6 @@ export default (async (bind) => {
       }
     } as InfrastructureOptions;
   });
-}) as AsyncIocModuleCallBack
+}
+
+export default iocModule

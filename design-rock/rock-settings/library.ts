@@ -3,7 +3,6 @@ import { install } from '@rchitect-rock/base-package';
 import * as pack from './package.json';
 import { AsyncIocModule, di, diK } from '@rchitect-rock/ioc';
 import types from './beankeys';
-import { DataEventBus } from './src/DataEventBus';
 import { MenuSettingManager } from './src/menu';
 import AppParams from './appparams';
 
