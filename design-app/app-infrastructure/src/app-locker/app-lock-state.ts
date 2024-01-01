@@ -13,10 +13,10 @@ export const useAppLockState = defineStore('AppLockStateStore', () => {
 
     const actions:AppLock.Actions = {
       setLockInfo(info) {
-        state.LockInfo.value = info;
+        state.lockInfo.value = info;
       },
       resetLockInfo() {
-        state.LockInfo.value = null;
+        state.lockInfo.value = null;
       },
       async unLock(password?:string) {
         const userStore = useUserStore();
