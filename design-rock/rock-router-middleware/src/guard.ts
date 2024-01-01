@@ -20,8 +20,6 @@ const permissionState = () => diKT(stateBeans.PermissionState)
 export function createBasicGuard(appContext:AppContext) {
   appContext.registerRouteGuards((to, from) => {
     const openNProgress = unref(appConfigState().transitionSetting).openNProgress
-    console.log('父应用to', to)
-    console.log('父应用from', from)
     if (!window.history.state.current) window.history.state.current = to.fullPath;
     if (!window.history.state.back) window.history.state.back = from.fullPath;
     // The page has already been loaded, it will be faster to open it again, you don’t need to do loading and other processing

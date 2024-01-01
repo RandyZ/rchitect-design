@@ -12,7 +12,7 @@ export const Lib: CommonModuleLibContext<typeof types> = {
   version: pack.version,
   types,
   module: new AsyncIocModule(async (bind) => {
-    console.debug(`${pack.name} IocModule start load`);
+    console.debug(`【${pack.name}】 IocModule start load`);
     bind(types.MenuSettingManager).to(MenuSettingManager);
   }),
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

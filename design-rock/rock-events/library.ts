@@ -11,7 +11,7 @@ export const Lib:CommonModuleLibContext<typeof Beans> = {
   version: pack.version,
   types: Beans,
   module: new AsyncIocModule(async (bind) => {
-    console.debug(`${ pack.name } IocModule start load`);
+    console.debug(`【${ pack.name }】 IocModule start load`);
     bind(Beans.DataEventBus).to(DataEventBus);
   }),
 };

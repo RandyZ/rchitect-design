@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { computed, unref, toRefs, ref } from 'vue-demi';
+import { computed, unref, toRefs, ref, shallowReactive } from 'vue-demi';
 import type { AppRuntimeConfigOptions } from '@rchitect-design/types';
 import {
   CacheTypeEnum,
@@ -106,7 +106,7 @@ export const useAppRuntimeStore = defineStore('AppRuntimeConfigOptionsStore', ()
       openNProgress: false,
     },
   }
-  const state = toRefs(options)
+  const state = toRefs(shallowReactive(options))
   const menuState :ToRefs<AppMenu.State> = {
     collapsed:ref(false)
   }

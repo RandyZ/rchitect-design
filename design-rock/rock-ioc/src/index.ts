@@ -24,7 +24,7 @@ export const setupByApp = (app: App, options: IocContainerOptions) => {
     throw new Error('IOC容器已经初始化, 请勿重复初始化');
   }
   const _container = createIocContainer(options);
-  console.debug('rchitect IOC Plugin create container');
+  console.debug('【Rchitect IOC Plugin】 create container');
   app.config.globalProperties.$iocContainer = _container;
   app.provide(CONTAINER_KEY as InjectionKey<IocContainer>, _container);
   container = _container;
