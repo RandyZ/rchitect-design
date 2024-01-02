@@ -6,7 +6,8 @@ import { DriverRefKey } from '#/utils/refSupport'
 const DriverRef = ref()
 defineExpose({ [DriverRefKey]: DriverRef })
 defineOptions({
-  name: RockComponent.Text,
+  // eslint-disable-next-line vue/no-reserved-component-names
+  name: 'Text',
 })
 const props = withDefaults(defineProps<RockTextTypes.Props>(), {
   type: 'primary',

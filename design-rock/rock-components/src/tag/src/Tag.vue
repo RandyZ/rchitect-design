@@ -6,7 +6,7 @@ import { ref } from 'vue-demi';
 const DriverRef = ref()
 defineExpose({ [DriverRefKey]: DriverRef })
 defineOptions({
-  name: RockComponent.Tag,
+  name: 'Tag',
 })
 
 const Tag = useDriverComponent(RockComponent.Tag)

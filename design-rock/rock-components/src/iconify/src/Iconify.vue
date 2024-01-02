@@ -8,7 +8,7 @@ import isString from 'lodash-es/isString'
 import { Icon as Iconify } from '@iconify/vue'
 
 defineOptions({
-  name: RockComponent.Iconify,
+  name: 'Iconify',
   customOptions: {
     isPresetComponent: true,
   },

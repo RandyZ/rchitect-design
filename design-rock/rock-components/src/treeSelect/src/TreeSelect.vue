@@ -7,7 +7,7 @@ const DriverRef = ref()
 defineExpose({ [DriverRefKey]: DriverRef })
 defineProps(props)
 defineOptions({
-  name: RockComponent.TreeSelect,
+  name: 'TreeSelect',
 })
 const TreeSelect = useDriverComponent(RockComponent.TreeSelect)
 </script>

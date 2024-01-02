@@ -5,7 +5,7 @@ import { ref } from 'vue-demi';
 const DriverRef = ref()
 defineExpose({ [DriverRefKey]: DriverRef })
 defineOptions({
-  name: RockComponent.LayoutFooter,
+  name: 'LayoutFooter',
 })
 const LayoutFooter = useDriverComponent(RockComponent.LayoutFooter)
 </script>

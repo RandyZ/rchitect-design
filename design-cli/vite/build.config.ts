@@ -2,7 +2,7 @@ import { defineBuildConfig } from 'unbuild'
 
 export default defineBuildConfig({
   clean: true,
-  entries: ['src/index'],
+  entries: ['src/index.ts'],
   declaration: true,
   outDir: 'dist',
   rollup: {

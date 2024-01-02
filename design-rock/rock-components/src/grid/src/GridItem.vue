@@ -11,7 +11,7 @@ import { ref } from 'vue-demi';
 const driver = ref()
 defineExpose({ [DriverRefKey]: driver })
 defineOptions({
-  name: RockComponent.GridItem,
+  name: 'GridItem',
 })
 const GridItem = useDriverComponent(RockComponent.GridItem)
 </script>

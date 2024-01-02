@@ -4,7 +4,8 @@
     "types": [
       "reflect-metadata",
       "vite/client",
-      "@types/lodash-es"
+      "@types/lodash-es",
+      "vitest/globals"
     ],
   },
   "include": ["src"],

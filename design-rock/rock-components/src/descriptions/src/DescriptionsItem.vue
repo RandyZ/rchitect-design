@@ -11,7 +11,7 @@ import { ref } from 'vue-demi';
 const DriverRef = ref()
 defineExpose({ [DriverRefKey]: DriverRef })
 defineOptions({
-  name: RockComponent.DescriptionsItem,
+  name: 'DescriptionsItem',
 })
 const DescriptionsItem = useDriverComponent(RockComponent.DescriptionsItem)
 </script>

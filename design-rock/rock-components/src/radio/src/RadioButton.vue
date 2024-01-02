@@ -14,7 +14,7 @@ import Checkbox from "#/checkbox/src/Checkbox.vue";
 const DriverRef = ref()
 defineExpose({ [DriverRefKey]: DriverRef })
 defineOptions({
-  name: RockComponent.RadioButton,
+  name: 'RadioButton',
 })
 const RadioButton = useDriverComponent(RockComponent.RadioButton)
 </script>

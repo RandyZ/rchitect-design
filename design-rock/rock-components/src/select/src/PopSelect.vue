@@ -7,7 +7,7 @@ import { DriverRefKey } from '#/utils/refSupport'
 const DriverRef = ref()
 defineExpose({ [DriverRefKey]: DriverRef })
 defineOptions({
-  name: RockComponent.PopSelect,
+  name: 'PopSelect',
 })
 
 const PopSelect = useDriverComponent(RockComponent.PopSelect)

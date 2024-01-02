@@ -5,7 +5,7 @@ import { ref } from 'vue-demi';
 const DriverRef = ref()
 defineExpose({ [DriverRefKey]: DriverRef })
 defineOptions({
-  name: RockComponent.Grid,
+  name: 'Grid',
 })
 const Grid = useDriverComponent(RockComponent.Grid)
 </script>

@@ -5,7 +5,7 @@ import { ref, computed } from 'vue-demi';
 const DriverRef = ref()
 defineExpose({ [DriverRefKey]: DriverRef })
 defineOptions({
-  name: RockComponent.Modal,
+  name: 'Modal',
 })
 const Modal = useDriverComponent(RockComponent.Modal)
 const props = defineProps({

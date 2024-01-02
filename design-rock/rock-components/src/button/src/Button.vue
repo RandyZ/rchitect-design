@@ -5,7 +5,8 @@ import { ref } from 'vue-demi';
 const DriverRef = ref()
 defineExpose({ [DriverRefKey]: DriverRef })
 defineOptions({
-  name: RockComponent.Button,
+  // eslint-disable-next-line vue/no-reserved-component-names
+  name: 'Button',
 })
 const Button = useDriverComponent(RockComponent.Button)
 </script>

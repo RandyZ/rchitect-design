@@ -5,7 +5,8 @@ import { ref } from 'vue-demi';
 const DriverRef = ref()
 defineExpose({ [DriverRefKey]: DriverRef })
 defineOptions({
-  name: RockComponent.Progress,
+  // eslint-disable-next-line vue/no-reserved-component-names
+  name: 'Progress',
 })
 
 const Progress = useDriverComponent(RockComponent.Progress)

@@ -5,7 +5,7 @@ import { ref } from 'vue-demi';
 const DriverRef = ref()
 defineExpose({ [DriverRefKey]: DriverRef })
 defineOptions({
-  name: RockComponent.Checkbox,
+  name: 'Checkbox',
 })
 const Checkbox = useDriverComponent(RockComponent.Checkbox)
 </script>

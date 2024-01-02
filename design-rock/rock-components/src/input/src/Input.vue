@@ -5,7 +5,8 @@ import { ref } from 'vue-demi';
 const DriverRef = ref()
 defineExpose({ [DriverRefKey]: DriverRef })
 defineOptions({
-  name: RockComponent.Input,
+  // eslint-disable-next-line vue/no-reserved-component-names
+  name: 'Input',
 })
 const Input = useDriverComponent(RockComponent.Input)
 </script>

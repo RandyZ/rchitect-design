@@ -5,7 +5,7 @@ import { ref } from 'vue-demi';
 const DriverRef = ref()
 defineExpose({ [DriverRefKey]: DriverRef })
 defineOptions({
-  name: RockComponent.NotificationProvider,
+  name: 'NotificationProvider',
 })
 const NotificationProvider = useDriverComponent(RockComponent.NotificationProvider)
 </script>

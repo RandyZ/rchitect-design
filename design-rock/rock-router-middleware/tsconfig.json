@@ -10,7 +10,7 @@
     },
     "types": [
       "vite/client",
-      // "vitest/globals"
+      "vitest/globals"
     ]
   },
   "include": ["src", "./"],

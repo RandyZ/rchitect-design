@@ -3,7 +3,8 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
-    "types": ["vite/client"],
+    "types": ["vite/client",
+    "vitest/globals"],
     "baseUrl": ".",
     "paths": {
       "#/*": ["src/*"]

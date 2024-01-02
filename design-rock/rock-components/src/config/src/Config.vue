@@ -9,7 +9,7 @@ defineExpose({ [DriverRefKey]: DriverRef })
 
 
 defineOptions({
-  name: RockComponent.Config,
+  name: 'Config',
   customOptions: {
     isPresetComponent: true,
   },

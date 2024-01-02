@@ -5,7 +5,7 @@ import { ref } from 'vue-demi';
 const DriverRef = ref()
 defineExpose({ [DriverRefKey]: DriverRef })
 defineOptions({
-  name: RockComponent.Badge,
+  name: 'Badge',
 })
 const Badge = useDriverComponent(RockComponent.Badge)
 </script>

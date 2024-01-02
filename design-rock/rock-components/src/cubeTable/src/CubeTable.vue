@@ -10,7 +10,7 @@ import { onMounted, ref, onUnmounted, PropType, watch, unref, computed, watchEff
 import { RockComponent } from '#/RockComponent'
 
 defineOptions({
-  name: RockComponent.CubeTable,
+  name: 'CubeTable',
   customOptions: {
     isPresetComponent: true,
   },

@@ -106,7 +106,7 @@ defineOptions({
 import { ref, watchEffect, unref, computed } from 'vue'
 import { context } from '../../../bridge'
 defineOptions({
-  name: RockComponent.LocalePicker,
+  name: 'LocalePicker',
   customOptions: {
     isPresetComponent: true,
   },

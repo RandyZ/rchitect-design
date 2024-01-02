@@ -8,7 +8,7 @@ import { RockComponent } from '#/RockComponent'
 import type { LocaleType } from "@rchitect-design/types";
 
 defineOptions({
-  name: RockComponent.LocalePicker,
+  name: 'LocalePicker',
   customOptions: {
     isPresetComponent: true,
   },

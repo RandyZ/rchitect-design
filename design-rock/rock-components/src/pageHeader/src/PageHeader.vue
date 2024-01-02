@@ -5,7 +5,7 @@ import { ref } from 'vue-demi';
 const DriverRef = ref()
 defineExpose({ [DriverRefKey]: DriverRef })
 defineOptions({
-  name: RockComponent.PageHeader,
+  name: 'PageHeader',
 })
 const PageHeader = useDriverComponent(RockComponent.PageHeader)
 const props = defineProps({

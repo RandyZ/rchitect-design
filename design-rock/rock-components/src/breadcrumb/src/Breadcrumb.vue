@@ -5,7 +5,7 @@ import { ref } from 'vue-demi';
 const DriverRef = ref()
 defineExpose({ [DriverRefKey]: DriverRef })
 defineOptions({
-  name: RockComponent.Breadcrumb,
+  name: 'Breadcrumb',
 })
 const Breadcrumb = useDriverComponent(RockComponent.Breadcrumb)
 </script>

@@ -5,7 +5,7 @@ import { ref } from 'vue-demi';
 const DriverRef = ref()
 defineExpose({ [DriverRefKey]: DriverRef })
 defineOptions({
-  name: RockComponent.Scrollbar,
+  name: 'Scrollbar',
 })
 const Scrollbar = useDriverComponent(RockComponent.Scrollbar)
 </script>

@@ -9,9 +9,9 @@ import { VxeGrid, type VxeGridInstance } from 'vxe-table'
 import { ThemeEnum } from '@rchitect-design/constants'
 import Bridge from '#/../bridge'
 import { useInterceptor } from './hooks'
-import { RockComponent } from '#/index'
 defineOptions({
-  name: RockComponent.Table,
+  // eslint-disable-next-line vue/no-reserved-component-names
+  name: 'Table',
   customOptions: {
     isPresetComponent: true,
   }

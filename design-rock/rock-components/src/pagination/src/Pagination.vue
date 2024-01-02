@@ -5,7 +5,7 @@ import { ref } from 'vue-demi';
 const DriverRef = ref()
 defineExpose({ [DriverRefKey]: DriverRef })
 defineOptions({
-  name: RockComponent.Pagination,
+  name: 'Pagination',
 })
 
 const Pagination = useDriverComponent(RockComponent.Pagination)

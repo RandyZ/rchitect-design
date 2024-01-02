@@ -10,11 +10,10 @@
 import { useDriverComponent, RockComponent } from '#/index'
 import { DriverRefKey } from '#/utils/refSupport'
 import { ref } from 'vue-demi';
-import Checkbox from "#/checkbox/src/Checkbox.vue";
 const DriverRef = ref()
 defineExpose({ [DriverRefKey]: DriverRef })
 defineOptions({
-  name: RockComponent.Radio,
+  name: 'Radio',
 })
 const Radio = useDriverComponent(RockComponent.Radio)
 </script>

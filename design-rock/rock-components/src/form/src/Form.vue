@@ -11,7 +11,8 @@ import { DriverRefKey } from '#/utils/refSupport'
 const formRef = ref()
 defineExpose({ [DriverRefKey]: formRef })
 defineOptions({
-  name: RockComponent.Form,
+  // eslint-disable-next-line vue/no-reserved-component-names
+  name: 'Form',
 })
 const Form = useDriverComponent(RockComponent.Form)
 

@@ -5,7 +5,7 @@ import { ref } from 'vue-demi';
 const DriverRef = ref()
 defineExpose({ [DriverRefKey]: DriverRef })
 defineOptions({
-  name: RockComponent.FormItemGi,
+  name: 'FormItemGi',
 })
 const FormItemGi = useDriverComponent(RockComponent.FormItemGi)
 </script>

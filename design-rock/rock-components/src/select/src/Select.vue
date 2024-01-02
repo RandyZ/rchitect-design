@@ -7,7 +7,8 @@ import { DriverRefKey } from '#/utils/refSupport'
 const DriverRef = ref()
 defineExpose({ [DriverRefKey]: DriverRef })
 defineOptions({
-  name: RockComponent.Select,
+  // eslint-disable-next-line vue/no-reserved-component-names
+  name: 'Select',
 })
 
 const Select = useDriverComponent(RockComponent.Select)

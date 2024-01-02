@@ -5,7 +5,7 @@ import { ref } from 'vue-demi';
 const DriverRef = ref()
 defineExpose({ [DriverRefKey]: DriverRef })
 defineOptions({
-  name: RockComponent.InputGroup,
+  name: 'InputGroup',
 })
 const InputGroup = useDriverComponent(RockComponent.InputGroup)
 </script>

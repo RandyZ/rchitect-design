@@ -12,7 +12,7 @@ defineExpose({ [DriverRefKey]: DriverRef })
 interface OptionType { value: any, label: string, disabled: boolean }
 
 defineOptions({
-  name: RockComponent.CheckboxGroup,
+  name: 'CheckboxGroup',
 })
 const CheckboxGroup = useDriverComponent(RockComponent.CheckboxGroup)
 const props = defineProps({

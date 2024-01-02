@@ -5,7 +5,7 @@ import { ref } from 'vue-demi';
 const DriverRef = ref()
 defineExpose({ [DriverRefKey]: DriverRef })
 defineOptions({
-  name: RockComponent.DrawerContent,
+  name: 'DrawerContent',
 })
 const DrawerContent = useDriverComponent(RockComponent.DrawerContent)
 </script>

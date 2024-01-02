@@ -3,7 +3,8 @@ import { DriverRefKey } from '#/utils/refSupport'
 import { useDriverComponent, RockComponent } from '#/index'
 import { ref } from 'vue-demi';
 defineOptions({
-  name: RockComponent.Menu,
+  // eslint-disable-next-line vue/no-reserved-component-names
+  name: 'Menu',
 })
 const Menu = useDriverComponent(RockComponent.Menu)
 const DriverRef = ref<typeof Menu>()
