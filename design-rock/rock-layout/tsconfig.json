@@ -14,6 +14,6 @@
       "vitest/globals"
     ]
   },
-  "include": ["./src"],
+  "include": ["./src", "../rock-components", "../rock-components/types/index.d.ts"],
   "exclude": ["**/node_modules/**", "**/dist/**", "**/build/**/*"],
 }

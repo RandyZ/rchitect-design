@@ -52,6 +52,7 @@
     "@rchitect-cli/lint": "workspace:*",
     "@rchitect-cli/tsconfig": "workspace:*",
     "@rchitect-cli/vite": "workspace:*",
+    "@rchitect-rock/components": "workspace:^",
     "@rchitect-rock/tools": "workspace:*",
     "@types/fs-extra": "^9.0.13",
     "@types/lodash-es": "~4.17.10",

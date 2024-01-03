@@ -5,6 +5,9 @@ export const LOCALE: { [key: string]: LocaleType } = {
   en: 'en',
 }
 
+/**
+ * @deprecated 使用 `ProjectSetting.localeSetting` 代替
+ */
 export const localeSetting: LocaleConfig = {
   // Locale
   locale: LOCALE.zh,

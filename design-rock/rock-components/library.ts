@@ -14,8 +14,6 @@ export const Lib: CommonModuleLibContext<typeof Beans> = toPackage({
     bind(Beans.ComponentMap).to(ComponentMap)
   }),
   onSetup: async (app, appContext) => {
-    const key = Beans.ComponentDictionary
-    const componentMap = appContext.getParam(key);
-    registerWmqComponent(app, componentMap);
+    registerWmqComponent(app, appContext.getParam(Beans.ComponentDictionary));
   },
 });

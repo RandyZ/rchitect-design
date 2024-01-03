@@ -22,7 +22,7 @@ const menuLayout = ref<InstanceType<typeof LayoutMenu>>();
 
 const onSelectMenu = (event:any) => {
   // FIXME: 这个是横向功能推荐设置菜单布局的钩子，确认下方法expose的情况
-  menuLayout.value.setMenuList(event);
+  // menuLayout.value.setMenuList(event);
 };
 
 onBeforeUnmount(() => {

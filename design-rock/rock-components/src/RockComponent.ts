@@ -114,8 +114,6 @@ export enum RockComponent {
   PageHeader = 'PageHeader',
 }
 
-export type RockComponentType = keyof typeof RockComponent;
-
 export const toRockComponent = (componentName: string): RockComponent => {
-  return RockComponent[componentName as RockComponentType];
+  return RockComponent[componentName];
 }

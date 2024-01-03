@@ -84,7 +84,7 @@ export interface HeaderSetting {
 
 export interface ContainerSetting {
   // 内容区域宽度
-  contentWidth:number,
+  // contentWidth:number,
   // 左侧菜单
   showMenu:boolean,
   // 顶栏
@@ -103,7 +103,6 @@ export interface ContainerSetting {
  * @description: 本地化设置
  */
 export interface LocaleSetting {
-  showPicker:boolean
   // Current language
   locale:LocaleType
   // default language
@@ -144,6 +143,8 @@ export interface ThemeSetting {
  * @description: 功能标志设置
  */
 export interface FeatureFlagSetting {
+  /** Whether to turn on the multi-lang switcher */
+  showPicker:boolean
   // Whether to show the theme switch button
   showDarkModeToggle:boolean
   // pageLayout whether to enable keep-alive
@@ -204,7 +205,7 @@ export interface ProjectSetting {
   // Animation configuration
   transitionSetting:TransitionSetting
   // 主题配置
-  themeSetting?:FeatureFlagSetting
+  themeSetting?:ThemeSetting
   // 功能标志配置
   featureFlagSetting?:FeatureFlagSetting
   // Sporadic settings to classify

@@ -36,6 +36,9 @@ importers:
       '@rchitect-cli/vite':
         specifier: workspace:*
         version: link:design-cli/vite
+      '@rchitect-rock/components':
+        specifier: workspace:^
+        version: link:design-rock/rock-components
       '@rchitect-rock/tools':
         specifier: workspace:*
         version: link:design-rock/rock-tools
@@ -87,9 +90,6 @@ importers:
       rimraf:
         specifier: ^5.0.5
         version: registry.npmmirror.com/rimraf@5.0.5
-      tsconfig:
-        specifier: workspace:*
-        version: link:design-cli/configts
       turbo:
         specifier: latest
         version: registry.npmmirror.com/turbo@1.10.16
@@ -469,8 +469,6 @@ importers:
       vue:
         specifier: ~3.3.4 || ~2.7.0
         version: 3.3.7(typescript@5.3.3)
-
-  design-cli/configts: {}
 
   design-cli/css-preprocess:
     dependencies:
@@ -8622,27 +8620,12 @@ packages:
       estree-walker: 2.0.2
       magic-string: 0.30.5
 
-  registry.npmmirror.com/@vue/reactivity@3.3.7:
-    resolution: {integrity: sha512-cZNVjWiw00708WqT0zRpyAgduG79dScKEPYJXq2xj/aMtk3SKvL3FBt2QKUlh6EHBJ1m8RhBY+ikBUzwc7/khg==, tarball: https://registry.npmmirror.com/@vue/reactivity/-/reactivity-3.3.7.tgz}
-    name: '@vue/reactivity'
-    version: 3.3.7
-    dependencies:
-      '@vue/shared': 3.3.7
-
-  registry.npmmirror.com/@vue/runtime-core@3.3.7:
-    resolution: {integrity: sha512-LHq9du3ubLZFdK/BP0Ysy3zhHqRfBn80Uc+T5Hz3maFJBGhci1MafccnL3rpd5/3wVfRHAe6c+PnlO2PAavPTQ==, tarball: https://registry.npmmirror.com/@vue/runtime-core/-/runtime-core-3.3.7.tgz}
-    name: '@vue/runtime-core'
-    version: 3.3.7
-    dependencies:
-      '@vue/reactivity': registry.npmmirror.com/@vue/reactivity@3.3.7
-      '@vue/shared': 3.3.7
-
   registry.npmmirror.com/@vue/runtime-dom@3.3.7:
     resolution: {integrity: sha512-PFQU1oeJxikdDmrfoNQay5nD4tcPNYixUBruZzVX/l0eyZvFKElZUjW4KctCcs52nnpMGO6UDK+jF5oV4GT5Lw==, tarball: https://registry.npmmirror.com/@vue/runtime-dom/-/runtime-dom-3.3.7.tgz}
     name: '@vue/runtime-dom'
     version: 3.3.7
     dependencies:
-      '@vue/runtime-core': registry.npmmirror.com/@vue/runtime-core@3.3.7
+      '@vue/runtime-core': 3.3.7
       '@vue/shared': 3.3.7
       csstype: registry.npmmirror.com/csstype@3.1.2
 
