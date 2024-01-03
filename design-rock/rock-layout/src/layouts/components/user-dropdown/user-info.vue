@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 // import { resolveContextOptions } from '#/../bridge'
-import headerImg from '@/assets/images/header.jpg'
+// import headerImg from '@/assets/images/header.jpg'
 import { useAppState, useUserGetter } from "#/hooks";
 // import { useAppStatus } from '@rchitect-rock/hooks';
 
@@ -11,7 +11,7 @@ const appStatus = useAppState()
 
 const getUserInfo = computed(() => {
   const { realName = '用户Randy', avatar, desc } = userGetters.getUserInfo || {}
-  return { realName, avatar: avatar || headerImg, desc }
+  return { realName, avatar: avatar || 'headerImg', desc }
 })
 </script>
 <template>

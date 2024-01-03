@@ -3,7 +3,7 @@ import { computed, ref, unref } from 'vue-demi'
 import { useI18n } from '@rchitect-rock/locale'
 import { RockComponent, useComponent, useForm } from '@rchitect-rock/components'
 // TODO 使用inject获取图片资源
-import headerImg from '@/assets/images/header.jpg'
+// import headerImg from '@/assets/images/header.jpg'
 import { useAppLockActions, useUserState } from "#/hooks";
 
 const { t } = useI18n()
@@ -20,7 +20,7 @@ const lockActions = useAppLockActions()
 const getUserInfo = computed(() => {
   const { realName = 'WeiMing Admin', avatar, desc } = unref(userStore.userInfo) || {}
 
-  return { realName, avatar: avatar || headerImg, desc }
+  return { realName, avatar: avatar || 'headerImg', desc }
 })
 const emits = defineEmits(['update:show'])
 

@@ -5,8 +5,8 @@ import { Route } from '@rchitect-design/constants'
 import { useRoute } from '@rchitect-rock/router'
 import { useI18n } from '@rchitect-rock/locale'
 import { createNamespace } from '@rchitect-rock/tools'
-import notDataSvg from '@/assets/svg/no-data.svg'
-import netWorkSvg from '@/assets/svg/net-error.svg'
+// import notDataSvg from '@/assets/svg/no-data.svg'
+// import netWorkSvg from '@/assets/svg/net-error.svg'
 
 /**
  * Exception related enumeration
@@ -112,7 +112,7 @@ export default defineComponent({
       subTitle: '',
       btnText: t('common.redo'),
       handler: () => redo(),
-      icon: notDataSvg,
+      icon: '',
     })
 
     unref(statusMapRef).set(ExceptionEnum.NET_WORK_ERROR, {
@@ -120,7 +120,7 @@ export default defineComponent({
       subTitle: t('sys.exception.networkErrorSubTitle'),
       btnText: t('common.redo'),
       handler: () => redo(),
-      icon: netWorkSvg,
+      icon: '',
     })
 
     return () => {
