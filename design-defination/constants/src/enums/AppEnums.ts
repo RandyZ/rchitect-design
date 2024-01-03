@@ -15,6 +15,7 @@ export enum SettingButtonPositionEnum {
   AUTO = 'auto',
   HEADER = 'header',
   FIXED = 'fixed',
+  NONE = 'none',
 }
 
 export enum SessionTimeoutProcessingEnum {

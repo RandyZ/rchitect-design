@@ -32,7 +32,7 @@ export const setupByApp = (app: App, options: IocContainerOptions) => {
 
 /**
  * 生成唯一标志
- * @param target 唯一标志原始值
+ * @param key 唯一标志原始值
  * @returns
  */
 export const keyOf = <T>(key: any): ServiceIdentifier<T> => {
@@ -44,7 +44,7 @@ export const keyOf = <T>(key: any): ServiceIdentifier<T> => {
  * @param currentContainer 指定的容器，如果没有则从Vue的上下文中获取
  * @returns 
  */
-export const contextContianer = (
+export const contextContainer = (
   currentContainer?: IocContainer
 ): IocContainer => {
   if (currentContainer) {
@@ -75,7 +75,7 @@ export const resolveByTypeOrThrow = <T>(
   container?: IocContainer
 ): T => {
   try {
-    return contextContianer(container).get(keyOf<T>(key));
+    return contextContainer(container).get(keyOf<T>(key));
   } catch (error) {
     console.debug('ResolveByType fail Throw:', key, error);
     throw error;
@@ -111,7 +111,7 @@ export const di = async <T>(
   container?: IocContainer
 ): Promise<T> => {
   try {
-    return await contextContianer(container).getAsync(key);
+    return await contextContainer(container).getAsync(key);
   } catch (error) {
     console.debug('FetchByKey fail Throw:', key, error);
     throw error;
@@ -130,7 +130,7 @@ export const diKT = <T>(
   key: ServiceIdentifier<T>,
   container?: IocContainer
 ): T => {
-  return contextContianer(container).get(key);
+  return contextContainer(container).get(key);
 };
 /**
  * @see diKT
@@ -140,6 +140,7 @@ export const resolveByKeyOrThrow = diKT;
 /**
  * 获取ioc容器中的实例，如果不存在则返回undefined
  * @param key beanKey
+ * @param container container
  * @returns
  */
 export const diK = <T>(

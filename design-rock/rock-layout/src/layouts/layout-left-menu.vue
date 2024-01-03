@@ -58,7 +58,7 @@ onBeforeUnmount(() => {
             <slot name="main"></slot>
           </LayoutMain>
         </WmqLayoutContent>
-        <WmqLayoutFooter v-if="containerSetting.showFooter" ref="footerRef">
+        <WmqLayoutFooter v-if="containerSetting?.showFooter" ref="footerRef">
           <slot name="footer">
             <LayoutFooter/>
           </slot>

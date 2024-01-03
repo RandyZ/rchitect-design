@@ -1,8 +1,8 @@
-import { CacheTypeEnum, MenuTypeEnum, PermissionModeEnum, SessionTimeoutProcessingEnum, SettingButtonPositionEnum, ThemeEnum, TriggerEnum } from "@rchitect-design/constants"
-import { MenuConfigOptions } from "./MenuConfurations"
-import { HeaderConfigOptions } from "./HeaderConfigOptions"
-import { TabTbrConfigOptions } from "./TabBarConfigOptions"
-import { ContentConfigOptions, FooterConfigOptions, LogoConfigOptions, TransitionConfigOptions } from "./ToolkitConfigOptions"
+import type { CacheTypeEnum, MenuTypeEnum, PermissionModeEnum, SessionTimeoutProcessingEnum, SettingButtonPositionEnum, ThemeEnum, TriggerEnum } from "@rchitect-design/constants"
+import type { MenuConfigOptions } from "./MenuConfurations"
+import type { HeaderConfigOptions } from "./HeaderConfigOptions"
+import type { TabBarConfigOptions } from "./TabBarConfigOptions"
+import type { ContentConfigOptions, FooterConfigOptions, LogoConfigOptions, TransitionConfigOptions } from "./ToolkitConfigOptions"
 
 export interface SidebarConfigOptions {
   theme: ThemeEnum
@@ -19,7 +19,7 @@ export interface SidebarConfigOptions {
 
 /**
  * DefineAppConfigOptions
- * @deprecated 分解这个依赖
+ * TODO 归拢这个数据依赖，方便各个模块直接使用
  */
 export interface AppRuntimeConfigOptions {
   // Navigation bar mode
@@ -61,14 +61,10 @@ export interface AppRuntimeConfigOptions {
   // Whether to show the lock screen
   useLockPage: boolean
   sidebar: SidebarConfigOptions
-  /**
-   * 菜单配置
-   * @deprecated 挪到MenuSettingData中
-   */
   menu: MenuConfigOptions
   header: HeaderConfigOptions
   logo: LogoConfigOptions
-  tabTar: TabTbrConfigOptions
+  tabTar: TabBarConfigOptions
   content: ContentConfigOptions
   footer: FooterConfigOptions
   transition: TransitionConfigOptions

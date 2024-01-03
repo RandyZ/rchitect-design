@@ -10,7 +10,7 @@ export default {
   ...authBeanGenerator(pack.name),
   ...appBeanGenerator(pack.name),
   /**
-   * @deprecated 后续使用其他Store分解替代
+   * 应用运行时设置
    */
   AppRunTimeConfigOptions: Symbol.for(`${pack.name}/AppRuntimeConfigOptions`) as ServiceIdentifier<AppRuntimeConfigOptions>
 };

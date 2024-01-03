@@ -4,7 +4,7 @@ import {
   AsyncIocModule,
   IocContainerOptions,
   type ServiceIdentifier,
-  contextContianer,
+  contextContainer,
   AsyncIocModuleCallBack
 } from "@rchitect-rock/ioc";
 import type { RouteRecordItem, NavigationHook, NavigationAfterHook } from "@rchitect-design/types";
@@ -177,7 +177,7 @@ export class AppContext {
     if (!isEmpty(this.loadedObservers.preObservers)) {
       await runObsOrdered(app, this.loadedObservers.preObservers)
     }
-    await contextContianer().loadAsync(...this.iocModules)
+    await contextContainer().loadAsync(...this.iocModules)
   }
 
   /**

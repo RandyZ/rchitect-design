@@ -1,26 +1,31 @@
 import { defineStore } from "pinia";
-import { ref, computed, unref } from 'vue-demi';
+import { ref, computed, unref, ToRefs } from 'vue-demi';
 import { deepMerge } from '@rchitect-rock/tools'
 import isUndefined from 'lodash-es/isUndefined';
 import type { AppConfig } from "@rchitect-rock/settings";
-import type { ServiceIdentifier } from "@rchitect-rock/ioc";
 
 export type AppConfigStore = ReturnType<typeof useConfigStore>;
 
 export const useConfigStore = defineStore('AppConfigStore', () => {
-  const state:AppConfig.State = {
+  const state:ToRefs<AppConfig.State> = {
     // Header setting
-    headerSetting: ref({} as any),
+    headerSetting: ref(),
     // Content Container setting
-    containerSetting: ref({} as any),
+    containerSetting: ref(),
     // menuSetting
-    menuSetting: ref({} as any),
+    menuSetting: ref(),
     // Multi-tab settings
-    multiTabsSetting: ref({} as any),
+    multiTabsSetting: ref(),
     // Animation configuration
-    transitionSetting: ref({} as any),
+    transitionSetting: ref(),
     // Sporadic settings to classify
-    sporadicSetting: ref({} as any),
+    sporadicSetting: ref(),
+    // 主题配置
+    themeSetting: ref(),
+    // 功能标志配置
+    featureFlagSetting: ref(),
+    // 国际化配置
+    localSetting: ref(),
   }
 
   const getters:AppConfig.Getter = {
@@ -30,6 +35,7 @@ export const useConfigStore = defineStore('AppConfigStore', () => {
         menuSetting: unref(state.menuSetting),
         multiTabsSetting: unref(state.multiTabsSetting),
         transitionSetting: unref(state.transitionSetting),
+        sporadicSetting: unref(state.sporadicSetting),
         sporadicSetting: unref(state.sporadicSetting)
       };
     }),
@@ -44,7 +50,10 @@ export const useConfigStore = defineStore('AppConfigStore', () => {
       // Sporadic settings to classify
       const sporadicSetting = unref(state.sporadicSetting);
       return (
-        isUndefined(headerSetting) && isUndefined(menuSetting) && isUndefined(multiTabsSetting) && isUndefined(transitionSetting) && isUndefined(sporadicSetting)
+        isUndefined(headerSetting) && isUndefined(menuSetting)
+        && isUndefined(multiTabsSetting) && isUndefined(transitionSetting)
+        && isUndefined(sporadicSetting) && isUndefined(state.themeSetting?.value)
+        && isUndefined(sporadicSetting) && isUndefined(state.themeSetting?.value)
       );
     })
   }
@@ -65,14 +74,4 @@ export const useConfigStore = defineStore('AppConfigStore', () => {
     ...getters,
     ...actions
   }
-})
-
-/**
- * 应用级别配置的beans
- *
- * @param packName
- * @returns
- */
-export default (packName:string) => ({
-  AppConfigStore: Symbol.for(`${ packName }/AppConfigStore`) as ServiceIdentifier<AppConfigStore>,
 })

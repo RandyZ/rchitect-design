@@ -1,44 +1,23 @@
 import type {
-  HeaderSetting,
-  MenuSetting,
-  MultiTabsSetting,
-  ProjectSetting,
-  TransitionSetting,
-  SporadicSetting
+  ProjectSetting
 } from '@rchitect-design/types';
-import type { Ref, ComputedRef } from 'vue-demi';
-import { ContainerSetting } from "@rchitect-design/types";
+import type { ComputedRef } from 'vue-demi';
 
 /**
- * 应用设置
+ * 应用预设设置
  */
 export declare namespace AppConfig {
-  export interface State {
-    /**
-     * Header setting
-     */
-    headerSetting: Ref<HeaderSetting>
-    /**
-     * Content Container setting
-     */
-    containerSetting: Ref<ContainerSetting>
-    // menuSetting
-    menuSetting: Ref<MenuSetting>
-    // Multi-tab settings
-    multiTabsSetting: Ref<MultiTabsSetting>
-    // Animation configuration
-    transitionSetting: Ref<TransitionSetting>
-    // Sporadic settings to classify
-    sporadicSetting: Ref<SporadicSetting>
-  }
+
+  export type State = ProjectSetting
 
   export type Getter = {
-    getProjectConfig: ComputedRef<ProjectSetting | null>;
-    isInited: ComputedRef<boolean>
+    getProjectConfig:ComputedRef<ProjectSetting | null>;
+    isInited:ComputedRef<boolean>
   };
 
   export interface Action {
-    setProjectConfig(config: DeepPartial<ProjectSetting>): Promise<void>;
-    resetProjectConfig(): void;
+    setProjectConfig(config:DeepPartial<ProjectSetting>):Promise<void>;
+
+    resetProjectConfig():void;
   }
 }

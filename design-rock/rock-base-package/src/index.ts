@@ -7,6 +7,7 @@ import type { App } from 'vue-demi';
 import type { Library } from './Library';
 import type { AppContext } from './AppContext';
 import { isEmpty } from 'lodash-es'
+import { keyOf } from "@rchitect-rock/ioc";
 
 /**
  * 实现Vue插件协议
@@ -55,4 +56,10 @@ export const toPackage:<
 >(rawLib:MakeOptional<R, 'install'>) => R = (rawLib) => {
   rawLib.install = install
   return rawLib as any
+}
+
+export const beanKeyGenerator = (pkgName: string) => {
+  return () => {
+    keyOf();
+  }
 }
