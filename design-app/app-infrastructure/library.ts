@@ -12,7 +12,7 @@ import { Beans as stateBeans } from '@rchitect-rock/state'
 import { Beans as layoutBeans } from '@rchitect-rock/layouts'
 import Beans from './beankeys';
 import { getGlobalConfig, getAppConfig, deepMerge } from '@rchitect-rock/tools';
-import enviroment from '#/app-config/enviroment'
+import environment from '#/app-config/environment'
 import clone from 'lodash-es/clone';
 import { InfrastructureAxios, InfrastructureOptions, defaultRequestOptions, defaultCreateAxiosOptions } from '#/app-net'
 import type { RequestOptions } from "@rchitect-design/types";
@@ -58,7 +58,7 @@ export const Lib:ModuleLibContext<'routes', typeof Beans> = {
     bind(settingsBeans.GlobConfig).toConstantValue(globalConfig);
 
     // 工程设置
-    const projectSetting = enviroment(getAppConfig(import.meta.env));
+    const projectSetting = environment(getAppConfig(import.meta.env));
     bind(settingsBeans.DefaultProjectSetting).toConstantValue(projectSetting);
     bind(settingsBeans.DefaultHeaderSetting).toConstantValue(projectSetting.headerSetting);
     bind(settingsBeans.DefaultMultiTabsSetting).toConstantValue(projectSetting.multiTabsSetting);
@@ -69,7 +69,7 @@ export const Lib:ModuleLibContext<'routes', typeof Beans> = {
 
     // 站点信息
     const siteInfo = useSiteInfo();
-    bind(settingsBeans.AppSiteInfoState).toConstantValue(storeToRefs(siteInfo));
+    bind(settingsBeans.AppSiteInfoState).toConstantValue(siteInfo);
     bind(settingsBeans.AppSiteInfoActions).toConstantValue(siteInfo);
 
     // 权限设置

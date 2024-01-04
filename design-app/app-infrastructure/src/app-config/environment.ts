@@ -9,7 +9,7 @@ import DEFAULT_FEATURE_FLAG_SETTING from "./default-feature";
 import DEFAULT_THEME_SETTING from "./default-theme";
 import DEFAULT_CONTAINER_SETTING from "./default-container";
 
-const defaultProjectSetting = {
+const defaultProjectSetting:DeepPartial<ProjectSetting> = {
   containerSetting: DEFAULT_CONTAINER_SETTING,
   headerSetting: DEFAULT_HEADER_SETTING,
   menuSetting: DEFAULT_MENU_SETTING,
@@ -21,7 +21,7 @@ const defaultProjectSetting = {
   //TODO 处理Local的默认配置
 }
 
-export default (env?:GlobEnvConfig):ProjectSetting => {
+export default (env?:GlobEnvConfig):DeepPartial<ProjectSetting> => {
   if (isUndefined(env)) {
     return defaultProjectSetting
   } else {

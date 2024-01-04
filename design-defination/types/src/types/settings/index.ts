@@ -11,7 +11,7 @@ import type {
   TriggerEnum,
   RouterTransitionEnum,
 } from '@rchitect-design/constants'
-import type { LocaleType } from '../configuration'
+import type { FooterLinkOptions, LocaleType } from '../configuration'
 
 /**
  * @description:  菜单设置
@@ -190,26 +190,39 @@ export interface SporadicSetting {
   contentMode:ContentLayoutEnum
 }
 
+export interface WebsiteSetting {
+  /** Logo url */
+  logo: string
+  /** Website title */
+  title:string
+  /** Web links of footer */
+  links:FooterLinkOptions[]
+  /** Copyright */
+  copyright:string
+}
+
 /**
  * @description:  Setting interface parameters
  */
 export interface ProjectSetting {
   // menuType: MenuTypeEnum;
-  headerSetting?:HeaderSetting
+  headerSetting:HeaderSetting
   // container setting
-  containerSetting?:ContainerSetting
+  containerSetting:ContainerSetting
   // menuSetting
-  menuSetting?:MenuSetting
+  menuSetting:MenuSetting
   // Multi-tab settings
-  multiTabsSetting?:MultiTabsSetting
+  multiTabsSetting:MultiTabsSetting
   // Animation configuration
   transitionSetting:TransitionSetting
   // 主题配置
-  themeSetting?:ThemeSetting
+  themeSetting:ThemeSetting
   // 功能标志配置
-  featureFlagSetting?:FeatureFlagSetting
+  featureFlagSetting:FeatureFlagSetting
   // Sporadic settings to classify
-  sporadicSetting?:SporadicSetting
+  sporadicSetting:SporadicSetting
   // 国际化配置
-  localSetting?:LocaleSetting
+  localSetting:LocaleSetting
+  /** Website infos */
+  websiteSetting:WebsiteSetting
 }

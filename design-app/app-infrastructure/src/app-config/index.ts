@@ -1,31 +1,34 @@
 import { defineStore } from "pinia";
 import { ref, computed, unref, ToRefs } from 'vue-demi';
-import { deepMerge } from '@rchitect-rock/tools'
-import isUndefined from 'lodash-es/isUndefined';
+import { deepMerge, getAppConfig } from '@rchitect-rock/tools'
+import isEmpty from 'lodash-es/isEmpty';
 import type { AppConfig } from "@rchitect-rock/settings";
+import environment from "#/app-config/environment";
 
 export type AppConfigStore = ReturnType<typeof useConfigStore>;
 
 export const useConfigStore = defineStore('AppConfigStore', () => {
+  const defaultState = environment(getAppConfig(import.meta.env))
   const state:ToRefs<AppConfig.State> = {
     // Header setting
-    headerSetting: ref(),
+    headerSetting: ref(defaultState.headerSetting || {} as any),
     // Content Container setting
-    containerSetting: ref(),
+    containerSetting: ref(defaultState.containerSetting || {} as any),
     // menuSetting
-    menuSetting: ref(),
+    menuSetting: ref(defaultState.menuSetting || {} as any),
     // Multi-tab settings
-    multiTabsSetting: ref(),
-    // Animation configuration
-    transitionSetting: ref(),
+    multiTabsSetting: ref(defaultState.multiTabsSetting || {} as any),
     // Sporadic settings to classify
-    sporadicSetting: ref(),
+    sporadicSetting: ref(defaultState.sporadicSetting || {} as any),
     // 主题配置
-    themeSetting: ref(),
+    themeSetting: ref(defaultState.themeSetting || {} as any),
     // 功能标志配置
-    featureFlagSetting: ref(),
+    featureFlagSetting: ref(defaultState.featureFlagSetting || {} as any),
     // 国际化配置
-    localSetting: ref(),
+    localSetting: ref(defaultState.localSetting || {} as any),
+    // Animation configuration
+    transitionSetting: ref(defaultState.transitionSetting || {} as any),
+    websiteSetting: ref(defaultState.websiteSetting || {} as any)
   }
 
   const getters:AppConfig.Getter = {
@@ -36,7 +39,11 @@ export const useConfigStore = defineStore('AppConfigStore', () => {
         multiTabsSetting: unref(state.multiTabsSetting),
         transitionSetting: unref(state.transitionSetting),
         sporadicSetting: unref(state.sporadicSetting),
-        sporadicSetting: unref(state.sporadicSetting)
+        themeSetting: unref(state.themeSetting),
+        featureFlagSetting: unref(state.featureFlagSetting),
+        localSetting: unref(state.localSetting),
+        containerSetting: unref(state.containerSetting),
+        websiteSetting: unref(state.websiteSetting)
       };
     }),
     isInited: computed(() => {
@@ -50,23 +57,27 @@ export const useConfigStore = defineStore('AppConfigStore', () => {
       // Sporadic settings to classify
       const sporadicSetting = unref(state.sporadicSetting);
       return (
-        isUndefined(headerSetting) && isUndefined(menuSetting)
-        && isUndefined(multiTabsSetting) && isUndefined(transitionSetting)
-        && isUndefined(sporadicSetting) && isUndefined(state.themeSetting?.value)
-        && isUndefined(sporadicSetting) && isUndefined(state.themeSetting?.value)
+        isEmpty(headerSetting) && isEmpty(menuSetting)
+        && isEmpty(multiTabsSetting) && isEmpty(transitionSetting)
+        && isEmpty(sporadicSetting) && isEmpty(state.themeSetting.value)
       );
     })
   }
   const actions:AppConfig.Action = {
     setProjectConfig: async (config) => {
-      state.headerSetting.value = deepMerge(unref(state.headerSetting) || {}, config.headerSetting)
-      state.menuSetting.value = deepMerge(unref(state.menuSetting) || {}, config.menuSetting)
-      state.multiTabsSetting.value = deepMerge(unref(state.multiTabsSetting) || {}, config.multiTabsSetting)
+      state.headerSetting.value = deepMerge(unref(state.headerSetting) || {}, config.headerSetting || {})
+      state.containerSetting.value = deepMerge(unref(state.containerSetting), config.containerSetting || {})
+      state.menuSetting.value = deepMerge(unref(state.menuSetting), config.menuSetting || {})
+      state.multiTabsSetting.value = deepMerge(unref(state.multiTabsSetting), config.multiTabsSetting || {})
       state.transitionSetting.value = deepMerge(unref(state.transitionSetting) || {}, config.transitionSetting)
+      state.themeSetting.value = deepMerge(unref(state.themeSetting) || {}, config.themeSetting)
+      state.featureFlagSetting.value = deepMerge(unref(state.featureFlagSetting) || {}, config.featureFlagSetting)
       state.sporadicSetting.value = deepMerge(unref(state.sporadicSetting) || {}, config.sporadicSetting)
+      state.localSetting.value = deepMerge(unref(state.localSetting) || {}, config.localSetting)
+      state.websiteSetting.value = deepMerge(unref(state.websiteSetting) || {}, config.websiteSetting)
     },
     resetProjectConfig: () => {
-
+      setProjectConfig(defaultState)
     }
   }
   return {
@@ -74,4 +85,6 @@ export const useConfigStore = defineStore('AppConfigStore', () => {
     ...getters,
     ...actions
   }
+}, {
+  persist: true
 })

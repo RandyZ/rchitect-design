@@ -17,6 +17,7 @@ export const useAppLockActions = () => diKT(Beans.AppLockActions)
  * @deprecated 已废弃，逐步分解到其他模块
  */
 export const useAppRunTimeConfigOptions = () => diKT(stateBeans.AppRunTimeConfigOptions)
+
 export const useAppState = () => diKT(stateBeans.AppState)
 export const useAppStateActions = () => diKT(stateBeans.AppStateActions)
 export const useAppMenuState = () => diKT(stateBeans.AppMenuState)
@@ -30,6 +31,3 @@ export const useSporadicSetting = () => useAppConfigState()?.sporadicSetting
 export const useContainerSetting = () => useAppConfigState()?.containerSetting
 export const useHeaderSettingAction = () => diKT(settingBeans.AppConfigAction)
 export const useHeaderSettingManager = () => diKT(settingBeans.MenuSettingManager)
-
-
-

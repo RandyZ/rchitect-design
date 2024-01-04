@@ -24,14 +24,6 @@ export default {
    * @deprecated 使用环境变量代替
    */
   GlobConfig: Symbol.for('@rchitect-design/types/GlobConfig') as ServiceIdentifier<GlobConfig>,
-  /**
-   * @deprecated 直接使用内部五个Setting
-   * @see {DefaultHeaderSetting}
-   * @see {DefaultMenuSetting}
-   * @see {DefaultMultiTabsSetting}
-   * @see {DefaultTransitionSetting}
-   * @see {DefaultSporadicSetting}
-   */
   DefaultProjectSetting: Symbol.for('@rchitect-design/types/DefaultProjectSetting') as ServiceIdentifier<ProjectSetting>,
   DefaultHeaderSetting: Symbol.for('@rchitect-design/types/DefaultHeaderSetting') as ServiceIdentifier<HeaderSetting>,
   DefaultMenuSetting: Symbol.for('@rchitect-design/types/DefaultMenuSetting') as ServiceIdentifier<MenuSetting>,

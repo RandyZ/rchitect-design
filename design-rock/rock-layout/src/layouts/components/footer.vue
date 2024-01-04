@@ -2,6 +2,7 @@
 import type { CSSProperties } from 'vue'
 import { computed } from 'vue'
 import { createNamespace } from '@rchitect-rock/tools'
+import { useAppConfigState } from "#/hooks";
 // import { useI18n } from '@rchitect-rock/locale'
 // import { useDefininationConfig } from '@rchitect-rock/hooks'
 
@@ -9,9 +10,7 @@ defineOptions({
   name: 'LayoutFooter',
 })
 
-// const { t } = useI18n()
-
-// const { copyright, links } = useDefininationConfig()
+const appConfigState = useAppConfigState()
 
 const props = defineProps({
   height: {
@@ -30,14 +29,14 @@ const style = computed(() =>
 <template>
   <footer :class="bem()" :style="style">
     <div class="lh-32px">
-      <template v-for="(item, index) in links" :key="index">
+      <template v-for="(item, index) in appConfigState.websiteSetting.links" :key="index">
         <WmqButton text tag="a" :href="item.url" target="_blank">
           <WmqIconify :icon="item.icon" size="18" />
           <WmqText depth="3">{{ item.label }}</WmqText>
         </WmqButton>
       </template>
     </div>
-    <WmqText depth="3">Copyright © {{ copyright }}</WmqText>
+    <WmqText depth="3">Copyright © {{ appConfigState.websiteSetting.copyright }}</WmqText>
   </footer>
 </template>
 
