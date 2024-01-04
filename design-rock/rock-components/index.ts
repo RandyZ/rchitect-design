@@ -10,7 +10,7 @@ export {
   useDialog,
 } from './src';
 export { withInstall, type WithInstall, type CustomComponent, type ComponentDict } from './src/utils/installSupport';
-export { useComponent } from './src';
+export { useComponent, COMPONENT_PREFIX } from './src';
 export * from './src/component-exporter'
 export { driverRef } from './src/utils/refSupport';
 /**

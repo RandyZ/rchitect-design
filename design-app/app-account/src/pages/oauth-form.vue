@@ -19,7 +19,8 @@ onMounted(() => {
       }, 1000)
     }
   } else {
-    useDialog().warning({
+    const dialog = useDialog()
+    dialog?.warning({
       title: '警告',
       content: 'OAuth2授权模式不是CODE模式，将无法使用OAuth2登录，请联系管理员！',
       closable: false,

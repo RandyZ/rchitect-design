@@ -105,15 +105,20 @@ export const useComponent = <T extends boolean>(
  */
 export const registerWmqComponent = (Vue: App, componentDict: WmqComponentDictionary) => {
   console.debug('RockComponent install components into ComponentMap in IOC...');
+  // 初始化组件容器
   const componentMap = useComponentMap(true);
+  // 将最上层的 RockComponent 组件接口（component interface）都以 key-value 的格式存储起来
+  // 并且提前缓存所有的 preset 组件（这部分组件好像要处理自动导出的逻辑）
   scanWmqComponents(autoExportComponent, allWmqComponent);
+  // 遍历 RockComponent 枚举
   forIn(RockComponent, (rockComponent: RockComponent) => {
+    // 提前声明一个最终要存到字典里的组件，在后面赋值
     let finalRegisterComponent: WmqComponent<any> | undefined;
-    // 获取驱动中的组件
+    // 获取真实组件库中的组件
     const _comp = componentDict[rockComponent];
-    // RockComponent中的契约组件
+    // 获取最上层的 RockComponent 抽象组件库的组件
     const wmqComp = allWmqComponent[rockComponent];
-    // 自动导出组件支持不用驱动中的实现
+    // 如果已经在接口组件中定义了对应的组件，就执行注册
     if (wmqComp) {
       // 找到相应的契约组件，直接注册
       const { customOptions: { isPresetComponent = false } = {} } = wmqComp;

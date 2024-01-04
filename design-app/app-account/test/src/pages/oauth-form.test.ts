@@ -1,16 +1,17 @@
-import { flushPromises, mount, shallowMount } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import OauthForm from '#/pages/oauth-form.vue'
+import { setup } from '@rchitect-app/testing-setup'
+import {expect} from "vitest";
+
+const { components } = await setup()
 
 test('HelloPage正常渲染', async () => {
   expect(OauthForm).toBeTruthy()
 
-  const wrapper = shallowMount(OauthForm)
-
-  // await wrapper.find('button').trigger('click')
-  //
-  // // start loading, so vitest started loading
-  // await flushPromises()
-  // await vi.dynamicImportSettled()
-  //
-  // expect(wrapper.html()).toContain('1 x 2 = 2')
+  const wrapper = mount(OauthForm, {
+    global: {
+      components
+    }
+  })
+  expect(wrapper.text()).toContain("sys.login.weimingOAuthRedicting")
 })

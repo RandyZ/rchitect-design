@@ -1,9 +1,9 @@
 {
-  "name": "@rchitect-app/account",
+  "name": "@rchitect-app/testing-setup",
   "version": "0.0.0",
   "main": "index.ts",
   "module": "index.ts",
-  "description": "Authorization app for Rchitect Project",
+  "description": "Mocking IOC modules for Rchitect Project",
   "license": "MIT",
   "author": {
     "name": "Randy Zhang",
@@ -14,7 +14,9 @@
   },
   "dependencies": {
     "@rchitect-app/components": "workspace:^",
-    "@rchitect-app/testing-setup": "workspace:^",
+    "@rchitect-app/infrastructure": "workspace:^",
+    "@rchitect-app/component-driver-naive": "workspace:^",
+    "@rchitect-app/component-driver-element-plus": "workspace:^",
     "@rchitect-design/constants": "workspace:*",
     "@rchitect-rock/base-package": "workspace:*",
     "@rchitect-rock/components": "workspace:^",
@@ -24,7 +26,8 @@
     "@rchitect-rock/locale": "workspace:*",
     "@rchitect-rock/router": "workspace:^",
     "@rchitect-rock/settings": "workspace:^",
-    "@rchitect-rock/state": "workspace:^"
+    "@rchitect-rock/state": "workspace:^",
+    "@rchitect-rock/events": "workspace:^"
   },
   "devDependencies": {
     "@rchitect-design/types": "workspace:*"
@@ -32,7 +35,6 @@
   "peerDependencies": {
     "lodash-es": "^4.0.0",
     "vue": "~3.3.4 || ~2.7.0",
-    "pinia": "~2.1.7",
-    "vue-demi": "~0.14.6"
+    "pinia": "~2.1.7"
   }
 }
