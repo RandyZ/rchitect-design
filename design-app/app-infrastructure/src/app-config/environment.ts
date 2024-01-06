@@ -8,6 +8,7 @@ import DEFAULT_SPORADIC_SETTING from "./defualt-sporadic";
 import DEFAULT_FEATURE_FLAG_SETTING from "./default-feature";
 import DEFAULT_THEME_SETTING from "./default-theme";
 import DEFAULT_CONTAINER_SETTING from "./default-container";
+import DEFAULT_WEBSITE_SETTING from "./defualt-website";
 
 const defaultProjectSetting:DeepPartial<ProjectSetting> = {
   containerSetting: DEFAULT_CONTAINER_SETTING,
@@ -18,6 +19,7 @@ const defaultProjectSetting:DeepPartial<ProjectSetting> = {
   sporadicSetting: DEFAULT_SPORADIC_SETTING,
   featureFlagSetting: DEFAULT_FEATURE_FLAG_SETTING,
   themeSetting: DEFAULT_THEME_SETTING,
+  websiteSetting: DEFAULT_WEBSITE_SETTING,
   //TODO 处理Local的默认配置
 }
 

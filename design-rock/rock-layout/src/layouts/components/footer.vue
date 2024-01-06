@@ -32,11 +32,11 @@ const style = computed(() =>
       <template v-for="(item, index) in appConfigState.websiteSetting.links" :key="index">
         <WmqButton text tag="a" :href="item.url" target="_blank">
           <WmqIconify :icon="item.icon" size="18" />
-          <WmqText depth="3">{{ item.label }}</WmqText>
+          <WmqText depth="3" :type="'primary'" :ellipsis="true">{{ item.label }}</WmqText>
         </WmqButton>
       </template>
     </div>
-    <WmqText depth="3">Copyright © {{ appConfigState.websiteSetting.copyright }}</WmqText>
+    <WmqText depth="3" :type="'primary'" :ellipsis="true">Copyright © {{ appConfigState.websiteSetting.copyright }}</WmqText>
   </footer>
 </template>
 
