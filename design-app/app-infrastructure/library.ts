@@ -32,13 +32,13 @@ export const Lib:ModuleLibContext<'routes', typeof Beans> = {
 
     // 应用设置
     const settingStore = useSettingStore()
-    bind(settingsBeans.AppSettingState).toConstantValue(storeToRefs(settingStore))
+    bind(settingsBeans.AppSettingState).toConstantValue(settingStore)
     bind(settingsBeans.AppSettingAction).toConstantValue(settingStore)
     bind(settingsBeans.AppSettingGetter).toConstantValue(settingStore)
 
     // 应用配置
     const configStore = useConfigStore()
-    bind(settingsBeans.AppConfigState).toConstantValue(storeToRefs(configStore))
+    bind(settingsBeans.AppConfigState).toConstantValue(configStore)
     bind(settingsBeans.AppConfigGetter).toConstantValue(configStore)
     bind(settingsBeans.AppConfigAction).toConstantValue(configStore)
 

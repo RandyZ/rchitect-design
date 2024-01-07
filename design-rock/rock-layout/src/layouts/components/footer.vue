@@ -3,6 +3,7 @@ import type { CSSProperties } from 'vue'
 import { computed } from 'vue'
 import { createNamespace } from '@rchitect-rock/tools'
 import { useAppConfigState } from "#/hooks";
+import { toRefs } from "vue-demi";
 // import { useI18n } from '@rchitect-rock/locale'
 // import { useDefininationConfig } from '@rchitect-rock/hooks'
 
@@ -11,7 +12,7 @@ defineOptions({
 })
 
 const appConfigState = useAppConfigState()
-
+const web = toRefs(appConfigState.websiteSetting)
 const props = defineProps({
   height: {
     type: String,
@@ -31,7 +32,7 @@ const style = computed(() =>
     <div class="lh-32px">
       <template v-for="(item, index) in appConfigState.websiteSetting.links" :key="index">
         <WmqButton text tag="a" :href="item.url" target="_blank">
-          <WmqIconify :icon="item.icon" size="18" />
+          <WmqIconify v-if="item.icon" :icon="item.icon" size="18" />
           <WmqText depth="3" :type="'primary'" :ellipsis="true">{{ item.label }}</WmqText>
         </WmqButton>
       </template>
