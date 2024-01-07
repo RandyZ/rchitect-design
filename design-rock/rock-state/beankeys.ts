@@ -12,5 +12,5 @@ export default {
   /**
    * 应用运行时设置
    */
-  AppRunTimeConfigOptions: Symbol.for(`${pack.name}/AppRuntimeConfigOptions`) as ServiceIdentifier<AppRuntimeConfigOptions>
+  AppRuntimeConfigOptions: Symbol.for(`${pack.name}/AppRuntimeConfigOptions`) as ServiceIdentifier<AppRuntimeConfigOptions>
 };

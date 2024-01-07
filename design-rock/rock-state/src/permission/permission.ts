@@ -1,29 +1,37 @@
 import { PermissionModeEnum } from '@rchitect-design/constants';
 import type { Menu, Repository } from '@rchitect-design/types';
-import type { Ref } from 'vue-demi';
 
 export declare namespace Permission {
-  export interface State extends Repository.State {
+  export interface State {
     // Permission code list
-    permCodeList: Ref<string[] | number[]>;
+    permCodeList:string[] | number[];
     // Permission mode
-    permissionMode: Ref<PermissionModeEnum>;
+    permissionMode:PermissionModeEnum;
     // Whether the route has been dynamically added
-    isDynamicAddedRoute: Ref<boolean>;
+    isDynamicAddedRoute:boolean;
     // To trigger a menu update
-    lastBuildMenuTime: Ref<number>;
+    lastBuildMenuTime:number;
     // Backstage menu list
-    backMenuList: Ref<Menu[]>;
-    frontMenuList: Ref<Menu[]>;
+    backMenuList:Menu[];
+    // Front desk menu list
+    frontMenuList:Menu[];
   }
+
   export interface Action extends Repository.Actions {
-    setPermCodeList(codeList: string[]): void;
-    setBackMenuList(list: Menu[]): void;
-    setFrontMenuList(list: Menu[]): void;
-    setLastBuildMenuTime(): void;
-    setDynamicAddedRoute(added: boolean): void;
-    resetState(): void;
-    changePermissionCode(): Promise<void>;
-    buildRoutesAction(): Promise<RouteRecordItem[]>;
+    setPermCodeList(codeList:string[]):void;
+
+    setBackMenuList(list:Menu[]):void;
+
+    setFrontMenuList(list:Menu[]):void;
+
+    setLastBuildMenuTime():void;
+
+    setDynamicAddedRoute(added:boolean):void;
+
+    resetState():void;
+
+    changePermissionCode():Promise<void>;
+
+    buildRoutesAction():Promise<RouteRecordItem[]>;
   }
 }

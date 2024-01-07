@@ -6,10 +6,6 @@ export declare module Repository {
    * @deprecated 无需使用，直接使用interface
    */
   export type State = Record<string | number | symbol, any>;
-  /**
-   * 仓库值对象
-   */
-  export type Bean = Record<string | number | symbol, any> & Getters;
 
   /**
    * 计算属性

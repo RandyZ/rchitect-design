@@ -12,7 +12,7 @@ export const useAppStateGetter = () => diKT(stateBeans.AppStateGetters)
  * 获取运行时配置
  * @deprecated 已废弃，逐步分解到其他模块
  */
-export const useAppRunTimeConfigOptions = () => diKT(stateBeans.AppRunTimeConfigOptions)
+export const useAppRunTimeConfigOptions = () => diKT(stateBeans.AppRuntimeConfigOptions)
 
 export * from './useWebTitle'
 export * from './usePagination'

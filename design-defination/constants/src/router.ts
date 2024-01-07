@@ -2,6 +2,7 @@ export namespace Route {
   // 路由模块基础名称
   export const PAGE_REDIRECT_NAME = 'Redirect'
   export const PAGE_NOT_FOUND_NAME = 'PageNotFound'
+  export const PAGE_DASHBOARD_NAME = 'RchitectDashboard'
   // export const PAGE_ERROR_NAME = 'ErrorThrown'
   // 基础页面路由地址定义
   export const BASIC_LOGIN_PATH = '/login'
