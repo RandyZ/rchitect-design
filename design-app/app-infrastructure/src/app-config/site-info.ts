@@ -7,7 +7,7 @@ import { AppSiteInfo, Beans as settingBeans } from '@rchitect-rock/settings'
 // @ts-ignore
 // import defaultAvatar from '@/assets/images/header.jpg'
 import { diKT } from "@rchitect-rock/ioc";
-import { readonly, ref } from "vue-demi";
+import { readonly, ref, unref } from "vue-demi";
 import mergeWith from "lodash-es/mergeWith";
 import merge from "lodash-es/merge";
 
