@@ -33,7 +33,7 @@ const style = computed(() =>
       <template v-for="(item, index) in appConfigState.websiteSetting.links" :key="index">
         <WmqButton text tag="a" :href="item.url" target="_blank">
           <WmqIconify v-if="item.icon" :icon="item.icon" size="18" />
-          <WmqText depth="3" :type="'primary'" :ellipsis="true">{{ item.label }}</WmqText>
+          <WmqText v-if="item.label" depth="3" :type="'primary'" :ellipsis="true">{{ item.label }}</WmqText>
         </WmqButton>
       </template>
     </div>
