@@ -1,20 +1,12 @@
 import type { Library } from '@rchitect-rock/base-package';
 import { toPackage } from '@rchitect-rock/base-package';
-// import type { ContextOptions } from './bridge';
 import types from './beankeys';
 import * as pack from './package.json';
-import { AsyncIocModule, diKT } from '@rchitect-rock/ioc';
-// import { MenuFunctions, MenuPaths } from '@rchitect-rock/router';
+import { AsyncIocModule } from '@rchitect-rock/ioc';
 import { SearchContext } from "#/layouts/components/search/SearchContext";
-// import { useMultipleTab } from "#/layouts/components/tabs/multipleTab";
-// import { useLockStore } from "#/state/stores/lock";
 import { MultipleTabOperator } from "#/layouts/types";
-// import { useAppStore } from "#/state";
-import { BasicRoutes, LAYOUT } from "./src/routes";
-import { Lib as stateLib } from '@rchitect-rock/state';
+import { BasicRoutes } from "./src/routes";
 import { Route } from "@rchitect-design/constants";
-import { Beans as routerBeans } from "@rchitect-rock/router";
-import { Redirect } from "#/pages";
 
 
 export const Lib:Library<typeof types> = toPackage({
@@ -46,31 +38,6 @@ export const Lib:Library<typeof types> = toPackage({
     const route = appContext.appRoutes.find(item => item.path === Route.BASIC_HOME_PATH);
     if (!route) {
       console.warn(`【${ pack.name }】找不到路由【${ Route.BASIC_HOME_PATH }】，请检查是否未设置首页路由如果！将会启用未知页替代首页`);
-      // TODO 去掉临时逻辑
-      const routesTable = diKT(routerBeans.RouteTable)
-      routesTable.appendRoutes({
-          path: Route.BASIC_HOME_PATH,
-          name: 'HomeDashBoard',
-          component: LAYOUT,
-          meta: {
-            title: 'ErrorPage1',
-            key: 333,
-            isBasic: true,
-          },
-          redirect: `${Route.BASIC_HOME_PATH}/index`,
-          children: [
-            {
-              path: `${Route.BASIC_HOME_PATH}/index`,
-              name: 'DashBoardIndex',
-              component: () => import('./src/pages/test-page.vue'),
-              meta: {
-                title: 'routes.dashboard.dashboard',
-                icon: 'bx:bx-home',
-              }
-            }
-          ]
-        }
-      )
     }
   }
 });

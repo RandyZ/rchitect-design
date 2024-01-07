@@ -9,4 +9,5 @@ export namespace Route {
   // export const BASIC_NOTFOUND_PATH = '/exception'
   export const BASIC_REDIRECT_PATH = '/redirect'
   export const BASIC_LOCK_PATH = '/lock'
+  export const BASIC_ERROR_LOG_PATH = '/lock'
 }

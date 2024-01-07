@@ -7,7 +7,7 @@ defineOptions({
 
 <template>
   <div>
-    <h1>test page</h1>
+    <h1>test page123123</h1>
   </div>
 </template>
 

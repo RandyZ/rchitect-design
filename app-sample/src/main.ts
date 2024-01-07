@@ -16,6 +16,7 @@ import { Lib as infrastructureLib } from '@rchitect-app/infrastructure';
 import { Lib as accountLib } from '@rchitect-app/account';
 import { Lib as driverLib } from '@rchitect-app/component-driver-naive';
 import localIocModule from "./ioc";
+import { RouteList } from "./routes";
 
 (async () => {
   // 创建AppContext
@@ -28,6 +29,7 @@ import localIocModule from "./ioc";
   await setupRouteGuard(appContext);
   // 注册IOC模块
   appContext.addIocModule(localIocModule)
+  appContext.registerRoutes(RouteList)
   // 创建&载入Vue App
   const app = await appContext.load(
     createApp(App)
