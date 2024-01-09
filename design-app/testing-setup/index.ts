@@ -4,7 +4,7 @@ import {Lib as routeLib} from '@rchitect-rock/router';
 import {Lib as localeLib} from '@rchitect-rock/locale';
 import {Lib as stateLib} from '@rchitect-rock/state';
 import {Lib as settingsLib} from '@rchitect-rock/settings';
-import {Lib, Lib as baseComponentLib, RockComponent, COMPONENT_PREFIX } from '@rchitect-rock/components';
+import {Lib as baseComponentLib, RockComponent, COMPONENT_PREFIX } from '@rchitect-rock/components';
 import {Lib as eventBusLib} from '@rchitect-rock/events';
 import {Lib as layoutsLib} from '@rchitect-rock/layouts';
 import {Lib as infrastructureLib} from '@rchitect-app/infrastructure';
@@ -56,7 +56,7 @@ export async function setup({ modules = [], driver = 'naive' }: SetupOptions = {
     // VTU 2.0 的全局组件需要通过 global.components 属性来进行 mock，并且需要传入真实组件，但是代码里用的都是契约组件
     // 构建 Record<RockComponent, DriverComponent> 类型的字典并返回给单元测试使用
     const components: Record<string, Component> = {};
-    const param = appContext.getParam(Lib.types.ComponentDictionary);
+    const param = appContext.getParam(baseComponentLib.types.ComponentDictionary);
     forIn(RockComponent, (rockComponent: RockComponent) => {
         components[`${COMPONENT_PREFIX}${rockComponent}`] = param[rockComponent];
     })

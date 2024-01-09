@@ -1,17 +1,47 @@
 import { mount } from '@vue/test-utils'
-import OauthForm from '#/pages/oauth-form.vue'
-import { setup } from '@rchitect-app/testing-setup'
-import {expect} from "vitest";
+import OAuthForm from '#/pages/oauth-form.vue'
+import { beforeEach, describe, expect } from "vitest";
+import { CONTAINER_KEY } from "@rchitect-rock/ioc";
 
-const { components } = await setup()
+describe('OAuthForm测试', () => {
+  beforeEach(() => {
+    vi.mock('@rchitect-rock/locale', async (importOriginal) => {
+      const actual:any = await importOriginal()
+      return {
+        ...actual,
+        useI18n: () => {
+          return {
+            t: (key: string) => {
+              debugger
+              console.info('Key', key)
+              return key
+            }
+          }
+        }
+      }
+    })
+    vi.mock('#/usage', async (importOriginal) => {
+      const actual:any = await importOriginal()
+      return {
+        ...actual,
+        useLoginState: () => ({
 
-test('HelloPage正常渲染', async () => {
-  expect(OauthForm).toBeTruthy()
-
-  const wrapper = mount(OauthForm, {
-    global: {
-      components
-    }
+        })
+      }
+    })
   })
-  expect(wrapper.text()).toContain("sys.login.weimingOAuthRedicting")
+  test('测试正常渲染', async () => {
+    expect(OAuthForm).toBeTruthy()
+    const wrapper = mount(OAuthForm, {
+      global: {
+        provide: {
+          [CONTAINER_KEY as symbol]: {
+            get: vi.fn()
+          }
+        }
+      }
+    })
+    expect(wrapper.text()).toContain("sys.login.weimingOAuthRedicting")
+  })
 })
+
