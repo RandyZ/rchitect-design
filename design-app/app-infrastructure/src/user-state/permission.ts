@@ -33,13 +33,11 @@ export const usePermissionStore = defineStore('PermissionStateStore', () => {
     },
 
     setBackMenuList(list:Menu[]) {
-      debugger
       state.backMenuList.value = list;
       list?.length > 0 && this.setLastBuildMenuTime();
     },
 
     setFrontMenuList(list:Menu[]) {
-      debugger
       state.frontMenuList.value = list;
     },
 
@@ -61,7 +59,6 @@ export const usePermissionStore = defineStore('PermissionStateStore', () => {
       this.setPermCodeList(codeList);
     },
     async buildRoutesAction():Promise<RouteRecordItem[]> {
-      debugger
       // TODO: 从后端获取菜单
       // const { t } = useI18n()
       const userStore = useUserState();
@@ -149,7 +146,7 @@ export const usePermissionStore = defineStore('PermissionStateStore', () => {
           let routeList:RouteRecordItem[] = [];
           try {
             await this.changePermissionCode();
-            routeList = (await accountRepository().getMenuList()) as RouteRecordItem[];
+            routeList = await accountRepository().getUserRoutes();
           } catch (error) {
             console.error(error);
           }

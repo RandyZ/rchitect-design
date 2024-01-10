@@ -1,10 +1,8 @@
 import type { ErrorMessageMode } from '@rchitect-design/types';
 import type { User } from '@rchitect-rock/layouts';
 import { AuthorizationModeEnum } from '@rchitect-design/constants';
-import { useAppSetting } from "@rchitect-rock/hooks";
 import { diKT } from '@rchitect-rock/ioc';
 import { Beans } from '#/../beankeys';
-import { unref } from 'vue-demi'
 import { useAuthMode } from "#/usage";
 
 export { useUserStore } from '#/state';

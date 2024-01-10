@@ -42,10 +42,6 @@ export class MenuSettingManager {
   isMenuModeOfVerticalRight:ComputedRef<boolean>;
   isMenuModeOfHorizontal:ComputedRef<boolean>;
   isMenuModeOfInline:ComputedRef<boolean>;
-
-
-
-
   /**
    * 菜单是否是侧边栏模式
    */

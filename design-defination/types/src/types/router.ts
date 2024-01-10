@@ -27,3 +27,14 @@ export type RouteRecordItem = RouteRecordRaw & {
   children?: RouteRecordItem[]
   component?: RchitectRouteComponent
 }
+
+export interface RouteRecord {
+  path: string
+  component: string
+  meta: any
+  name?: string
+  alias?: string | string[]
+  redirect?: string
+  caseSensitive?: boolean
+  children?: RouteRecord[]
+}

@@ -66,7 +66,6 @@ export const fetchMenusAtLevel = (menus: Menu[], currentRoute: RouteLocationNorm
  * @returns
  */
 export const useMenusAtLevel = (level: number | Ref<number> | undefined = undefined, atRoot = true) => {
-  debugger
   const _level = level || ref(0)
   const _router = useRouter()
   const currentRoute = _router.currentRoute

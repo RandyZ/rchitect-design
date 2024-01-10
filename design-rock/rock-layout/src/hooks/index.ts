@@ -17,7 +17,6 @@ export const useAppLockActions = () => diKT(Beans.AppLockActions)
  * @deprecated 已废弃，逐步分解到其他模块
  */
 export const useAppRunTimeConfigOptions = () => diKT(stateBeans.AppRuntimeConfigOptions)
-
 export const useAppState = () => diKT(stateBeans.AppState)
 export const useAppStateActions = () => diKT(stateBeans.AppStateActions)
 export const useAppMenuState = () => diKT(stateBeans.AppMenuState)

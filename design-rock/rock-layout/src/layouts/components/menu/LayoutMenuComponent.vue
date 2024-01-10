@@ -16,8 +16,6 @@ import { Menu } from '@rchitect-design/types'
 import { driverRef } from "@rchitect-rock/components";
 import { string, number, bool } from 'vue-types'
 import {
-  useAppConfigState,
-  useAppMenuState,
   useAppRunTimeConfigOptions,
   useAppState,
   useMenuSettingManager
@@ -42,7 +40,6 @@ const props = defineProps({
   menusShowLevel: number().def(0),
 })
 
-const appMenuState = useAppMenuState();
 const { menu } = toRefs(useAppRunTimeConfigOptions());
 const isMobile = useAppState().mobile
 const menuSettingManager = useMenuSettingManager()
@@ -69,12 +66,12 @@ const menuList = computed(() => {
 const activeKey = ref()
 
 const getMenuCollapsed = computed(() => {
-  if (unref(menuSettingManager.isMenuMixSidebarType)) return false
-  return appMenuState.collapsed
+  if (unref(menuSettingManager.isMenuTypeOfMixSidebar)) return false
+  return unref(menuSettingManager.getCollapsed)
 })
 
 const isMenuTopLogoShow = computed(() => {
-
+  return menuSettingManager.isMenuTypeOfMix || unref(isMobile)
 })
 
 // 定位菜单选择 与 当前路由匹配
