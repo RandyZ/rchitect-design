@@ -11,7 +11,7 @@
     "@rchitect-rock/components": "workspace:*",
     "@rchitect-app/component-driver": "workspace:*",
     "epic-spinners": "^2.0.0",
-    "naive-ui": "^2.34.3"
+    "naive-ui": "^2.37.3"
   },
   "peerDependencies": {
     "vue": "~3.3.4 || ~2.7.0"

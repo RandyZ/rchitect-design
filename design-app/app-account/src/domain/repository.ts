@@ -1,10 +1,6 @@
-import type { ErrorMessageMode, AuthenticationToken, Menu } from '@rchitect-design/types';
-import {
-  LoginResultModel,
-  UserInfoModel,
-} from '#/domain/dto/auth-dtos';
+import type { AuthenticationToken, ErrorMessageMode } from '@rchitect-design/types';
+import { LoginResultModel, UserInfoModel, } from '#/domain/dto/auth-dtos';
 import type { User } from '@rchitect-rock/layouts';
-import { RouteRecord } from "@rchitect-design/types";
 
 // 改成依赖注入
 export interface Repository {

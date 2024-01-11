@@ -7,13 +7,14 @@ export declare module Repository {
    */
   export type State = Record<string | number | symbol, any>;
 
-  /**
-   * 计算属性
-   */
-  export type Getters = Record<string | number | symbol, ComputedRef<any>>;
 
+  export type Getters<T = any> = {
+    [K in keyof T]:ComputedRef<T[K]>
+  };
   /**
    * 操作函数
    */
-  export type Actions = Record<string, (...args: any[]) => any>;
+  export type Actions<T = any> = {
+    [K in keyof T]:(...args:any[]) => any
+  };
 }
