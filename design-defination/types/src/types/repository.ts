@@ -1,4 +1,4 @@
-import type { ComputedRef } from 'vue-demi';
+import type { Ref } from 'vue-demi';
 
 export declare module Repository {
   /**
@@ -9,7 +9,7 @@ export declare module Repository {
 
 
   export type Getters<T = any> = {
-    [K in keyof T]:ComputedRef<T[K]>
+    [K in keyof T]:Ref<T[K]>
   };
   /**
    * 操作函数

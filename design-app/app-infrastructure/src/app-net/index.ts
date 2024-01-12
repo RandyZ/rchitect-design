@@ -1,6 +1,8 @@
 import { diKT } from "@rchitect-rock/ioc";
 import { Beans as settingsBeans } from "@rchitect-rock/settings";
 import { isNil, get } from "lodash-es";
+import { isRef, unref } from "vue-demi";
+import type { AxiosRequestConfig } from "axios";
 
 export * from './axios-infrastructure'
 export * from './axios-cancel-token'
@@ -17,7 +19,7 @@ export * as InfrastructureHelper from './helper';
  * @param server
  * @returns
  */
-export const useInfrastructureApi = (api:string, server?:string):{ url:string, baseUrl:string } => {
+export const useInfrastructureApi = (api:string, server?:string):Pick<AxiosRequestConfig, 'url' | 'baseURL'> => {
   const globalConfig = diKT(settingsBeans.GlobConfig)
   const axiosOptions = { url: api, baseURL: globalConfig.apiUrl }
   if (!isNil(server)) {

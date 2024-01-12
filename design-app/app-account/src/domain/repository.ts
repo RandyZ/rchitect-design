@@ -23,7 +23,7 @@ export interface Repository {
   /**
    * 退出登录
    */
-  doLogoutApi():void
+  doLogoutApi():Promise<void>
 
   /**
    * 获取用户信息

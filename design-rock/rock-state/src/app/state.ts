@@ -1,9 +1,9 @@
 import type { ComputedRef } from 'vue-demi';
-import type { BeforeMiniState, Repository } from "@rchitect-design/types";
+import type { BeforeMiniState } from "@rchitect-design/types";
 import type { ThemeEnum } from "@rchitect-design/constants";
 
 export declare namespace AppState {
-  export interface State extends Repository.State {
+  export interface State{
     theme: ThemeEnum
     clsPrefix:string
     fullContent:boolean

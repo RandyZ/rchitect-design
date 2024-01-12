@@ -1,6 +1,5 @@
-import type { HeaderSetting, Repository } from "@rchitect-design/types";
+import type { HeaderSetting } from "@rchitect-design/types";
 
 export namespace Header {
-  export interface State extends Repository.State, HeaderSetting {
-  }
+  export type State = HeaderSetting
 }

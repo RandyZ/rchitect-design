@@ -115,21 +115,24 @@ export const useUserStore = defineStore('AppUserStore', () => {
       }
       const { getUserInfoApi } = diKT(Beans.Repository);
       const userInfo = await getUserInfoApi();
-      if (isArray(userInfo?.roles)) {
-        const roleList = roles.map(
-          (item) => item.value
-        ) as unknown as RoleInfo[];
-        this.setRoles(roleList);
+      if (userInfo) {
+        if (isArray(userInfo?.roles)) {
+          const roleList = unref(state.roles).map(
+            (item) => item.value
+          ) as unknown as RoleInfo[];
+          this.setRoles(roleList);
+        } else {
+          userInfo.roles = [];
+          this.setRoles([]);
+        }
+        this.setUserInfo(userInfo);
+        return userInfo;
       } else {
-        userInfo.roles = [];
-        this.setRoles([]);
+        throw new Error('获取用户信息失败');
       }
-      this.setUserInfo(userInfo);
-
-      return userInfo;
     },
     async logout(goLogin = false): Promise<void> {
-      if (this.getAccessToken) {
+      if (getters.getToken.value) {
         const { doLogoutApi } = diKT(Beans.Repository);
         try {
           await doLogoutApi();
@@ -143,7 +146,7 @@ export const useUserStore = defineStore('AppUserStore', () => {
       // TODO 暂时在这里推出时清楚工程Setting，之后挪到载入处根据工程的版本来决定是否清除
       resetProjectSetting();
       if (goLogin) {
-        useRouter().push(Route.BASIC_LOGIN_PATH);
+        await useRouter().push(Route.BASIC_LOGIN_PATH);
       }
     },
   }
