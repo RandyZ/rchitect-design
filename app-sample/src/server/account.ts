@@ -35,12 +35,12 @@ export class AppAccountRepository implements Repository {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  doFetchToken(params:User.CodeLoginParamters, mode?:ErrorMessageMode):Promise<AuthenticationToken | undefined> {
+  doFetchToken(params:User.CodeLoginParamters, mode?:ErrorMessageMode):AuthenticationToken | undefined {
     debugger
     return Promise.resolve(undefined);
   }
 
-  async doLoginApi(params:User.LoginParams, mode?:ErrorMessageMode):Promise<LoginResultModel | undefined> {
+  async doLoginApi(params:User.LoginParams, mode?:ErrorMessageMode):LoginResultModel | undefined {
     return this.infrastructureAxios.post<Protocols.ResponseData<LoginResultModel>>({
       ...useInfrastructureApi(ServerApi.Login),
       data: params
@@ -51,20 +51,20 @@ export class AppAccountRepository implements Repository {
     })
   }
 
-  doLogoutApi():void {
+  async doLogoutApi() {
     debugger
   }
 
-  getCaptchaImage():Promise<{ img:string; uuid:string } | null> {
+  async getCaptchaImage():{ img:string; uuid:string } | null {
     return this.infrastructureAxios.get<{ img:string; uuid:string }>(useInfrastructureApi(ServerApi.GetCaptchaImage));
   }
 
-  getPermCode():Promise<string[]> {
+  async getPermCode():string[] {
     debugger
     return Promise.resolve([]);
   }
 
-  async getUserInfoApi():Promise<UserInfoModel | undefined> {
+  async getUserInfoApi():UserInfoModel | undefined {
     return this.infrastructureAxios.get<Protocols.ResponseData<UserInfoModel>>(
       useInfrastructureApi(ServerApi.GetUserInfo)
     ).then(response => {
@@ -72,7 +72,7 @@ export class AppAccountRepository implements Repository {
     })
   }
 
-  async getUserRoutes():Promise<RouteRecordItem[]> {
+  async getUserRoutes():RouteRecordItem[] {
     return this.infrastructureAxios.get<Protocols.ResponseData<RouteRecord>>(
       useInfrastructureApi(ServerApi.GetUserInfo)
     ).then(response => {

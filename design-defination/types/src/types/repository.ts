@@ -7,10 +7,19 @@ export declare module Repository {
    */
   export type State = Record<string | number | symbol, any>;
 
-
-  export type Getters<T = any> = {
+  /**
+   * 数据值对象, 用于定义响应式数据结构。
+   */
+  export type Data<T = any, A = Actions> = {
     [K in keyof T]:Ref<T[K]>
+  } & {
+    useActions?:() => A
   };
+
+  /**
+   * @deprecated 使用Data代替Getters
+   */
+  export type Getters<T = any> = Omit<Data<T>, 'useActions'>;
   /**
    * 操作函数
    */

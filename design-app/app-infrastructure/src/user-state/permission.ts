@@ -1,6 +1,6 @@
 import type { Permission } from '@rchitect-rock/state'
 import { defineStore } from "pinia";
-import { ref, type ToRefs, unref } from 'vue-demi';
+import { ref, unref } from 'vue-demi';
 import type { Menu } from "@rchitect-design/types";
 import { diKT } from "@rchitect-rock/ioc";
 import { Beans as layoutBeans, LayoutRoutes } from "@rchitect-rock/layouts";
@@ -18,7 +18,7 @@ const usePermission = () => diKT(stateBeans.PermissionState);
 const accountRepository = () => diKT(appAccountBeans.Repository);
 
 export const usePermissionStore = defineStore('PermissionStateStore', () => {
-  const state:ToRefs<Permission.State> = {
+  const state:Permission.Data = {
     permCodeList: ref([]),
     permissionMode: ref(PermissionModeEnum.ROUTE_MAPPING),
     isDynamicAddedRoute: ref(false),
@@ -27,7 +27,7 @@ export const usePermissionStore = defineStore('PermissionStateStore', () => {
     frontMenuList: ref([]),
   }
 
-  const actions:Permission.Action = {
+  const actions:Permission.Actions = {
     setPermCodeList(codeList:string[]) {
       state.permCodeList.value = codeList;
     },
@@ -173,6 +173,9 @@ export const usePermissionStore = defineStore('PermissionStateStore', () => {
   }
   return {
     ...state,
-    ...actions
+    ...actions,
+    useActions() {
+      return actions
+    }
   };
 })

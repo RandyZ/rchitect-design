@@ -1,7 +1,7 @@
 import { PageEnum, Route, AuthorizationModeEnum, PermissionModeEnum } from '@rchitect-design/constants';
 import { Lib as routeLib } from '@rchitect-rock/router';
 import { Beans as layoutBeans, LayoutRoutes, useUserGetter, useUserAction, useUserState } from '@rchitect-rock/layouts';
-import { Beans as stateBeans } from '@rchitect-rock/state';
+import { usePermissionStateActions } from '@rchitect-rock/state';
 import { useOAuth2Config, useAuthMode } from '#/usage';
 import { diKT } from '@rchitect-rock/ioc';
 import { AppContext } from "@rchitect-rock/base-package";
@@ -15,7 +15,6 @@ const ROOT_PATH = LayoutRoutes.ROOT_ROUTE.path;
 
 const routeTable = () => diKT(routeLib.types.RouteTable);
 const menuState = () => diKT(routeLib.types.MenuState);
-const usePermissionActions = () => diKT(stateBeans.PermissionAction);
 const useLockState = () => diKT(layoutBeans.AppLockState);
 const useLockActions = () => diKT(layoutBeans.AppLockActions);
 
@@ -179,7 +178,7 @@ export function createAuthGuard(appContext:AppContext) {
     }
     // 2. 用户
     const userStore = useUserStore();
-    const permissionActions = usePermissionActions();
+    const permissionActions = usePermissionStateActions();
     // Jump to the 404 page after processing the login
     if (
       from.path === LOGIN_PATH &&

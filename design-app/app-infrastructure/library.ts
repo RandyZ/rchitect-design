@@ -75,7 +75,7 @@ export const Lib:ModuleLibContext<'routes', typeof Beans> = {
     // 权限设置
     const permissionStore = usePermissionStore()
     bind(stateBeans.PermissionState).toConstantValue(permissionStore)
-    bind(stateBeans.PermissionAction).toConstantValue(permissionStore)
+    bind(stateBeans.PermissionStateActions).toConstantValue(permissionStore.useActions())
 
     const appRuntimeOptions = useAppRuntimeStore()
     bind(stateBeans.AppRuntimeConfigOptions).toConstantValue(appRuntimeOptions)
