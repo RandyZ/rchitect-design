@@ -20,7 +20,11 @@ const prompts = require('prompts')
  * @param script 
  */
 export async function runTurboScript(argv: string[], script: string) {
-  await execNpmCmd([`-w run turbo:${script}`, ...argv])
+  // await execNpmCmd([`-w run turbo:${script}`, ...argv])
+  execa('pnpm', ['-w', 'run', `turbo:${script}`].concat(argv), {
+    stdio: 'inherit',
+    preferLocal: true,
+  })
 }
 
 /**

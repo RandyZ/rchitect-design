@@ -209,7 +209,7 @@ export class InfrastructureAxios {
           if (transformRequestHook && isFunction(transformRequestHook)) {
             try {
               const ret = transformRequestHook(res, opt)
-              resolve(ret)
+              resolve(ret as T)
             } catch (err) {
               reject(err || new Error('request error!'))
             }
