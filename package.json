@@ -16,7 +16,7 @@
     "postinstall": "pnpm run stub",
     "build": "pnpm --filter scripts build",
     "turbo:build": "turbo run build --parallel",
-    "test": "vitest",
+    "test": "vitest run --coverage",
     "test:dev": "vitest watch",
     "test:cov": "vitest run --coverage",
     "lint:eslint": "eslint . --cache --max-warnings 0 --fix",
