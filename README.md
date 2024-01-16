@@ -4,6 +4,10 @@
 
 编译思想和组件设计方案借鉴了很多[Vben](https://github.com/vbenjs/vben3)的思想
 
+## 工程命令
+
+### 
+
 ## 环境变量
 
 - `.env.development` 开发环境
@@ -64,6 +68,13 @@ yarn run gen:rock <module-name>
 
 ### VSCode
 
-#### 1. 开启Takever模式
+#### 1. 开启Takeover模式
 
 [Volar 开启takeover](https://cn.vuejs.org/guide/typescript/overview.html#volar-takeover-mode)
+
+# 需要解决的问题
+
+- [ ] 模块之间传递图片资源的方案实现。
+  - 在`AppContext`中增加图片资源参数的传递
+  - 图片资源的传递方式可以选择`import promise`或者`import base64`的方式
+- [ ] 布局组件完善

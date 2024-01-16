@@ -5,3 +5,4 @@ packages:
   - "design-cli/*"
   - "dev-support/*"
   - "app-sample"
+  - '!design-app/testing-setup'

@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "@rchitect-app/components": "workspace:^",
-    "@rchitect-app/testing-setup": "workspace:^",
     "@rchitect-design/constants": "workspace:*",
     "@rchitect-rock/base-package": "workspace:*",
     "@rchitect-rock/components": "workspace:^",

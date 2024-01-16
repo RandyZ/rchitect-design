@@ -232,9 +232,6 @@ importers:
       '@rchitect-app/components':
         specifier: workspace:^
         version: link:../app-components
-      '@rchitect-app/testing-setup':
-        specifier: workspace:^
-        version: link:../testing-setup
       '@rchitect-design/constants':
         specifier: workspace:*
         version: link:../../design-defination/constants
@@ -472,67 +469,6 @@ importers:
       vue:
         specifier: ~3.3.4 || ~2.7.0
         version: 3.3.7(typescript@5.3.3)
-
-  design-app/testing-setup:
-    dependencies:
-      '@rchitect-app/component-driver-element-plus':
-        specifier: workspace:^
-        version: link:../component-driver-element-plus
-      '@rchitect-app/component-driver-naive':
-        specifier: workspace:^
-        version: link:../component-driver-naive
-      '@rchitect-app/components':
-        specifier: workspace:^
-        version: link:../app-components
-      '@rchitect-app/infrastructure':
-        specifier: workspace:^
-        version: link:../app-infrastructure
-      '@rchitect-design/constants':
-        specifier: workspace:*
-        version: link:../../design-defination/constants
-      '@rchitect-rock/base-package':
-        specifier: workspace:*
-        version: link:../../design-rock/rock-base-package
-      '@rchitect-rock/components':
-        specifier: workspace:^
-        version: link:../../design-rock/rock-components
-      '@rchitect-rock/events':
-        specifier: workspace:^
-        version: link:../../design-rock/rock-events
-      '@rchitect-rock/hooks':
-        specifier: workspace:^
-        version: link:../../design-rock/rock-hooks
-      '@rchitect-rock/ioc':
-        specifier: workspace:*
-        version: link:../../design-rock/rock-ioc
-      '@rchitect-rock/layouts':
-        specifier: workspace:^
-        version: link:../../design-rock/rock-layout
-      '@rchitect-rock/locale':
-        specifier: workspace:*
-        version: link:../../design-rock/rock-locale
-      '@rchitect-rock/router':
-        specifier: workspace:^
-        version: link:../../design-rock/rock-router-middleware
-      '@rchitect-rock/settings':
-        specifier: workspace:^
-        version: link:../../design-rock/rock-settings
-      '@rchitect-rock/state':
-        specifier: workspace:^
-        version: link:../../design-rock/rock-state
-      lodash-es:
-        specifier: ^4.0.0
-        version: 4.17.21
-      pinia:
-        specifier: ~2.1.7
-        version: 2.1.7(typescript@5.3.3)(vue@3.3.7)
-      vue:
-        specifier: ~3.3.4 || ~2.7.0
-        version: 3.3.7(typescript@5.3.3)
-    devDependencies:
-      '@rchitect-design/types':
-        specifier: workspace:*
-        version: link:../../design-defination/types
 
   design-cli/css-preprocess:
     dependencies:
