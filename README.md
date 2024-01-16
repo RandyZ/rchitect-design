@@ -77,4 +77,5 @@ yarn run gen:rock <module-name>
 - [ ] 模块之间传递图片资源的方案实现。
   - 在`AppContext`中增加图片资源参数的传递
   - 图片资源的传递方式可以选择`import promise`或者`import base64`的方式
-- [ ] 布局组件完善
+- [ ] 布局组件完善，将多种布局组件进行整合
+- [ ] 替换svg插件，这个插件过期了，可以使用[@spiriit/vite-plugin-svg-spritemap](https://www.npmjs.com/package/@spiriit/vite-plugin-svg-spritemap)替换
