@@ -1,3 +1,4 @@
+import * as pkg from '../package.json'
 import { execa } from 'execa'
 import {
   commandArgv,
@@ -16,12 +17,12 @@ const prompts = require('prompts')
 
 /**
  * 执行Npm脚本
- * @param argv 
- * @param script 
+ * @param argv
+ * @param script
  */
-export async function runTurboScript(argv: string[], script: string) {
+export async function runTurboScript(argv:string[], script:string) {
   // await execNpmCmd([`-w run turbo:${script}`, ...argv])
-  execa('pnpm', ['-w', 'run', `turbo:${script}`].concat(argv), {
+  execa('pnpm', [ '-w', 'run', `turbo:${ script }` ].concat(argv), {
     stdio: 'inherit',
     preferLocal: true,
   })
@@ -29,24 +30,24 @@ export async function runTurboScript(argv: string[], script: string) {
 
 /**
  * 执行Npm环境中的命令
- * @param argv 
- * @param script 
+ * @param argv
+ * @param script
  */
-export async function execNpmCmd(argv: string[]) {
+export async function execNpmCmd(argv:string[]) {
   // spinner.stop()
   execa('pnpm', argv, { stdio: 'inherit', preferLocal: true, })
 }
 
-async function baseScript(command: string, isFilterWorkspace: boolean, isAll = false) {
+async function baseScript(command:string, isFilterWorkspace:boolean, isAll = false) {
   const argv = commandArgv('filter')
-  let filterArgv: string[] = []
+  let filterArgv:string[] = []
   try {
     if (isArray(argv)) {
       filterArgv = argv
-        .map((argvItem) => ['--filter', `../${argvItem}`])
+        .map((argvItem) => [ '--filter', `../${ argvItem }` ])
         .flatMap((argvItem) => argvItem)
     } else if (isString(argv)) {
-      filterArgv = ['--filter', argv]
+      filterArgv = [ '--filter', argv ]
     } else {
       filterArgv = isFilterWorkspace ? await filterWorkspace() : []
     }
@@ -55,7 +56,7 @@ async function baseScript(command: string, isFilterWorkspace: boolean, isAll = f
       throw new Error('No items meet the requirements!')
     }
     if (workspacePackages.length === 1) {
-      await runTurboScript(['--filter', workspacePackages[0].name], command)
+      await runTurboScript([ '--filter', workspacePackages[0].name ], command)
       return
     }
     const choices = workspacePackages.map((item) => ({
@@ -64,16 +65,18 @@ async function baseScript(command: string, isFilterWorkspace: boolean, isAll = f
     }))
     let scriptArgv
     if (isAll) {
-      scriptArgv = choices.map((argvItem) => ['--filter', argvItem.value])
+      scriptArgv = choices
+        .filter(argvItem => pkg.name !== argvItem.value)
+        .map((argvItem) => [ '--filter', argvItem.value ])
         .flatMap((argvItem) => argvItem)
     } else {
       const { packages } = await prompts([
         {
           type: DEFAULT_SELECT_TYPE,
-          message: `Choose the package to run ${command} script: `,
+          message: `Choose the package to run ${ command } script: `,
           name: 'packages',
           choices,
-          validate: function (val: any[]) {
+          validate: function (val:any[]) {
             if (val && val.length) return true
             return 'Please choose at least one: '
           },
@@ -81,9 +84,9 @@ async function baseScript(command: string, isFilterWorkspace: boolean, isAll = f
       ])
       scriptArgv = isArray(packages)
         ? packages
-          .map((argvItem) => ['--filter', argvItem])
+          .map((argvItem) => [ '--filter', argvItem ])
           .flatMap((argvItem) => argvItem)
-        : ['--filter', packages || '']
+        : [ '--filter', packages || '' ]
     }
     await runTurboScript(scriptArgv, command)
   } catch (e) {
@@ -91,7 +94,7 @@ async function baseScript(command: string, isFilterWorkspace: boolean, isAll = f
   }
 }
 
-export function run(command: string, isFilterWorkspace = false, isAll = false) {
+export function run(command:string, isFilterWorkspace = false, isAll = false) {
   // spinner.start()
   baseScript(command, isFilterWorkspace, isAll).catch((err) => {
     error(err)
