@@ -38,6 +38,7 @@ class RespData<T> implements Protocols.ResponseData<T> {
     this.data = rawData.data;
     this.isOk = isOk.bind(this)
   }
+
 }
 
 const preRequestHook = (config:RchitectRequestConfig, options:RequestOptions, apiMapping:ApiMapping) => {

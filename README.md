@@ -81,3 +81,4 @@ yarn run gen:rock <module-name>
 - [ ] 多语言模块抽离lang定义文件放回到应用工程
 - [ ] 替换svg插件，这个插件过期了，可以使用[@spiriit/vite-plugin-svg-spritemap](https://www.npmjs.com/package/@spiriit/vite-plugin-svg-spritemap)替换
 - [ ] RPA连线框架的实现，考虑使用[AntvX6](https://x6.antv.antgroup.com/)来实现
+- [ ] `ComponentDriverProvider`实现组件的按需加载
