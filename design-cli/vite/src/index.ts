@@ -30,8 +30,7 @@ export async function createViteConfig(
 ): Promise<UserConfig> {
   const root = cwd;
   const env = loadEnv(mode, root);
-  console.info(`\n${cyan('开始构建Vite配置...')}\n`);
-  console.info(`  - ${cyan('Vite根目录：' + root)}\n`);
+  console.info(`\n${cyan('开始构建Vite配置...')}\n  - ${cyan('Vite构建根目录：' + root)}\n  - ${cyan('Vite构建环境：' + mode)}\n`);
   const { dependencies, devDependencies, name, version } = await readPackageJSON(cwd);
   // The boolean type read by loadEnv is a string. This function can be converted to boolean type
   const viteEnv = wrapperEnv(env);
@@ -42,6 +41,7 @@ export async function createViteConfig(
     VITE_DROP_CONSOLE,
     VITE_USE_HTTPS,
   } = viteEnv;
+  console.debug('Vite环境变量', viteEnv)
   const commonConfig: UserConfig = {
     root,
     base: VITE_PUBLIC_PATH,

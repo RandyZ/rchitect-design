@@ -3,8 +3,8 @@ import { Library, toPackage } from '@rchitect-rock/base-package';
 import { Beans } from './beankeys';
 import type { BeanKeys } from './beankeys';
 import { RouteList } from './src/routes';
-import { AsyncIocModule } from "@rchitect-rock/ioc";
-import { Beans as layoutBeans } from "@rchitect-rock/layouts";
+import { AsyncIocModule, ServiceIdentifier } from "@rchitect-rock/ioc";
+import { Beans as layoutBeans, User } from "@rchitect-rock/layouts";
 import { useUserStore } from "./src/state";
 
 

@@ -2,7 +2,7 @@
   "name": "@rchitect/app-sample",
   "version": "0.0.0",
   "scripts": {
-    "build": "pnpm rimraf dist && pnpm cross-env NODE_ENV=production vite build",
+    "build": "pnpm rimraf dist && pnpm vite build --mode $NODE_ENV",
     "clean": "pnpm rimraf node_modules && pnpm rimraf dist && pnpm rimraf .turbo",
     "dev": "vite -m development",
     "preview": "npm run build && vite preview",
