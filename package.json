@@ -6,6 +6,7 @@
     "url": "git+https://github.com/RandyZ/rchitect-design.git",
     "directory": "sample"
   },
+  "version": "0.0.0",
   "author": {
     "name": "Randy",
     "email": "zhangshi321@gmail.com",
@@ -14,6 +15,7 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "postinstall": "pnpm run stub",
+    "setup": "pnpm i --frozen-lockfilep",
     "build": "pnpm --filter scripts build",
     "build:test": "cross-env NODE_ENV=test pnpm --filter scripts build --all",
     "build:prod": "cross-env NODE_ENV=production pnpm --filter scripts build --all",
@@ -34,7 +36,8 @@
     "gen": "pnpm --filter @rchitect-cli/scripts gen-module $npm_config_name $APP_LEVEL",
     "gen:app": "cross-env APP_LEVEL=\"app\" pnpm gen",
     "gen:rock": "cross-env APP_LEVEL=\"rock\" pnpm gen",
-    "dep:sample": "pnpm --filter @rchitect/app-sample add"
+    "dep:sample": "pnpm --filter @rchitect/app-sample add",
+    "dep-graph:sample": "madge --image graph.svg app-sample/src/main.ts"
   },
   "workspaces": [
     "design-app/*",
@@ -65,6 +68,7 @@
     "@vitest/coverage-v8": "^0.34.6",
     "@vitest/ui": "^0.34.6",
     "@vue/test-utils": "^2.2.9",
+    "bumpp": "^9.3.0",
     "cross-env": "^7.0.3",
     "eslint": "^8.48.0",
     "esno": "^0.17.0",
