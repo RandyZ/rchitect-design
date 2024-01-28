@@ -5,4 +5,5 @@ packages:
   - "design-cli/*"
   - "dev-support/*"
   - "app-sample"
+  - "app-sample-vue2"
   - '!design-app/testing-setup'

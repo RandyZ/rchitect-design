@@ -1,0 +1,31 @@
+{
+  "name": "@rchitect-app/web-portals",
+  "version": "0.0.0",
+  "description": "Support for web portals with dynamic themes",
+  "main": "index.ts",
+  "module": "index.ts",
+  "author": {
+    "name": "Randy Zhang",
+    "email": "zhangshi3421@gmail.com"
+  },
+  "scripts": {
+    "clean": "pnpm rimraf node_modules && pnpm rimraf dist && pnpm rimraf .turbo",
+    "build-all": "run-s build:*",
+    "build:2": "vue-demi-switch 2 vue2 && vite build",
+    "build:2.7": "vue-demi-switch 2.7 vue2 && vite build",
+    "build:3": "vue-demi-switch 3 vue3 && vite build"
+
+  },
+  "dependencies": {
+    "@rchitect-rock/base-package": "workspace:*",
+    "bootstrap": "~5.3.2",
+    "vue-demi": "~0.14.6"
+  },
+  "devDependencies": {
+    "vue2": "npm:vue@2",
+    "vue3": "npm:vue@3"
+  },
+  "peerDependencies": {
+    "vue": "^2.7.16 || >=3.0.0"
+  }
+}

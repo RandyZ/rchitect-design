@@ -4,7 +4,7 @@
   "main": "index.ts",
   "types": "index.ts",
   "module": "index.ts",
-  "description": "Gloable Typescript Types for Rchitect Design",
+  "description": "Global Typescript Types for Rchitect Design",
   "license": "MIT",
   "author": {
     "name": "Randy Zhang",
@@ -15,11 +15,11 @@
   },
   "dependencies": {
     "@rchitect-design/constants": "workspace:*",
-    "vue-types": "^5.0.2"
+    "vue-types": "^5.0.2",
+    "vue-demi": "~0.14.6"
   },
   "peerDependencies": {
     "pinia": "~2.1.7",
-    "vue": "~3.3.4 || ~2.7.0",
     "vue-router": "^4.1.6"
   }
 }

@@ -1,0 +1,1 @@
+export { default as WebPortalHome } from './Home.vue'
