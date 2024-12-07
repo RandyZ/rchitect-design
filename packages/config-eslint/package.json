@@ -1,0 +1,15 @@
+{
+  "name": "@rchitect-cli/config-eslint",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "eslint-config-turbo": "^2.3.3"
+  }
+}
