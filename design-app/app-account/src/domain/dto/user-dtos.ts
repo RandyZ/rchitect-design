@@ -1,3 +1,0 @@
-/**
- * @description: Login interface parameters
- */

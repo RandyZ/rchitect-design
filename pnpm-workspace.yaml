@@ -1,8 +1,0 @@
-packages:
-  - "design-app/*"
-  - "design-rock/*"
-  - "design-defination/*"
-  - "design-cli/*"
-  - "dev-support/*"
-  - "app-sample"
-  - '!design-app/testing-setup'
