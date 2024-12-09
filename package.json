@@ -9,7 +9,7 @@
     "lint": "turbo run lint",
     "clean": "pnpm turbo run clean && rimraf node_modules",
     "changeset": "changeset",
-    "update-changelog": "changeset version",
+    "update-changes": "changeset version",
     "preinstall": "npx only-allow pnpm",
     "lint-staged": "lint-staged"
   },
