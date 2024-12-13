@@ -20,6 +20,23 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface SwcButton {
+        "bg": boolean;
+        "circle": boolean;
+        "disabled": boolean;
+        "icon": string;
+        "link": boolean;
+        "loading": boolean;
+        "loadingIcon": string;
+        "plain": boolean;
+        "round": boolean;
+        "size": string;
+        "suffixIcon": string;
+        "text": boolean;
+        "type": string;
+    }
+    interface SwcButtonGroup {
+    }
 }
 declare global {
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
@@ -28,8 +45,22 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLSwcButtonElement extends Components.SwcButton, HTMLStencilElement {
+    }
+    var HTMLSwcButtonElement: {
+        prototype: HTMLSwcButtonElement;
+        new (): HTMLSwcButtonElement;
+    };
+    interface HTMLSwcButtonGroupElement extends Components.SwcButtonGroup, HTMLStencilElement {
+    }
+    var HTMLSwcButtonGroupElement: {
+        prototype: HTMLSwcButtonGroupElement;
+        new (): HTMLSwcButtonGroupElement;
+    };
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
+        "swc-button": HTMLSwcButtonElement;
+        "swc-button-group": HTMLSwcButtonGroupElement;
     }
 }
 declare namespace LocalJSX {
@@ -47,8 +78,27 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface SwcButton {
+        "bg"?: boolean;
+        "circle"?: boolean;
+        "disabled"?: boolean;
+        "icon"?: string;
+        "link"?: boolean;
+        "loading"?: boolean;
+        "loadingIcon"?: string;
+        "plain"?: boolean;
+        "round"?: boolean;
+        "size"?: string;
+        "suffixIcon"?: string;
+        "text"?: boolean;
+        "type"?: string;
+    }
+    interface SwcButtonGroup {
+    }
     interface IntrinsicElements {
         "my-component": MyComponent;
+        "swc-button": SwcButton;
+        "swc-button-group": SwcButtonGroup;
     }
 }
 export { LocalJSX as JSX };
@@ -56,6 +106,8 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "swc-button": LocalJSX.SwcButton & JSXBase.HTMLAttributes<HTMLSwcButtonElement>;
+            "swc-button-group": LocalJSX.SwcButtonGroup & JSXBase.HTMLAttributes<HTMLSwcButtonGroupElement>;
         }
     }
 }

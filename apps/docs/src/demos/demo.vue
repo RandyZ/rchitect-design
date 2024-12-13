@@ -5,6 +5,7 @@
       <button class="btn" @click="increment">+1</button>
       <button class="btn" @click="decrement">-1</button>
       <swc-button> component: 123123</swc-button>
+      <my-component first="Randy"> component: 2222</my-component>
     </div>
     <div>Current count: {{ count }}</div>
   </div>

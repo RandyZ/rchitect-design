@@ -1,8 +1,9 @@
 import { defineConfig } from 'vitepress'
-import { vitepressDemoPlugin } from 'vitepress-demo-plugin'; 
+import { vitepressDemoPlugin } from 'vitepress-demo-plugin'
 import sidebar from './app/side-bar'
 import nav from './app/nav'
-import path, { dirname } from 'path';
+import path, { dirname } from 'path'
+import MarkdownIt from 'markdown-it'
 
 function fileURLToPath(fileURL: string) {
   let filePath = fileURL;
@@ -29,9 +30,9 @@ export default defineConfig({
       { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
     ]
   },
-  markdown:{
-    config(md) {
-      md.use(vitepressDemoPlugin, {
+  markdown: {
+    config: (md: MarkdownIt) => {
+      vitepressDemoPlugin(md, {
         demoDir: path.resolve(
           dirname(fileURLToPath(import.meta.url)),
           '../demos'
@@ -42,19 +43,19 @@ export default defineConfig({
         codesandbox: {
           show: false,
         },
-      });
+      })
+    }
+  },
+  vite: {
+    build: {
+      target: 'esnext'
     }
   },
   vue: {
     template: {
-        compilerOptions: {
-            isCustomElement: (tag) => {
-                return tag.startsWith("swc-");
-            },
-        },
-    },
-  },
-  vite: {
-    plugins: [],
-  },
+      compilerOptions: {
+        isCustomElement: (tag) => tag.startsWith('swc-')
+      }
+    }
+  }
 })

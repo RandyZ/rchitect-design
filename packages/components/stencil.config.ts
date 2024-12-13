@@ -1,7 +1,15 @@
 import { Config } from '@stencil/core';
+import { sass } from '@stencil/sass';
 
 export const config: Config = {
-  namespace: 'components',
+  namespace: 'swc-ui',
+  buildEs5: false,
+  globalStyle: 'src/global/base.css',
+  globalScript: 'src/global.ts',
+  extras: {
+    // fixes VitePress doc build
+    enableImportInjection: true,
+  },
   outputTargets: [
     {
       type: 'dist',
@@ -9,8 +17,8 @@ export const config: Config = {
     },
     {
       type: 'dist-custom-elements',
+      generateTypeDeclarations: false,
       customElementsExportBehavior: 'auto-define-custom-elements',
-      externalRuntime: false,
     },
     {
       type: 'docs-readme',
@@ -21,6 +29,7 @@ export const config: Config = {
     },
   ],
   testing: {
-    browserHeadless: "new",
+    browserHeadless: 'new',
   },
+  plugins: [sass()],
 };

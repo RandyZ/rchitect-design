@@ -3,7 +3,13 @@ import { h } from 'vue'
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import './style.css'
-import { applyPolyfills, defineCustomElements } from "@rchitect/components/loader";
+import { defineCustomElements } from "@rchitect/components/loader";
+
+// 确保在客户端环境下执行
+if (typeof window !== 'undefined') {
+  defineCustomElements();
+}
+
 export default {
   extends: DefaultTheme,
   Layout: () => {
@@ -12,9 +18,7 @@ export default {
     })
   },
   enhanceApp({ app, router, siteData }) {
-    // ...
-    // app.config.compilerOptions.isCustomElement = (tag) =>
-    //   tag.startsWith("swc-");
-    applyPolyfills()
+    app.config.compilerOptions.isCustomElement = (tag) =>
+      tag.startsWith("swc-");
   }
 } satisfies Theme
